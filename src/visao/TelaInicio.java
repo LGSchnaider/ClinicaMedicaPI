@@ -103,13 +103,11 @@ public class TelaInicio extends JFrame {
 		GroupLayout gl_LOG = new GroupLayout(LOG);
 		gl_LOG.setHorizontalGroup(
 			gl_LOG.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnCadastrar, GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+				.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
 		);
 		gl_LOG.setVerticalGroup(
 			gl_LOG.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_LOG.createSequentialGroup()
-					.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(25, Short.MAX_VALUE))
+				.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 		);
 		LOG.setLayout(gl_LOG);
 		
