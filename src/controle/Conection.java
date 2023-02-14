@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class Conection {
 	private static Connection conection;
 	private static Conection instancia;
-	private static final String DATABASE = "hr";
+	private static final String DATABASE = "ClinicaPI";
 	private static final String USER = "aluno";
 	private static final String PSW = "aluno";
 	
