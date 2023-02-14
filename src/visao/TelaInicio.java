@@ -55,32 +55,32 @@ public class TelaInicio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1234, 900);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel up = new JPanel();
 		getContentPane().add(up, BorderLayout.NORTH);
-		
+
 		JPanel down = new JPanel();
 		getContentPane().add(down, BorderLayout.SOUTH);
-		
+
 		JLabel lblNewLabel = new JLabel("Farmacos");
 		down.add(lblNewLabel);
-		
+
 		JPanel center = new JPanel();
 		center.setBackground(new Color(0, 128, 128));
 		center.setForeground(new Color(0, 128, 128));
 		getContentPane().add(center, BorderLayout.CENTER);
 		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]", "[pref!,grow][92.00][133.00][70,grow][83.00][96.00][38.00,grow]"));
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
 		lblNewLabel_1.setBackground(new Color(255, 0, 0));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 60));
 		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		center.add(lblNewLabel_1, "cell 3 1,alignx center");
-		
+
 		JLabel lblNewLabel_2 = new JLabel("INICIO");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		center.add(lblNewLabel_2, "cell 3 2,alignx center");
-		
+
 		JPanel LOG = new JPanel();
 		LOG.setBackground(new Color(0, 128, 128));
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -94,45 +94,62 @@ public class TelaInicio extends JFrame {
 				// TERMINA O CHAMADO
 			}
 		});
-		
+
 		btnCadastrar.setMinimumSize(new Dimension(97, 23));
 		btnCadastrar.setMaximumSize(new Dimension(97, 23));
-		
-		
+
 		center.add(LOG, "cell 3 3,alignx center");
 		GroupLayout gl_LOG = new GroupLayout(LOG);
-		gl_LOG.setHorizontalGroup(
-			gl_LOG.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-		);
-		gl_LOG.setVerticalGroup(
-			gl_LOG.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnCadastrar, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-		);
+		gl_LOG.setHorizontalGroup(gl_LOG.createParallelGroup(Alignment.LEADING).addComponent(btnCadastrar,
+				GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE));
+		gl_LOG.setVerticalGroup(gl_LOG.createParallelGroup(Alignment.LEADING).addComponent(btnCadastrar,
+				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
 		LOG.setLayout(gl_LOG);
-		
+
 		JLabel lblLogin = new JLabel("Login:");
 		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		center.add(lblLogin, "cell 2 4,alignx trailing");
-		
+
 		textFieldLog = new JTextField();
 		center.add(textFieldLog, "cell 3 4,growx,aligny center");
 		textFieldLog.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		center.add(lblSenha, "cell 2 5,alignx trailing");
-		
+
 		textFieldSenha = new JTextField();
 		center.add(textFieldSenha, "cell 3 5,growx");
 		textFieldSenha.setColumns(10);
-		
+
 		JButton btnLogOff = new JButton("Sair");
-		center.add(btnLogOff, "cell 3 6,alignx center");
+//		center.add(btnLogOff, "cell 3 6,alignx center");
 		btnLogOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
+
+		JPanel OFF = new JPanel();
+		center.add(OFF, "flowx,cell 3 6,alignx center");
+//		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGap(0, 10, Short.MAX_VALUE));
+//		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addComponent(btnLogOff,
+//				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
+		OFF.add(btnLogOff);
+		GroupLayout gl_OFF = new GroupLayout(OFF);
+		gl_OFF.setHorizontalGroup(
+			gl_OFF.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_OFF.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnLogOff, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_OFF.setVerticalGroup(
+			gl_OFF.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_OFF.createSequentialGroup()
+					.addComponent(btnLogOff, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		OFF.setLayout(gl_OFF);
 	}
 }
