@@ -20,6 +20,8 @@ import javax.swing.JTextField;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaInicio extends JFrame {
 
@@ -44,6 +46,7 @@ public class TelaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicio() {
+		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1234, 900);
@@ -71,18 +74,46 @@ public class TelaInicio extends JFrame {
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		center.add(lblNewLabel_2, "cell 1 2,alignx center");
 		
-		JPanel ggggg = new JPanel();
-		ggggg.setLayout(new GridLayout(1, 1, 0, 0));
-		JButton btnNewButton_2 = new JButton("kkk");
-		ggggg.add(btnNewButton_2);
-		btnNewButton_2.setMinimumSize(new Dimension(97, 23));
-		btnNewButton_2.setMaximumSize(new Dimension(97, 23));
-		center.add(ggggg, "cell 1 3,alignx center");
+		JPanel LOG = new JPanel();
+		LOG.setLayout(new GridLayout(1, 1, 0, 0));
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				// CHAMA A CLASSE LOGIN
+				TelaCadastro frame = new TelaCadastro();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
+				// TERMINA O CHAMADO
+			}
+		});
+		LOG.add(btnCadastrar);
 		
-		JButton btnNewButton = new JButton("hjkyhjkhjkhjkl");
-		center.add(btnNewButton, "cell 1 4,alignx center");
+		btnCadastrar.setMinimumSize(new Dimension(97, 23));
+		btnCadastrar.setMaximumSize(new Dimension(97, 23));
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		center.add(btnNewButton_1, "cell 1 5,alignx center");
+		
+		center.add(LOG, "cell 1 3,alignx center");
+		
+		JButton btnLogin = new JButton("Login");
+		center.add(btnLogin, "cell 1 4,alignx center");
+		btnLogin.addActionListener(new ActionListener (){
+			public void actionPerformed(ActionEvent e) {
+					dispose();
+					// CHAMA A CLASSE LOGIN
+					TelaLogin frame = new TelaLogin();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+					// TERMINA O CHAMADO
+				}
+			});
+		
+		JButton btnLogOff = new JButton("Sair");
+		center.add(btnLogOff, "cell 1 5,alignx center");
+		btnLogOff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 }
