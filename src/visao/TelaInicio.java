@@ -69,7 +69,8 @@ public class TelaInicio extends JFrame {
 		center.setBackground(new Color(0, 128, 128));
 		center.setForeground(new Color(0, 128, 128));
 		getContentPane().add(center, BorderLayout.CENTER);
-		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]", "[pref!,grow][92.00][133.00][70,grow][83.00][96.00][38.00,grow]"));
+		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]",
+				"[pref!,grow][92.00][133.00][70,grow][83.00][96.00][][38.00,grow]"));
 
 		JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
 		lblNewLabel_1.setBackground(new Color(255, 0, 0));
@@ -83,6 +84,7 @@ public class TelaInicio extends JFrame {
 
 		JPanel LOG = new JPanel();
 		LOG.setBackground(new Color(0, 128, 128));
+
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,6 +92,7 @@ public class TelaInicio extends JFrame {
 				// CHAMA A CLASSE LOGIN
 				TelaCadastro frame = new TelaCadastro();
 				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 				// TERMINA O CHAMADO
 			}
@@ -130,26 +133,46 @@ public class TelaInicio extends JFrame {
 			}
 		});
 
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 128, 128));
+		center.add(panel, "cell 3 6,alignx center,aligny center");
+
+		JButton btnLogin = new JButton("Login");
+
+		center.add(btnLogin, "cell 1 4,alignx center");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaPrincipal frame = new TelaPrincipal();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
+
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addComponent(btnLogin, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE).addContainerGap()));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addComponent(btnLogin, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE).addContainerGap()));
+		panel.setLayout(gl_panel);
+
 		JPanel OFF = new JPanel();
-		center.add(OFF, "flowx,cell 3 6,alignx center");
+		OFF.setBackground(new Color(0, 128, 128));
+		center.add(OFF, "flowx,cell 3 7,alignx center");
 //		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGap(0, 10, Short.MAX_VALUE));
 //		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addComponent(btnLogOff,
 //				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
 		OFF.add(btnLogOff);
 		GroupLayout gl_OFF = new GroupLayout(OFF);
-		gl_OFF.setHorizontalGroup(
-			gl_OFF.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_OFF.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnLogOff, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_OFF.setVerticalGroup(
-			gl_OFF.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_OFF.createSequentialGroup()
-					.addComponent(btnLogOff, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_OFF.createSequentialGroup().addContainerGap()
+						.addComponent(btnLogOff, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGroup(gl_OFF.createSequentialGroup()
+				.addComponent(btnLogOff, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE).addContainerGap()));
 		OFF.setLayout(gl_OFF);
 	}
 }
