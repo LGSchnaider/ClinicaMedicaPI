@@ -69,7 +69,7 @@ public class TelaInicio extends JFrame {
 		center.setBackground(new Color(0, 128, 128));
 		center.setForeground(new Color(0, 128, 128));
 		getContentPane().add(center, BorderLayout.CENTER);
-		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]", "[pref!,grow][92.00][133.00][70,grow][83.00][96.00][38.00,grow]"));
+		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]", "[pref!,grow][92.00][133.00][70,grow][83.00][96.00][][38.00,grow]"));
 
 		JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
 		lblNewLabel_1.setBackground(new Color(255, 0, 0));
@@ -129,9 +129,42 @@ public class TelaInicio extends JFrame {
 				dispose();
 			}
 		});
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 128, 128));
+		center.add(panel, "cell 3 6,alignx center,aligny center");
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				// CHAMA A CLASSE LOGIN
+				TelaPrincipal frame = new TelaPrincipal();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
+				// TERMINA O CHAMADO
+			}
+		});
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnLogin, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnLogin, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		panel.setLayout(gl_panel);
 
 		JPanel OFF = new JPanel();
-		center.add(OFF, "flowx,cell 3 6,alignx center");
+		OFF.setBackground(new Color(0, 128, 128));
+		center.add(OFF, "flowx,cell 3 7,alignx center");
 //		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGap(0, 10, Short.MAX_VALUE));
 //		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addComponent(btnLogOff,
 //				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
