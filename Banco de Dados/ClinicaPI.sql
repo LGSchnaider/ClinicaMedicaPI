@@ -1,12 +1,8 @@
--- -----------------------------------------------------
--- Schema pi
--- -----------------------------------------------------
+
 CREATE DATABASE ClinicaPI;
 USE ClinicaPI;
 
--- -----------------------------------------------------
--- Table `mydb`.`usuario`
--- -----------------------------------------------------
+
 CREATE TABLE usuario (
   idusuario INT NOT NULL AUTO_INCREMENT,
   login VARCHAR(45) NOT NULL,
@@ -16,9 +12,7 @@ CREATE TABLE usuario (
   PRIMARY KEY (idusuario));
 
 
--- -----------------------------------------------------
--- Table `mydb`.`medico`
--- -----------------------------------------------------
+
 CREATE TABLE medico (
   id_medico INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
@@ -30,9 +24,7 @@ CREATE TABLE medico (
 
 
 
--- -----------------------------------------------------
--- Table `mydb`.`medicamento`
--- -----------------------------------------------------
+
 CREATE TABLE medicamento (
   id_medicamento INT NOT NULL,
   nome VARCHAR(45) NOT NULL,
@@ -42,9 +34,7 @@ CREATE TABLE medicamento (
 
 
 
--- -----------------------------------------------------
--- Table `mydb`.`Paciente`
--- -----------------------------------------------------
+
 CREATE TABLE Paciente (
   id_paciente INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
@@ -57,9 +47,7 @@ CREATE TABLE Paciente (
     
 
 
--- -----------------------------------------------------
--- Table `mydb`.`agenda_paciente`
--- -----------------------------------------------------
+
 CREATE TABLE agenda_paciente (
   idagenda_cliente INT NOT NULL AUTO_INCREMENT,
   periodo VARCHAR(45) NOT NULL,
@@ -73,10 +61,7 @@ CREATE TABLE agenda_paciente (
     FOREIGN KEY (Paciente_id_paciente) REFERENCES Paciente (id_paciente),
     FOREIGN KEY (medico_id_medico) REFERENCES medico (id_medico));
 
--- -----------------------------------------------------
--- Table `mydb`.`secretaria`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS secretaria (
+CREATE TABLE  secretaria (
   idsecretaria INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
   cpf BIGINT NOT NULL,
@@ -88,9 +73,7 @@ CREATE TABLE IF NOT EXISTS secretaria (
 
 
 
--- -----------------------------------------------------
--- Table `mydb`.`agenda_medico`
--- -----------------------------------------------------
+
 CREATE TABLE agenda_medico (
   idagenda_medico INT NOT NULL AUTO_INCREMENT,
   data DATE NOT NULL,

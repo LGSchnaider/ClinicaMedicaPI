@@ -55,7 +55,7 @@ public class AdministradorDAO implements IAdministradorDAO {
 		ArrayList<Administrador> Administradores = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM usuario";
+			String query = "SELECT * FROM Administrador";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 

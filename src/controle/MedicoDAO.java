@@ -55,7 +55,7 @@ public class MedicoDAO implements IMedicoDAO {
 		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM usuario";
+			String query = "SELECT * FROM Medico";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 

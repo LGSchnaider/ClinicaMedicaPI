@@ -8,7 +8,7 @@ public class Conexao {
 
 	private static Connection conexao;
 	private static Conexao instancia;
-	private static final String DATABASE = "ezequiel";
+	private static final String DATABASE = "ClinicaPI";
 	private static final String USER = "aluno";
 	private static final String PSW = "aluno";
 
