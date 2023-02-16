@@ -135,16 +135,17 @@ public class TelaInicio extends JFrame {
 		center.add(panel, "cell 3 6,alignx center,aligny center");
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
+
+		center.add(btnLogin, "cell 1 4,alignx center");
+		btnLogin.addActionListener(new ActionListener (){
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				// CHAMA A CLASSE LOGIN
-				TelaPrincipal frame = new TelaPrincipal();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
-				// TERMINA O CHAMADO
-			}
-		});
+					dispose();
+					TelaPrincipal frame = new TelaPrincipal();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+				}
+			});
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
