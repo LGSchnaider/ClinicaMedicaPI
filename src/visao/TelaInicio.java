@@ -100,11 +100,6 @@ public class TelaInicio extends JFrame {
 		btnLogin.addActionListener(new ActionListener (){
 			public void actionPerformed(ActionEvent e) {
 					dispose();
-					// CHAMA A CLASSE LOGIN
-					TelaLogin frame = new TelaLogin();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-					// TERMINA O CHAMADO
 				}
 			});
 		
