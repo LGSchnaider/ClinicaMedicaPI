@@ -1,5 +1,10 @@
 package controle;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.IAdministradorDAO;
@@ -7,60 +12,81 @@ import modelo.Administrador;
 
 public class AdministradorDAO implements IAdministradorDAO {
 
-	private static ArrayList<Administrador> produtos;
-	private static AdministradorDAO instancia;
+	@Override
+	public boolean inserir(Administrador p) {
+		// Instacia classe Conexao
+		Conexao con = Conexao.getInstancia();
 
-	/**
-	 * Padrao singleton
-	 */
-	private AdministradorDAO() {
-	}
+		// abrir conexao
+		con.conectar();
 
-	public static AdministradorDAO getInstancia() {
+		Connection c = con.conectar();
+		try {
+			String query = "INSERT INTO usuario " + "(login, senha, perfil, admin) VALUES (?,?,?,?);";
+			PreparedStatement stm = c.prepareStatement(query);
 
-		if (instancia == null) {
-			instancia = new AdministradorDAO();
-			produtos = new ArrayList<>();
+			stm.setString(1, p.getLogin());
+			stm.setString(2, p.getSenha());
+			stm.setInt(3, p.getPefil());
+			stm.setBoolean(4, p.isAdmin());
 
-			Administrador p1 = new Administrador();
-			p1.setNome("Bola");
-			p1.setCategoria("Brinquedo");
-			p1.setValor(30.00);
+			stm.executeUpdate();
 
-			Administrador p2 = new Administrador();
-			p2.setNome("Carrinho de controle remoto");
-			p2.setCategoria("Brinquedo");
-			p2.setValor(120.00);
+		} catch (SQLException e) {
 
-			Administrador p3 = new Administrador();
-			p3.setNome("Kinder ovo");
-			p3.setCategoria("Alimento");
-			p3.setValor(8.00);
-
-			produtos.add(p1);
-			produtos.add(p2);
-			produtos.add(p3);
+			e.printStackTrace();
 		}
 
-		return instancia;
+		// fechar conexao
+		con.fechaConexao();
+
+		return false;
 	}
 
-	public ArrayList<Administrador> listarProduto() {
-		return produtos;
+	public ArrayList<Administrador> listaAdministrador() {
+
+		// Instacia classe Conexao
+		Conexao con = Conexao.getInstancia();
+
+		// abrir conexao
+		con.conectar();
+
+		Connection c = con.conectar();
+		ArrayList<Administrador> Administradores = new ArrayList<>();
+		try {
+			Statement stm = c.createStatement();
+			String query = "SELECT * FROM usuario";
+			ResultSet rs = stm.executeQuery(query);
+			while (rs.next()) {
+
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
+				boolean admin = rs.getBoolean("admin");
+
+				Administrador p = new Administrador();
+				p.setLogin(login);
+				p.setSenha(senha);
+				p.setPefil(perfil);
+				p.setAdmin(admin);
+				Administradores.add(p);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		// fechar conexao
+		con.fechaConexao();
+
+		return Administradores;
 	}
 
 	@Override
-	public boolean inserir(Administrador p) {
-		if (p != null) {
-			produtos.add(p);
-			return true;
-		}
+	public boolean delete(Administrador p) {
+		// TODO Auto-generated method stub
 		return false;
-	}
-	
-	
-	public void deletar(int p) {
-		produtos.remove(p);
 	}
 
 }
