@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.IAdministradorDAO;
-import modelo.Administrador;
+import modelo.IMedicoDAO;
+import modelo.Medico;
 
-public class AdministradorDAO implements IAdministradorDAO {
+public class MedicoDAO implements IMedicoDAO {
 
 	@Override
-	public boolean inserir(Administrador p) {
+	public boolean inserir(Medico p) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 
@@ -22,13 +22,13 @@ public class AdministradorDAO implements IAdministradorDAO {
 
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO usuario " + "(login, senha, perfil, admin) VALUES (?,?,?,?);";
+			String query = "INSERT INTO medico " + "(nome, sobrenome, cpf, crm) VALUES (?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
-			stm.setString(1, p.getLogin());
-			stm.setString(2, p.getSenha());
-			stm.setInt(3, p.getPefil());
-			stm.setBoolean(4, p.isAdmin());
+			stm.setString(1, p.getNome());
+			stm.setString(2, p.getSobrenome());
+			stm.setLong(3, p.getCpf());
+			stm.setString(4, p.getCrm());
 
 			stm.executeUpdate();
 
@@ -43,7 +43,7 @@ public class AdministradorDAO implements IAdministradorDAO {
 		return false;
 	}
 
-	public ArrayList<Administrador> listaAdministrador() {
+	public ArrayList<Medico> listaMedico() {
 
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
@@ -52,24 +52,24 @@ public class AdministradorDAO implements IAdministradorDAO {
 		con.conectar();
 
 		Connection c = con.conectar();
-		ArrayList<Administrador> Administradores = new ArrayList<>();
+		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "SELECT * FROM usuario";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 
-				String login = rs.getString("login");
-				String senha = rs.getString("senha");
-				int perfil = rs.getInt("perfil");
-				boolean admin = rs.getBoolean("admin");
+				String nome = rs.getString("nome");
+				String sobrenome = rs.getString("sobrenome");
+				long cpf = rs.getLong("perfil");
+				String crm = rs.getString("crm");
 
-				Administrador p = new Administrador();
-				p.setLogin(login);
-				p.setSenha(senha);
-				p.setPefil(perfil);
-				p.setAdmin(admin);
-				Administradores.add(p);
+				Medico p = new Medico();
+				p.setNome(nome);
+				p.setSobrenome(sobrenome);
+				p.setCpf(cpf);
+				p.setCrm(crm);
+				Medicos.add(p);
 			}
 
 		} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class AdministradorDAO implements IAdministradorDAO {
 		// fechar conexao
 		con.fechaConexao();
 
-		return Administradores;
+		return Medicos;
 	}
 
 }
