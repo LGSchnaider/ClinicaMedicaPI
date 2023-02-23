@@ -5,7 +5,7 @@ public class Medico {
 	private String nome;
 	private String sobrenome;
 	private Long cpf;
-	private String crm;
+	private Long crm;
 
 	public String getNome() {
 		return nome;
@@ -31,11 +31,11 @@ public class Medico {
 		this.cpf = cpf;
 	}
 
-	public String getCrm() {
+	public Long getCrm() {
 		return crm;
 	}
 
-	public void setCrm(String crm) {
+	public void setCrm(Long crm) {
 		this.crm = crm;
 	}
 

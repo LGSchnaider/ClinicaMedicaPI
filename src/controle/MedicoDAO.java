@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import modelo.Administrador;
 import modelo.IMedicoDAO;
 import modelo.Medico;
 
@@ -15,12 +16,8 @@ public class MedicoDAO implements IMedicoDAO {
 	@Override
 	public boolean inserir(Medico p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
-
-		// abrir conexao
-		con.conectar();
-
-		Connection c = con.conectar();
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO medico " + "(nome, sobrenome, cpf, crm) VALUES (?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -28,7 +25,7 @@ public class MedicoDAO implements IMedicoDAO {
 			stm.setString(1, p.getNome());
 			stm.setString(2, p.getSobrenome());
 			stm.setLong(3, p.getCpf());
-			stm.setString(4, p.getCrm());
+			stm.setLong(4, p.getCrm());
 
 			stm.executeUpdate();
 
@@ -42,16 +39,63 @@ public class MedicoDAO implements IMedicoDAO {
 
 		return false;
 	}
+	
+	public boolean atualizar(Medico p) {
+		// Instacia classe Conexao
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
+
+		try {
+			String query = "UPDATE medico SET nome= ?, sobrenome = ?, cpf = ?, crm = ?  WHERE id_medico = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setString(1, p.getNome());
+			stm.setString(2, p.getSobrenome());
+			stm.setLong(3, p.getCpf());
+			stm.setLong(4, p.getCrm());
+			
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return false;
+	}
+	
+	public boolean deletar(Medico p) {
+		// Instacia classe Conexao
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+	
+		try {
+			String query = "DELETE FROM medico WHERE crm = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setLong(1, p.getCrm());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return false;
+
+	}
+
 
 	public ArrayList<Medico> listaMedico() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
-
-		// abrir conexao
-		con.conectar();
-
-		Connection c = con.conectar();
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
+				
 		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
@@ -62,7 +106,7 @@ public class MedicoDAO implements IMedicoDAO {
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				long cpf = rs.getLong("perfil");
-				String crm = rs.getString("crm");
+				long crm = rs.getLong("crm");
 
 				Medico p = new Medico();
 				p.setNome(nome);
