@@ -18,7 +18,7 @@ CREATE TABLE medico (
   nome VARCHAR(50) NOT NULL,
   sobrenome VARCHAR(50) NOT NULL,
   cpf BIGINT NOT NULL,
-  crm VARCHAR(30) NOT NULL,
+  crm BIGINT(30) NOT NULL,
   usuario_idusuario INT NOT NULL,
   PRIMARY KEY (id_medico), FOREIGN KEY (usuario_idusuario) REFERENCES usuario (idusuario));
 

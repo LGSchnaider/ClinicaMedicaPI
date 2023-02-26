@@ -16,10 +16,6 @@ public class AdministradorDAO implements IAdministradorDAO {
 	public boolean inserir(Administrador p) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
-
-		// abrir conexao
-		con.conectar();
-
 		Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO usuario " + "(login, senha, perfil, admin) VALUES (?,?,?,?);";
@@ -42,16 +38,60 @@ public class AdministradorDAO implements IAdministradorDAO {
 
 		return false;
 	}
+	public boolean atualizar(Administrador p) {
+		// Instacia classe Conexao
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
+
+		try {
+			String query = "UPDATE usuario SET login= ?, senha = ?, perfil = ?, admin = ?  WHERE idusuario = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setString(1, p.getLogin());
+			stm.setString(2, p.getSenha());
+			stm.setInt(3, p.getPefil());
+			stm.setBoolean(4, p.isAdmin());
+			
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return false;
+	}
+	public boolean deletar(Administrador p) {
+		// Instacia classe Conexao
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+	
+		try {
+			String query = "DELETE FROM usuario WHERE idusuario = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setLong(1, p.getIdusuario());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return false;
+
+	}
+
 
 	public ArrayList<Administrador> listaAdministrador() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
-
-		// abrir conexao
-		con.conectar();
-
-		Connection c = con.conectar();
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
 		ArrayList<Administrador> Administradores = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
