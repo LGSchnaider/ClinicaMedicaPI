@@ -3,7 +3,6 @@ package modelo;
 public class Medico {
 
 	private String nome;
-	private String sobrenome;
 	private Long cpf;
 	private Long crm;
 
@@ -13,14 +12,6 @@ public class Medico {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
 	}
 
 	public Long getCpf() {

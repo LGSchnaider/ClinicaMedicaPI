@@ -19,13 +19,12 @@ public class MedicoDAO implements IMedicoDAO {
 				Conexao con = Conexao.getInstancia();
 				Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO medico " + "(nome, sobrenome, cpf, crm) VALUES (?,?,?,?);";
+			String query = "INSERT INTO medico " + "(nome, cpf, crm) VALUES (?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
-			stm.setString(2, p.getSobrenome());
-			stm.setLong(3, p.getCpf());
-			stm.setLong(4, p.getCrm());
+			stm.setLong(2, p.getCpf());
+			stm.setLong(3, p.getCrm());
 
 			stm.executeUpdate();
 
@@ -46,13 +45,12 @@ public class MedicoDAO implements IMedicoDAO {
 				Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE medico SET nome= ?, sobrenome = ?, cpf = ?, crm = ?  WHERE id_medico = ?";
+			String query = "UPDATE medico SET nome= ?, cpf = ?, crm = ?  WHERE id = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
-			stm.setString(2, p.getSobrenome());
-			stm.setLong(3, p.getCpf());
-			stm.setLong(4, p.getCrm());
+			stm.setLong(2, p.getCpf());
+			stm.setLong(3, p.getCrm());
 			
 
 			stm.executeUpdate();
@@ -104,13 +102,11 @@ public class MedicoDAO implements IMedicoDAO {
 			while (rs.next()) {
 
 				String nome = rs.getString("nome");
-				String sobrenome = rs.getString("sobrenome");
-				long cpf = rs.getLong("perfil");
-				long crm = rs.getLong("crm");
+				long cpf = rs.getLong("cpf");
+				Long crm = rs.getLong("crm");
 
 				Medico p = new Medico();
 				p.setNome(nome);
-				p.setSobrenome(sobrenome);
 				p.setCpf(cpf);
 				p.setCrm(crm);
 				Medicos.add(p);

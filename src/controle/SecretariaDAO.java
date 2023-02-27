@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.ISecretariaDAO;
+import modelo.Paciente;
 import modelo.Secretaria;
 
 public class SecretariaDAO implements ISecretariaDAO {
@@ -41,6 +42,57 @@ public class SecretariaDAO implements ISecretariaDAO {
 		con.fechaConexao();
 
 		return false;
+	}
+	
+	public boolean atualizar(Secretaria p) {
+		// Instacia classe Conexao
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
+
+		try {
+			String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ?  WHERE id = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setString(1, p.getNome());
+			stm.setLong(2, p.getCpf());
+			stm.setLong(3, p.getTelefone());
+			stm.setString(4, p.getEmail());
+			
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		
+		return false;
+	}
+	
+	public boolean deletar(Secretaria p) {
+		// Instacia classe Conexao
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+	
+		try {
+			String query = "DELETE FROM secretaria WHERE cpf = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setLong(1, p.getCpf());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		
+		return false;
+
 	}
 
 	public ArrayList<Secretaria> listaSecretaria() {
