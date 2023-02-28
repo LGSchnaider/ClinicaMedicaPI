@@ -99,17 +99,29 @@ public class TelaPrincipal extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(64, 128, 128));
 		panelCentro.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new MigLayout("", "[71.00][17.00px,grow]", "[1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
+		panel_1.setLayout(new MigLayout("", "[71.00][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
+		
+		JButton btnNewButton = new JButton("logout");
+		panel_1.add(btnNewButton, "cell 1 0,alignx right");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					dispose();
+					TelaInicio frame = new TelaInicio();
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+			}
+		});
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastros");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_1, "cell 1 1,alignx center,aligny center");
+		panel_1.add(lblNewLabel_1, "flowx,cell 1 2,alignx center,aligny center");
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		panel_1.add(lblNewLabel_3, "cell 1 0,alignx center,aligny center");
+		panel_1.add(lblNewLabel_3, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_2 = new JPanel();
-		panel_1.add(panel_2, "cell 1 2,grow");
+		panel_1.add(panel_2, "cell 1 3,grow");
 		
 		JButton btnNewButton_1 = new JButton("Paciente");
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -130,13 +142,13 @@ public class TelaPrincipal extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_2, "cell 1 3,alignx center,aligny center");
+		panel_1.add(lblNewLabel_2, "cell 1 4,alignx center,aligny center");
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		panel_1.add(lblNewLabel_4, "cell 1 0,alignx center,aligny center");
+		panel_1.add(lblNewLabel_4, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_3 = new JPanel();
-		panel_1.add(panel_3, "cell 1 4,grow");
+		panel_1.add(panel_3, "cell 1 5,grow");
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_2 = new JButton("Registrar consultas");
@@ -150,13 +162,13 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("Listas");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_5, "cell 1 5,alignx center,aligny center");
+		panel_1.add(lblNewLabel_5, "cell 1 6,alignx center,aligny center");
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		panel_1.add(lblNewLabel_6, "cell 1 0,alignx center,aligny center");
+		panel_1.add(lblNewLabel_6, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_4 = new JPanel();
-		panel_1.add(panel_4, "cell 1 6,grow");
+		panel_1.add(panel_4, "cell 1 7,grow");
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_3 = new JButton("Listas de Médicos");
@@ -169,19 +181,7 @@ public class TelaPrincipal extends JFrame {
 		panel_4.add(btnNewButton_7);
 		
 		JPanel panel_5 = new JPanel();
-		panel_1.add(panel_5, "cell 0 7,grow");
+		panel_1.add(panel_5, "cell 0 8,grow");
 		panel_5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JButton btnNewButton = new JButton("Fazer LogOff");
-		panel_5.add(btnNewButton);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					dispose();
-					TelaInicio frame = new TelaInicio();
-					frame.setLocationRelativeTo(null);
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-			}
-		});
 	}
 }
