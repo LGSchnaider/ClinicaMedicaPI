@@ -16,6 +16,7 @@ import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JComboBox;
 
 public class TelaCadastro extends JFrame {
 
@@ -90,8 +91,8 @@ public class TelaCadastro extends JFrame {
 		textField_1.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+			gl_panel_3.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap(30, Short.MAX_VALUE)
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -99,9 +100,9 @@ public class TelaCadastro extends JFrame {
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(23)
+					.addContainerGap()
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(27, Short.MAX_VALUE))
+					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		panel_3.setLayout(gl_panel_3);
 		
@@ -155,6 +156,16 @@ public class TelaCadastro extends JFrame {
 		);
 		panel_1.setLayout(gl_panel_1);
 		
+		JLabel lblNewLabel = new JLabel("Função:");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		contentPane.add(lblNewLabel, "cell 2 8,alignx right,aligny center");
+		
+		JPanel panel_5 = new JPanel();
+		contentPane.add(panel_5, "cell 3 8,grow");
+		
+		JComboBox comboBox = new JComboBox();
+		panel_5.add(comboBox);
+		
 		panel = new JPanel();
 		contentPane.add(panel, "cell 3 9,grow");
 		
@@ -180,9 +191,9 @@ public class TelaCadastro extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(26)
 					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
 					.addComponent(btnregistrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addGap(25))
+					.addGap(20))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -191,7 +202,7 @@ public class TelaCadastro extends JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnregistrar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 	}
