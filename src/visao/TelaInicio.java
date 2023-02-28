@@ -5,10 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.UsuarioDAO;
+import modelo.Usuario;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
@@ -26,8 +32,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class TelaInicio extends JFrame {
-	private JTextField textFieldLog;
-	private JTextField textFieldSenha;
+	private JTextField txtLogin;
+	private JTextField txtSenha;
 
 	/**
 	 * Launch the application.
@@ -113,17 +119,17 @@ public class TelaInicio extends JFrame {
 		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		center.add(lblLogin, "cell 2 4,alignx trailing");
 
-		textFieldLog = new JTextField();
-		center.add(textFieldLog, "cell 3 4,growx,aligny center");
-		textFieldLog.setColumns(10);
+		txtLogin = new JTextField();
+		center.add(txtLogin, "cell 3 4,growx,aligny center");
+		txtLogin.setColumns(10);
 
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		center.add(lblSenha, "cell 2 5,alignx trailing");
 
-		textFieldSenha = new JTextField();
-		center.add(textFieldSenha, "cell 3 5,growx");
-		textFieldSenha.setColumns(10);
+		txtSenha = new JTextField();
+		center.add(txtSenha, "cell 3 5,growx");
+		txtSenha.setColumns(10);
 
 		JButton btnLogOff = new JButton("Sair");
 //		center.add(btnLogOff, "cell 3 6,alignx center");
@@ -142,11 +148,21 @@ public class TelaInicio extends JFrame {
 		center.add(btnLogin, "cell 1 4,alignx center");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaPrincipal frame = new TelaPrincipal();
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
+				String login = txtLogin.getText();
+				String senha = txtLogin.getText();
+			
+				UsuarioDAO dao = new UsuarioDAO();
+				Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
+				if(u == null) {
+					JOptionPane.showMessageDialog(null,"Dados Incorretos");
+				} else {
+					dispose();
+					TelaPrincipal frame = new TelaPrincipal();
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+					
+				}
 			}
 		});
 

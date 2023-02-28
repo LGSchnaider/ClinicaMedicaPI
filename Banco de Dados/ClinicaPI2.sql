@@ -6,7 +6,6 @@ CREATE TABLE usuario (
   login VARCHAR(45) NOT NULL,
   senha VARCHAR(45) NOT NULL,
   perfil INT NOT NULL,
-  admin TINYINT(4) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE medico (
@@ -72,3 +71,5 @@ CREATE TABLE medicamento_has_prontoario (
     FOREIGN KEY (medicamento_id_medicamento)REFERENCES medicamento (id), 
 	FOREIGN KEY (prontoario_idprontoario) REFERENCES prontuario (id));
  
+ 
+ INSERT INTO usuario (login, senha, perfil	) VALUES ('admin', 'admin', 0);

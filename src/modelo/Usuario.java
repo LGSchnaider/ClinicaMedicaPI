@@ -1,6 +1,6 @@
 package modelo;
 
-public class Administrador {
+public class Usuario {
 
 	private String login;
 	private String senha;
@@ -11,8 +11,8 @@ public class Administrador {
 		return id;
 	}
 
-	public void setIdusuario(int idusuario) {
-		this.id = idusuario;
+	public void setIdusuario(int id) {
+		this.id = id;
 	}
 
 	public String getLogin() {
