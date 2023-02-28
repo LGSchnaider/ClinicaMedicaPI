@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -114,6 +115,11 @@ public class TelaPrincipal extends JFrame {
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_4 = new JButton("Usuário");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				JOptionPane.
+			}
+		});
 		panel_2.add(btnNewButton_4);
 			
 		JLabel lblNewLabel_7 = new JLabel("               ");
