@@ -16,8 +16,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 
-public class TelaRegistrarMed extends JFrame {
+public class TelaRegistrarMed extends JPanel {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField;
@@ -25,35 +27,23 @@ public class TelaRegistrarMed extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JPasswordField passwordField_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaRegistrarMed frame = new TelaRegistrarMed();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaRegistrarMed() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 940, 526);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setBounds(100, 100, 1029, 550);
 		contentPane = new JPanel();
+		
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][196.00,grow]", "[91.00,grow][48.00][64.00][55.00][60.00][62.00][57.00][67.00,grow]"));
+		//setContentPane(contentPane);
+		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][196.00,grow]", "[70.00,grow][28.00,grow][64.00][55.00][60.00][62.00][57.00][44.00][][grow][67.00,grow]"));
 		
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
@@ -64,7 +54,8 @@ public class TelaRegistrarMed extends JFrame {
 		contentPane.add(lblNewLabel_1, "cell 0 2,alignx trailing");
 		
 		textField_3 = new JTextField();
-		contentPane.add(textField_3, "cell 1 2,growx");
+		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(textField_3, "cell 1 2,growx,aligny center");
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("CPF:");
@@ -72,7 +63,8 @@ public class TelaRegistrarMed extends JFrame {
 		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 		
 		textField_2 = new JTextField();
-		contentPane.add(textField_2, "cell 1 3,growx");
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(textField_2, "cell 1 3,growx,aligny center");
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Código CRM:");
@@ -80,7 +72,8 @@ public class TelaRegistrarMed extends JFrame {
 		contentPane.add(lblNewLabel_3, "cell 0 4,alignx trailing");
 		
 		textField_1 = new JTextField();
-		contentPane.add(textField_1, "cell 1 4,growx");
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(textField_1, "cell 1 4,growx,aligny center");
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Login:");
@@ -88,7 +81,8 @@ public class TelaRegistrarMed extends JFrame {
 		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
 		
 		textField = new JTextField();
-		contentPane.add(textField, "cell 1 5,growx");
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(textField, "cell 1 5,growx,aligny center");
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Senha:");
@@ -96,16 +90,33 @@ public class TelaRegistrarMed extends JFrame {
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing");
 		
 		passwordField = new JPasswordField();
-		contentPane.add(passwordField, "cell 1 6,growx");
+		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(passwordField, "cell 1 6,growx,aligny center");
+		
+		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
+		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(passwordField_1, "cell 1 7,growx,aligny center");
+		
+		JLabel lblNewLabel_7 = new JLabel("Perfil:");
+		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(0, 153, 153));
-		contentPane.add(panel_1, "cell 0 7,grow");
+		contentPane.add(panel_1, "cell 0 10,grow");
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				//dispose();
 				TelaPrincipal frame = new TelaPrincipal();
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -131,7 +142,7 @@ public class TelaRegistrarMed extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 153, 153));
-		contentPane.add(panel, "cell 1 7,alignx center,aligny center");
+		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 		
 		JButton btnCad = new JButton("Cadastrar novo médico");
 		btnCad.addActionListener(new ActionListener() {
@@ -154,5 +165,7 @@ public class TelaRegistrarMed extends JFrame {
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
+		
+		add(contentPane);
 	}
 }
