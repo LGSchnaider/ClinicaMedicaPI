@@ -24,7 +24,6 @@ public class AdministradorDAO implements IAdministradorDAO {
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
 			stm.setInt(3, p.getPefil());
-			stm.setBoolean(4, p.isAdmin());
 
 			stm.executeUpdate();
 
@@ -50,7 +49,7 @@ public class AdministradorDAO implements IAdministradorDAO {
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
 			stm.setInt(3, p.getPefil());
-			stm.setBoolean(4, p.isAdmin());
+
 			
 
 			stm.executeUpdate();
@@ -102,13 +101,11 @@ public class AdministradorDAO implements IAdministradorDAO {
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
-				boolean admin = rs.getBoolean("admin");
 
 				Administrador p = new Administrador();
 				p.setLogin(login);
 				p.setSenha(senha);
 				p.setPefil(perfil);
-				p.setAdmin(admin);
 				Administradores.add(p);
 			}
 

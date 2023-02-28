@@ -5,16 +5,14 @@ public class Administrador {
 	private String login;
 	private String senha;
 	private int pefil;
-	private boolean admin;
-
-	private int idusuario;
+	private int id;
 
 	public int getIdusuario() {
-		return idusuario;
+		return id;
 	}
 
 	public void setIdusuario(int idusuario) {
-		this.idusuario = idusuario;
+		this.id = idusuario;
 	}
 
 	public String getLogin() {
@@ -39,14 +37,6 @@ public class Administrador {
 
 	public void setPefil(int pefil) {
 		this.pefil = pefil;
-	}
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
 	}
 
 }
