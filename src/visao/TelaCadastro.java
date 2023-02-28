@@ -21,7 +21,7 @@ import javax.swing.JComboBox;
 public class TelaCadastro extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtNome;
 	private JButton btnVoltar;
 	private JButton btnregistrar;
 	private JPasswordField passwordField_1;
@@ -32,10 +32,10 @@ public class TelaCadastro extends JFrame {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JPasswordField passwordField;
+	private JPasswordField pswSenha;
 	private JPanel panel_3;
 	private JPanel panel_4;
-	private JTextField textField_1;
+	private JTextField txtLogin;
 
 	/**
 	 * Launch the application.
@@ -61,48 +61,48 @@ public class TelaCadastro extends JFrame {
 		panel_4 = new JPanel();
 		contentPane.add(panel_4, "cell 3 1,alignx center,growy");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
 					.addContainerGap(30, Short.MAX_VALUE)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		gl_panel_4.setVerticalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addGap(23)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(29, Short.MAX_VALUE))
 		);
 		panel_4.setLayout(gl_panel_4);
 		
-		lblUser = new JLabel("Usuario:");
+		lblUser = new JLabel("Login;");
 		lblUser.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		contentPane.add(lblUser, "flowx,cell 2 3,alignx trailing");
 		
 		panel_3 = new JPanel();
 		contentPane.add(panel_3, "cell 3 3,alignx center,growy");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		txtLogin = new JTextField();
+		txtLogin.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap(30, Short.MAX_VALUE)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		panel_3.setLayout(gl_panel_3);
 		
@@ -113,20 +113,20 @@ public class TelaCadastro extends JFrame {
 		panel_2 = new JPanel();
 		contentPane.add(panel_2, "cell 3 5,alignx center,growy");
 		
-		passwordField = new JPasswordField();
+		pswSenha = new JPasswordField();
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap(43, Short.MAX_VALUE)
-					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
 					.addGap(18))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
@@ -183,6 +183,7 @@ public class TelaCadastro extends JFrame {
 		btnregistrar = new JButton("Registrar");
 		btnregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
