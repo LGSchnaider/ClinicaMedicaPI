@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioDAO;
@@ -30,10 +31,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TelaInicio extends JFrame {
 	private JTextField txtLogin;
-	private JTextField txtSenha;
+	private JPasswordField txtSenha;
 
 	/**
 	 * Launch the application.
@@ -91,28 +94,9 @@ public class TelaInicio extends JFrame {
 		JPanel LOG = new JPanel();
 		LOG.setBackground(new Color(0, 128, 128));
 
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				// CHAMA A CLASSE LOGIN
-				TelaRegistrarSecretaria frame = new TelaRegistrarSecretaria();
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-				// TERMINA O CHAMADO
-			}
-		});
-
-		btnCadastrar.setMinimumSize(new Dimension(97, 23));
-		btnCadastrar.setMaximumSize(new Dimension(97, 23));
-
+		
 		center.add(LOG, "cell 3 3,alignx center");
 		GroupLayout gl_LOG = new GroupLayout(LOG);
-		gl_LOG.setHorizontalGroup(gl_LOG.createParallelGroup(Alignment.LEADING).addComponent(btnCadastrar,
-				GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE));
-		gl_LOG.setVerticalGroup(gl_LOG.createParallelGroup(Alignment.LEADING).addComponent(btnCadastrar,
-				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
 		LOG.setLayout(gl_LOG);
 
 		JLabel lblLogin = new JLabel("Login:");
@@ -127,7 +111,15 @@ public class TelaInicio extends JFrame {
 		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		center.add(lblSenha, "cell 2 5,alignx trailing");
 
-		txtSenha = new JTextField();
+		txtSenha = new JPasswordField();
+		txtSenha.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					fazerLogin();
+				}
+			}
+		});
 		center.add(txtSenha, "cell 3 5,growx");
 		txtSenha.setColumns(10);
 
@@ -148,21 +140,7 @@ public class TelaInicio extends JFrame {
 		center.add(btnLogin, "cell 1 4,alignx center");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String login = txtLogin.getText();
-				String senha = txtSenha.getText();
-			
-				UsuarioDAO dao = new UsuarioDAO();
-				Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
-				if(u == null) {
-					JOptionPane.showMessageDialog(null,"Usuário ou Senha Incorreto!");
-				} else {
-					dispose();
-					TelaPrincipal frame = new TelaPrincipal();
-					frame.setLocationRelativeTo(null);
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-					
-				}
+				fazerLogin();
 			}
 		});
 
@@ -190,5 +168,24 @@ public class TelaInicio extends JFrame {
 		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGroup(gl_OFF.createSequentialGroup()
 				.addComponent(btnLogOff, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE).addContainerGap()));
 		OFF.setLayout(gl_OFF);
+	}
+	
+	private void fazerLogin() {
+		String login = txtLogin.getText();
+		String senha = txtSenha.getText();
+	
+		UsuarioDAO dao = new UsuarioDAO();
+		Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
+		if(u == null) {
+			JOptionPane.showMessageDialog(null,"Usuário ou Senha Incorreto!");
+		} else {
+			dispose();
+			TelaPrincipal frame = new TelaPrincipal();
+			frame.setLocationRelativeTo(null);
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			frame.setVisible(true);
+			
+		}
+
 	}
 }

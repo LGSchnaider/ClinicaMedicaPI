@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
 
-public class TelaRegistrarSecretaria extends JFrame {
+public class TelaRegistrarSecretaria extends JPanel {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -42,15 +42,15 @@ public class TelaRegistrarSecretaria extends JFrame {
 	 */
 	
 	public TelaRegistrarSecretaria() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1151, 699);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
+		//setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[56.00,grow][87.00][110.00][100.00,grow][110.00][80.00][51.00,grow]", "[184.00,grow][73.00][28.00,grow][72.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 		
-		JLabel lblTitulo = new JLabel("Registrar");
+		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 99));
 		contentPane.add(lblTitulo, "cell 3 0,alignx center");
 		
@@ -172,8 +172,8 @@ public class TelaRegistrarSecretaria extends JFrame {
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaInicio frame = new TelaInicio();
+				//dispose();
+				TelaPrincipal frame = new TelaPrincipal();
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -206,5 +206,6 @@ public class TelaRegistrarSecretaria extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
+		add(contentPane);
 	}
 }

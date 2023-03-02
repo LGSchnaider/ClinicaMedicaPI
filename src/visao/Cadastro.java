@@ -2,6 +2,7 @@ package visao;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Panel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -53,32 +54,60 @@ public class Cadastro extends JFrame {
 		
 		
 		JRadioButton rbtnSecretaria = new JRadioButton("Secretária");
+		rbtnSecretaria.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(rbtnSecretaria.isSelected()) {
+					
+					BorderLayout layout = (BorderLayout)contentPane.getLayout();
+					if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
+						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+					}
+				
+
+					
+					TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria();
+					Panel panel_1 = new Panel();
+					contentPane.add(panel_1, BorderLayout.CENTER);
+					panel_1.setLayout(new BorderLayout());
+					panel_1.add(sec, BorderLayout.CENTER);
+					panel_1.revalidate();
+					panel_1.repaint();
+				}
+			}
+		});
 		buttonGroup.add(rbtnSecretaria);
 		panel.add(rbtnSecretaria);
 		
-		
+		//JPanel panel_1 = new JPanel();
+		//contentPane.add(panel_1, BorderLayout.CENTER);
 		
 		JRadioButton rbtnMedico = new JRadioButton("Médico");
 		rbtnMedico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				
-				TelaRegistrarMed frame = new TelaRegistrarMed();
-				JPanel panel_1 = new JPanel();
-				contentPane.add(panel_1, FlowLayout.CENTER);
-				panel_1.setLayout(new FlowLayout());
-				panel_1.add(frame);
-				panel_1.revalidate();
-				panel_1.repaint();
-				System.out.println("hikhjhj");
+				if(rbtnMedico.isSelected()) {
+					BorderLayout layout = (BorderLayout)contentPane.getLayout();
+					if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
+						System.out.println(layout.getLayoutComponent(BorderLayout.CENTER));
+						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+					}
+					TelaRegistrarMed med = new TelaRegistrarMed();
+					Panel panel_1 = new Panel();
+					contentPane.add(panel_1, BorderLayout.CENTER);
+					panel_1.setLayout(new BorderLayout());
+					panel_1.add(med, BorderLayout.CENTER);
+					panel_1.revalidate();
+					panel_1.repaint();
+				}
+				
 			}
 		});
 	
 		buttonGroup.add(rbtnMedico);
 		panel.add(rbtnMedico);
 		
-	//	if(rbtnSecretaria) {
-			TelaRegistrarSecretaria panel_1 = new TelaRegistrarSecretaria();
-			contentPane.add(panel_1, BorderLayout.CENTER);
+		
+		
 			
 //		}
 		
