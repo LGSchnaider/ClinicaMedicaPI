@@ -78,8 +78,7 @@ public class Cadastro extends JFrame {
 		buttonGroup.add(rbtnSecretaria);
 		panel.add(rbtnSecretaria);
 		
-		//JPanel panel_1 = new JPanel();
-		//contentPane.add(panel_1, BorderLayout.CENTER);
+	
 		
 		JRadioButton rbtnMedico = new JRadioButton("Médico");
 		rbtnMedico.addItemListener(new ItemListener() {

@@ -124,7 +124,7 @@ public class TelaInicio extends JFrame {
 		txtSenha.setColumns(10);
 
 		JButton btnLogOff = new JButton("Sair");
-//		center.add(btnLogOff, "cell 3 6,alignx center");
+
 		btnLogOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -156,9 +156,7 @@ public class TelaInicio extends JFrame {
 		JPanel OFF = new JPanel();
 		OFF.setBackground(new Color(0, 128, 128));
 		center.add(OFF, "flowx,cell 3 7,alignx center");
-//		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addGap(0, 10, Short.MAX_VALUE));
-//		gl_OFF.setVerticalGroup(gl_OFF.createParallelGroup(Alignment.LEADING).addComponent(btnLogOff,
-//				GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE));
+
 		OFF.add(btnLogOff);
 		GroupLayout gl_OFF = new GroupLayout(OFF);
 		gl_OFF.setHorizontalGroup(gl_OFF.createParallelGroup(Alignment.LEADING)
