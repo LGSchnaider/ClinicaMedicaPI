@@ -59,6 +59,7 @@ public class TelaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicio() {
+		setTitle("sla");
 		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,7 +149,14 @@ public class TelaInicio extends JFrame {
 		center.add(btnLogin, "cell 1 4,alignx center");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String tl = txtLogin.getText();
+				
+				if(tl.equals("")) {
+					JOptionPane.showMessageDialog(null, "Insira seus dados");
+				}
+				else {
 				fazerLogin();
+				}
 			}
 		});
 
@@ -192,6 +200,10 @@ public class TelaInicio extends JFrame {
 			frame.setVisible(true);
 			
 		}
+
+	}
+	private void verificaCampoTexto() {
+		
 
 	}
 }
