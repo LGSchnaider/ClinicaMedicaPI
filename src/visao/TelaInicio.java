@@ -104,6 +104,14 @@ public class TelaInicio extends JFrame {
 		center.add(lblLogin, "cell 2 4,alignx trailing");
 
 		txtLogin = new JTextField();
+		txtLogin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					fazerLogin();
+				}
+			}
+		});
 		center.add(txtLogin, "cell 3 4,growx,aligny center");
 		txtLogin.setColumns(10);
 
