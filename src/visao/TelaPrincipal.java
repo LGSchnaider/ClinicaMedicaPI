@@ -129,7 +129,12 @@ public class TelaPrincipal extends JFrame {
 		JButton btnNewButton_4 = new JButton("Usuário");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.
+				
+				dispose();
+				Cadastro frame = new Cadastro();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		panel_2.add(btnNewButton_4);

@@ -45,21 +45,21 @@ public class Cadastro extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel);
+		contentPane.add(panel, BorderLayout.NORTH);
 		
 		
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("pac");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		panel.add(rdbtnNewRadioButton_1);
+		JRadioButton rbtnSecretaria = new JRadioButton("Secretária");
+		buttonGroup.add(rbtnSecretaria);
+		panel.add(rbtnSecretaria);
 		
 		
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("med");
-		rdbtnNewRadioButton.addItemListener(new ItemListener() {
+		JRadioButton rbtnMedico = new JRadioButton("Médico");
+		rbtnMedico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				
 				TelaRegistrarMed frame = new TelaRegistrarMed();
@@ -73,8 +73,15 @@ public class Cadastro extends JFrame {
 			}
 		});
 	
-		buttonGroup.add(rdbtnNewRadioButton);
-		panel.add(rdbtnNewRadioButton);
+		buttonGroup.add(rbtnMedico);
+		panel.add(rbtnMedico);
+		
+	//	if(rbtnSecretaria) {
+			TelaRegistrarSecretaria panel_1 = new TelaRegistrarSecretaria();
+			contentPane.add(panel_1, BorderLayout.CENTER);
+			
+//		}
+		
 		
 	}
 

@@ -96,7 +96,7 @@ public class TelaInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				// CHAMA A CLASSE LOGIN
-				TelaCadastro frame = new TelaCadastro();
+				TelaRegistrarSecretaria frame = new TelaRegistrarSecretaria();
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -149,12 +149,12 @@ public class TelaInicio extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String login = txtLogin.getText();
-				String senha = txtLogin.getText();
+				String senha = txtSenha.getText();
 			
 				UsuarioDAO dao = new UsuarioDAO();
 				Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
 				if(u == null) {
-					JOptionPane.showMessageDialog(null,"Dados Incorretos");
+					JOptionPane.showMessageDialog(null,"Usuário ou Senha Incorreto!");
 				} else {
 					dispose();
 					TelaPrincipal frame = new TelaPrincipal();
