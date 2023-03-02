@@ -1,24 +1,24 @@
 package visao;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
 
-public class TelaCadastro extends JFrame {
+import net.miginfocom.swing.MigLayout;
+
+public class TelaRegistrarSecretaria extends JPanel {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -41,16 +41,16 @@ public class TelaCadastro extends JFrame {
 	 * Launch the application.
 	 */
 	
-	public TelaCadastro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public TelaRegistrarSecretaria() {
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1151, 699);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
+		//setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[56.00,grow][87.00][110.00][100.00,grow][110.00][80.00][51.00,grow]", "[184.00,grow][73.00][28.00,grow][72.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 		
-		JLabel lblTitulo = new JLabel("Registrar");
+		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 99));
 		contentPane.add(lblTitulo, "cell 3 0,alignx center");
 		
@@ -172,8 +172,8 @@ public class TelaCadastro extends JFrame {
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaInicio frame = new TelaInicio();
+				//dispose();
+				TelaPrincipal frame = new TelaPrincipal();
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -206,5 +206,6 @@ public class TelaCadastro extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
+		add(contentPane);
 	}
 }
