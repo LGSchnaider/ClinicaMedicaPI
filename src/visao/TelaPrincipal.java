@@ -124,6 +124,15 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(panel_2, "cell 1 3,grow");
 		
 		JButton btnNewButton_1 = new JButton("Paciente");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_4 = new JButton("Usuário");
@@ -157,12 +166,27 @@ public class TelaPrincipal extends JFrame {
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_2 = new JButton("Registrar consultas");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				TelaCadConsulta frame = new TelaCadConsulta();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+				
+			}
+		});
 		panel_3.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_8 = new JLabel("            ");
 		panel_3.add(lblNewLabel_8);
 		
 		JButton btnNewButton_5 = new JButton("Listas de consultas");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel_3.add(btnNewButton_5);
 		
 		JLabel lblNewLabel_5 = new JLabel("Listas");
@@ -177,16 +201,33 @@ public class TelaPrincipal extends JFrame {
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_3 = new JButton("Listas de Médicos");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				TelaListaMed frame = new TelaListaMed();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+				
+			}
+		});
 		panel_4.add(btnNewButton_3);
 		
 		JButton btnNewButton_6 = new JButton("Listas de Pacientes");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				TelaListaPaciente frame = new TelaListaPaciente();
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		panel_4.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("Lista de Secretaria");
 		panel_4.add(btnNewButton_7);
-		
-		JPanel panel_5 = new JPanel();
-		panel_1.add(panel_5, "cell 0 8,grow");
-		panel_5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	}
 }
