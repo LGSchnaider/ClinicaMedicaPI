@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.MedicoDAO;
+import controle.PacienteDAO;
+import modelo.Medico;
+import modelo.Paciente;
 import net.miginfocom.swing.MigLayout;
 
 import java.awt.BorderLayout;
@@ -149,6 +154,17 @@ public class TelaRegistrarMed extends JPanel {
 		JButton btnCad = new JButton("Cadastrar novo médico");
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+	/*			MedicoDAO mdao = new MedicoDAO();
+				
+				Medico m = new Medico();
+				m.setNome("fsfsdfsd");
+				m.setCpf(11546);
+				m.setSexo("m");
+				m.setEmail("aadad");
+				mdao.inserir(m);
+				
+*/
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
