@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,27 +49,26 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		//setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][87.00][110.00][100.00,grow][110.00][80.00][51.00,grow]", "[184.00,grow][73.00][28.00,grow][72.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00][110.00,grow][51.00,grow]", "[184.00,grow][73.00][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 		
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
-		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 99));
-		contentPane.add(lblTitulo, "cell 3 0,alignx center");
+		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 60));
+		contentPane.add(lblTitulo, "cell 2 0,alignx center");
 		
 		lblnome = new JLabel("Nome:");
 		lblnome.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		contentPane.add(lblnome, "cell 2 1,alignx trailing");
+		contentPane.add(lblnome, "cell 1 1,alignx trailing");
 		
 		panel_4 = new JPanel();
-		contentPane.add(panel_4, "cell 3 1,alignx center,growy");
+		contentPane.add(panel_4, "cell 2 1,grow");
 		
 		txtNome = new JTextField();
 		txtNome.setColumns(10);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
-					.addContainerGap(30, Short.MAX_VALUE)
-					.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+			gl_panel_4.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addComponent(txtNome, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panel_4.setVerticalGroup(
@@ -76,98 +76,109 @@ public class TelaRegistrarSecretaria extends JPanel {
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addGap(23)
 					.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(29, Short.MAX_VALUE))
+					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		panel_4.setLayout(gl_panel_4);
 		
-		lblUser = new JLabel("Login;");
+		lblUser = new JLabel("Login:");
 		lblUser.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		contentPane.add(lblUser, "flowx,cell 2 3,alignx trailing");
+		contentPane.add(lblUser, "flowx,cell 1 3,alignx trailing");
 		
 		panel_3 = new JPanel();
-		contentPane.add(panel_3, "cell 3 3,alignx center,growy");
+		contentPane.add(panel_3, "cell 2 3,grow");
 		
 		txtLogin = new JTextField();
 		txtLogin.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addContainerGap(30, Short.MAX_VALUE)
-					.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+				.addGroup(Alignment.LEADING, gl_panel_3.createSequentialGroup()
+					.addComponent(txtLogin, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addContainerGap()
+				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(27, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		panel_3.setLayout(gl_panel_3);
 		
 		lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		contentPane.add(lblNewLabel_2, "cell 2 5,alignx trailing");
+		contentPane.add(lblNewLabel_2, "cell 1 5,alignx trailing");
 		
 		panel_2 = new JPanel();
-		contentPane.add(panel_2, "cell 3 5,alignx center,growy");
+		contentPane.add(panel_2, "cell 2 5,grow");
 		
 		pswSenha = new JPasswordField();
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(43, Short.MAX_VALUE)
-					.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-					.addGap(18))
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addComponent(pswSenha, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(15, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 		
 		lblNewLabel_1 = new JLabel("Confirme Senha:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		contentPane.add(lblNewLabel_1, "cell 2 7,alignx trailing");
+		contentPane.add(lblNewLabel_1, "cell 1 7,alignx trailing");
 		
 		panel_1 = new JPanel();
-		contentPane.add(panel_1, "cell 3 7,alignx center,growy");
+		contentPane.add(panel_1, "cell 2 7,grow");
 		
 		passwordField_1 = new JPasswordField();
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-					.addContainerGap(45, Short.MAX_VALUE)
-					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-					.addGap(18))
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+					.addComponent(passwordField_1, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(15, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
 		JLabel lblNewLabel = new JLabel("Função:");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		contentPane.add(lblNewLabel, "cell 2 8,alignx right,aligny center");
+		contentPane.add(lblNewLabel, "cell 1 8,alignx right,aligny center");
 		
 		JPanel panel_5 = new JPanel();
-		contentPane.add(panel_5, "cell 3 8,grow");
+		contentPane.add(panel_5, "cell 2 8,growx,aligny center");
 		
 		JComboBox comboBox = new JComboBox();
-		panel_5.add(comboBox);
+		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
+		gl_panel_5.setHorizontalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_5.createSequentialGroup()
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 503, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(21, Short.MAX_VALUE))
+		);
+		gl_panel_5.setVerticalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_5.createSequentialGroup()
+					.addContainerGap(15, Short.MAX_VALUE)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		panel_5.setLayout(gl_panel_5);
 		
 		panel = new JPanel();
-		contentPane.add(panel, "cell 3 9,grow");
+		contentPane.add(panel, "cell 2 9,grow");
 		
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
@@ -206,6 +217,8 @@ public class TelaRegistrarSecretaria extends JPanel {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		add(contentPane);
+		
+		setLayout(new BorderLayout());
+		add(contentPane, BorderLayout.CENTER);
 	}
 }

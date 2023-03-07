@@ -28,6 +28,7 @@ public class Cadastro extends JFrame {
 			public void run() {
 				try {
 					Cadastro frame = new Cadastro();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +42,7 @@ public class Cadastro extends JFrame {
 	 */
 	public Cadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 647, 515);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
