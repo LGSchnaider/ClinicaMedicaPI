@@ -95,7 +95,6 @@ public class TelaInicio extends JFrame {
 		JPanel LOG = new JPanel();
 		LOG.setBackground(new Color(0, 128, 128));
 
-		
 		center.add(LOG, "cell 3 3,alignx center");
 		GroupLayout gl_LOG = new GroupLayout(LOG);
 		LOG.setLayout(gl_LOG);
@@ -108,8 +107,19 @@ public class TelaInicio extends JFrame {
 		txtLogin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					fazerLogin();
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String tl = txtLogin.getText();
+					String ts = txtSenha.getText();
+					if (tl.equals("")) {
+						JOptionPane.showMessageDialog(null, "Insira seus dados");
+					} else {
+						if (ts.equals("")) {
+							JOptionPane.showMessageDialog(null, "Insira sua senha");
+						} else {
+							dispose();
+							fazerLogin();
+						}
+					}
 				}
 			}
 		});
@@ -124,8 +134,19 @@ public class TelaInicio extends JFrame {
 		txtSenha.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					fazerLogin();
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String tl = txtLogin.getText();
+					String ts = txtSenha.getText();
+					if (tl.equals("")) {
+						JOptionPane.showMessageDialog(null, "Insira seus dados");
+					} else {
+						if (ts.equals("")) {
+							JOptionPane.showMessageDialog(null, "Insira sua senha");
+						} else {
+							dispose();
+							fazerLogin();
+						}
+					}
 				}
 			}
 		});
@@ -150,12 +171,16 @@ public class TelaInicio extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tl = txtLogin.getText();
-				
-				if(tl.equals("")) {
+				String ts = txtSenha.getText();
+				if (tl.equals("")) {
 					JOptionPane.showMessageDialog(null, "Insira seus dados");
-				}
-				else {
-				fazerLogin();
+				} else {
+					if (ts.equals("")) {
+						JOptionPane.showMessageDialog(null, "Insira sua senha");
+					} else {
+						dispose();
+						fazerLogin();
+					}
 				}
 			}
 		});
@@ -183,27 +208,27 @@ public class TelaInicio extends JFrame {
 				.addComponent(btnLogOff, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE).addContainerGap()));
 		OFF.setLayout(gl_OFF);
 	}
-	
+
 	private void fazerLogin() {
 		String login = txtLogin.getText();
 		String senha = txtSenha.getText();
-	
+
 		UsuarioDAO dao = new UsuarioDAO();
 		Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
-		if(u == null) {
-			JOptionPane.showMessageDialog(null,"Usuário ou Senha Incorreto!");
+		if (u == null) {
+			JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreto!");
 		} else {
 			dispose();
 			TelaPrincipal frame = new TelaPrincipal();
 			frame.setLocationRelativeTo(null);
 			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			frame.setVisible(true);
-			
+
 		}
 
 	}
+
 	private void verificaCampoTexto() {
-		
 
 	}
 }
