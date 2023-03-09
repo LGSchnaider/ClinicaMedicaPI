@@ -121,6 +121,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_3, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_2, "cell 1 3,grow");
 		
 		JButton btnNewButton_1 = new JButton("Paciente");
@@ -162,6 +163,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_4, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_3, "cell 1 5,grow");
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -197,6 +199,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_6, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_4, "cell 1 7,grow");
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
