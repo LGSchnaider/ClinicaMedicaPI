@@ -116,7 +116,6 @@ public class TelaInicio extends JFrame {
 						if (ts.equals("")) {
 							JOptionPane.showMessageDialog(null, "Insira sua senha");
 						} else {
-							dispose();
 							fazerLogin();
 						}
 					}
@@ -143,7 +142,6 @@ public class TelaInicio extends JFrame {
 						if (ts.equals("")) {
 							JOptionPane.showMessageDialog(null, "Insira sua senha");
 						} else {
-							dispose();
 							fazerLogin();
 						}
 					}
@@ -178,7 +176,6 @@ public class TelaInicio extends JFrame {
 					if (ts.equals("")) {
 						JOptionPane.showMessageDialog(null, "Insira sua senha");
 					} else {
-						dispose();
 						fazerLogin();
 					}
 				}
