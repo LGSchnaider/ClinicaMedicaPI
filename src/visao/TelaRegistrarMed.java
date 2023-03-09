@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.MedicoDAO;
 import controle.PacienteDAO;
@@ -15,6 +16,8 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -24,6 +27,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 
 public class TelaRegistrarMed extends JPanel {
@@ -32,7 +36,7 @@ public class TelaRegistrarMed extends JPanel {
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
+	private JFormattedTextField textField_2;
 	private JTextField textField_3;
 	private JPasswordField passwordField_1;
 
@@ -69,7 +73,16 @@ public class TelaRegistrarMed extends JPanel {
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 		
-		textField_2 = new JTextField();
+		textField_2 = new JFormattedTextField();
+		JFormattedTextField textField_2 = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+		 if (textField_2.getText().equals("   .   .   -  ") || textField_2.getText() == null) {
+				JOptionPane.showMessageDialog(null, "Campo obrigat�rio: CPF");
+		 }
+		 if (textField_2.getText().length() != 14) {
+				JOptionPane.showMessageDialog(null, "CPF inv�lido. Tente novamente.");
+			}
+		textField_2.setBounds(165, 190, 174, 20);
+		contentPane.add(textField_2);
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(textField_2, "cell 1 3,growx,aligny center");
 		textField_2.setColumns(10);
