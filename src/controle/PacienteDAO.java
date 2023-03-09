@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.IPacienteDAO;
 import modelo.Medico;
 import modelo.Paciente;
@@ -44,14 +46,14 @@ public class PacienteDAO implements IPacienteDAO {
 
 		return false;
 	}
-	
-	public boolean atualizar(Paciente p) {
+
+	public boolean atualizar(int id, Paciente p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE paciente SET nome= ?, cpf = ?, telefone = ?, sexo = ?, email = ?  WHERE id = ?";
+			String query = "UPDATE paciente SET nome= ?, cpf = ?, telefone = ?, sexo = ?, email = ?  WHERE id = "+id+";";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
@@ -59,7 +61,6 @@ public class PacienteDAO implements IPacienteDAO {
 			stm.setLong(3, p.getTelefone());
 			stm.setString(4, p.getSexo());
 			stm.setString(5, p.getEmail());
-			
 
 			stm.executeUpdate();
 			return true;
@@ -69,41 +70,39 @@ public class PacienteDAO implements IPacienteDAO {
 			e.printStackTrace();
 		}
 		con.fechaConexao();
-		
+
 		return false;
 	}
-	
-	public boolean deletar(Paciente p) {
+
+	public boolean deletar(String del) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
-	
+
 		try {
-			String query = "DELETE FROM paciente WHERE cpf = ?";
+			String query = "DELETE FROM paciente WHERE cpf = " + del + ";";
 			PreparedStatement stm = c.prepareStatement(query);
 
-			stm.setLong(1, p.getCpf());
+//			stm.setLong(1, p.getCpf());
 
 			stm.executeUpdate();
 			return true;
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 		con.fechaConexao();
-		
+
 		return false;
 
 	}
-
 
 	public ArrayList<Paciente> listaPaciente() {
 
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
-				
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
 		ArrayList<Paciente> Pacientes = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
@@ -137,5 +136,16 @@ public class PacienteDAO implements IPacienteDAO {
 		return Pacientes;
 	}
 
-	
+	@Override
+	public boolean atualizar(Paciente p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deletar(Paciente p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
