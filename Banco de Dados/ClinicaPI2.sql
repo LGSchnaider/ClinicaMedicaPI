@@ -73,3 +73,5 @@ CREATE TABLE medicamento_has_prontoario (
  
  
  INSERT INTO usuario (login, senha, perfil	) VALUES ('admin', 'admin', 0);
+ 
+ INSERT INTO paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 99099974, 'M', 'pedronomecomum@gmail.com');
