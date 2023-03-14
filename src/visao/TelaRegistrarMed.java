@@ -104,33 +104,33 @@ public class TelaRegistrarMed extends JPanel {
 
 		// TODO completar combobox de estados
 		JComboBox<String> cbEstado = new JComboBox<>();
-		cbEstado.addItem ("Acre (AC)");
-		cbEstado.addItem ("Alagoas (AL)");
-		cbEstado.addItem ("Amapá (AP)");
-		cbEstado.addItem ("Amazonas (AM)");
-		cbEstado.addItem ("Bahia (BA)");
-		cbEstado.addItem ("Ceará (CE)");
-		cbEstado.addItem ("Distrito Federal (DF)");
-		cbEstado.addItem ("Espírito Santo (ES)");
-		cbEstado.addItem ("Goiás (GO)");
-		cbEstado.addItem ("Maranhão (MA)");
-		cbEstado.addItem ("Mato Grosso (MT)");
-		cbEstado.addItem ("Mato Grosso do Sul (MS)");
-		cbEstado.addItem ("Minas Gerais (MG)");
-		cbEstado.addItem ("Pará (PA) ");
-		cbEstado.addItem ("Paraíba (PB)");
-		cbEstado.addItem ("Paraná (PR)");
-		cbEstado.addItem ("Pernambuco (PE)");
-		cbEstado.addItem ("Piauí (PI)");
-		cbEstado.addItem ("Rio de Janeiro (RJ)");
-		cbEstado.addItem ("Rio Grande do Norte (RN)");
-		cbEstado.addItem ("Rio Grande do Sul (RS)");
-		cbEstado.addItem ("Rondônia (RO)");
-		cbEstado.addItem ("Roraima (RR)");
-		cbEstado.addItem ("Santa Catarina (SC)");
-		cbEstado.addItem ("São Paulo (SP)");
-		cbEstado.addItem ("Sergipe (SE)");
-		cbEstado.addItem ("Tocantins (TO)");
+		cbEstado.addItem ("AC");
+		cbEstado.addItem ("AL");
+		cbEstado.addItem ("AP");
+		cbEstado.addItem ("AM");
+		cbEstado.addItem ("BA");
+		cbEstado.addItem ("CE");
+		cbEstado.addItem ("DF");
+		cbEstado.addItem ("ES");
+		cbEstado.addItem ("GO");
+		cbEstado.addItem ("MA");
+		cbEstado.addItem ("MT");
+		cbEstado.addItem ("MS");
+		cbEstado.addItem ("MG");
+		cbEstado.addItem ("PA");
+		cbEstado.addItem ("PB");
+		cbEstado.addItem ("PR");
+		cbEstado.addItem ("PE");
+		cbEstado.addItem ("PI");
+		cbEstado.addItem ("RJ");
+		cbEstado.addItem ("RN");
+		cbEstado.addItem ("RS");
+		cbEstado.addItem ("RO");
+		cbEstado.addItem ("RR");
+		cbEstado.addItem ("SC");
+		cbEstado.addItem ("SP");
+		cbEstado.addItem ("SE");
+		cbEstado.addItem ("TO");
 
 		try {
 			// TODO corrigir a formatacao para CRM
