@@ -53,7 +53,8 @@ public class PacienteDAO implements IPacienteDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE paciente SET nome= ?, cpf = ?, telefone = ?, sexo = ?, email = ?  WHERE id = "+id+";";
+			String query = "UPDATE paciente SET nome= ?, cpf = ?, telefone = ?, sexo = ?, email = ?  WHERE id = " + id
+					+ ";";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
@@ -138,13 +139,11 @@ public class PacienteDAO implements IPacienteDAO {
 
 	@Override
 	public boolean atualizar(Paciente p) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean deletar(Paciente p) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
