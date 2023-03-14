@@ -103,8 +103,34 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(panel_2, "cell 1 4,grow");
 
 		// TODO completar combobox de estados
-		JComboBox<String> cbEstados = new JComboBox<>();
-		cbEstados.addItem("AC");
+		JComboBox<String> cbEstado = new JComboBox<>();
+		cbEstado.addItem ("Acre (AC)");
+		cbEstado.addItem ("Alagoas (AL)");
+		cbEstado.addItem ("Amapá (AP)");
+		cbEstado.addItem ("Amazonas (AM)");
+		cbEstado.addItem ("Bahia (BA)");
+		cbEstado.addItem ("Ceará (CE)");
+		cbEstado.addItem ("Distrito Federal (DF)");
+		cbEstado.addItem ("Espírito Santo (ES)");
+		cbEstado.addItem ("Goiás (GO)");
+		cbEstado.addItem ("Maranhão (MA)");
+		cbEstado.addItem ("Mato Grosso (MT)");
+		cbEstado.addItem ("Mato Grosso do Sul (MS)");
+		cbEstado.addItem ("Minas Gerais (MG)");
+		cbEstado.addItem ("Pará (PA) ");
+		cbEstado.addItem ("Paraíba (PB)");
+		cbEstado.addItem ("Paraná (PR)");
+		cbEstado.addItem ("Pernambuco (PE)");
+		cbEstado.addItem ("Piauí (PI)");
+		cbEstado.addItem ("Rio de Janeiro (RJ)");
+		cbEstado.addItem ("Rio Grande do Norte (RN)");
+		cbEstado.addItem ("Rio Grande do Sul (RS)");
+		cbEstado.addItem ("Rondônia (RO)");
+		cbEstado.addItem ("Roraima (RR)");
+		cbEstado.addItem ("Santa Catarina (SC)");
+		cbEstado.addItem ("São Paulo (SP)");
+		cbEstado.addItem ("Sergipe (SE)");
+		cbEstado.addItem ("Tocantins (TO)");
 
 		try {
 			// TODO corrigir a formatacao para CRM
@@ -121,13 +147,13 @@ public class TelaRegistrarMed extends JPanel {
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-						.addComponent(cbEstados, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)));
 		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup().addGap(14)
 						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-								.addComponent(cbEstados, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE))
