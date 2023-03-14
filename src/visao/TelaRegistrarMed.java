@@ -272,8 +272,10 @@ public class TelaRegistrarMed extends JPanel {
 				boolean validar = mdao.inserir(m);
 				if (validar == true) {
 					// exibir uma mensagem de cadastro com sucesso
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 				} else {
 					// exibir mensagem de erro ao cadastrar
+					JOptionPane.showMessageDialog(null, "Não foi possível cadastrar");
 				}
 
 			}
