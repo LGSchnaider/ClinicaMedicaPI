@@ -108,7 +108,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		try {
 			// TODO corrigir a formatacao para CRM
-			formatter = new MaskFormatter("###.###.###-##");
+			formatter = new MaskFormatter("######");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
@@ -118,6 +118,12 @@ public class TelaRegistrarMed extends JPanel {
 		txtCRM.setColumns(10);
 		textField_2 = new JFormattedTextField();
 
+		if (txtCRM.getText().equals(null) || txtCRM.getText() == null) {
+			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+		}
+		if (txtCRM.getText().length() != 6) {
+			JOptionPane.showMessageDialog(null, "CRM inválido. Tente novamente.");
+		}
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
@@ -202,7 +208,7 @@ public class TelaRegistrarMed extends JPanel {
 
 				// 1o passo: pegar o texto dos campos de texto
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
-
+				String crm = txtCPFMed.getText();
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
 
@@ -213,6 +219,7 @@ public class TelaRegistrarMed extends JPanel {
 				// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
 				// (valueOf)
 				Long cpfInt = Long.valueOf(cpf);
+				String crmSring = String.valueOf(crm);
 
 				Medico m = new Medico();
 				m.setNome("fsfsdfsd");
