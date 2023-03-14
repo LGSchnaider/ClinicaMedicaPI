@@ -160,19 +160,23 @@ public class TelaRegistrarSecretaria extends JPanel {
 		JPanel panel_5 = new JPanel();
 		contentPane.add(panel_5, "cell 2 8,growx,aligny center");
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox <String> cbFuncao = new JComboBox();
+		cbFuncao.addItem("Junior");
+		cbFuncao.addItem("Administradora");
+		
+		
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(
 			gl_panel_5.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_5.createSequentialGroup()
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 503, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(21, Short.MAX_VALUE))
+					.addComponent(cbFuncao, 0, 514, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel_5.setVerticalGroup(
-			gl_panel_5.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_5.createSequentialGroup()
+			gl_panel_5.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_5.createSequentialGroup()
 					.addContainerGap(15, Short.MAX_VALUE)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(cbFuncao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		panel_5.setLayout(gl_panel_5);

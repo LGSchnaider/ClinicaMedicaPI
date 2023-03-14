@@ -23,20 +23,6 @@ public class Cadastro extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Cadastro frame = new Cadastro();
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	private static void setTema(JPanel contentPane) {
 		BorderLayout layout = (BorderLayout) contentPane.getLayout();
 		if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
