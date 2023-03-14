@@ -35,12 +35,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class TelaRegistrarMed extends JPanel {
 
 	private JPanel contentPane;
-	private JPasswordField passwordField;
-	private JTextField textField;
+	private JPasswordField pswSenha;
+	private JTextField txtLogin;
 	private JTextField txtCRM;
 	private JFormattedTextField textField_2;
 	private JTextField txtNomeMed;
-	private JPasswordField passwordField_1;
+	private JPasswordField pswComfirmarSenha;
 
 	/**
 	 * Create the frame.
@@ -156,17 +156,16 @@ public class TelaRegistrarMed extends JPanel {
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addGap(14)
-					.addComponent(txtCRM)
-					.addGap(14))
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
 					.addGap(16)
-					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCRM))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
@@ -175,26 +174,37 @@ public class TelaRegistrarMed extends JPanel {
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
 
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		contentPane.add(textField, "cell 1 5,growx,aligny center");
-		textField.setColumns(10);
+		txtLogin = new JTextField();
+		if (txtLogin.getText().equals(null) || txtLogin.getText() == null) {
+			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+		}
+		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(txtLogin, "cell 1 5,growx,aligny center");
+		txtLogin.setColumns(10);
 
 		JLabel lblNewLabel_5 = new JLabel("Senha:");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing");
 
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		contentPane.add(passwordField, "cell 1 6,growx,aligny center");
+		pswSenha = new JPasswordField();
+		if (pswSenha.getPassword().equals(null) || pswSenha.getPassword() == null) {
+			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+		}
+		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(pswSenha, "cell 1 6,growx,aligny center");
 
 		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
 
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		contentPane.add(passwordField_1, "cell 1 7,growx,aligny center");
+		pswComfirmarSenha = new JPasswordField();
+		if(pswSenha.getPassword().equals(pswComfirmarSenha)) {
+			
+		}else {
+			JOptionPane.showMessageDialog(null,"Senha Incorreta!");
+		}
+		pswComfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(pswComfirmarSenha, "cell 1 7,growx,aligny center");
 
 		JLabel lblNewLabel_7 = new JLabel("Perfil:");
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
