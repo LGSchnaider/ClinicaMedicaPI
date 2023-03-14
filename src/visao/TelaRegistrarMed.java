@@ -100,7 +100,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(0, 153, 153));
-		contentPane.add(panel_2, "cell 1 4,grow");
+		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
 		// TODO completar combobox de estados
 		JComboBox<String> cbEstado = new JComboBox<>();
@@ -151,19 +151,24 @@ public class TelaRegistrarMed extends JPanel {
 			JOptionPane.showMessageDialog(null, "CRM inválido. Tente novamente.");
 		}
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(14)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap()));
+					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addGap(14)
+					.addComponent(txtCRM)
+					.addGap(14))
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addGap(16)
+					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_4 = new JLabel("Login:");
