@@ -37,6 +37,21 @@ public class Cadastro extends JFrame {
 		});
 	}
 
+	private static void setTema(JPanel contentPane) {
+		BorderLayout layout = (BorderLayout) contentPane.getLayout();
+		if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
+			contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+		}
+
+		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria();
+		Panel panel_1 = new Panel();
+		contentPane.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new BorderLayout());
+		panel_1.add(sec, BorderLayout.CENTER);
+		panel_1.revalidate();
+		panel_1.repaint();
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -48,45 +63,33 @@ public class Cadastro extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
-		
-		
-		
+
 		JRadioButton rbtnSecretaria = new JRadioButton("Secretária");
+
+		rbtnSecretaria.setSelected(true);
+		setTema(contentPane);
+
 		rbtnSecretaria.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if(rbtnSecretaria.isSelected()) {
-					
-					BorderLayout layout = (BorderLayout)contentPane.getLayout();
-					if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
-						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-					}
-				
+				if (rbtnSecretaria.isSelected()) {
 
-					
-					TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria();
-					Panel panel_1 = new Panel();
-					contentPane.add(panel_1, BorderLayout.CENTER);
-					panel_1.setLayout(new BorderLayout());
-					panel_1.add(sec, BorderLayout.CENTER);
-					panel_1.revalidate();
-					panel_1.repaint();
+					setTema(contentPane);
+
 				}
 			}
 		});
 		buttonGroup.add(rbtnSecretaria);
 		panel.add(rbtnSecretaria);
-		
-	
-		
+
 		JRadioButton rbtnMedico = new JRadioButton("Médico");
 		rbtnMedico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				
-				if(rbtnMedico.isSelected()) {
-					BorderLayout layout = (BorderLayout)contentPane.getLayout();
+
+				if (rbtnMedico.isSelected()) {
+					BorderLayout layout = (BorderLayout) contentPane.getLayout();
 					if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
 						System.out.println(layout.getLayoutComponent(BorderLayout.CENTER));
 						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
@@ -99,19 +102,15 @@ public class Cadastro extends JFrame {
 					panel_1.revalidate();
 					panel_1.repaint();
 				}
-				
+
 			}
 		});
-	
+
 		buttonGroup.add(rbtnMedico);
 		panel.add(rbtnMedico);
-		
-		
-		
-			
+
 //		}
-		
-		
+
 	}
 
 }
