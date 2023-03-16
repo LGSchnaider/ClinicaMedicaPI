@@ -1,36 +1,30 @@
 package visao;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.MedicoDAO;
-import controle.PacienteDAO;
 import modelo.Medico;
-import modelo.Paciente;
 import net.miginfocom.swing.MigLayout;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JRadioButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TelaRegistrarMed extends JPanel {
 
@@ -40,7 +34,7 @@ public class TelaRegistrarMed extends JPanel {
 	private JTextField txtCRM;
 	private JFormattedTextField textField_2;
 	private JTextField txtNomeMed;
-	private JPasswordField pswComfirmarSenha;
+	private JPasswordField pswConfirmarSenha;
 
 	/**
 	 * Create the frame.
@@ -55,7 +49,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		// setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]",
-				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00][57.00][44.00][][grow][67.00,grow]"));
+				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
 
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
@@ -75,6 +69,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
 		textField_2 = new JFormattedTextField();
+		// TODO mascara pronta cpf
 		MaskFormatter formatter = null;
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
@@ -86,12 +81,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(txtCPFMed);
 		txtCPFMed.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(txtCPFMed, "cell 1 3,growx,aligny center");
-		if (txtCPFMed.getText().equals(null) || txtCPFMed.getText() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
-		}
-		if (txtCPFMed.getText().length() != 14) {
-			JOptionPane.showMessageDialog(null, "CPF inválido. Tente novamente.");
-		}
+
 		txtCPFMed.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Código CRM:");
@@ -104,33 +94,33 @@ public class TelaRegistrarMed extends JPanel {
 
 		// TODO completar combobox de estados
 		JComboBox<String> cbEstado = new JComboBox<>();
-		cbEstado.addItem ("AC");
-		cbEstado.addItem ("AL");
-		cbEstado.addItem ("AP");
-		cbEstado.addItem ("AM");
-		cbEstado.addItem ("BA");
-		cbEstado.addItem ("CE");
-		cbEstado.addItem ("DF");
-		cbEstado.addItem ("ES");
-		cbEstado.addItem ("GO");
-		cbEstado.addItem ("MA");
-		cbEstado.addItem ("MT");
-		cbEstado.addItem ("MS");
-		cbEstado.addItem ("MG");
-		cbEstado.addItem ("PA");
-		cbEstado.addItem ("PB");
-		cbEstado.addItem ("PR");
-		cbEstado.addItem ("PE");
-		cbEstado.addItem ("PI");
-		cbEstado.addItem ("RJ");
-		cbEstado.addItem ("RN");
-		cbEstado.addItem ("RS");
-		cbEstado.addItem ("RO");
-		cbEstado.addItem ("RR");
-		cbEstado.addItem ("SC");
-		cbEstado.addItem ("SP");
-		cbEstado.addItem ("SE");
-		cbEstado.addItem ("TO");
+		cbEstado.addItem("AC");
+		cbEstado.addItem("AL");
+		cbEstado.addItem("AP");
+		cbEstado.addItem("AM");
+		cbEstado.addItem("BA");
+		cbEstado.addItem("CE");
+		cbEstado.addItem("DF");
+		cbEstado.addItem("ES");
+		cbEstado.addItem("GO");
+		cbEstado.addItem("MA");
+		cbEstado.addItem("MT");
+		cbEstado.addItem("MS");
+		cbEstado.addItem("MG");
+		cbEstado.addItem("PA");
+		cbEstado.addItem("PB");
+		cbEstado.addItem("PR");
+		cbEstado.addItem("PE");
+		cbEstado.addItem("PI");
+		cbEstado.addItem("RJ");
+		cbEstado.addItem("RN");
+		cbEstado.addItem("RS");
+		cbEstado.addItem("RO");
+		cbEstado.addItem("RR");
+		cbEstado.addItem("SC");
+		cbEstado.addItem("SP");
+		cbEstado.addItem("SE");
+		cbEstado.addItem("TO");
 
 		try {
 			// TODO corrigir a formatacao para CRM
@@ -151,23 +141,17 @@ public class TelaRegistrarMed extends JPanel {
 			JOptionPane.showMessageDialog(null, "CRM inválido. Tente novamente.");
 		}
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addGap(16)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCRM))
-					.addContainerGap())
-		);
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE).addContainerGap()));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
+				gl_panel_2.createSequentialGroup().addGap(16)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(cbEstado,
+								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtCRM))
+						.addContainerGap()));
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_4 = new JLabel("Login:");
@@ -197,21 +181,26 @@ public class TelaRegistrarMed extends JPanel {
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
 
-		pswComfirmarSenha = new JPasswordField();
-		//Precisa criar o método cadstrar no confirmar senha
-//		if(pswSenha.getPassword().equals(pswComfirmarSenha)) {
-//			
-//		}else {
-//			JOptionPane.showMessageDialog(null,"Senha Incorreta!");
-//		}
-		pswComfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		contentPane.add(pswComfirmarSenha, "cell 1 7,growx,aligny center");
+		pswConfirmarSenha = new JPasswordField();
+		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(pswConfirmarSenha, "cell 1 7,growx,aligny center");
 
 		JLabel lblNewLabel_7 = new JLabel("Perfil:");
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
 
-		JComboBox comboBox = new JComboBox();
+		/*
+		 * Preencheu o combobox
+		 */
+		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.addItem("Comum");
+		comboBox.addItem("Adminstrador");
+		comboBox.setEditable(false); // impede a pessoa de editar o combobox
+
+		// so vai setar isso aqui quando EDITAR ou REMOVER o medico/funcionario
+//		comboBox.setSelectedItem("Administrador");
+		comboBox.setSelectedItem("Comum");
+
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
 
@@ -248,35 +237,78 @@ public class TelaRegistrarMed extends JPanel {
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				boolean validarCampoTexto = true;
+
 				// 1o passo: pegar o texto dos campos de texto
+				String nome = txtNomeMed.getText();
+				String senha = pswSenha.getPassword().toString();
+				String confirmaSenha = pswConfirmarSenha.getPassword().toString();
+				String login = txtLogin.getText();
+				String crm = txtCRM.getText();
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
-				String crm = txtCPFMed.getText();
+				int perfil = comboBox.getSelectedIndex();
+
+				Medico medico = new Medico();
+
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
 
-				// 3o passo: o que tem mascara usar o metodo REPLACE da String
-				cpf = cpf.replace(".", ""); // forma feia mas facil
-				cpf = cpf.replace("-", "");
-
-				// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
-				// (valueOf)
-				Long cpfInt = Long.valueOf(cpf);
-				String crmSring = String.valueOf(crm);
-
-				Medico m = new Medico();
-				m.setNome("fsfsdfsd");
-				m.setCpf(cpfInt);
-//				m.setSexo("m");
-//				m.setEmail("aadad");
-
-				MedicoDAO mdao = new MedicoDAO();
-				boolean validar = mdao.inserir(m);
-				if (validar == true) {
-					// exibir uma mensagem de cadastro com sucesso
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+				if (nome != null && !nome.isEmpty()) {
+					medico.setNome(nome);
 				} else {
-					// exibir mensagem de erro ao cadastrar
-					JOptionPane.showMessageDialog(null, "Não foi possível cadastrar");
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+				}
+
+				if (cpf != null && !cpf.isEmpty()) {
+					// 3o passo: o que tem mascara usar o metodo REPLACE da String
+					cpf = cpf.replace(".", ""); // forma feia mas facil
+					cpf = cpf.replace("-", "");
+
+					// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+					// (valueOf)
+					Long cpfInt = Long.valueOf(cpf);
+					Long crmInt = Long.valueOf(crm);
+
+					// setar no obj
+					medico.setCpf(cpfInt);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+				}
+
+				if (senha.equals(confirmaSenha)) {
+					medico.getUsuario().setSenha(senha);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+				}
+				
+				if (login != null && !login.isEmpty()) {
+					medico.getUsuario().setLogin(login);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
+				}
+
+				if (crm != null && !crm.isEmpty()) {
+					medico.setCrm(crmInt);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
+				}
+
+				// se passar em todas as validacoes
+				if (validarCampoTexto == true) {
+					MedicoDAO mdao = new MedicoDAO();
+					boolean validar = mdao.inserir(medico);
+					if (validar == true) {
+						// exibir uma mensagem de cadastro com sucesso
+						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+					} else {
+						// exibir mensagem de erro ao cadastrar
+						JOptionPane.showMessageDialog(null, "Não foi possível cadastrar");
+					}
 				}
 
 			}

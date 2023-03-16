@@ -5,6 +5,15 @@ public class Medico {
 	private String nome;
 	private Long cpf;
 	private Long crm;
+	private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public String getNome() {
 		return nome;
