@@ -64,16 +64,17 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 	
-	public boolean deletar(Medico p) {
+	public boolean deletar(String p) {
 		// Instacia classe Conexao
+		String a = p;
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 	
 		try {
-			String query = "DELETE FROM medico WHERE crm = ?";
+			String query = "DELETE FROM medico WHERE crm = "+a+"";
 			PreparedStatement stm = c.prepareStatement(query);
 
-			stm.setLong(1, p.getCrm());
+			
 
 			stm.executeUpdate();
 			return true;

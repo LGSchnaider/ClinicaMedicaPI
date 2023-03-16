@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +23,8 @@ import java.awt.GridLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaListaMed extends JFrame {
 
@@ -98,6 +102,19 @@ public class TelaListaMed extends JFrame {
 		contentPane.add(panel_2, "cell 2 2,alignx center,aligny center");
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String a = JOptionPane.showInputDialog(null);
+				MedicoDAO mDAO = new MedicoDAO();
+				mDAO.deletar(a);
+			
+				
+				
+				
+				
+			}
+		});
 		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
