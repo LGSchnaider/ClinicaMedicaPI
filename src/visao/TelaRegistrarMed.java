@@ -176,7 +176,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		txtLogin = new JTextField();
 		if (txtLogin.getText().equals(null) || txtLogin.getText() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+			JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
 		}
 		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(txtLogin, "cell 1 5,growx,aligny center");
@@ -188,7 +188,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		pswSenha = new JPasswordField();
 		if (pswSenha.getPassword().equals(null) || pswSenha.getPassword() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+			JOptionPane.showMessageDialog(null, "Campo obrigatório: Senha");
 		}
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(pswSenha, "cell 1 6,growx,aligny center");
@@ -198,11 +198,12 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
 
 		pswComfirmarSenha = new JPasswordField();
-		if(pswSenha.getPassword().equals(pswComfirmarSenha)) {
-			
-		}else {
-			JOptionPane.showMessageDialog(null,"Senha Incorreta!");
-		}
+		//Precisa criar o método cadstrar no confirmar senha
+//		if(pswSenha.getPassword().equals(pswComfirmarSenha)) {
+//			
+//		}else {
+//			JOptionPane.showMessageDialog(null,"Senha Incorreta!");
+//		}
 		pswComfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(pswComfirmarSenha, "cell 1 7,growx,aligny center");
 
