@@ -210,7 +210,7 @@ public class TelaRegistrarPaciente extends JFrame {
 				
 				if (cpf != null && !cpf.isEmpty()) {
 					// 3o passo: o que tem mascara usar o metodo REPLACE da String
-					cpf = cpf.replace("()", ""); // forma feia mas facil
+					cpf = cpf.replace(".", ""); // forma feia mas facil
 					cpf = cpf.replace("-", "");
 					
 					Long cpfP = Long.valueOf(cpf);
@@ -223,8 +223,8 @@ public class TelaRegistrarPaciente extends JFrame {
 				
 				
 				if (telefone != null && !telefone.isEmpty()) {
-					cpf = cpf.replace(".", ""); // forma feia mas facil
-					cpf = cpf.replace("-", "");
+					telefone = telefone.replace("()", ""); // forma feia mas facil
+					telefone = telefone.replace("-", "");
 					Long telefoneP = Long.valueOf(telefone);
 					paciente.setTelefone(telefoneP);
 				} else {
@@ -248,7 +248,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					// TODO realiza teste
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 				} else {
-					JOptionPane.showMessageDialog(null, "Não foi possível cadastrar");
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
 				}
 
 			}

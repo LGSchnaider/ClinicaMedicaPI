@@ -307,7 +307,7 @@ public class TelaRegistrarMed extends JPanel {
 						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 					} else {
 						// exibir mensagem de erro ao cadastrar
-						JOptionPane.showMessageDialog(null, "Não foi possível cadastrar");
+						JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
 					}
 				}
 
