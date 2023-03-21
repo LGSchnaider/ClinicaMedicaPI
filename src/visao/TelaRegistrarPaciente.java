@@ -41,9 +41,6 @@ public class TelaRegistrarPaciente extends JFrame {
 	 */
 
 	public TelaRegistrarPaciente() {
-//		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
-//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
-//		frame.setVisible(true);
 		setTitle("Cadastro de Paciente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);
