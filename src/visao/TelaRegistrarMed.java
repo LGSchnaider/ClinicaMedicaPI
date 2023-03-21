@@ -67,12 +67,12 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]",
 				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
 
-<<<<<<< Updated upstream
+
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-=======
+
 		JLabel lblNewLabel = new JLabel("Cadastrar Médico");
->>>>>>> Stashed changes
+
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center,aligny center");
 

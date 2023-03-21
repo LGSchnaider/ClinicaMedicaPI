@@ -63,13 +63,12 @@ public class MedicoDAO implements IMedicoDAO {
 		con.fechaConexao();
 		return false;
 	}
-<<<<<<< Updated upstream
+
 	
 	public boolean deletar(String p) {
-=======
+
 
 	public boolean deletar(Medico p) {
->>>>>>> Stashed changes
 		// Instacia classe Conexao
 		String a = p;
 		Conexao con = Conexao.getInstancia();
