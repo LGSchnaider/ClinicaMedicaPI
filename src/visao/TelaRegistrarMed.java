@@ -70,9 +70,6 @@ public class TelaRegistrarMed extends JPanel {
 
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-
-		JLabel lblNewLabel = new JLabel("Cadastrar Médico");
-
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center,aligny center");
 
