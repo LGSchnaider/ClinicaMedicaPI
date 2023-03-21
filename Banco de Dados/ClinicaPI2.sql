@@ -83,4 +83,4 @@ CREATE TABLE medicamento_has_prontoario (
  insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dra.Ana Beatrir Ribeiro', 09505508805, 2647, 1);
  insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Roberto Ferreira', 05506607802, 3163, 1);
 
- 
+
