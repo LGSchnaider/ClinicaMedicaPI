@@ -35,5 +35,11 @@ public class MedicoTableModel  extends AbstractTableModel {
         		return m.getCrm();
         	}
         }
+        
+        public Medico getMedico(int p) {
+        	return listaMedico.get(p);
+        }
+        
+        
 
 }

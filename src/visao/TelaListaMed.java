@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controle.MedicoDAO;
+import modelo.Medico;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -105,9 +106,15 @@ public class TelaListaMed extends JFrame {
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String a = JOptionPane.showInputDialog(null);
+				int p = table.getSelectedRow();
+				MedicoTableModel model = (MedicoTableModel) table.getModel();
+				
+				Medico a = model.getMedico(p);
+				//JOptionPane.showInputDialog(null);
 				MedicoDAO mDAO = new MedicoDAO();
 				mDAO.deletar(a);
+				model = new MedicoTableModel(mDAO.listaMedico());
+				table.setModel(model);
 			
 				
 				
