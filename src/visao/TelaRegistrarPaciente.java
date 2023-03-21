@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.PacienteDAO;
 import modelo.Paciente;
@@ -20,8 +21,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+
 import java.awt.Color;
 
 public class TelaRegistrarPaciente extends JFrame {
@@ -88,6 +92,13 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_2, "flowx,cell 1 2,grow");
 
 		txtcpfP = new JTextField();
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		JTextField txtcpfP = new JFormattedTextField(formatter);
 		//TODO fazer mascara
 		txtcpfP.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -98,7 +109,7 @@ public class TelaRegistrarPaciente extends JFrame {
 				.addGroup(gl_panel_2.createSequentialGroup().addGap(21).addComponent(txtcpfP).addGap(24)));
 		panel_2.setLayout(gl_panel_2);
 
-		JLabel lblNewLabel_2 = new JLabel("Telefone para contato:");
+		JLabel lblNewLabel_2 = new JLabel("Telefone:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
@@ -107,6 +118,12 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_3, "flowx,cell 1 3,grow");
 
 		txtTelefoneP = new JTextField();
+		try {
+			formatter = new MaskFormatter("(##) #####-####");
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		JTextField txtTelefoneP = new JFormattedTextField(formatter);
 		txtTelefoneP.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
@@ -167,21 +184,51 @@ public class TelaRegistrarPaciente extends JFrame {
 		JButton btnInserir = new JButton("Cadastrar");
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String NomeP = txtNomeP.getText();
-				Long CPFp = Long.valueOf(txtcpfP.getText());
-				Long TelefoneP = Long.valueOf(txtTelefoneP.getText());
-				String EmailP = txtEmailP.getText();
+				
+				boolean validarCampoTexto = true;
+				
+				String nome = txtNomeP.getText();
+				String cpf = txtcpfP.getText();
+				String telefone = txtTelefoneP.getText();
+				String email = txtEmailP.getText();
 
 				Paciente paciente = new Paciente();
-				paciente.setNome(NomeP);
-				paciente.setCpf(CPFp);
-				paciente.setTelefone(TelefoneP);
-				paciente.setEmail(EmailP);
+//				paciente.setEmail(EmailP);
+				
+				if (nome != null && !nome.isEmpty()) {
+					paciente.setNome(nome);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+				}
+				
+				if (cpf != null && !cpf.isEmpty()) {
+					// 3o passo: o que tem mascara usar o metodo REPLACE da String
+					cpf = cpf.replace("()", ""); // forma feia mas facil
+					cpf = cpf.replace("-", "");
+					
+					Long cpfP = Long.valueOf(cpf);
 
-				PacienteDAO dao = new PacienteDAO();
-				boolean validar = dao.inserir(paciente);
+					paciente.setCpf(cpfP);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+				}
+				
+				if (telefone != null && !telefone.isEmpty()) {
+					cpf = cpf.replace(".", ""); // forma feia mas facil
+					cpf = cpf.replace("-", "");
+					Long telefoneP = Long.valueOf(telefone);
+					paciente.setTelefone(telefoneP);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Telefone");
+				}
 
-				if (validar == true) {
+
+				if (validarCampoTexto == true) {
+					PacienteDAO dao = new PacienteDAO();
+					boolean validar = dao.inserir(paciente);
 					// TODO realiza teste
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 				} else {

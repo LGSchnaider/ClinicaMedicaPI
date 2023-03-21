@@ -268,7 +268,6 @@ public class TelaRegistrarMed extends JPanel {
 					// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
 					// (valueOf)
 					Long cpfInt = Long.valueOf(cpf);
-					Long crmInt = Long.valueOf(crm);
 
 					// setar no obj
 					medico.setCpf(cpfInt);
@@ -292,10 +291,11 @@ public class TelaRegistrarMed extends JPanel {
 				}
 
 				if (crm != null && !crm.isEmpty()) {
-					medico.setCrm(crmInt);
+					Long crmLong = Long.valueOf(crm);
+					medico.setCrm(crmLong);
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
 				}
 
 				// se passar em todas as validacoes
