@@ -64,16 +64,17 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 	
-	public boolean deletar(Medico p) {
+	public boolean deletar(String p) {
 		// Instacia classe Conexao
+		String a = p;
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 	
 		try {
-			String query = "DELETE FROM medico WHERE crm = ?";
+			String query = "DELETE FROM medico WHERE crm = "+a+"";
 			PreparedStatement stm = c.prepareStatement(query);
 
-			stm.setLong(1, p.getCrm());
+			
 
 			stm.executeUpdate();
 			return true;
@@ -121,6 +122,29 @@ public class MedicoDAO implements IMedicoDAO {
 		con.fechaConexao();
 
 		return Medicos;
+	}
+
+	@Override
+	public boolean deletar(Medico p) {
+		// Instacia classe Conexao
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
+			
+				try {
+					String query = "DELETE FROM medico WHERE crm = "+p.getCrm()+"";
+					PreparedStatement stm = c.prepareStatement(query);
+
+					
+
+					stm.executeUpdate();
+					return true;
+
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+				con.fechaConexao();
+				return false;
 	}
 
 }
