@@ -72,6 +72,15 @@ CREATE TABLE medicamento_has_prontoario (
 	FOREIGN KEY (prontoario_idprontoario) REFERENCES prontuario (id));
  
  
- INSERT INTO usuario (login, senha, perfil	) VALUES ('admin', 'admin', 0);
+ insert into usuario (login, senha, perfil	) values ('admin', 'admin', 0);
  
- INSERT INTO paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 99099974, 'M', 'pedronomecomum@gmail.com');
+ insert into paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 99099974, 'M', 'pedronomecomum@gmail.com');
+ insert into paciente (nome, cpf, telefone, sexo, email) values ('Miguel dias', 09101502903, 94056942, 'M', 'miguel@gmail.com');
+ 
+ insert into medico (nome, cpf, crm, usuario_idusuario) values ('Marcos Marco LG Junior', 12087902955, 0666, 1);
+ insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Pedro Rocha da Silva', 12333325521, 3711, 1);
+ insert into medico (nome, cpf, crm, usuario_idusuario) values ('Me.Augusto Oliveira Pereira', 22255588830, 2811, 1);
+ insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dra.Ana Beatrir Ribeiro', 09505508805, 2647, 1);
+ insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Roberto Ferreira', 05506607802, 3163, 1);
+
+ 
