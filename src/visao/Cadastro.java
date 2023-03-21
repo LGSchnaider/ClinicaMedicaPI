@@ -30,6 +30,7 @@ public class Cadastro extends JFrame {
 		}
 
 		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria();
+		sec.setOpaque(false);
 		Panel panel_1 = new Panel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout());
@@ -43,7 +44,7 @@ public class Cadastro extends JFrame {
 	 */
 	public Cadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 647, 515);
+		setBounds(100, 100, 944, 598);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -51,6 +52,7 @@ public class Cadastro extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		contentPane.add(panel, BorderLayout.NORTH);
 
 		JRadioButton rbtnSecretaria = new JRadioButton("Secretária");

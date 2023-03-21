@@ -19,7 +19,12 @@ import java.awt.Insets;
 import java.awt.Color;
 import net.miginfocom.swing.MigLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
+
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -34,6 +39,17 @@ public class TelaPrincipal extends JFrame {
 	public TelaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 836, 542);
+		
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelaPrincipal.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -96,7 +112,8 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		panel.add(lblNewLabel);
 		
-		JPanel panel_1 = new JPanel();
+		JPanel panel_1 = new PanelFundo(bg);
+		panel_1.setForeground(new Color(255, 255, 255));
 		panel_1.setBackground(new Color(64, 128, 128));
 		panelCentro.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new MigLayout("", "[71.00][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
@@ -114,6 +131,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastros");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panel_1.add(lblNewLabel_1, "flowx,cell 1 2,alignx center,aligny center");
 		
@@ -121,6 +139,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_3, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel_2.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_2, "cell 1 3,grow");
 		
@@ -155,7 +174,7 @@ public class TelaPrincipal extends JFrame {
 		panel_2.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
-		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panel_1.add(lblNewLabel_2, "cell 1 4,alignx center,aligny center");
 		
@@ -163,6 +182,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_4, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		panel_3.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_3, "cell 1 5,grow");
 		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -192,6 +212,7 @@ public class TelaPrincipal extends JFrame {
 		panel_3.add(btnNewButton_5);
 		
 		JLabel lblNewLabel_5 = new JLabel("Listas");
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panel_1.add(lblNewLabel_5, "cell 1 6,alignx center,aligny center");
 		
@@ -199,6 +220,7 @@ public class TelaPrincipal extends JFrame {
 		panel_1.add(lblNewLabel_6, "cell 1 1,alignx center,aligny center");
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		panel_4.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_4, "cell 1 7,grow");
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

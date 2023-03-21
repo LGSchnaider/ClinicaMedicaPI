@@ -10,11 +10,16 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Choice;
 import java.awt.TextArea;
+import java.awt.Color;
 
 public class TelaCadConsulta extends JFrame {
 
@@ -26,13 +31,26 @@ public class TelaCadConsulta extends JFrame {
 	public TelaCadConsulta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 562);
-		contentPane = new JPanel();
+		
+		
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelaConsulta.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		contentPane = new PanelFundo(bg);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]", "[grow][grow][grow][grow][grow][grow][110.00][grow][grow][grow]"));
+		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]", "[grow][grow][grow][grow][grow][grow][110.00][grow][35.00,grow][grow]"));
 		
 		JLabel lblNewLabel = new JLabel("Cadastrar Consulta");
+		lblNewLabel.setForeground(new Color(64, 128, 128));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
 		
@@ -48,12 +66,14 @@ public class TelaCadConsulta extends JFrame {
 		});
 		
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
+		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_6, "cell 0 2");
 		
 		Choice chPaci = new Choice();
 		contentPane.add(chPaci, "cell 1 2,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Data:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_1, "cell 0 3");
 		
 		JPanel panel = new JPanel();
@@ -70,6 +90,7 @@ public class TelaCadConsulta extends JFrame {
 		panel.add(cbAno, "cell 2 0,growx");
 		
 		JLabel lblNewLabel_2 = new JLabel("Hora:");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_2, "cell 0 4");
 		
 		JPanel panel_1 = new JPanel();
@@ -83,13 +104,16 @@ public class TelaCadConsulta extends JFrame {
 		panel_1.add(cbMin, "cell 1 0,growx");
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		contentPane.add(panel_3, "cell 0 5,grow");
 		panel_3.setLayout(new MigLayout("", "[46px,grow]", "[grow][14px,grow]"));
 		
 		JLabel lblNewLabel_3 = new JLabel("Doença:");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
 		
 		JLabel lblNewLabel_4 = new JLabel("Valor:");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
 		
 		JPanel panel_2 = new JPanel();
@@ -105,7 +129,8 @@ public class TelaCadConsulta extends JFrame {
 		txtValor.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Descrição:");
-		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny center");
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
+		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
 		
 		TextArea txaDesc = new TextArea();
 		contentPane.add(txaDesc, "cell 1 6,growx,aligny center");

@@ -5,8 +5,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -39,10 +43,21 @@ public class TelaRegistrarMed extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public TelaRegistrarMed() {
+	public TelaRegistrarMed(){
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 1029, 550);
-		contentPane = new JPanel();
+		
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelacadMédico.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		contentPane = new PanelFundo(bg);
 
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,10 +67,12 @@ public class TelaRegistrarMed extends JPanel {
 				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
 
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center,aligny center");
 
 		JLabel lblNewLabel_1 = new JLabel("Nome:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_1, "cell 0 2,alignx trailing");
 
@@ -65,6 +82,7 @@ public class TelaRegistrarMed extends JPanel {
 		txtNomeMed.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("CPF:");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
@@ -85,10 +103,12 @@ public class TelaRegistrarMed extends JPanel {
 		txtCPFMed.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Código CRM:");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_3, "cell 0 4,alignx trailing");
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel_2.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
@@ -155,6 +175,7 @@ public class TelaRegistrarMed extends JPanel {
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_4 = new JLabel("Login:");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
 
@@ -167,6 +188,7 @@ public class TelaRegistrarMed extends JPanel {
 		txtLogin.setColumns(10);
 
 		JLabel lblNewLabel_5 = new JLabel("Senha:");
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing");
 
@@ -178,6 +200,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(pswSenha, "cell 1 6,growx,aligny center");
 
 		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
+		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
 
@@ -186,6 +209,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(pswConfirmarSenha, "cell 1 7,growx,aligny center");
 
 		JLabel lblNewLabel_7 = new JLabel("Perfil:");
+		lblNewLabel_7.setForeground(new Color(255, 255, 255));
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
 
@@ -205,6 +229,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel_1.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_1, "cell 0 10,grow");
 
@@ -230,6 +255,7 @@ public class TelaRegistrarMed extends JPanel {
 		panel_1.setLayout(gl_panel_1);
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 

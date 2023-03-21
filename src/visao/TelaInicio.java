@@ -29,10 +29,15 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class TelaInicio extends JFrame {
 	private JTextField txtLogin;
@@ -59,15 +64,22 @@ public class TelaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicio() {
-		setTitle("sla");
+		setTitle("Clínica Médica Puro Sangue");
 		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1234, 900);
 		getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelaInicio.png"));
 
-		JPanel up = new JPanel();
-		getContentPane().add(up, BorderLayout.NORTH);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		JPanel down = new JPanel();
 		getContentPane().add(down, BorderLayout.SOUTH);
@@ -75,22 +87,23 @@ public class TelaInicio extends JFrame {
 		JLabel lblNewLabel = new JLabel("Farmacos");
 		down.add(lblNewLabel);
 
-		JPanel center = new JPanel();
+		JPanel center = new PanelFundo(bg);
 		center.setBackground(new Color(0, 128, 128));
 		center.setForeground(new Color(0, 128, 128));
 		getContentPane().add(center, BorderLayout.CENTER);
-		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]",
-				"[pref!,grow][92.00][133.00][70,grow][83.00][96.00][][38.00,grow]"));
-
-		JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
-		lblNewLabel_1.setBackground(new Color(255, 0, 0));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 60));
-		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		center.add(lblNewLabel_1, "cell 3 1,alignx center");
-
-		JLabel lblNewLabel_2 = new JLabel("INICIO");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 40));
-		center.add(lblNewLabel_2, "cell 3 2,alignx center");
+		center.setLayout(new MigLayout("", "[209.00][246.00,grow][][254.00,grow][205.00,grow][330.00]", "[pref!,grow][92.00,grow][133.00][70,grow][grow][83.00][96.00][][38.00,grow]"));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(36, 49, 55));
+		panel_1.setOpaque(false);
+		center.add(panel_1, "cell 3 1,grow");
+		
+				JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
+				panel_1.add(lblNewLabel_1);
+				lblNewLabel_1.setForeground(new Color(255, 255, 255));
+				lblNewLabel_1.setBackground(new Color(255, 0, 0));
+				lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 50));
+				lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JPanel LOG = new JPanel();
 		LOG.setBackground(new Color(0, 128, 128));
@@ -100,8 +113,9 @@ public class TelaInicio extends JFrame {
 		LOG.setLayout(gl_LOG);
 
 		JLabel lblLogin = new JLabel("Login:");
+		lblLogin.setForeground(new Color(255, 255, 255));
 		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		center.add(lblLogin, "cell 2 4,alignx trailing");
+		center.add(lblLogin, "cell 2 5,alignx trailing");
 
 		txtLogin = new JTextField();
 		txtLogin.addKeyListener(new KeyAdapter() {
@@ -122,12 +136,13 @@ public class TelaInicio extends JFrame {
 				}
 			}
 		});
-		center.add(txtLogin, "cell 3 4,growx,aligny center");
+		center.add(txtLogin, "cell 3 5,growx,aligny center");
 		txtLogin.setColumns(10);
 
 		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setForeground(new Color(255, 255, 255));
 		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		center.add(lblSenha, "cell 2 5,alignx trailing");
+		center.add(lblSenha, "cell 2 6,alignx trailing");
 
 		txtSenha = new JPasswordField();
 		txtSenha.addKeyListener(new KeyAdapter() {
@@ -148,7 +163,7 @@ public class TelaInicio extends JFrame {
 				}
 			}
 		});
-		center.add(txtSenha, "cell 3 5,growx");
+		center.add(txtSenha, "cell 3 6,growx");
 		txtSenha.setColumns(10);
 
 		JButton btnLogOff = new JButton("Sair");
@@ -160,12 +175,12 @@ public class TelaInicio extends JFrame {
 		});
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 128, 128));
-		center.add(panel, "cell 3 6,alignx center,aligny center");
+		panel.setBackground(new Color(36, 49, 55));
+		center.add(panel, "cell 3 7,alignx center,aligny center");
 
 		JButton btnLogin = new JButton("Login");
 
-		center.add(btnLogin, "cell 1 4,alignx center");
+		center.add(btnLogin, "cell 0 0");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tl = txtLogin.getText();
@@ -192,8 +207,8 @@ public class TelaInicio extends JFrame {
 		panel.setLayout(gl_panel);
 
 		JPanel OFF = new JPanel();
-		OFF.setBackground(new Color(0, 128, 128));
-		center.add(OFF, "flowx,cell 3 7,alignx center");
+		OFF.setBackground(new Color(36, 49, 55));
+		center.add(OFF, "flowx,cell 3 8,alignx center");
 
 		OFF.add(btnLogOff);
 		GroupLayout gl_OFF = new GroupLayout(OFF);

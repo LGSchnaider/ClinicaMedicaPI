@@ -19,8 +19,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -44,7 +48,17 @@ public class TelaRegistrarPaciente extends JFrame {
 		setTitle("Cadastro de Paciente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);
-		contentPane = new JPanel();
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelacadPaciente.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		contentPane = new PanelFundo(bg);
 		contentPane.setBackground(new Color(0, 156, 156));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -53,16 +67,19 @@ public class TelaRegistrarPaciente extends JFrame {
 				"[44.00,grow][391px,grow][grow][28.00]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Cadastar Paciente");
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel_5, "cell 2 0,alignx center,growy");
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 156, 156));
 		contentPane.add(panel, "cell 2 1,grow");
 		panel.setLayout(new MigLayout("", "[72.00][321.00,grow]",
 				"[grow][56.00,grow][68.00,grow][66.00,grow][68.00,grow][80.00,grow]"));
 
 		JLabel lblNewLabel_4 = new JLabel("Nome:");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel_4, "cell 0 1,alignx trailing");
 
@@ -81,10 +98,12 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("CPF:");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel_3, "cell 0 2,alignx trailing");
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel_2.setBackground(new Color(0, 156, 156));
 		panel.add(panel_2, "flowx,cell 1 2,grow");
 
@@ -107,10 +126,12 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		panel_3.setBackground(new Color(0, 156, 156));
 		panel.add(panel_3, "flowx,cell 1 3,grow");
 
@@ -131,10 +152,12 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_3.setLayout(gl_panel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("Sexo:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel_1, "cell 0 4,alignx trailing");
 
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		panel_4.setBackground(new Color(0, 156, 156));
 		panel.add(panel_4, "flowx,cell 1 4,grow");
 
@@ -153,10 +176,12 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_4.setLayout(gl_panel_4);
 
 		JLabel lblNewLabel = new JLabel("E-mail:");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel, "cell 0 5,alignx trailing");
 
 		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		panel_5.setBackground(new Color(0, 156, 156));
 		panel.add(panel_5, "flowx,cell 1 5,grow");
 
