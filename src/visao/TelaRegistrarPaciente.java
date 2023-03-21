@@ -88,6 +88,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_2, "flowx,cell 1 2,grow");
 
 		txtcpfP = new JTextField();
+		//TODO fazer mascara
 		txtcpfP.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)

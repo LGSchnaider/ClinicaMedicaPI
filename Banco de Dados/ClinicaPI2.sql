@@ -12,7 +12,7 @@ CREATE TABLE medico (
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
   cpf BIGINT(20) NOT NULL,
-  crm VARCHAR(30) NOT NULL,
+  crm BIGINT(30) NOT NULL,
   usuario_idusuario INT NOT NULL,
   PRIMARY KEY (id),
     FOREIGN KEY (usuario_idusuario) REFERENCES usuario (id));
