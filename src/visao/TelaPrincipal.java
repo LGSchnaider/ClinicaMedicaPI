@@ -101,7 +101,7 @@ public class TelaPrincipal extends JFrame {
 		panelCentro.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new MigLayout("", "[71.00][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
 		
-		JButton btnNewButton = new JButton("logout");
+		JButton btnNewButton = new JButton("Logout");
 		panel_1.add(btnNewButton, "cell 1 0,alignx right");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

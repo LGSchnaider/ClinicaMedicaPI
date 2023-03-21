@@ -161,7 +161,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_5, "cell 2 8,growx,aligny center");
 		
 		JComboBox <String> cbFuncao = new JComboBox();
-		cbFuncao.addItem("Junior");
+		cbFuncao.addItem("Comun");
 		cbFuncao.addItem("Administradora");
 		
 		
@@ -223,6 +223,6 @@ public class TelaRegistrarSecretaria extends JPanel {
 		panel.setLayout(gl_panel);
 		
 		setLayout(new BorderLayout());
-		add(contentPane, BorderLayout.CENTER);
+		add(contentPane, BorderLayout.SOUTH);
 	}
 }
