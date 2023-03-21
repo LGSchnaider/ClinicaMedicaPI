@@ -141,7 +141,11 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_4.setBackground(new Color(0, 156, 156));
 		panel.add(panel_4, "flowx,cell 1 4,grow");
 
-		JComboBox cbSexo = new JComboBox();
+		JComboBox <String> cbSexo = new JComboBox<>();
+		cbSexo.addItem("Masculino");
+		cbSexo.addItem("Feminino");
+		cbSexo.addItem("Não Definir");
+		cbSexo.setEditable(false);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
 				gl_panel_4.createSequentialGroup().addContainerGap().addComponent(cbSexo, 0, 518, Short.MAX_VALUE)
@@ -151,7 +155,7 @@ public class TelaRegistrarPaciente extends JFrame {
 						.addComponent(cbSexo, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE).addGap(24)));
 		panel_4.setLayout(gl_panel_4);
 
-		JLabel lblNewLabel = new JLabel("E-mail para contato:");
+		JLabel lblNewLabel = new JLabel("E-mail:");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		panel.add(lblNewLabel, "cell 0 5,alignx trailing");
 
@@ -195,12 +199,14 @@ public class TelaRegistrarPaciente extends JFrame {
 				Paciente paciente = new Paciente();
 //				paciente.setEmail(EmailP);
 				
+				
 				if (nome != null && !nome.isEmpty()) {
 					paciente.setNome(nome);
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
 				}
+				
 				
 				if (cpf != null && !cpf.isEmpty()) {
 					// 3o passo: o que tem mascara usar o metodo REPLACE da String
@@ -215,6 +221,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
 				}
 				
+				
 				if (telefone != null && !telefone.isEmpty()) {
 					cpf = cpf.replace(".", ""); // forma feia mas facil
 					cpf = cpf.replace("-", "");
@@ -223,6 +230,15 @@ public class TelaRegistrarPaciente extends JFrame {
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Telefone");
+				}
+				
+				
+				if (email != null && !email.isEmpty()) {
+					String emailP = email;
+					paciente.setEmail(emailP);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Email");
 				}
 
 
