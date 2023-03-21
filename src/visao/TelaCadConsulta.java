@@ -77,6 +77,7 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(lblNewLabel_1, "cell 0 3");
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		contentPane.add(panel, "cell 1 3,grow");
 		panel.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow]"));
 		
@@ -94,6 +95,7 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(lblNewLabel_2, "cell 0 4");
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 1 4,growx");
 		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
 		
@@ -117,6 +119,7 @@ public class TelaCadConsulta extends JFrame {
 		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		contentPane.add(panel_2, "cell 1 5,grow");
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 		

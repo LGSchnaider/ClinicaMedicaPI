@@ -84,6 +84,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(lblNewLabel_4, "cell 0 1,alignx trailing");
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel_1.setBackground(new Color(0, 156, 156));
 		panel.add(panel_1, "cell 1 1,grow");
 
