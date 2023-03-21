@@ -13,15 +13,15 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Choice;
+import java.awt.TextArea;
 
 public class TelaCadConsulta extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField txtNome;
-	private JTextField txtCPFp;
-	private JTextField textField_4;
 	private final JButton btnNewButton_1 = new JButton("Cadastrar");
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -49,45 +49,11 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow,right][][grow]", "[grow][grow][grow][grow][grow][grow][grow][grow]"));
+		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]", "[grow][grow][grow][grow][grow][grow][91.00,grow][grow][grow]"));
 		
 		JLabel lblNewLabel = new JLabel("Cadastrar Consulta");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
-		
-		JLabel lblNewLabel_1 = new JLabel("Nome:");
-		contentPane.add(lblNewLabel_1, "cell 0 1,alignx trailing");
-		
-		txtNome = new JTextField();
-		contentPane.add(txtNome, "cell 1 1,growx");
-		txtNome.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("CPF:");
-		contentPane.add(lblNewLabel_2, "cell 0 2");
-		
-		txtCPFp = new JTextField();
-		contentPane.add(txtCPFp, "cell 1 2,growx");
-		txtCPFp.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("Telefone:");
-		contentPane.add(lblNewLabel_3, "cell 0 3");
-		
-		textField = new JTextField();
-		contentPane.add(textField, "cell 1 3,growx");
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_4 = new JLabel("Sexo:");
-		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
-		
-		JComboBox cbSexo = new JComboBox();
-		contentPane.add(cbSexo, "cell 1 5,growx,aligny center");
-		
-		JLabel lblNewLabel_5 = new JLabel("E-mail");
-		contentPane.add(lblNewLabel_5, "cell 0 4,alignx trailing");
-		
-		textField_4 = new JTextField();
-		contentPane.add(textField_4, "cell 1 4,growx");
-		textField_4.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -99,13 +65,76 @@ public class TelaCadConsulta extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		contentPane.add(btnNewButton, "cell 0 6,alignx center,aligny baseline");
+		
+		JLabel lblNewLabel_6 = new JLabel("Paciente");
+		contentPane.add(lblNewLabel_6, "cell 0 2");
+		
+		Choice choice = new Choice();
+		contentPane.add(choice, "cell 1 2,growx");
+		
+		JLabel lblNewLabel_1 = new JLabel("Data:");
+		contentPane.add(lblNewLabel_1, "cell 0 3");
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, "cell 1 3,grow");
+		panel.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow]"));
+		
+		JComboBox comboBox = new JComboBox();
+		panel.add(comboBox, "cell 0 0,growx");
+		
+		JComboBox comboBox_2 = new JComboBox();
+		panel.add(comboBox_2, "cell 1 0,growx");
+		
+		JComboBox comboBox_3 = new JComboBox();
+		panel.add(comboBox_3, "cell 2 0,growx");
+		
+		JLabel lblNewLabel_2 = new JLabel("Hora:");
+		contentPane.add(lblNewLabel_2, "cell 0 4");
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, "cell 1 4,growx");
+		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
+		
+		JComboBox comboBox_1 = new JComboBox();
+		panel_1.add(comboBox_1, "cell 0 0");
+		
+		JComboBox comboBox_4 = new JComboBox();
+		panel_1.add(comboBox_4, "cell 1 0,growx");
+		
+		JPanel panel_3 = new JPanel();
+		contentPane.add(panel_3, "cell 0 5,grow");
+		panel_3.setLayout(new MigLayout("", "[46px,grow]", "[grow][14px,grow]"));
+		
+		JLabel lblNewLabel_3 = new JLabel("Doença:");
+		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
+		
+		JLabel lblNewLabel_4 = new JLabel("Valor:");
+		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
+		
+		JPanel panel_2 = new JPanel();
+		contentPane.add(panel_2, "cell 1 5,grow");
+		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
+		
+		textField = new JTextField();
+		panel_2.add(textField, "cell 0 0,growx");
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		panel_2.add(textField_1, "cell 0 1,growx");
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("Descrição:");
+		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny center");
+		
+		TextArea textArea = new TextArea();
+		contentPane.add(textArea, "cell 1 6,growx");
+		contentPane.add(btnNewButton, "cell 0 7,alignx center,aligny baseline");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		contentPane.add(btnNewButton_1, "cell 2 6,alignx center,aligny baseline");
+		contentPane.add(btnNewButton_1, "cell 2 7,alignx center,aligny baseline");
 	}
 
 }
