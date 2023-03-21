@@ -17,14 +17,27 @@ public class UsuarioDAO implements IUsuarioDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO usuario " + "(login, senha, perfil, admin) VALUES (?,?,?,?);";
-			PreparedStatement stm = c.prepareStatement(query);
+			String query = "INSERT INTO usuario " + "(login, senha, perfil) VALUES (?,?,?);";
+			PreparedStatement stm = c.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
 			stm.setInt(3, p.getPefil());
+			
+			System.out.println(stm);
 
 			stm.executeUpdate();
+			
+			try (ResultSet generatedKeys = stm.getGeneratedKeys()) {
+	            if (generatedKeys.next()) {
+	                p.setIdusuario((int) generatedKeys.getLong(1));
+	            }
+	            else {
+	                throw new SQLException("Creating user failed, no ID obtained.");
+	            }
+	        }
+			
+			return true;
 
 		} catch (SQLException e) {
 

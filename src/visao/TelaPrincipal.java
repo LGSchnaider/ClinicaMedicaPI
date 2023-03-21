@@ -11,6 +11,9 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.Usuario;
+
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -143,6 +146,7 @@ public class TelaPrincipal extends JFrame {
 		panel_2.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_2, "cell 1 3,grow");
 		
+		
 		JButton btnNewButton_1 = new JButton("Paciente");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -170,8 +174,8 @@ public class TelaPrincipal extends JFrame {
 			
 		JLabel lblNewLabel_7 = new JLabel("               ");
 		panel_2.add(lblNewLabel_7);
-
-		panel_2.add(btnNewButton_1);
+			panel_2.add(btnNewButton_1);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));

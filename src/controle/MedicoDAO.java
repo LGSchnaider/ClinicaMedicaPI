@@ -16,33 +16,34 @@ public class MedicoDAO implements IMedicoDAO {
 	@Override
 	public boolean inserir(Medico p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO medico " + "(nome, cpf, crm) VALUES (?,?,?);";
+			String query = "INSERT INTO medico " + "(nome, cpf, crm, usuario_idusuario) VALUES (?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getCrm());
-
+			stm.setInt(4, p.getUsuario().getIdusuario());
+			System.out.println(stm);
 			stm.executeUpdate();
-
+			con.fechaConexao();
+			return true;
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
 		// fechar conexao
-		con.fechaConexao();
 
 		return false;
 	}
-	
+
 	public boolean atualizar(Medico p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
 
 		try {
 			String query = "UPDATE medico SET nome= ?, cpf = ?, crm = ?  WHERE id = ?";
@@ -51,7 +52,6 @@ public class MedicoDAO implements IMedicoDAO {
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getCrm());
-			
 
 			stm.executeUpdate();
 			return true;
@@ -63,13 +63,18 @@ public class MedicoDAO implements IMedicoDAO {
 		con.fechaConexao();
 		return false;
 	}
+<<<<<<< Updated upstream
 	
 	public boolean deletar(String p) {
+=======
+
+	public boolean deletar(Medico p) {
+>>>>>>> Stashed changes
 		// Instacia classe Conexao
 		String a = p;
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
-	
+
 		try {
 			String query = "DELETE FROM medico WHERE crm = "+a+"";
 			PreparedStatement stm = c.prepareStatement(query);
@@ -88,13 +93,12 @@ public class MedicoDAO implements IMedicoDAO {
 
 	}
 
-
 	public ArrayList<Medico> listaMedico() {
 
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
-				
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
 		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();

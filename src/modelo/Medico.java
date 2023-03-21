@@ -6,6 +6,10 @@ public class Medico {
 	private Long cpf;
 	private Long crm;
 	private Usuario usuario;
+	
+	public Medico() {
+		this.usuario = new Usuario();
+	}
 
 	public Usuario getUsuario() {
 		return usuario;

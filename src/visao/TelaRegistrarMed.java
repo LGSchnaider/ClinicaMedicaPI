@@ -27,6 +27,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import controle.MedicoDAO;
+import controle.UsuarioDAO;
 import modelo.Medico;
 import net.miginfocom.swing.MigLayout;
 
@@ -66,8 +67,12 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]",
 				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
 
+<<<<<<< Updated upstream
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
+=======
+		JLabel lblNewLabel = new JLabel("Cadastrar Médico");
+>>>>>>> Stashed changes
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center,aligny center");
 
@@ -267,8 +272,8 @@ public class TelaRegistrarMed extends JPanel {
 
 				// 1o passo: pegar o texto dos campos de texto
 				String nome = txtNomeMed.getText();
-				String senha = pswSenha.getPassword().toString();
-				String confirmaSenha = pswConfirmarSenha.getPassword().toString();
+				String senha = String.valueOf(pswSenha.getPassword());
+				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
 				String crm = txtCRM.getText();
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
@@ -284,49 +289,83 @@ public class TelaRegistrarMed extends JPanel {
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+					return;
 				}
 
 				if (cpf != null && !cpf.isEmpty()) {
-					// 3o passo: o que tem mascara usar o metodo REPLACE da String
-					cpf = cpf.replace(".", ""); // forma feia mas facil
-					cpf = cpf.replace("-", "");
 
-					// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
-					// (valueOf)
-					Long cpfInt = Long.valueOf(cpf);
+					if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+						JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+					} else {
+						// 3o passo: o que tem mascara usar o metodo REPLACE da String
+						cpf = cpf.replace(".", ""); // forma feia mas facil
+						cpf = cpf.replace("-", "");
 
-					// setar no obj
-					medico.setCpf(cpfInt);
+						// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+						// (valueOf)
+						Long cpfInt = Long.valueOf(cpf);
+
+						// setar no obj
+						medico.setCpf(cpfInt);
+					}
+
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
 				}
 
-				if (senha.equals(confirmaSenha)) {
-					medico.getUsuario().setSenha(senha);
+				if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
+					if (senha.equals(confirmaSenha)) {
+						medico.getUsuario().setSenha(senha);
+					} else {
+						System.out.println(senha);
+						System.out.println(confirmaSenha);
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+						return;
+					}
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Senha");
+					return;
 				}
-				
+
+				if (crm != null) {
+					crm = crm.trim();
+					if (!crm.isEmpty()) {
+						Long crmLong = Long.valueOf(crm);
+						medico.setCrm(crmLong);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+					}
+
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+				}
 				if (login != null && !login.isEmpty()) {
 					medico.getUsuario().setLogin(login);
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
 				}
-
-				if (crm != null && !crm.isEmpty()) {
-					Long crmLong = Long.valueOf(crm);
-					medico.setCrm(crmLong);
+				String perfilU;
+				perfilU = (String) comboBox.getSelectedItem();
+				if (perfilU.equals("Comum")) {
+					medico.getUsuario().setPefil(1);
 				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
+					medico.getUsuario().setPefil(0);
 				}
 
 				// se passar em todas as validacoes
 				if (validarCampoTexto == true) {
+					UsuarioDAO udao = new UsuarioDAO();
+					udao.inserir(medico.getUsuario());
+					// medico.getUsuario().setIdusuario(id);
+
 					MedicoDAO mdao = new MedicoDAO();
+
 					boolean validar = mdao.inserir(medico);
 					if (validar == true) {
 						// exibir uma mensagem de cadastro com sucesso

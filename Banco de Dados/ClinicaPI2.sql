@@ -70,7 +70,7 @@ CREATE TABLE medicamento_has_prontoario (
   PRIMARY KEY (medicamento_id_medicamento, prontoario_idprontoario),
     FOREIGN KEY (medicamento_id_medicamento)REFERENCES medicamento (id), 
 	FOREIGN KEY (prontoario_idprontoario) REFERENCES prontuario (id));
- 
+    
  
  insert into usuario (login, senha, perfil	) values ('admin', 'admin', 0);
  
