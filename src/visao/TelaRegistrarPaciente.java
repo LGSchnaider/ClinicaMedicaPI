@@ -57,10 +57,9 @@ public class TelaRegistrarPaciente extends JFrame {
 			bg = ImageIO.read(new File("src/imagens/TelacadPaciente.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		contentPane = new PanelFundo(bg);
 		contentPane.setBackground(new Color(0, 156, 156));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,7 +118,6 @@ public class TelaRegistrarPaciente extends JFrame {
 			e2.printStackTrace();
 		}
 		JTextField txtcpfP = new JFormattedTextField(formatter);
-		//TODO fazer mascara
 		txtcpfP.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -165,7 +163,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_4.setBackground(new Color(0, 156, 156));
 		panel.add(panel_4, "flowx,cell 1 4,grow");
 
-		JComboBox <String> cbSexo = new JComboBox<>();
+		JComboBox<String> cbSexo = new JComboBox<>();
 		cbSexo.addItem("Masculino");
 		cbSexo.addItem("Feminino");
 		cbSexo.addItem("Não Definir");
@@ -203,7 +201,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal();
+				TelaPrincipal frame = new TelaPrincipal(null); // TODO incluir usuario
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -214,9 +212,9 @@ public class TelaRegistrarPaciente extends JFrame {
 		JButton btnInserir = new JButton("Cadastrar");
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				boolean validarCampoTexto = true;
-				
+
 				String nome = txtNomeP.getText();
 				String cpf = txtcpfP.getText();
 				String telefone = txtTelefoneP.getText();
@@ -224,21 +222,19 @@ public class TelaRegistrarPaciente extends JFrame {
 
 				Paciente paciente = new Paciente();
 //				paciente.setEmail(EmailP);
-				
-				
+
 				if (nome != null && !nome.isEmpty()) {
 					paciente.setNome(nome);
 				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
 				}
-				
-				
+
 				if (cpf != null && !cpf.isEmpty()) {
 					// 3o passo: o que tem mascara usar o metodo REPLACE da String
 					cpf = cpf.replace(".", ""); // forma feia mas facil
 					cpf = cpf.replace("-", "");
-					
+
 					Long cpfP = Long.valueOf(cpf);
 
 					paciente.setCpf(cpfP);
@@ -246,8 +242,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
 				}
-				
-				
+
 				if (telefone != null && !telefone.isEmpty()) {
 					telefone = telefone.replace("()", ""); // forma feia mas facil
 					telefone = telefone.replace("-", "");
@@ -257,8 +252,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Telefone");
 				}
-				
-				
+
 				if (email != null && !email.isEmpty()) {
 					String emailP = email;
 					paciente.setEmail(emailP);
@@ -267,11 +261,9 @@ public class TelaRegistrarPaciente extends JFrame {
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Email");
 				}
 
-
 				if (validarCampoTexto == true) {
 					PacienteDAO dao = new PacienteDAO();
 					boolean validar = dao.inserir(paciente);
-					// TODO realiza teste
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
