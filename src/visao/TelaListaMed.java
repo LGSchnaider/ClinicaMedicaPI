@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import controle.MedicoDAO;
 import modelTabelas.MedicoTableModel;
 import modelo.Medico;
+import modelo.Usuario;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -37,10 +38,13 @@ public class TelaListaMed extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private Usuario usuarioLogado;
 
 	
 
-	public TelaListaMed() {
+	public TelaListaMed(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);
 		
@@ -91,7 +95,7 @@ public class TelaListaMed extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(null);  // TODO incluir usuario
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);  
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

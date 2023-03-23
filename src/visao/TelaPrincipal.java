@@ -143,7 +143,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dispose();
-				Cadastro frame = new Cadastro();
+				Cadastro frame = new Cadastro(u);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -161,7 +161,7 @@ public class TelaPrincipal extends JFrame {
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
+					TelaRegistrarPaciente frame = new TelaRegistrarPaciente(u);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
@@ -189,7 +189,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dispose();
-				TelaCadConsulta frame = new TelaCadConsulta();
+				TelaCadConsulta frame = new TelaCadConsulta(u);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -230,7 +230,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dispose();
-				TelaListaMed frame = new TelaListaMed();
+				TelaListaMed frame = new TelaListaMed(u);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

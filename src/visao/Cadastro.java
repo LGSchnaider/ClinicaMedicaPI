@@ -7,6 +7,9 @@ import java.awt.Panel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Usuario;
+
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -20,17 +23,18 @@ public class Cadastro extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private Usuario usuarioLogado;
 
 	/**
 	 * Launch the application.
 	 */
-	private static void setTema(JPanel contentPane) {
+	private void setTema(JPanel contentPane) {
 		BorderLayout layout = (BorderLayout) contentPane.getLayout();
 		if (layout.getLayoutComponent(BorderLayout.CENTER) != null) {
 			contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 		}
 
-		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria();
+		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria(usuarioLogado);
 		sec.setOpaque(false);
 		Panel panel_1 = new Panel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -43,7 +47,9 @@ public class Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro() {
+	public Cadastro(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 944, 598);
 		contentPane = new JPanel();
@@ -85,7 +91,7 @@ public class Cadastro extends JFrame {
 						System.out.println(layout.getLayoutComponent(BorderLayout.CENTER));
 						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 					}
-					TelaRegistrarMed med = new TelaRegistrarMed(null); // TODO incluir usuario
+					TelaRegistrarMed med = new TelaRegistrarMed(usuarioLogado);
  					Panel panel_1 = new Panel();
 					contentPane.add(panel_1, BorderLayout.CENTER);
 					panel_1.setLayout(new BorderLayout());
