@@ -77,7 +77,6 @@ public class TelaInicio extends JFrame {
 			bg = ImageIO.read(new File("src/imagens/TelaInicio.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -232,10 +231,10 @@ public class TelaInicio extends JFrame {
 		UsuarioDAO dao = new UsuarioDAO();
 		Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
 		if (u == null) {
-			JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreto!");
+			JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreto ou Usuário inexistente!");
 		} else {
 			dispose();
-			TelaPrincipal frame = new TelaPrincipal();
+			TelaPrincipal frame = new TelaPrincipal(u);
 			frame.setLocationRelativeTo(null);
 			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			frame.setVisible(true);

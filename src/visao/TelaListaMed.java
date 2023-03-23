@@ -49,7 +49,6 @@ public class TelaListaMed extends JFrame {
 			bg = ImageIO.read(new File("src/imagens/ListagemMed.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -92,7 +91,7 @@ public class TelaListaMed extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal();
+				TelaPrincipal frame = new TelaPrincipal(null);  // TODO incluir usuario
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

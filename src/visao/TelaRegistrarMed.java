@@ -29,6 +29,8 @@ import javax.swing.text.MaskFormatter;
 import controle.MedicoDAO;
 import controle.UsuarioDAO;
 import modelo.Medico;
+import modelo.TipoUsuario;
+import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 
 public class TelaRegistrarMed extends JPanel {
@@ -40,23 +42,23 @@ public class TelaRegistrarMed extends JPanel {
 	private JFormattedTextField textField_2;
 	private JTextField txtNomeMed;
 	private JPasswordField pswConfirmarSenha;
+	private Usuario usuarioLogado;
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaRegistrarMed(){
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setBounds(100, 100, 1029, 550);
-		
+	public TelaRegistrarMed(Usuario usuarioLogado) {
+
+		this.usuarioLogado = usuarioLogado;
+
 		BufferedImage bg = null;
 		try {
 			bg = ImageIO.read(new File("src/imagens/TelacadMédico.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		contentPane = new PanelFundo(bg);
 
 		contentPane.setBackground(new Color(0, 153, 153));
@@ -65,7 +67,6 @@ public class TelaRegistrarMed extends JPanel {
 		// setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]",
 				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
-
 
 		JLabel lblNewLabel = new JLabel("Casdastrar Médico");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -88,7 +89,6 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
 		textField_2 = new JFormattedTextField();
-		// TODO mascara pronta cpf
 		MaskFormatter formatter = null;
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
@@ -113,7 +113,6 @@ public class TelaRegistrarMed extends JPanel {
 		panel_2.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
-		// TODO completar combobox de estados
 		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbEstado.addItem("AC");
@@ -145,7 +144,6 @@ public class TelaRegistrarMed extends JPanel {
 		cbEstado.addItem("TO");
 
 		try {
-			// TODO corrigir a formatacao para CRM
 			formatter = new MaskFormatter("######");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
@@ -215,17 +213,13 @@ public class TelaRegistrarMed extends JPanel {
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
 
-		/*
-		 * Preencheu o combobox
-		 */
-		JComboBox<String> comboBox = new JComboBox<>();
-		comboBox.addItem("Comum");
-		comboBox.addItem("Adminstrador");
-		comboBox.setEditable(false); // impede a pessoa de editar o combobox
-
-		// so vai setar isso aqui quando EDITAR ou REMOVER o medico/funcionario
-//		comboBox.setSelectedItem("Administrador");
-		comboBox.setSelectedItem("Comum");
+		// TODO codigo do combobox usando enum
+		JComboBox<TipoUsuario> comboBox = new JComboBox<>();
+		for (TipoUsuario tipo : TipoUsuario.values()) {
+			comboBox.addItem(tipo);
+		}
+		comboBox.setEditable(false);
+		comboBox.setSelectedItem(TipoUsuario.COMUM);
 
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
@@ -240,7 +234,7 @@ public class TelaRegistrarMed extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// dispose();
-				TelaPrincipal frame = new TelaPrincipal();
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -349,12 +343,11 @@ public class TelaRegistrarMed extends JPanel {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
 				}
-				String perfilU;
-				perfilU = (String) comboBox.getSelectedItem();
-				if (perfilU.equals("Comum")) {
-					medico.getUsuario().setPefil(1);
+				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
+				if (perfilU.equals(TipoUsuario.COMUM)) {
+					medico.getUsuario().setPefil(1); // TODO ajustar
 				} else {
-					medico.getUsuario().setPefil(0);
+					medico.getUsuario().setPefil(0); // TODO ajustar
 				}
 
 				// se passar em todas as validacoes

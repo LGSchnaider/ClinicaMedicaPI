@@ -85,8 +85,8 @@ public class Cadastro extends JFrame {
 						System.out.println(layout.getLayoutComponent(BorderLayout.CENTER));
 						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 					}
-					TelaRegistrarMed med = new TelaRegistrarMed();
-					Panel panel_1 = new Panel();
+					TelaRegistrarMed med = new TelaRegistrarMed(null); // TODO incluir usuario
+ 					Panel panel_1 = new Panel();
 					contentPane.add(panel_1, BorderLayout.CENTER);
 					panel_1.setLayout(new BorderLayout());
 					panel_1.add(med, BorderLayout.CENTER);
