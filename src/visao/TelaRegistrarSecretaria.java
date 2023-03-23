@@ -48,9 +48,10 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 	/**
 	 * Launch the application.
+	 * @param cadastro 
 	 */
 
-	public TelaRegistrarSecretaria(Usuario usuarioLogado) {
+	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro) {
 		this.usuarioLogado = usuarioLogado;
 		
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -200,7 +201,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// dispose();
+				cadastro.dispose();
 				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -46,8 +46,9 @@ public class TelaRegistrarMed extends JPanel {
 
 	/**
 	 * Create the frame.
+	 * @param telaCadastro 
 	 */
-	public TelaRegistrarMed(Usuario usuarioLogado) {
+	public TelaRegistrarMed(Usuario usuarioLogado, Cadastro telaCadastro) {
 
 		this.usuarioLogado = usuarioLogado;
 
@@ -161,17 +162,23 @@ public class TelaRegistrarMed extends JPanel {
 			JOptionPane.showMessageDialog(null, "CRM inválido. Tente novamente.");
 		}
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE).addContainerGap()));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
-				gl_panel_2.createSequentialGroup().addGap(16)
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE).addComponent(cbEstado,
-								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtCRM))
-						.addContainerGap()));
+					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(16)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_4 = new JLabel("Login:");
@@ -233,7 +240,7 @@ public class TelaRegistrarMed extends JPanel {
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// dispose();
+				telaCadastro.dispose();
 				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

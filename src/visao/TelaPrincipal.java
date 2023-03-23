@@ -32,7 +32,7 @@ public class TelaPrincipal extends JFrame {
 	public TelaPrincipal(Usuario u) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1041, 542);
-		
+
 		BufferedImage bg = null;
 		;
 		try {
@@ -41,121 +41,117 @@ public class TelaPrincipal extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		TipoUsuario tipoUsuario = TipoUsuario.getTipoUsuarioPorCodigo(u.getPerfil());
-		if(tipoUsuario == TipoUsuario.ADMIN) {
-			
-		} else if(tipoUsuario == TipoUsuario.ADMIN) {
-			
-		}
-
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		TipoUsuario tipoUsuario = TipoUsuario.getTipoUsuarioPorCodigo(u.getPerfil());
+		if (tipoUsuario == TipoUsuario.ADMIN) {
+			setContentPane(contentPane);
+			contentPane.setLayout(new BorderLayout(0, 0));
 
-		JPanel panelDireita = new JPanel();
-		contentPane.add(panelDireita, BorderLayout.WEST);
-		panelDireita.setLayout(new BorderLayout(0, 0));
+			JPanel panelDireita = new JPanel();
+			contentPane.add(panelDireita, BorderLayout.WEST);
+			panelDireita.setLayout(new BorderLayout(0, 0));
 
-		JPanel Norte = new JPanel();
-		Norte.setBackground(new Color(184, 180, 7));
-		panelDireita.add(Norte, BorderLayout.NORTH);
-		Norte.setLayout(new BorderLayout(0, 0));
+			JPanel Norte = new JPanel();
+			Norte.setBackground(new Color(184, 180, 7));
+			panelDireita.add(Norte, BorderLayout.NORTH);
+			Norte.setLayout(new BorderLayout(0, 0));
 
-		JLabel TituloVisaoGeral = new JLabel("Visão Geral");
-		TituloVisaoGeral.setBackground(new Color(184, 180, 7));
-		TituloVisaoGeral.setFont(new Font("Times New Roman", Font.BOLD, 50));
-		Norte.add(TituloVisaoGeral);
+			JLabel TituloVisaoGeral = new JLabel("Visão Geral");
+			TituloVisaoGeral.setBackground(new Color(184, 180, 7));
+			TituloVisaoGeral.setFont(new Font("Times New Roman", Font.BOLD, 50));
+			Norte.add(TituloVisaoGeral);
 
-		JPanel sul = new JPanel();
-		sul.setBackground(new Color(64, 128, 128));
-		panelDireita.add(sul, BorderLayout.SOUTH);
+			JPanel sul = new JPanel();
+			sul.setBackground(new Color(64, 128, 128));
+			panelDireita.add(sul, BorderLayout.SOUTH);
 
-		JPanel lest = new JPanel();
-		lest.setBackground(new Color(64, 128, 128));
-		panelDireita.add(lest, BorderLayout.WEST);
+			JPanel lest = new JPanel();
+			lest.setBackground(new Color(64, 128, 128));
+			panelDireita.add(lest, BorderLayout.WEST);
 
-		JPanel oeste = new JPanel();
-		oeste.setBackground(new Color(64, 128, 128));
-		panelDireita.add(oeste, BorderLayout.EAST);
+			JPanel oeste = new JPanel();
+			oeste.setBackground(new Color(64, 128, 128));
+			panelDireita.add(oeste, BorderLayout.EAST);
 
-		JPanel centro = new JPanel();
-		panelDireita.add(centro, BorderLayout.CENTER);
+			JPanel centro = new JPanel();
+			panelDireita.add(centro, BorderLayout.CENTER);
 
-		visaoGeral = new JTable();
-		visaoGeral.setModel(new DefaultTableModel(new Object[][] { { "Oracio", "Jorge", "10" }, },
-				new String[] { "Paciente", "M\u00E9dico", "Hora" }));
+			visaoGeral = new JTable();
+			visaoGeral.setModel(new DefaultTableModel(new Object[][] { { "Oracio", "Jorge", "10" }, },
+					new String[] { "Paciente", "M\u00E9dico", "Hora" }));
 
-		JScrollPane scrollPane = new JScrollPane();
-		centro.add(scrollPane);
+			JScrollPane scrollPane = new JScrollPane();
+			centro.add(scrollPane);
 
-		scrollPane.add(visaoGeral);
+			scrollPane.add(visaoGeral);
 
-		JPanel panelCentro = new JPanel();
-		contentPane.add(panelCentro, BorderLayout.CENTER);
-		panelCentro.setLayout(new BorderLayout(0, 0));
+			JPanel panelCentro = new JPanel();
+			contentPane.add(panelCentro, BorderLayout.CENTER);
+			panelCentro.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(64, 128, 128));
-		panelCentro.add(panel, BorderLayout.NORTH);
+			JPanel panel = new JPanel();
+			panel.setBackground(new Color(64, 128, 128));
+			panelCentro.add(panel, BorderLayout.NORTH);
 
-		JLabel lblNewLabel = new JLabel("Painel de controle");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
-		panel.add(lblNewLabel);
+			JLabel lblNewLabel = new JLabel("Painel de controle");
+			lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
+			panel.add(lblNewLabel);
 
-		JPanel panel_1 = new PanelFundo(bg);
-		panel_1.setForeground(new Color(255, 255, 255));
-		panel_1.setBackground(new Color(64, 128, 128));
-		panelCentro.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new MigLayout("", "[71.00][][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
-		
-		JButton btnNewButton = new JButton("Logout");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		panel_1.add(btnNewButton, "cell 2 0,alignx right,aligny center");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaInicio frame = new TelaInicio();
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-			}
-		});
+			JPanel panel_1 = new PanelFundo(bg);
+			panel_1.setForeground(new Color(255, 255, 255));
+			panel_1.setBackground(new Color(64, 128, 128));
+			panelCentro.add(panel_1, BorderLayout.CENTER);
+			panel_1.setLayout(new MigLayout("", "[71.00][][17.00px,grow]",
+					"[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
 
-		JLabel lblNewLabel_1 = new JLabel("Cadastros");
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 40));
-		panel_1.add(lblNewLabel_1, "flowx,cell 2 2,alignx center,aligny center");
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		panel_1.add(lblNewLabel_3, "cell 2 1,alignx center,aligny center");
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setOpaque(false);
-		panel_2.setBackground(new Color(64, 128, 128));
-		panel_1.add(panel_2, "cell 2 3,grow");
-		
-		JButton btnNewButton_4 = new JButton("Usuário");
-		btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			JButton btnNewButton = new JButton("Logout");
+			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+			panel_1.add(btnNewButton, "cell 2 0,alignx right,aligny center");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					TelaInicio frame = new TelaInicio();
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+				}
+			});
 
-				dispose();
-				Cadastro frame = new Cadastro(u);
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-			}
-		});
-		panel_2.setLayout(new MigLayout("", "[121.00,grow][150.00px,fill][138.00px,grow][150.00][153.00px,grow]", "[33px]"));
-		panel_2.add(btnNewButton_4, "cell 1 0,alignx left,aligny top");
-			
-		JLabel lblNewLabel_7 = new JLabel("               ");
-		panel_2.add(lblNewLabel_7, "cell 2 0,alignx left,aligny center");
-			
-			
+			JLabel lblNewLabel_1 = new JLabel("Cadastros");
+			lblNewLabel_1.setForeground(new Color(255, 255, 255));
+			lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 40));
+			panel_1.add(lblNewLabel_1, "flowx,cell 2 2,alignx center,aligny center");
+
+			JLabel lblNewLabel_3 = new JLabel("");
+			panel_1.add(lblNewLabel_3, "cell 2 1,alignx center,aligny center");
+
+			JPanel panel_2 = new JPanel();
+			panel_2.setOpaque(false);
+			panel_2.setBackground(new Color(64, 128, 128));
+			panel_1.add(panel_2, "cell 2 3,grow");
+
+			JButton btnNewButton_4 = new JButton("Usuário");
+			btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnNewButton_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					dispose();
+					Cadastro frame = new Cadastro(u);
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+				}
+			});
+			panel_2.setLayout(
+					new MigLayout("", "[121.00,grow][150.00px,fill][138.00px,grow][150.00][153.00px,grow]", "[33px]"));
+			panel_2.add(btnNewButton_4, "cell 1 0,alignx left,aligny top");
+
+			JLabel lblNewLabel_7 = new JLabel("               ");
+			panel_2.add(lblNewLabel_7, "cell 2 0,alignx left,aligny center");
+
 			JButton btnNewButton_1 = new JButton("Paciente");
 			btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton_1.addActionListener(new ActionListener() {
@@ -168,6 +164,7 @@ public class TelaPrincipal extends JFrame {
 				}
 			});
 			panel_2.add(btnNewButton_1, "cell 3 0,growx,aligny top");
+
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
@@ -256,6 +253,7 @@ public class TelaPrincipal extends JFrame {
 		JButton btnNewButton_7 = new JButton("Lista de Secretaria");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//TODO COLOCAR OS CONSTRUTORES DESSA CLASSE SE USUARIO COMUM
 				dispose();
 				TelaListaSec frame = new TelaListaSec(u);
 				frame.setLocationRelativeTo(null);
@@ -265,5 +263,22 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnNewButton_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		panel_4.add(btnNewButton_7, "cell 5 0,growx,aligny center");
+		} else if (tipoUsuario == TipoUsuario.COMUM) {
+			JButton btnNewButton_4 = new JButton("Usuário");
+			btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnNewButton_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					dispose();
+					Cadastro frame = new Cadastro(u);
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+				}
+			});
+
+		}
+
+
 	}
 }
