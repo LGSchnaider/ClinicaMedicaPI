@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -27,8 +29,12 @@ public class TelaCadConsulta extends JFrame {
 	private final JButton btnCad = new JButton("Cadastrar");
 	private JTextField txtDoenca;
 	private JTextField txtValor;
+	private Usuario usuarioLogado;
 
-	public TelaCadConsulta() {
+
+	public TelaCadConsulta(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 562);
 		
@@ -58,7 +64,7 @@ public class TelaCadConsulta extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(null); // TODO incluir usuario
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

@@ -22,6 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import modelo.TipoUsuario;
+import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
@@ -43,12 +44,15 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JPanel panel_3;
 	private JPanel panel_4;
 	private JTextField txtLogin;
+	private Usuario usuarioLogado;
 
 	/**
 	 * Launch the application.
 	 */
 
-	public TelaRegistrarSecretaria() {
+	public TelaRegistrarSecretaria(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+		
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1151, 699);
 
@@ -197,7 +201,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// dispose();
-				TelaPrincipal frame = new TelaPrincipal(null); // TODO incluir usuario
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

@@ -9,6 +9,7 @@ import javax.swing.text.MaskFormatter;
 
 import controle.PacienteDAO;
 import modelo.Paciente;
+import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,12 +40,15 @@ public class TelaRegistrarPaciente extends JFrame {
 	private JTextField txtcpfP;
 	private JTextField txtTelefoneP;
 	private JTextField txtEmailP;
+	private Usuario usuarioLogado;
 
 	/**
 	 * Launch the application.
 	 */
 
-	public TelaRegistrarPaciente() {
+	public TelaRegistrarPaciente(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+		
 //		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
 //		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
 //		frame.setVisible(true);
@@ -120,7 +124,6 @@ public class TelaRegistrarPaciente extends JFrame {
 		}
 		JTextField txtcpfP = new JFormattedTextField(formatter);
 		txtcpfP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		//TODO fazer mascara
 		txtcpfP.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -208,7 +211,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(null); // TODO incluir usuario
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
