@@ -1,4 +1,4 @@
-package visao;
+package modelTabelas;
 
 import java.util.ArrayList;
 

@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controle.MedicoDAO;
+import modelTabelas.MedicoTableModel;
 import modelo.Medico;
 
 import javax.swing.JButton;
