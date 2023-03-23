@@ -64,33 +64,6 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 
-	
-	public boolean deletar(String p) {
-
-
-	public boolean deletar(Medico p) {
-		// Instacia classe Conexao
-		String a = p;
-		Conexao con = Conexao.getInstancia();
-		Connection c = con.conectar();
-
-		try {
-			String query = "DELETE FROM medico WHERE crm = "+a+"";
-			PreparedStatement stm = c.prepareStatement(query);
-
-			
-
-			stm.executeUpdate();
-			return true;
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		con.fechaConexao();
-		return false;
-
-	}
 
 	public ArrayList<Medico> listaMedico() {
 
