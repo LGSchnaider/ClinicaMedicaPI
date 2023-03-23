@@ -22,7 +22,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
-			stm.setInt(3, p.getPefil());
+			stm.setInt(3, p.getPerfil());
 			
 			System.out.println(stm);
 
@@ -61,7 +61,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
-			stm.setInt(3, p.getPefil());
+			stm.setInt(3, p.getPerfil());
 
 			stm.executeUpdate();
 			return true;

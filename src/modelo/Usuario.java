@@ -31,7 +31,7 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public int getPefil() {
+	public int getPerfil() {
 		return pefil;
 	}
 
