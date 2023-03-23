@@ -126,7 +126,7 @@ public class TelaListaPac extends JFrame {
 					pDAO.deletar(pc);
 					model = new PacienteTableModel(pDAO.listaPaciente());
 					table.setModel(model);
-					JOptionPane.showMessageDialog(null, "Usuario excluido com sucesso");
+					JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
 				}
 
 				/*

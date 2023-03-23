@@ -127,7 +127,7 @@ public class TelaListaMed extends JFrame {
 					mDAO.deletar(a);
 					model = new MedicoTableModel(mDAO.listaMedico());
 					table.setModel(model);
-					JOptionPane.showMessageDialog(null, "Usuario excluido com sucesso");
+					JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
 				}
 
 				/*
