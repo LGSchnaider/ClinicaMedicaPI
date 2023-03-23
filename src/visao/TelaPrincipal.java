@@ -254,6 +254,15 @@ public class TelaPrincipal extends JFrame {
 		panel_4.add(btnNewButton_6, "cell 3 0,growx,aligny center");
 		
 		JButton btnNewButton_7 = new JButton("Lista de Secretaria");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaListaSec frame = new TelaListaSec(u);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		btnNewButton_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		panel_4.add(btnNewButton_7, "cell 5 0,growx,aligny center");
 	}
