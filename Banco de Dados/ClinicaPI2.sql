@@ -84,10 +84,8 @@ insert into paciente (nome, cpf, telefone, sexo, email) values ('Rovberto Carlos
  insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dra.Ana Beatrir Ribeiro', 09505508805, 2647, 1);
  insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Roberto Ferreira', 05506607802, 3163, 1);
 
-insert into secretaria (nome, cpf, telefone, email, usuario_idusurio) values ('Rovberta Carlas',12345678921, 89893213,'rovberta123@gmail.com',0);
-insert into secretaria (nome, cpf, telefone, email, usuario_idusurio) values ('Maria Super',12345678925, 89893214,'naoprecessenintedo@gmail.com',0);
-insert into secretaria (nome, cpf, telefone, email, usuario_idusurio) values ('sonica super',12345678943, 89893223,'supersonica3000@gmail.com',0);
+insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Rovberta Carlas',12345678921, 89893213,'rovberta123@gmail.com',1);
+insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Maria Super',12345678925, 89893214,'naoprecessenintedo@gmail.com',1);
+insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('sonica super',12345678943, 89893223,'supersonica3000@gmail.com',1);
 
-
-select * from secretaria;
 
