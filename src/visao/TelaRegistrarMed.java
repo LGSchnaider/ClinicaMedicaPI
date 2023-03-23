@@ -49,7 +49,6 @@ public class TelaRegistrarMed extends JPanel {
 		// setBounds(100, 100, 1029, 550);
 		
 		BufferedImage bg = null;
-		;
 		try {
 			bg = ImageIO.read(new File("src/imagens/TelacadMédico.png"));
 

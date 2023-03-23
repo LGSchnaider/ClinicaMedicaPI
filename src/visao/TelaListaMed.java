@@ -21,10 +21,15 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class TelaListaMed extends JFrame {
@@ -33,29 +38,22 @@ public class TelaListaMed extends JFrame {
 	private JTable table;
 
 	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaListaMed frame = new TelaListaMed();
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	
-	/**
-	 * Launch the application.
-	 */
+
 	public TelaListaMed() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);
-		contentPane = new JPanel();
+		
+		BufferedImage bg = null;
+		try {
+			bg = ImageIO.read(new File("src/imagens/ListagemMed.png"));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		contentPane = new PanelFundo(bg);
+	
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
