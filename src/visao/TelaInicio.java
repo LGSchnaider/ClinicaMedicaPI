@@ -167,6 +167,7 @@ public class TelaInicio extends JFrame {
 		txtSenha.setColumns(10);
 
 		JButton btnLogOff = new JButton("Sair");
+		btnLogOff.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		btnLogOff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -175,10 +176,12 @@ public class TelaInicio extends JFrame {
 		});
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBackground(new Color(36, 49, 55));
 		center.add(panel, "cell 3 7,alignx center,aligny center");
 
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		center.add(btnLogin, "cell 0 0");
 		btnLogin.addActionListener(new ActionListener() {
@@ -207,6 +210,7 @@ public class TelaInicio extends JFrame {
 		panel.setLayout(gl_panel);
 
 		JPanel OFF = new JPanel();
+		OFF.setOpaque(false);
 		OFF.setBackground(new Color(36, 49, 55));
 		center.add(OFF, "flowx,cell 3 8,alignx center");
 

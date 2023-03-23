@@ -115,6 +115,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		// TODO completar combobox de estados
 		JComboBox<String> cbEstado = new JComboBox<>();
+		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbEstado.addItem("AC");
 		cbEstado.addItem("AL");
 		cbEstado.addItem("AP");
@@ -235,6 +236,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(panel_1, "cell 0 10,grow");
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// dispose();
@@ -261,6 +263,7 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 
 		JButton btnCad = new JButton("Cadastrar novo médico");
+		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

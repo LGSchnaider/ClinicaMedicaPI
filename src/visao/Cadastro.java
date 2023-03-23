@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.Font;
 
 public class Cadastro extends JFrame {
 
@@ -56,6 +57,7 @@ public class Cadastro extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 
 		JRadioButton rbtnSecretaria = new JRadioButton("Secretária");
+		rbtnSecretaria.setFont(new Font("Times New Roman", Font.BOLD, 15));
 
 		rbtnSecretaria.setSelected(true);
 		setTema(contentPane);
@@ -73,6 +75,7 @@ public class Cadastro extends JFrame {
 		panel.add(rbtnSecretaria);
 
 		JRadioButton rbtnMedico = new JRadioButton("Médico");
+		rbtnMedico.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		rbtnMedico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 

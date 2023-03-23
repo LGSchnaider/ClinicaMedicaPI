@@ -41,7 +41,7 @@ public class TelaPrincipal extends JFrame {
 
 	public TelaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 836, 542);
+		setBounds(100, 100, 1041, 542);
 		
 		BufferedImage bg = null;
 		;
@@ -70,7 +70,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel TituloVisaoGeral = new JLabel("Visão Geral");
 		TituloVisaoGeral.setBackground(new Color(184, 180, 7));
-		TituloVisaoGeral.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		TituloVisaoGeral.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		Norte.add(TituloVisaoGeral);
 		
 		JPanel sul = new JPanel();
@@ -112,17 +112,18 @@ public class TelaPrincipal extends JFrame {
 		panelCentro.add(panel, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("Painel de controle");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new PanelFundo(bg);
 		panel_1.setForeground(new Color(255, 255, 255));
 		panel_1.setBackground(new Color(64, 128, 128));
 		panelCentro.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new MigLayout("", "[71.00][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
+		panel_1.setLayout(new MigLayout("", "[71.00][][17.00px,grow]", "[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
 		
 		JButton btnNewButton = new JButton("Logout");
-		panel_1.add(btnNewButton, "cell 1 0,alignx right");
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		panel_1.add(btnNewButton, "cell 2 0,alignx right,aligny center");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -135,31 +136,19 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastros");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_1, "flowx,cell 1 2,alignx center,aligny center");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		panel_1.add(lblNewLabel_1, "flowx,cell 2 2,alignx center,aligny center");
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		panel_1.add(lblNewLabel_3, "cell 1 1,alignx center,aligny center");
+		panel_1.add(lblNewLabel_3, "cell 2 1,alignx center,aligny center");
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
 		panel_2.setBackground(new Color(64, 128, 128));
-		panel_1.add(panel_2, "cell 1 3,grow");
-		
-		
-		JButton btnNewButton_1 = new JButton("Paciente");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-			}
-		});
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_1.add(panel_2, "cell 2 3,grow");
 		
 		JButton btnNewButton_4 = new JButton("Usuário");
+		btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -170,28 +159,42 @@ public class TelaPrincipal extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		panel_2.add(btnNewButton_4);
+		panel_2.setLayout(new MigLayout("", "[121.00,grow][150.00px,fill][138.00px,grow][150.00][153.00px,grow]", "[33px]"));
+		panel_2.add(btnNewButton_4, "cell 1 0,alignx left,aligny top");
 			
 		JLabel lblNewLabel_7 = new JLabel("               ");
-		panel_2.add(lblNewLabel_7);
-			panel_2.add(btnNewButton_1);
+		panel_2.add(lblNewLabel_7, "cell 2 0,alignx left,aligny center");
+			
+			
+			JButton btnNewButton_1 = new JButton("Paciente");
+			btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+					TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
+					frame.setLocationRelativeTo(null);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					frame.setVisible(true);
+				}
+			});
+			panel_2.add(btnNewButton_1, "cell 3 0,growx,aligny top");
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_2, "cell 1 4,alignx center,aligny center");
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		panel_1.add(lblNewLabel_2, "cell 2 4,alignx center,aligny center");
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		panel_1.add(lblNewLabel_4, "cell 1 1,alignx center,aligny center");
+		panel_1.add(lblNewLabel_4, "cell 2 1,alignx center,aligny center");
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 		panel_3.setBackground(new Color(64, 128, 128));
-		panel_1.add(panel_3, "cell 1 5,grow");
-		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_1.add(panel_3, "cell 2 5,grow");
 		
 		JButton btnNewButton_2 = new JButton("Registrar consultas");
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -203,33 +206,36 @@ public class TelaPrincipal extends JFrame {
 				
 			}
 		});
-		panel_3.add(btnNewButton_2);
+		panel_3.setLayout(new MigLayout("", "[126.00,grow][150px,fill][97.00px,grow][150px,fill][138.00px,grow]", "[33px]"));
+		panel_3.add(btnNewButton_2, "cell 1 0,growx,aligny center");
 		
 		JLabel lblNewLabel_8 = new JLabel("            ");
-		panel_3.add(lblNewLabel_8);
+		panel_3.add(lblNewLabel_8, "cell 2 0,alignx left,aligny center");
 		
 		JButton btnNewButton_5 = new JButton("Listas de consultas");
+		btnNewButton_5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		panel_3.add(btnNewButton_5);
+		panel_3.add(btnNewButton_5, "cell 3 0,growx,aligny top");
 		
 		JLabel lblNewLabel_5 = new JLabel("Listas");
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
-		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		panel_1.add(lblNewLabel_5, "cell 1 6,alignx center,aligny center");
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		panel_1.add(lblNewLabel_5, "cell 2 6,alignx center,aligny center");
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		panel_1.add(lblNewLabel_6, "cell 1 1,alignx center,aligny center");
+		panel_1.add(lblNewLabel_6, "cell 2 1,alignx center,aligny center");
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
 		panel_4.setBackground(new Color(64, 128, 128));
-		panel_1.add(panel_4, "cell 1 7,grow");
-		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_1.add(panel_4, "cell 2 7,grow");
+		panel_4.setLayout(new MigLayout("", "[28.00,grow][150.00,fill][150px,grow][150.00,fill][150.00,grow][150.00px,fill][30.00px,grow]", "[33px,grow]"));
 		
 		JButton btnNewButton_3 = new JButton("Listas de Médicos");
+		btnNewButton_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -241,9 +247,10 @@ public class TelaPrincipal extends JFrame {
 				
 			}
 		});
-		panel_4.add(btnNewButton_3);
+		panel_4.add(btnNewButton_3, "cell 1 0,growx,aligny center");
 		
 		JButton btnNewButton_6 = new JButton("Listas de Pacientes");
+		btnNewButton_6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -254,9 +261,10 @@ public class TelaPrincipal extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		panel_4.add(btnNewButton_6);
+		panel_4.add(btnNewButton_6, "cell 3 0,growx,aligny center");
 		
 		JButton btnNewButton_7 = new JButton("Lista de Secretaria");
-		panel_4.add(btnNewButton_7);
+		btnNewButton_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		panel_4.add(btnNewButton_7, "cell 5 0,growx,aligny center");
 	}
 }

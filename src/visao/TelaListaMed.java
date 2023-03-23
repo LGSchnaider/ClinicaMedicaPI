@@ -62,6 +62,7 @@ public class TelaListaMed extends JFrame {
 				new MigLayout("", "[29.00][40.00][grow][][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		contentPane.add(panel, "cell 2 0,grow");
 
 		JLabel lblNewLabel = new JLabel("Lista de Medicos");
@@ -73,6 +74,7 @@ public class TelaListaMed extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
 		panel_1.add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
@@ -82,9 +84,11 @@ public class TelaListaMed extends JFrame {
 		scrollPane.setViewportView(table);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		contentPane.add(panel_3, "flowy,cell 1 2");
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -103,6 +107,7 @@ public class TelaListaMed extends JFrame {
 		panel_3.setLayout(gl_panel_3);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		contentPane.add(panel_2, "cell 2 2,alignx center,aligny center");
 
 		JButton btnDeletar = new JButton("Deletar");
@@ -130,7 +135,7 @@ public class TelaListaMed extends JFrame {
 
 			}
 		});
-		btnDeletar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnDeletar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup().addGap(287)
@@ -143,9 +148,11 @@ public class TelaListaMed extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		contentPane.add(panel_4, "flowy,cell 3 2");
 
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

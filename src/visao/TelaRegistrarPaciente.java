@@ -83,7 +83,7 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JLabel lblNewLabel_4 = new JLabel("Nome:");
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
-		lblNewLabel_4.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel_4, "cell 0 1,alignx trailing");
 
 		JPanel panel_1 = new JPanel();
@@ -92,6 +92,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_1, "cell 1 1,grow");
 
 		txtNomeP = new JTextField();
+		txtNomeP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtNomeP.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
@@ -103,7 +104,7 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("CPF:");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel_3, "cell 0 2,alignx trailing");
 
 		JPanel panel_2 = new JPanel();
@@ -119,6 +120,7 @@ public class TelaRegistrarPaciente extends JFrame {
 			e2.printStackTrace();
 		}
 		JTextField txtcpfP = new JFormattedTextField(formatter);
+		txtcpfP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		//TODO fazer mascara
 		txtcpfP.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -131,7 +133,7 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel_2, "cell 0 3,alignx trailing");
 
 		JPanel panel_3 = new JPanel();
@@ -146,6 +148,7 @@ public class TelaRegistrarPaciente extends JFrame {
 			e2.printStackTrace();
 		}
 		JTextField txtTelefoneP = new JFormattedTextField(formatter);
+		txtTelefoneP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtTelefoneP.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
@@ -157,7 +160,7 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Sexo:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel_1, "cell 0 4,alignx trailing");
 
 		JPanel panel_4 = new JPanel();
@@ -166,6 +169,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_4, "flowx,cell 1 4,grow");
 
 		JComboBox <String> cbSexo = new JComboBox<>();
+		cbSexo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbSexo.addItem("Masculino");
 		cbSexo.addItem("Feminino");
 		cbSexo.addItem("Não Definir");
@@ -181,7 +185,7 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("E-mail:");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel, "cell 0 5,alignx trailing");
 
 		JPanel panel_5 = new JPanel();
@@ -190,6 +194,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel.add(panel_5, "flowx,cell 1 5,grow");
 
 		txtEmailP = new JTextField();
+		txtEmailP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtEmailP.setColumns(10);
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
@@ -200,6 +205,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_5.setLayout(gl_panel_5);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -212,6 +218,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		contentPane.add(btnVoltar, "cell 1 2,growx,aligny center");
 
 		JButton btnInserir = new JButton("Cadastrar");
+		btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

@@ -51,10 +51,11 @@ public class TelaCadConsulta extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Cadastrar Consulta");
 		lblNewLabel.setForeground(new Color(64, 128, 128));
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
 		
 		JButton btnVolta = new JButton("Voltar");
+		btnVolta.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -66,6 +67,7 @@ public class TelaCadConsulta extends JFrame {
 		});
 		
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
+		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_6, "cell 0 2");
 		
@@ -73,6 +75,7 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(chPaci, "cell 1 2,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Data:");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_1, "cell 0 3");
 		
@@ -91,6 +94,7 @@ public class TelaCadConsulta extends JFrame {
 		panel.add(cbAno, "cell 2 0,growx");
 		
 		JLabel lblNewLabel_2 = new JLabel("Hora:");
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_2, "cell 0 4");
 		
@@ -111,10 +115,12 @@ public class TelaCadConsulta extends JFrame {
 		panel_3.setLayout(new MigLayout("", "[46px,grow]", "[grow][14px,grow]"));
 		
 		JLabel lblNewLabel_3 = new JLabel("Doença:");
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
 		
 		JLabel lblNewLabel_4 = new JLabel("Valor:");
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
 		
@@ -132,12 +138,14 @@ public class TelaCadConsulta extends JFrame {
 		txtValor.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Descrição:");
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
 		
 		TextArea txaDesc = new TextArea();
 		contentPane.add(txaDesc, "cell 1 6,growx,aligny center");
 		contentPane.add(btnVolta, "cell 0 8,alignx center,aligny center");
+		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

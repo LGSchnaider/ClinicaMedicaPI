@@ -71,12 +71,12 @@ public class TelaRegistrarSecretaria extends JPanel {
 		
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
-		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 60));
+		lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblTitulo, "cell 2 0,alignx center");
 		
 		lblnome = new JLabel("Nome:");
 		lblnome.setForeground(new Color(255, 255, 255));
-		lblnome.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblnome.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblnome, "cell 1 1,alignx trailing");
 		
 		panel_4 = new JPanel();
@@ -84,6 +84,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_4, "cell 2 1,grow");
 		
 		txtNome = new JTextField();
+		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtNome.setColumns(10);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
@@ -103,7 +104,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		
 		lblUser = new JLabel("Login:");
 		lblUser.setForeground(new Color(255, 255, 255));
-		lblUser.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblUser.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblUser, "flowx,cell 1 3,alignx trailing");
 		
 		panel_3 = new JPanel();
@@ -111,6 +112,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_3, "cell 2 3,grow");
 		
 		txtLogin = new JTextField();
+		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtLogin.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
@@ -130,7 +132,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		
 		lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_2, "cell 1 5,alignx trailing");
 		
 		panel_2 = new JPanel();
@@ -138,6 +140,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_2, "cell 2 5,grow");
 		
 		pswSenha = new JPasswordField();
+		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -156,7 +159,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		
 		lblNewLabel_1 = new JLabel("Confirme Senha:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_1, "cell 1 7,alignx trailing");
 		
 		panel_1 = new JPanel();
@@ -164,6 +167,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_1, "cell 2 7,grow");
 		
 		passwordField_1 = new JPasswordField();
+		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.TRAILING)
@@ -182,7 +186,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Função:");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel, "cell 1 8,alignx right,aligny center");
 		
 		JPanel panel_5 = new JPanel();
@@ -190,6 +194,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_5, "cell 2 8,growx,aligny center");
 		
 		JComboBox <String> cbFuncao = new JComboBox();
+		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbFuncao.addItem("Comun");
 		cbFuncao.addItem("Administradora");
 		
@@ -215,6 +220,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel, "cell 2 9,grow");
 		
 		btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//dispose();
@@ -226,6 +232,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		});
 		
 		btnregistrar = new JButton("Registrar");
+		btnregistrar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -235,18 +242,18 @@ public class TelaRegistrarSecretaria extends JPanel {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(26)
+					.addGap(25)
 					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-					.addComponent(btnregistrar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addGap(20))
+					.addPreferredGap(ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+					.addComponent(btnregistrar)
+					.addGap(27))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(27)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnregistrar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
