@@ -29,6 +29,7 @@ import modelo.Medico;
 import modelo.Secretaria;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
+import java.awt.Color;
 
 public class TelaListaSec extends JFrame {
 
@@ -64,7 +65,8 @@ public class TelaListaSec extends JFrame {
 		panel.setOpaque(false);
 		contentPane.add(panel, "cell 2 0,grow");
 
-		JLabel lblNewLabel = new JLabel("Lista de Medicos");
+		JLabel lblNewLabel = new JLabel("Lista de Secretarios");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
@@ -151,6 +153,7 @@ public class TelaListaSec extends JFrame {
 		contentPane.add(panel_4, "flowy,cell 3 2");
 
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setOpaque(false);
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
