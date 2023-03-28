@@ -152,7 +152,7 @@ public class TelaPrincipal extends JFrame {
 		panel_2.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_2, "cell 2 3,grow");
 
-		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM || tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
+		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
 
 			JButton btnNewButton_4 = new JButton("Usuário");
 			btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -243,7 +243,7 @@ public class TelaPrincipal extends JFrame {
 				"[28.00,grow][150.00,fill][150px,grow][150.00,fill][150.00,grow][150.00px,fill][30.00px,grow]",
 				"[33px,grow]"));
 
-		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM || tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
+		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
 
 			JButton btnNewButton_3 = new JButton("Listas de Médicos");
 			btnNewButton_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -275,7 +275,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		panel_4.add(btnNewButton_6, "cell 3 0,growx,aligny center");
 
-		if (tipoUsuarioLogado != TipoUsuario.MED_COMUM || tipoUsuarioLogado != TipoUsuario.SEC_COMUM) {
+		if (tipoUsuarioLogado != TipoUsuario.MED_COMUM && tipoUsuarioLogado != TipoUsuario.SEC_COMUM) {
 
 			JButton btnListaSec = new JButton("Lista de Secretaria");
 			btnListaSec.addActionListener(new ActionListener() {
