@@ -226,7 +226,8 @@ public class TelaRegistrarMed extends JPanel {
 			comboBox.addItem(tipo);
 		}
 		comboBox.setEditable(false);
-		comboBox.setSelectedItem(TipoUsuario.COMUM);
+		comboBox.setSelectedItem(TipoUsuario.MED_ADMIN);
+		comboBox.setSelectedItem(TipoUsuario.MED_COMUM);
 
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
@@ -351,9 +352,9 @@ public class TelaRegistrarMed extends JPanel {
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
 				}
 				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
-				if (perfilU.equals(TipoUsuario.COMUM)) {
+				if (perfilU.equals(TipoUsuario.MED_COMUM)) {
 					medico.getUsuario().setPefil(1); // TODO ajustar
-				} else {
+				} else if(perfilU.equals(TipoUsuario.MED_ADMIN)){
 					medico.getUsuario().setPefil(0); // TODO ajustar
 				}
 
