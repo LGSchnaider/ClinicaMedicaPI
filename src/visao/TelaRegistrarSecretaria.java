@@ -45,6 +45,9 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JPanel panel_4;
 	private JTextField txtLogin;
 	private Usuario usuarioLogado;
+	private JLabel lblCpf;
+	private JPanel panel_6;
+	private JTextField txtCPF;
 
 	/**
 	 * Launch the application.
@@ -72,8 +75,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00][110.00,grow][51.00,grow]",
-				"[184.00,grow][73.00][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][73.00][][grow][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -102,15 +104,41 @@ public class TelaRegistrarSecretaria extends JPanel {
 								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(15, Short.MAX_VALUE)));
 		panel_4.setLayout(gl_panel_4);
+		
+		lblCpf = new JLabel("CPF:");
+		lblCpf.setForeground(Color.WHITE);
+		lblCpf.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblCpf, "cell 1 3");
+		
+		panel_6 = new JPanel();
+		contentPane.add(panel_6, "cell 2 3,grow");
+		
+		txtCPF = new JTextField();
+		txtCPF.setColumns(10);
+		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
+					.addComponent(txtCPF, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_6.setLayout(gl_panel_6);
 
 		lblUser = new JLabel("Login:");
 		lblUser.setForeground(new Color(255, 255, 255));
 		lblUser.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblUser, "flowx,cell 1 3,alignx trailing");
+		contentPane.add(lblUser, "flowx,cell 1 5,alignx trailing");
 
 		panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "cell 2 3,grow");
+		contentPane.add(panel_3, "cell 2 5,grow");
 
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -129,11 +157,11 @@ public class TelaRegistrarSecretaria extends JPanel {
 		lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_2, "cell 1 5,alignx trailing");
+		contentPane.add(lblNewLabel_2, "cell 1 7,alignx trailing");
 
 		panel_2 = new JPanel();
 		panel_2.setOpaque(false);
-		contentPane.add(panel_2, "cell 2 5,grow");
+		contentPane.add(panel_2, "cell 2 7,grow");
 
 		pswSenha = new JPasswordField();
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -150,11 +178,11 @@ public class TelaRegistrarSecretaria extends JPanel {
 		lblNewLabel_1 = new JLabel("Confirme Senha:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_1, "cell 1 7,alignx trailing");
+		contentPane.add(lblNewLabel_1, "cell 1 9,alignx trailing");
 
 		panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		contentPane.add(panel_1, "cell 2 7,grow");
+		contentPane.add(panel_1, "cell 2 9,grow");
 
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -172,11 +200,11 @@ public class TelaRegistrarSecretaria extends JPanel {
 		JLabel lblNewLabel = new JLabel("Função:");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel, "cell 1 8,alignx right,aligny center");
+		contentPane.add(lblNewLabel, "cell 1 10,alignx right,aligny center");
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setOpaque(false);
-		contentPane.add(panel_5, "cell 2 8,growx,aligny center");
+		contentPane.add(panel_5, "cell 2 10,growx,aligny center");
 
 		JComboBox<TipoUsuario> cbFuncao = new JComboBox<>();
 		for (TipoUsuario tipo : TipoUsuario.values()) {
@@ -195,7 +223,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel = new JPanel();
 		panel.setOpaque(false);
-		contentPane.add(panel, "cell 2 9,grow");
+		contentPane.add(panel, "cell 2 11,grow");
 
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -212,6 +240,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnregistrar = new JButton("Registrar");
 		btnregistrar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnregistrar.addActionListener(new ActionListener() {
+			//TODO Adicionar Comando de Insert
 			public void actionPerformed(ActionEvent e) {
 
 			}

@@ -30,6 +30,7 @@ public class TelaPrincipal extends JFrame {
 	private JTable visaoGeral;
 
 	public TelaPrincipal(Usuario u) {
+		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1041, 542);
 
@@ -203,6 +204,11 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaListaCon frame = new TelaListaCon(u);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
 			}
 		});
 		panel_3.add(btnNewButton_5, "cell 3 0,growx,aligny top");

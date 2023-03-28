@@ -64,7 +64,7 @@ public class TelaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicio() {
-		setTitle("Clínica Médica Puro Sangue");
+		setTitle("Clínica Médica Início");
 		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

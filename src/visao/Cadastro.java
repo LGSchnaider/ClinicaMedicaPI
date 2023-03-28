@@ -49,6 +49,7 @@ public class Cadastro extends JFrame {
 	 * Create the frame.
 	 */
 	public Cadastro(Usuario usuarioLogado) {
+		setTitle("Cadastro de Usuário");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

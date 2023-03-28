@@ -40,6 +40,7 @@ public class TelaListaSec extends JFrame {
 	
 
 	public TelaListaSec(Usuario usuarioLogado) {
+		setTitle("Lista de Secretárias");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

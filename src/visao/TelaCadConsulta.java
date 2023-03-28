@@ -33,6 +33,7 @@ public class TelaCadConsulta extends JFrame {
 
 
 	public TelaCadConsulta(Usuario usuarioLogado) {
+		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,10 +75,11 @@ public class TelaCadConsulta extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
-		contentPane.add(lblNewLabel_6, "cell 0 2");
+		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing");
 		
-		Choice chPaci = new Choice();
-		contentPane.add(chPaci, "cell 1 2,growx");
+		JComboBox comboBox = new JComboBox();
+		
+		contentPane.add(comboBox, "cell 1 2,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Data:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));

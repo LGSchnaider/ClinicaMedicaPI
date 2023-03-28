@@ -40,6 +40,7 @@ public class TelaListaPac extends JFrame {
 	
 
 	public TelaListaPac(Usuario usuarioLogado) {
+		setTitle("Lista de Pacientes");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

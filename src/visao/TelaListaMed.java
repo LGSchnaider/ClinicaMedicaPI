@@ -43,6 +43,7 @@ public class TelaListaMed extends JFrame {
 	
 
 	public TelaListaMed(Usuario usuarioLogado) {
+		setTitle("Lista de Médicos");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
