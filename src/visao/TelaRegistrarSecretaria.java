@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Secretaria;
 import modelo.TipoUsuario;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
@@ -52,9 +53,10 @@ public class TelaRegistrarSecretaria extends JPanel {
 	/**
 	 * Launch the application.
 	 * @param cadastro 
+	 * @param s 
 	 */
 
-	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro) {
+	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro, Secretaria s) {
 		this.usuarioLogado = usuarioLogado;
 		
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -237,12 +239,26 @@ public class TelaRegistrarSecretaria extends JPanel {
 			}
 		});
 
-		btnregistrar = new JButton("Registrar");
+		
+		btnregistrar = new JButton();
+		if(s == null) {
+			btnregistrar.setText("Registrar");
+		} else {
+			btnregistrar.setText("Editar");
+			
+		}
+
 		btnregistrar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnregistrar.addActionListener(new ActionListener() {
 			//TODO Adicionar Comando de Insert
 			public void actionPerformed(ActionEvent e) {
-
+				if(s == null) {
+					// acao de salvar no banco novo registro - INSERT
+				} else {
+					// acao de alterar no banco registro - UPDATE
+					
+				}
+				
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -262,5 +278,13 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		setLayout(new BorderLayout());
 		add(contentPane, BorderLayout.CENTER);
+
+	
+		if(s != null) {
+			txtNome.setText(s.getNome());
+			txtCPF.setText(s.getCpf());
+			txtLogin.setText(s.getEmail());
+		}
+
 	}
 }

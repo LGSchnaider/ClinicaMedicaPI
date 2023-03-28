@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import controle.MedicoDAO;
 import modelTabelas.MedicoTableModel;
 import modelo.Medico;
+import modelo.Secretaria;
 import modelo.Usuario;
 
 import javax.swing.JButton;
@@ -25,6 +26,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.imageio.ImageIO;
+import javax.swing.Action;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
@@ -47,7 +49,7 @@ public class TelaListaMed extends JFrame {
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 892, 600);
+		setBounds(100, 100, 1046, 600);
 		
 		BufferedImage bg = null;
 		try {
@@ -89,7 +91,7 @@ public class TelaListaMed extends JFrame {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "flowy,cell 1 2");
+		contentPane.add(panel_3, "flowy,cell 1 2,alignx center,aligny center");
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -103,11 +105,19 @@ public class TelaListaMed extends JFrame {
 			}
 		});
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup().addGap(5).addComponent(btnVoltar)));
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnVoltar)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		gl_panel_3.setVerticalGroup(
-				gl_panel_3.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_3.createSequentialGroup().addGap(5)
-						.addComponent(btnVoltar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addComponent(btnVoltar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(5))
+		);
 		panel_3.setLayout(gl_panel_3);
 
 		JPanel panel_2 = new JPanel();
@@ -131,42 +141,58 @@ public class TelaListaMed extends JFrame {
 					JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
 				}
 
-				/*
-				
-				
-				
-				*/
 
 			}
 		});
 		btnDeletar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(287)
-						.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGap(309)));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				gl_panel_2.createSequentialGroup().addContainerGap()
-						.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addContainerGap()));
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(287)
+					.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(309))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 		panel_2.setLayout(gl_panel_2);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "flowy,cell 3 2");
-
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		btnEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		contentPane.add(panel_4, "flowy,cell 3 2,alignx center,aligny center");
+		
+			
+				JButton btnEditar = new JButton("Editar");
+				
+				btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+				btnEditar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				Secretaria s = null;
+				TelaEditarSecretaria tela = new TelaEditarSecretaria(usuarioLogado, s);
+				tela.setVisible(true);
+					
+					}
+				});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup().addGap(5).addComponent(btnEditar)));
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnEditar)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		gl_panel_4.setVerticalGroup(
-				gl_panel_4.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_4.createSequentialGroup().addGap(5)
-						.addComponent(btnEditar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnEditar)
+					.addContainerGap())
+		);
 		panel_4.setLayout(gl_panel_4);
 	}
 }
