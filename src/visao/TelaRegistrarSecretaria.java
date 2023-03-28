@@ -111,6 +111,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(lblCpf, "cell 1 3");
 		
 		panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		contentPane.add(panel_6, "cell 2 3,grow");
 		
 		txtCPF = new JTextField();
