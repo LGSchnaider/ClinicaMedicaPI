@@ -224,7 +224,7 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaListaCon frame = new TelaListaCon(u);
+				TelaListaCon frame = new TelaListaCon(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
