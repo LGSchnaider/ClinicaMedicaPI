@@ -60,7 +60,7 @@ public class TelaListaSec extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00][grow][][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+				new MigLayout("", "[29.00][40.00,grow][][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -72,6 +72,7 @@ public class TelaListaSec extends JFrame {
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 2 1,grow");
 		panel_1.setLayout(new BorderLayout(0, 0));
 
@@ -80,6 +81,7 @@ public class TelaListaSec extends JFrame {
 		panel_1.add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
+		table.setOpaque(false);
 		SecretariaDAO mDAO = new SecretariaDAO();
 		SecretariaTableModel model = new SecretariaTableModel(mDAO.listaSecretaria());
 		table.setModel(model);

@@ -55,6 +55,7 @@ public class TelaListaPac extends JFrame {
 		}
 		
 		contentPane = new PanelFundo(bg);
+		contentPane.setOpaque(false);
 	
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -91,6 +92,7 @@ public class TelaListaPac extends JFrame {
 		contentPane.add(panel_3, "flowy,cell 1 2");
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setOpaque(false);
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +116,7 @@ public class TelaListaPac extends JFrame {
 		contentPane.add(panel_2, "cell 2 2,alignx center,aligny center");
 
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setOpaque(false);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -155,6 +158,7 @@ public class TelaListaPac extends JFrame {
 		contentPane.add(panel_4, "flowy,cell 3 2");
 
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setOpaque(false);
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
