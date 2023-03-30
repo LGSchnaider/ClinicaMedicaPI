@@ -1,28 +1,10 @@
 package modelo;
 
-public class Paciente {
+public class Paciente extends Pessoa {
 
-	private String nome;
-	private long cpf;
 	private long telefone;
 	private String sexo;
 	private String email;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public long getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
-	}
 
 	public long getTelefone() {
 		return telefone;

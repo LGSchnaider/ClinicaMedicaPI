@@ -4,14 +4,16 @@ package modelo;
  * Constantes
  * 
  * 
- * Este enum nao eh uma classe.
- * Nao eh instanciavel.
+ * Este enum nao eh uma classe. Nao eh instanciavel.
  * 
  */
 public enum TipoUsuario {
 
-	ADMIN(0, "Administrador"), COMUM(1, "Comum");
-	
+	MED_ADMIN(0, "Médico Administrativo"),
+	MED_COMUM(1, "Médico Comum"),
+	SEC_ADMIN(2, "Secretária Administrativo"),
+	SEC_COMUM(3, "Secretária Comum");
+
 	TipoUsuario(int codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
