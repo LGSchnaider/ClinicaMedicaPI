@@ -353,6 +353,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 					udao.atualizar(secretaria.getUsuario());
 					sdao.atualizar(secretaria);
 					
+					
 				}
 				
 				
@@ -382,6 +383,17 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 	
 		
-
+preencheDados(s);
 	}
+
+	private void preencheDados(Secretaria s) {
+		if(s != null) {
+			txtNome.setText(s.getNome());
+			txtCPF.setText(String.valueOf(s.getCpf()));
+			txtLogin.setText(s.getEmail());
+			
+		}
+		
+	}
+	
 }

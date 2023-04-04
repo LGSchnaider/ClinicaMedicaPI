@@ -169,7 +169,10 @@ public class TelaListaSec extends JFrame {
 				SecretariaTableModel model  = (SecretariaTableModel) table.getModel();
 				Secretaria s = model.getSecretaria(posicao);
 				TelaRegistrarSecretaria tela = new TelaRegistrarSecretaria(usuarioLogado, null, s);
-				tela.setVisible(true);
+				
+				JFrame janela = new JFrame();
+				janela.add(tela);
+				janela.setVisible(true);
 				
 				
 				
