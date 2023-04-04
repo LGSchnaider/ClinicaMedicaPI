@@ -2,8 +2,18 @@ package modelo;
 
 public abstract class Pessoa {
 
-	private Long cpf;
-	private String nome;
+	protected int id;
+	protected Long cpf;
+	protected String nome;
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Long getCpf() {
 		return cpf;

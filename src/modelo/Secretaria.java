@@ -19,12 +19,7 @@ public class Secretaria extends Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public long getCpf() {
-		return cpf;
-	}
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
-	}
+	
 	public long getTelefone() {
 		return telefone;
 	}

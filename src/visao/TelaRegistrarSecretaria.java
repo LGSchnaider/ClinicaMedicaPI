@@ -23,6 +23,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import controle.MedicoDAO;
+import controle.SecretariaDAO;
 import controle.UsuarioDAO;
 import modelo.Medico;
 import modelo.Secretaria;
@@ -261,12 +262,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnregistrar.addActionListener(new ActionListener() {
 			//TODO Adicionar Comando de Insert
 			public void actionPerformed(ActionEvent e) {
-				if(s == null) {
-					// acao de salvar no banco novo registro - INSERT
-				} else {
-					// acao de alterar no banco registro - UPDATE
-					
-				}
+				
 				boolean validarCampoTexto = true;
 
 				// 1o passo: pegar o texto dos campos de texto
@@ -335,19 +331,34 @@ public class TelaRegistrarSecretaria extends JPanel {
 					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
 				}
 				TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
-				if (perfilU.equals(TipoUsuario.COMUM)) {
-					secretaria.getUsuario().setPefil(1); // TODO ajustar
+				if (perfilU.equals(TipoUsuario.SEC_COMUM)) {
+					secretaria.getUsuario().setPefil(3); // TODO ajustar
 				} else {
-					secretaria.getUsuario().setPefil(0); // TODO ajustar
+					secretaria.getUsuario().setPefil(2); // TODO ajustar
 				}
 
-				// se passar em todas as validacoes
-				if (validarCampoTexto == true) {
-					UsuarioDAO udao = new UsuarioDAO();
+				
+				UsuarioDAO udao = new UsuarioDAO();
+				SecretariaDAO sdao = new SecretariaDAO();
+				if(s == null) {
 					udao.inserir(secretaria.getUsuario());
 					// medico.getUsuario().setIdusuario(id);
 
-					MedicoDAO mdao = new MedicoDAO();
+					sdao.inserir(secretaria);
+				} else {
+					// acao de alterar no banco registro - UPDATE
+					secretaria.setId(s.getId());
+					secretaria.getUsuario().setIdusuario(s.getUsuario().getIdusuario());
+					
+					udao.atualizar(secretaria.getUsuario());
+					sdao.atualizar(secretaria);
+					
+				}
+				
+				
+				// se passar em todas as validacoes
+				if (validarCampoTexto == true) {
+					
 			}
 			}
 		});
@@ -370,12 +381,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		add(contentPane, BorderLayout.CENTER);
 
 	
-		if(s != null) {
-			txtNome.setText(s.getNome());
-			txtCPF.setText(String.valueOf(s.getCpf()));
-			txtLogin.setText(s.getEmail());
-			cbFuncao.setSelectedItem(TipoUsuario.COMUM);
-		}
+		
 
 	}
 }
