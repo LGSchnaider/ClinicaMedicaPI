@@ -65,7 +65,7 @@ public class TelaListaMed extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00][grow][][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+				new MigLayout("", "[29.00][40.00,grow][437.00][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -76,14 +76,18 @@ public class TelaListaMed extends JFrame {
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, "cell 2 1,grow");
+		panel_1.setOpaque(false);
+		contentPane.add(panel_1, "cell 2 1,alignx center,growy");
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
-		panel_1.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.getViewport().setOpaque(false);
+		
+		panel_1.add(scrollPane, BorderLayout.WEST);
 
 		table = new JTable();
+		table.setOpaque(false);
 		MedicoDAO mDAO = new MedicoDAO();
 		MedicoTableModel model = new MedicoTableModel(mDAO.listaMedico());
 		table.setModel(model);

@@ -75,16 +75,16 @@ public class TelaCadConsulta extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
-		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing");
+		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing,aligny center");
 		
 		JComboBox comboBox = new JComboBox();
 		
-		contentPane.add(comboBox, "cell 1 2,growx");
+		contentPane.add(comboBox, "cell 1 2,growx,aligny center");
 		
 		JLabel lblNewLabel_1 = new JLabel("Data:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		contentPane.add(lblNewLabel_1, "cell 0 3");
+		contentPane.add(lblNewLabel_1, "cell 0 3,aligny center");
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -103,7 +103,7 @@ public class TelaCadConsulta extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Hora:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		contentPane.add(lblNewLabel_2, "cell 0 4");
+		contentPane.add(lblNewLabel_2, "cell 0 4,aligny center");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);

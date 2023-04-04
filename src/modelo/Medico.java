@@ -1,12 +1,10 @@
 package modelo;
 
-public class Medico {
+public class Medico extends Pessoa {
 
-	private String nome;
-	private Long cpf;
 	private Long crm;
 	private Usuario usuario;
-	
+
 	public Medico() {
 		this.usuario = new Usuario();
 	}
@@ -17,22 +15,6 @@ public class Medico {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public Long getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
 	}
 
 	public Long getCrm() {

@@ -46,7 +46,8 @@ public class TelaRegistrarMed extends JPanel {
 
 	/**
 	 * Create the frame.
-	 * @param telaCadastro 
+	 * 
+	 * @param telaCadastro
 	 */
 	public TelaRegistrarMed(Usuario usuarioLogado, Cadastro telaCadastro) {
 
@@ -155,30 +156,20 @@ public class TelaRegistrarMed extends JPanel {
 		txtCRM.setColumns(10);
 		textField_2 = new JFormattedTextField();
 
-		if (txtCRM.getText().equals(null) || txtCRM.getText() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
-		}
-		if (txtCRM.getText().length() != 6) {
-			JOptionPane.showMessageDialog(null, "CRM inválido. Tente novamente.");
-		}
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(16)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE).addContainerGap()));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup().addGap(16)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_4 = new JLabel("Login:");
@@ -187,9 +178,6 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
 
 		txtLogin = new JTextField();
-		if (txtLogin.getText().equals(null) || txtLogin.getText() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
-		}
 		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(txtLogin, "cell 1 5,growx,aligny center");
 		txtLogin.setColumns(10);
@@ -200,9 +188,6 @@ public class TelaRegistrarMed extends JPanel {
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing");
 
 		pswSenha = new JPasswordField();
-		if (pswSenha.getPassword().equals(null) || pswSenha.getPassword() == null) {
-			JOptionPane.showMessageDialog(null, "Campo obrigatório: Senha");
-		}
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(pswSenha, "cell 1 6,growx,aligny center");
 
@@ -222,11 +207,12 @@ public class TelaRegistrarMed extends JPanel {
 
 		// TODO codigo do combobox usando enum
 		JComboBox<TipoUsuario> comboBox = new JComboBox<>();
-		for (TipoUsuario tipo : TipoUsuario.values()) {
-			comboBox.addItem(tipo);
-		}
+		// for (TipoUsuario tipo : TipoUsuario.values()) {
+		// comboBox.addItem(tipo);
+		// }
 		comboBox.setEditable(false);
-		comboBox.setSelectedItem(TipoUsuario.COMUM);
+		comboBox.addItem(TipoUsuario.MED_ADMIN);
+		comboBox.addItem(TipoUsuario.MED_COMUM);
 
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
@@ -288,14 +274,17 @@ public class TelaRegistrarMed extends JPanel {
 					medico.setNome(nome);
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+					JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
+					txtNomeMed.requestFocus();
 					return;
 				}
 
 				if (cpf != null && !cpf.isEmpty()) {
 
 					if (cpf.equalsIgnoreCase("   .   .   -  ")) {
-						JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+						JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+						txtCPFMed.requestFocus();
+						return;
 					} else {
 						// 3o passo: o que tem mascara usar o metodo REPLACE da String
 						cpf = cpf.replace(".", ""); // forma feia mas facil
@@ -311,7 +300,32 @@ public class TelaRegistrarMed extends JPanel {
 
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+					JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+					txtCPFMed.requestFocus();
+					return;
+				}
+				
+				if (crm != null) {
+					crm = crm.trim();
+					if (!crm.isEmpty() && crm.length() == 6) {
+						Long crmLong = Long.valueOf(crm);
+						medico.setCrm(crmLong);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo CRM precisa ser preenchido");
+						txtCRM.requestFocus();
+						return;
+					}
+
+				}
+				
+				if (login != null && !login.isEmpty()) {
+					medico.getUsuario().setLogin(login);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
+					txtLogin.requestFocus();
+					return;
 				}
 
 				if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
@@ -322,38 +336,20 @@ public class TelaRegistrarMed extends JPanel {
 						System.out.println(confirmaSenha);
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+						pswConfirmarSenha.requestFocus();
 						return;
 					}
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Senha");
+					JOptionPane.showMessageDialog(null, "O campo Senha e Confrmar Senha precisam ser preenchido");
+					pswSenha.requestFocus();
 					return;
 				}
 
-				if (crm != null) {
-					crm = crm.trim();
-					if (!crm.isEmpty()) {
-						Long crmLong = Long.valueOf(crm);
-						medico.setCrm(crmLong);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
-					}
-
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: CRM");
-				}
-				if (login != null && !login.isEmpty()) {
-					medico.getUsuario().setLogin(login);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
-				}
 				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
-				if (perfilU.equals(TipoUsuario.COMUM)) {
+				if (perfilU.equals(TipoUsuario.MED_COMUM)) {
 					medico.getUsuario().setPefil(1); // TODO ajustar
-				} else {
+				} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
 					medico.getUsuario().setPefil(0); // TODO ajustar
 				}
 

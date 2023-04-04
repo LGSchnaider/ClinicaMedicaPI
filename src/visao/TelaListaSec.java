@@ -44,7 +44,7 @@ public class TelaListaSec extends JFrame {
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 892, 600);
+		setBounds(100, 100, 1028, 600);
 		
 		BufferedImage bg = null;
 		try {
@@ -60,7 +60,7 @@ public class TelaListaSec extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00][grow][][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+				new MigLayout("", "[29.00][40.00,grow][][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -72,14 +72,17 @@ public class TelaListaSec extends JFrame {
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 2 1,grow");
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		panel_1.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.getViewport().setOpaque(false);	
 
 		table = new JTable();
+		table.setOpaque(false);
 		SecretariaDAO mDAO = new SecretariaDAO();
 		SecretariaTableModel model = new SecretariaTableModel(mDAO.listaSecretaria());
 		table.setModel(model);
@@ -87,7 +90,7 @@ public class TelaListaSec extends JFrame {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "flowy,cell 1 2");
+		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -151,7 +154,7 @@ public class TelaListaSec extends JFrame {
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "flowy,cell 3 2");
+		contentPane.add(panel_4, "flowy,cell 3 2,alignx right,aligny center");
 
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setOpaque(false);
