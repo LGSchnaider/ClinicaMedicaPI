@@ -44,7 +44,7 @@ public class TelaListaPac extends JFrame {
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 892, 600);
+		setBounds(100, 100, 961, 600);
 		
 		BufferedImage bg = null;
 		try {
@@ -61,7 +61,7 @@ public class TelaListaPac extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00][grow][][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+				new MigLayout("", "[29.00][201.00,grow][516.00][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -89,7 +89,7 @@ public class TelaListaPac extends JFrame {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "flowy,cell 1 2");
+		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setOpaque(false);
@@ -155,7 +155,7 @@ public class TelaListaPac extends JFrame {
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "flowy,cell 3 2");
+		contentPane.add(panel_4, "flowy,cell 3 2,alignx right,aligny center");
 
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setOpaque(false);
@@ -165,11 +165,18 @@ public class TelaListaPac extends JFrame {
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup().addGap(5).addComponent(btnEditar)));
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btnEditar))
+		);
 		gl_panel_4.setVerticalGroup(
-				gl_panel_4.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_4.createSequentialGroup().addGap(5)
-						.addComponent(btnEditar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btnEditar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		panel_4.setLayout(gl_panel_4);
 	}
 }
