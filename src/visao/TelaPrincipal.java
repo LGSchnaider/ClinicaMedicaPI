@@ -24,6 +24,8 @@ import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
+import java.awt.Cursor;
 
 public class TelaPrincipal extends JFrame {
 
@@ -86,15 +88,16 @@ public class TelaPrincipal extends JFrame {
 		Norte.add(TituloVisaoGeral);
 
 		JPanel sul = new JPanel();
-		sul.setBackground(new Color(68, 110, 139));
+		sul.setForeground(new Color(255, 255, 255));
+		sul.setBackground(new Color(255, 255, 255));
 		panelDireita.add(sul, BorderLayout.SOUTH);
 
 		JPanel lest = new JPanel();
-		lest.setBackground(new Color(68, 110, 139));
+		lest.setBackground(new Color(255, 255, 255));
 		panelDireita.add(lest, BorderLayout.WEST);
 
 		JPanel oeste = new JPanel();
-		oeste.setBackground(new Color(68, 110, 139));
+		oeste.setBackground(new Color(255, 255, 255));
 		panelDireita.add(oeste, BorderLayout.EAST);
 
 		JPanel centro = new JPanel();
@@ -114,16 +117,16 @@ public class TelaPrincipal extends JFrame {
 		panelCentro.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 255, 255), 5));
+		panel.setBorder(new LineBorder(new Color(255, 255, 255), 5));
 		panel.setBackground(new Color(68, 110, 139));
 		panelCentro.add(panel, BorderLayout.NORTH);
 
 		JLabel lblNewLabel = new JLabel("Painel de controle");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new PanelFundo(bg);
-		panel_1.setBorder(new LineBorder(new Color(0, 255, 255), 3));
 		panel_1.setForeground(new Color(255, 255, 255));
 		panel_1.setBackground(new Color(64, 128, 128));
 		panelCentro.add(panel_1, BorderLayout.CENTER);
@@ -144,7 +147,9 @@ public class TelaPrincipal extends JFrame {
 		});
 
 		JLabel lblNewLabel_1 = new JLabel("Cadastros");
-		lblNewLabel_1.setBackground(new Color(0, 255, 255));
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		lblNewLabel_1.setInheritsPopupMenu(false);
+		lblNewLabel_1.setBackground(new Color(204, 204, 204));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		panel_1.add(lblNewLabel_1, "flowx,cell 2 2,alignx center,aligny center");
