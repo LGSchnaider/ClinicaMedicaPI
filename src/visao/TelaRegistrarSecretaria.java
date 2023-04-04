@@ -15,12 +15,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import controle.MedicoDAO;
+import controle.UsuarioDAO;
+import modelo.Medico;
 import modelo.Secretaria;
 import modelo.TipoUsuario;
 import modelo.Usuario;
@@ -33,7 +37,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JTextField txtNome;
 	private JButton btnVoltar;
 	private JButton btnregistrar;
-	private JPasswordField passwordField_1;
+	private JPasswordField pswConfirmarSenha;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblnome;
@@ -186,16 +190,16 @@ public class TelaRegistrarSecretaria extends JPanel {
 		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 2 9,grow");
 
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		pswConfirmarSenha = new JPasswordField();
+		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
 				gl_panel_1.createSequentialGroup()
-						.addComponent(passwordField_1, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+						.addComponent(pswConfirmarSenha, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
 						.addContainerGap()));
 		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap()
-						.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		panel_1.setLayout(gl_panel_1);
 
@@ -241,10 +245,14 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		
 		btnregistrar = new JButton();
+		btnregistrar.setText("Registrar");
 		if(s == null) {
 			btnregistrar.setText("Registrar");
+			
+			
 		} else {
 			btnregistrar.setText("Editar");
+			
 			
 		}
 
@@ -258,7 +266,88 @@ public class TelaRegistrarSecretaria extends JPanel {
 					// acao de alterar no banco registro - UPDATE
 					
 				}
-				
+				boolean validarCampoTexto = true;
+
+				// 1o passo: pegar o texto dos campos de texto
+				String nome = txtNome.getText();
+				String senha = String.valueOf(pswSenha.getPassword());
+				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
+				String login = txtLogin.getText();
+				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
+				int perfil = cbFuncao.getSelectedIndex();
+
+				Secretaria secretaria = new Secretaria();
+
+				// 2o passo: validar se texto é vazio ou nao
+				// se nao for vazio
+
+				if (nome != null && !nome.isEmpty()) {
+					secretaria.setNome(nome);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+					return;
+				}
+
+				if (cpf != null && !cpf.isEmpty()) {
+
+					if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+						JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+					} else {
+						// 3o passo: o que tem mascara usar o metodo REPLACE da String
+						cpf = cpf.replace(".", ""); // forma feia mas facil
+						cpf = cpf.replace("-", "");
+
+						// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+						// (valueOf)
+						Long cpfInt = Long.valueOf(cpf);
+
+						// setar no obj
+						secretaria.setCpf(cpfInt);
+					}
+
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+				}
+
+				if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
+					if (senha.equals(confirmaSenha)) {
+						secretaria.getUsuario().setSenha(senha);
+					} else {
+						System.out.println(senha);
+						System.out.println(confirmaSenha);
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+						return;
+					}
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Senha");
+					return;
+				}
+
+				if (login != null && !login.isEmpty()) {
+					secretaria.getUsuario().setLogin(login);
+				} else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Campo obrigatório: Login");
+				}
+				TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
+				if (perfilU.equals(TipoUsuario.COMUM)) {
+					secretaria.getUsuario().setPefil(1); // TODO ajustar
+				} else {
+					secretaria.getUsuario().setPefil(0); // TODO ajustar
+				}
+
+				// se passar em todas as validacoes
+				if (validarCampoTexto == true) {
+					UsuarioDAO udao = new UsuarioDAO();
+					udao.inserir(secretaria.getUsuario());
+					// medico.getUsuario().setIdusuario(id);
+
+					MedicoDAO mdao = new MedicoDAO();
+			}
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -282,8 +371,9 @@ public class TelaRegistrarSecretaria extends JPanel {
 	
 		if(s != null) {
 			txtNome.setText(s.getNome());
-			txtCPF.setText(s.getCpf());
+			txtCPF.setText(String.valueOf(s.getCpf()));
 			txtLogin.setText(s.getEmail());
+			cbFuncao.setSelectedItem(TipoUsuario.COMUM);
 		}
 
 	}

@@ -6,6 +6,14 @@ public class Secretaria {
 	private long cpf;
 	private long telefone;
 	private String email;
+	private Usuario usuario;
+	
+	public Secretaria() {
+		this.usuario = new Usuario();
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
 	
 	public String getNome() {
 		return nome;

@@ -56,6 +56,10 @@ public class TelaListaCon extends JFrame {
 		contentPane.add(btnNewButton_1, "cell 1 4,alignx center");
 		
 		JButton btnNewButton_2 = new JButton("Editar Consulta");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		contentPane.add(btnNewButton_2, "cell 2 4,alignx center");
 	}
