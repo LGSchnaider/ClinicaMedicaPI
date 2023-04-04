@@ -341,7 +341,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 				} else {
 					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "O campo Senha precisa ser preenchido");
+					JOptionPane.showMessageDialog(null, "O campo Senha e Confrmar Senha precisam ser preenchido");
 					pswSenha.requestFocus();
 					return;
 				}
