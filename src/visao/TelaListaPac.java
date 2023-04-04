@@ -73,13 +73,16 @@ public class TelaListaPac extends JFrame {
 		panel.add(lblNewLabel);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 2 1,grow");
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		
 		panel_1.add(scrollPane, BorderLayout.CENTER);
-
+		
 		table = new JTable();
 		table.setOpaque(false);
 		PacienteDAO pDAO = new PacienteDAO();
@@ -162,6 +165,7 @@ public class TelaListaPac extends JFrame {
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);

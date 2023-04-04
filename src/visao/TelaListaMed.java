@@ -93,7 +93,7 @@ public class TelaListaMed extends JFrame {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "flowy,cell 1 2,alignx center,aligny center");
+		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -171,7 +171,7 @@ public class TelaListaMed extends JFrame {
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "flowy,cell 3 2,alignx center,aligny center");
+		contentPane.add(panel_4, "flowy,cell 3 2,alignx right,aligny center");
 
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
