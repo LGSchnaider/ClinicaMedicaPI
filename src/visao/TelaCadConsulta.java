@@ -56,7 +56,7 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]", "[grow][grow][grow][grow][grow][grow][110.00][grow][35.00,grow][grow]"));
 		
 		JLabel lblNewLabel = new JLabel("Cadastrar Consulta");
-		lblNewLabel.setForeground(new Color(64, 128, 128));
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
 		

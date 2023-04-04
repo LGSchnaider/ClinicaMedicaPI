@@ -134,7 +134,7 @@ public class TelaPrincipal extends JFrame {
 				"[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
 
 		JButton btnNewButton = new JButton("Logout");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		panel_1.add(btnNewButton, "cell 2 0,alignx right,aligny center");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

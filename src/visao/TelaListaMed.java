@@ -33,6 +33,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaListaMed extends JFrame {
 
@@ -70,6 +71,7 @@ public class TelaListaMed extends JFrame {
 		contentPane.add(panel, "cell 2 0,grow");
 
 		JLabel lblNewLabel = new JLabel("Lista de Medicos");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
