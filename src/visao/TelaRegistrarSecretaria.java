@@ -7,20 +7,29 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
+import controle.MedicoDAO;
+import controle.SecretariaDAO;
+import controle.UsuarioDAO;
+import modelo.Medico;
+import modelo.Secretaria;
 import modelo.TipoUsuario;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
@@ -32,7 +41,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JTextField txtNome;
 	private JButton btnVoltar;
 	private JButton btnregistrar;
-	private JPasswordField passwordField_1;
+	private JPasswordField pswConfirmarSenha;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblnome;
@@ -51,12 +60,14 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 	/**
 	 * Launch the application.
-	 * @param cadastro 
+	 * 
+	 * @param cadastro
+	 * @param s
 	 */
 
-	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro) {
+	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro, Secretaria s) {
 		this.usuarioLogado = usuarioLogado;
-		
+
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1151, 699);
 
@@ -75,7 +86,8 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][73.00][][grow][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]",
+				"[184.00,grow][73.00][][grow][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -104,32 +116,34 @@ public class TelaRegistrarSecretaria extends JPanel {
 								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(15, Short.MAX_VALUE)));
 		panel_4.setLayout(gl_panel_4);
-		
+
 		lblCpf = new JLabel("CPF:");
 		lblCpf.setForeground(Color.WHITE);
 		lblCpf.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblCpf, "cell 1 3");
-		
+
 		panel_6 = new JPanel();
 		panel_6.setOpaque(false);
 		contentPane.add(panel_6, "cell 2 3,grow");
-		
+
 		txtCPF = new JTextField();
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		JTextField txtCPF = new JFormattedTextField(formatter);
 		txtCPF.setColumns(10);
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
-					.addComponent(txtCPF, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+		gl_panel_6.setHorizontalGroup(gl_panel_6.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_panel_6.createSequentialGroup().addComponent(txtCPF, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+						.addContainerGap()));
+		gl_panel_6.setVerticalGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup().addContainerGap()
+						.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		panel_6.setLayout(gl_panel_6);
 
 		lblUser = new JLabel("Login:");
@@ -185,16 +199,16 @@ public class TelaRegistrarSecretaria extends JPanel {
 		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 2 9,grow");
 
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		pswConfirmarSenha = new JPasswordField();
+		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
 				gl_panel_1.createSequentialGroup()
-						.addComponent(passwordField_1, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+						.addComponent(pswConfirmarSenha, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
 						.addContainerGap()));
 		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap()
-						.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		panel_1.setLayout(gl_panel_1);
 
@@ -231,19 +245,163 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cadastro.dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
 
-		btnregistrar = new JButton("Registrar");
+		btnregistrar = new JButton();
+		btnregistrar.setText("Registrar");
+		if (s == null) {
+			btnregistrar.setText("Registrar");
+
+		} else {
+			btnregistrar.setText("Editar");
+
+		}
+
 		btnregistrar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnregistrar.addActionListener(new ActionListener() {
-			//TODO Adicionar Comando de Insert
+			// TODO Adicionar Comando de Insert
 			public void actionPerformed(ActionEvent e) {
 
+				boolean validarCampoTexto = true;
+
+				// 1o passo: pegar o texto dos campos de texto
+				String nome = txtNome.getText();
+				String senha = String.valueOf(pswSenha.getPassword());
+				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
+				String login = txtLogin.getText();
+				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
+				int perfil = cbFuncao.getSelectedIndex();
+
+				Secretaria secretaria = new Secretaria();
+
+				// 2o passo: validar se texto é vazio ou nao
+				// se nao for vazio
+
+				try {
+					if (nome != null && !nome.isEmpty()) {
+						secretaria.setNome(nome);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
+						txtNome.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+
+				}
+
+				try {
+					if (cpf != null && !cpf.isEmpty()) {
+
+						if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+							JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+							txtCPF.requestFocus();
+							return;
+						} else {
+							// 3o passo: o que tem mascara usar o metodo REPLACE da String
+							cpf = cpf.replace(".", ""); // forma feia mas facil
+							cpf = cpf.replace("-", "");
+
+							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+							// (valueOf)
+							Long cpfInt = Long.valueOf(cpf);
+
+							// setar no obj
+							secretaria.setCpf(cpfInt);
+						}
+
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+						txtCPF.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+				try {
+					if (login != null && !login.isEmpty()) {
+						secretaria.getUsuario().setLogin(login);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
+						txtLogin.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+				try {
+					if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
+						if (senha.equals(confirmaSenha)) {
+							secretaria.getUsuario().setSenha(senha);
+						} else {
+							System.out.println(senha);
+							System.out.println(confirmaSenha);
+							validarCampoTexto = false;
+							JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+							pswConfirmarSenha.requestFocus();
+							return;
+						}
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo Senha e Confrmar Senha precisam ser preenchido");
+						pswSenha.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+				try {
+					TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
+					if (perfilU.equals(TipoUsuario.SEC_COMUM)) {
+						secretaria.getUsuario().setPefil(3); // TODO ajustar
+					} else {
+						secretaria.getUsuario().setPefil(2); // TODO ajustar
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+				// se passar em todas as validacoes
+				try {
+					if (validarCampoTexto == true) {
+						UsuarioDAO udao = new UsuarioDAO();
+						SecretariaDAO sdao = new SecretariaDAO();
+						if (s == null) {
+							udao.inserir(secretaria.getUsuario());
+							// medico.getUsuario().setIdusuario(id);
+
+							sdao.inserir(secretaria);
+						} else {
+							// acao de alterar no banco registro - UPDATE
+							secretaria.setId(s.getId());
+							secretaria.getUsuario().setIdusuario(s.getUsuario().getIdusuario());
+
+							udao.atualizar(secretaria.getUsuario());
+							sdao.atualizar(secretaria);
+							return;
+
+						}
+
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -263,5 +421,20 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		setLayout(new BorderLayout());
 		add(contentPane, BorderLayout.CENTER);
+
+	
+		//TODO Observar e juntar ao médico.
+preencheDados(s);
 	}
+
+	private void preencheDados(Secretaria s) {
+		if (s != null) {
+			txtNome.setText(s.getNome());
+			txtCPF.setText(String.valueOf(s.getCpf()));
+			txtLogin.setText(s.getEmail());
+
+		}
+
+	}
+
 }

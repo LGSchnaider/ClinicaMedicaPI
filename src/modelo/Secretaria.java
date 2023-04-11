@@ -4,7 +4,22 @@ public class Secretaria extends Pessoa {
 
 	private long telefone;
 	private String email;
-
+	private Usuario usuario;
+	
+	public Secretaria() {
+		this.usuario = new Usuario();
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 	public long getTelefone() {
 		return telefone;
 	}

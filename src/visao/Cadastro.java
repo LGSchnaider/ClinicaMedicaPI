@@ -35,7 +35,7 @@ public class Cadastro extends JFrame {
 			contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 		}
 
-		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria(usuarioLogado, this);
+		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria(usuarioLogado, this, null);
 		sec.setOpaque(false);
 		Panel panel_1 = new Panel();
 		contentPane.add(panel_1, BorderLayout.CENTER);

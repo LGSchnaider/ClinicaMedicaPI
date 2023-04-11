@@ -56,12 +56,13 @@ public class UsuarioDAO implements IUsuarioDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE usuario SET login= ?, senha = ?, perfil = ?, admin = ?  WHERE id = ?";
+			String query = "UPDATE usuario SET login= ?, senha = ?, perfil = ?  WHERE id = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getLogin());
 			stm.setString(2, p.getSenha());
 			stm.setInt(3, p.getPerfil());
+			stm.setInt(4, p.getIdusuario());
 
 			stm.executeUpdate();
 			return true;

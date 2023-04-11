@@ -161,6 +161,19 @@ public class TelaListaSec extends JFrame {
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int posicao = table.getSelectedRow();
+				if(posicao == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma Secretaria");
+					return;
+				}
+				SecretariaTableModel model  = (SecretariaTableModel) table.getModel();
+				Secretaria s = model.getSecretaria(posicao);
+				TelaRegistrarSecretaria tela = new TelaRegistrarSecretaria(usuarioLogado, null, s);
+				
+				JFrame janela = new JFrame();
+				janela.add(tela);
+				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				janela.setVisible(true);
 				
 			}
 		});

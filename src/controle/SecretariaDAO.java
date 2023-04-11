@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.ISecretariaDAO;
 import modelo.Paciente;
 import modelo.Secretaria;
@@ -50,14 +52,15 @@ public class SecretariaDAO implements ISecretariaDAO {
 				Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ?  WHERE id = ?";
+			//String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ?  WHERE id = ?";
+			String query = "UPDATE secretaria SET nome= ?, cpf = ? WHERE id = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
-			stm.setLong(3, p.getTelefone());
-			stm.setString(4, p.getEmail());
-			
+		//	stm.setLong(3, p.getTelefone());
+			//stm.setString(3, p.getEmail());
+			stm.setInt(3, p.getId());
 
 			stm.executeUpdate();
 			return true;
@@ -110,13 +113,14 @@ public class SecretariaDAO implements ISecretariaDAO {
 			String query = "SELECT * FROM Secretaria";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
-
+				int id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				long cpf = rs.getLong("cpf");
 				long telefone = rs.getLong("telefone");
 				String email = rs.getString("email");
 
 				Secretaria p = new Secretaria();
+				p.setId(id);
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setTelefone(telefone);
