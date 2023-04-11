@@ -382,7 +382,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		add(contentPane, BorderLayout.CENTER);
 
 	
-		
+		//TODO Observar e juntar ao médico.
 preencheDados(s);
 	}
 

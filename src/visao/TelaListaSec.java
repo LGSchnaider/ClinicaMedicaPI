@@ -172,9 +172,8 @@ public class TelaListaSec extends JFrame {
 				
 				JFrame janela = new JFrame();
 				janela.add(tela);
+				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				janela.setVisible(true);
-				
-				
 				
 			}
 		});
