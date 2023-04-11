@@ -43,15 +43,13 @@ public class TelaListaMed extends JFrame {
 	private JTable table;
 	private Usuario usuarioLogado;
 
-	
-
 	public TelaListaMed(Usuario usuarioLogado) {
 		setTitle("Lista de Médicos");
 		this.usuarioLogado = usuarioLogado;
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1046, 600);
-		
+
 		BufferedImage bg = null;
 		try {
 			bg = ImageIO.read(new File("src/imagens/ListagemMed.png"));
@@ -59,14 +57,14 @@ public class TelaListaMed extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		contentPane = new PanelFundo(bg);
-	
+
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00,grow][437.00][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+		contentPane.setLayout(new MigLayout("", "[29.00][40.00,grow][437.00][grow][28.00]",
+				"[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -85,7 +83,7 @@ public class TelaListaMed extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
-		
+
 		panel_1.add(scrollPane, BorderLayout.WEST);
 
 		table = new JTable();
@@ -104,26 +102,20 @@ public class TelaListaMed extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);  
+				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
+		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup().addContainerGap().addComponent(btnVoltar)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnVoltar)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addComponent(btnVoltar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(5))
-		);
+						.addComponent(btnVoltar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGap(5)));
 		panel_3.setLayout(gl_panel_3);
 
 		JPanel panel_2 = new JPanel();
@@ -134,7 +126,10 @@ public class TelaListaMed extends JFrame {
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (JOptionPane.showConfirmDialog(contentPane, "Deseja deletar mesmo?") == 0) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+
+				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
 					MedicoTableModel model = (MedicoTableModel) table.getModel();
 
@@ -146,59 +141,42 @@ public class TelaListaMed extends JFrame {
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
 				}
-
-
 			}
 		});
 		btnDeletar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(287)
-					.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(309))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup().addGap(287)
+						.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGap(309)));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
+						.addComponent(btnDeletar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addContainerGap()));
 		panel_2.setLayout(gl_panel_2);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
 		contentPane.add(panel_4, "flowy,cell 3 2,alignx center,aligny center");
-		
-			
-				JButton btnEditar = new JButton("Editar");
-				
-				btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-				btnEditar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+
+		JButton btnEditar = new JButton("Editar");
+
+		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				Secretaria s = null;
 				TelaEditarSecretaria tela = new TelaEditarSecretaria(usuarioLogado, s);
 				tela.setVisible(true);
-					
-					}
-				});
+
+			}
+		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnEditar)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_panel_4.setVerticalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(btnEditar)
-					.addContainerGap())
-		);
+		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup().addContainerGap().addComponent(btnEditar)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panel_4.setVerticalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_panel_4.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnEditar).addContainerGap()));
 		panel_4.setLayout(gl_panel_4);
 	}
 }
