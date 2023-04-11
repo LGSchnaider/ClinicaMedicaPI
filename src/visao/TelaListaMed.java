@@ -125,6 +125,7 @@ public class TelaListaMed extends JFrame {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//TODO mudar o JOption para sim e não
 
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
 						JOptionPane.YES_NO_OPTION);
