@@ -101,7 +101,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "cell 2 1,grow");
+		contentPane.add(panel_4, "cell 2 1,growx,aligny center");
 
 		txtNome = new JTextField();
 		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -124,7 +124,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel_6 = new JPanel();
 		panel_6.setOpaque(false);
-		contentPane.add(panel_6, "cell 2 3,grow");
+		contentPane.add(panel_6, "cell 2 3,growx,aligny center");
 
 		txtCPF = new JTextField();
 		MaskFormatter formatter = null;
@@ -153,7 +153,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "cell 2 5,grow");
+		contentPane.add(panel_3, "cell 2 5,growx,aligny center");
 
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -176,7 +176,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel_2 = new JPanel();
 		panel_2.setOpaque(false);
-		contentPane.add(panel_2, "cell 2 7,grow");
+		contentPane.add(panel_2, "cell 2 7,growx,aligny center");
 
 		pswSenha = new JPasswordField();
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -197,7 +197,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		contentPane.add(panel_1, "cell 2 9,grow");
+		contentPane.add(panel_1, "cell 2 9,growx,aligny center");
 
 		pswConfirmarSenha = new JPasswordField();
 		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
