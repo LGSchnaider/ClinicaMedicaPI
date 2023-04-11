@@ -269,107 +269,141 @@ public class TelaRegistrarMed extends JPanel {
 
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
+				try {
+					if (nome != null && !nome.isEmpty()) {
+						medico.setNome(nome);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
+						txtNomeMed.requestFocus();
+						return;
+					}
+					
+				} catch (Exception e2) {
 
-				if (nome != null && !nome.isEmpty()) {
-					medico.setNome(nome);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
-					txtNomeMed.requestFocus();
-					return;
 				}
 
-				if (cpf != null && !cpf.isEmpty()) {
-
-					if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+				try {
+					if (cpf != null && !cpf.isEmpty()) {
+						
+						if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+							JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+							txtCPFMed.requestFocus();
+							return;
+						} else {
+							// 3o passo: o que tem mascara usar o metodo REPLACE da String
+							cpf = cpf.replace(".", ""); // forma feia mas facil
+							cpf = cpf.replace("-", "");
+							
+							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+							// (valueOf)
+							Long cpfInt = Long.valueOf(cpf);
+							
+							// setar no obj
+							medico.setCpf(cpfInt);
+						}
+						
+					} else {
+						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
 						txtCPFMed.requestFocus();
 						return;
-					} else {
-						// 3o passo: o que tem mascara usar o metodo REPLACE da String
-						cpf = cpf.replace(".", ""); // forma feia mas facil
-						cpf = cpf.replace("-", "");
-
-						// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
-						// (valueOf)
-						Long cpfInt = Long.valueOf(cpf);
-
-						// setar no obj
-						medico.setCpf(cpfInt);
 					}
-
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
-					txtCPFMed.requestFocus();
-					return;
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
 				}
 				
-				if (crm != null) {
-					crm = crm.trim();
-					if (!crm.isEmpty() && crm.length() == 6) {
-						Long crmLong = Long.valueOf(crm);
-						medico.setCrm(crmLong);
+				try {
+					if (crm != null) {
+						crm = crm.trim();
+						if (!crm.isEmpty() && crm.length() == 6) {
+							Long crmLong = Long.valueOf(crm);
+							medico.setCrm(crmLong);
+						} else {
+							validarCampoTexto = false;
+							JOptionPane.showMessageDialog(null, "O campo CRM precisa ser preenchido");
+							txtCRM.requestFocus();
+							return;
+						}
+						
+					}
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+				try {
+					if (login != null && !login.isEmpty()) {
+						medico.getUsuario().setLogin(login);
 					} else {
 						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo CRM precisa ser preenchido");
-						txtCRM.requestFocus();
+						JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
+						txtLogin.requestFocus();
 						return;
 					}
-
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
 				}
 				
-				if (login != null && !login.isEmpty()) {
-					medico.getUsuario().setLogin(login);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
-					txtLogin.requestFocus();
-					return;
-				}
-
-				if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
-					if (senha.equals(confirmaSenha)) {
-						medico.getUsuario().setSenha(senha);
+				try {
+					if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
+						if (senha.equals(confirmaSenha)) {
+							medico.getUsuario().setSenha(senha);
+						} else {
+							System.out.println(senha);
+							System.out.println(confirmaSenha);
+							validarCampoTexto = false;
+							JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
+							pswConfirmarSenha.requestFocus();
+							return;
+						}
 					} else {
-						System.out.println(senha);
-						System.out.println(confirmaSenha);
 						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "As senhas não coincidem!");
-						pswConfirmarSenha.requestFocus();
+						JOptionPane.showMessageDialog(null, "O campo Senha e Confrmar Senha precisam ser preenchido");
+						pswSenha.requestFocus();
 						return;
 					}
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "O campo Senha e Confrmar Senha precisam ser preenchido");
-					pswSenha.requestFocus();
-					return;
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
 				}
-
-				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
-				if (perfilU.equals(TipoUsuario.MED_COMUM)) {
-					medico.getUsuario().setPefil(1); // TODO ajustar
-				} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
-					medico.getUsuario().setPefil(0); // TODO ajustar
-				}
-
-				// se passar em todas as validacoes
-				if (validarCampoTexto == true) {
-					UsuarioDAO udao = new UsuarioDAO();
-					udao.inserir(medico.getUsuario());
-					// medico.getUsuario().setIdusuario(id);
-
-					MedicoDAO mdao = new MedicoDAO();
-
-					boolean validar = mdao.inserir(medico);
-					if (validar == true) {
-						// exibir uma mensagem de cadastro com sucesso
-						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
-					} else {
-						// exibir mensagem de erro ao cadastrar
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+				
+				try {
+					TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
+					if (perfilU.equals(TipoUsuario.MED_COMUM)) {
+						medico.getUsuario().setPefil(1); // TODO ajustar
+					} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
+						medico.getUsuario().setPefil(0); // TODO ajustar
 					}
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
 				}
+
+				try {
+					// se passar em todas as validacoes
+					if (validarCampoTexto == true) {
+						UsuarioDAO udao = new UsuarioDAO();
+						udao.inserir(medico.getUsuario());
+						// medico.getUsuario().setIdusuario(id);
+						
+						MedicoDAO mdao = new MedicoDAO();
+						
+						boolean validar = mdao.inserir(medico);
+						if (validar == true) {
+							// exibir uma mensagem de cadastro com sucesso
+							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+						} else {
+							// exibir mensagem de erro ao cadastrar
+							JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+						}
+					}
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
 
 			}
 		});

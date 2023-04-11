@@ -117,6 +117,7 @@ public class TelaInicio extends JFrame {
 		center.add(lblLogin, "cell 2 5,alignx trailing");
 
 		txtLogin = new JTextField();
+		txtLogin.setText("admin");
 		txtLogin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
