@@ -280,7 +280,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-
+					e2.printStackTrace();
 				}
 
 				try {
@@ -311,7 +311,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				
 				try {
@@ -343,7 +343,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				
 				try {
@@ -366,7 +366,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				
 				try {
@@ -401,7 +401,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 
