@@ -89,15 +89,5 @@ CREATE TABLE medicamento_has_prontoario (
  insert into paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 99099974, 'M', 'pedronomecomum@gmail.com');
  insert into paciente (nome, cpf, telefone, sexo, email) values ('Miguel dias', 09101502903, 94056942, 'M', 'miguel@gmail.com');
 insert into paciente (nome, cpf, telefone, sexo, email) values ('Rovberto Carlos', 92992893221, 88985566, 'M', 'rovber122344@gmail.com');
- 
- insert into medico (nome, cpf, crm, usuario_idusuario) values ('Marcos Marco LG Junior', 12087902955, 0666, 1);
- insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Pedro Rocha da Silva', 12333325521, 3711, 1);
- insert into medico (nome, cpf, crm, usuario_idusuario) values ('Me.Augusto Oliveira Pereira', 22255588830, 2811, 1);
- insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dra.Ana Beatrir Ribeiro', 09505508805, 2647, 1);
- insert into medico (nome, cpf, crm, usuario_idusuario) values ('Dr.Roberto Ferreira', 05506607802, 3163, 1);
-
-insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Rovberta Carlas',12345678921, 89893213,'rovberta123@gmail.com',1);
-insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Maria Super',12345678925, 89893214,'naoprecessenintedo@gmail.com',1);
-insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('sonica super',12345678943, 89893223,'supersonica3000@gmail.com',1);
 
 

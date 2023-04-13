@@ -74,19 +74,31 @@ public class MedicoDAO implements IMedicoDAO {
 		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM Medico";
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id;";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 
 				String nome = rs.getString("nome");
 				long cpf = rs.getLong("cpf");
 				Long crm = rs.getLong("crm");
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
 
 				Medico p = new Medico();
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setCrm(crm);
+
+				
+				Usuario u = new Usuario();
+				u.setLogin(login);
+				u.setSenha(senha);
+				u.setPefil(perfil);
+				p.setUsuario(u);
+				
 				Medicos.add(p);
+				
 			}
 
 		} catch (SQLException e) {

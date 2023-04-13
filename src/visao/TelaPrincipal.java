@@ -266,7 +266,7 @@ public class TelaPrincipal extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					dispose();
-					TelaListaMed frame = new TelaListaMed(usuarioLogado);
+					VListDoctor frame = new VListDoctor(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
