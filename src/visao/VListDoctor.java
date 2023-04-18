@@ -37,13 +37,14 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class TelaListaMed extends JFrame {
+public class VListDoctor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private Usuario usuarioLogado;
 
-	public TelaListaMed(Usuario usuarioLogado) {
+
+	public VListDoctor(Usuario usuarioLogado) {
 		setTitle("Lista de Médicos");
 		this.usuarioLogado = usuarioLogado;
 
@@ -165,10 +166,18 @@ public class TelaListaMed extends JFrame {
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Secretaria s = null;
-				TelaEditarSecretaria tela = new TelaEditarSecretaria(usuarioLogado, s);
-				tela.setVisible(true);
 
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma médico");
+					return;
+				}
+				MedicoTableModel model  = (MedicoTableModel) table.getModel();
+				Medico d = model.getMedico(position);
+				VEditDoctor window = new VEditDoctor(usuarioLogado, null, d);
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
