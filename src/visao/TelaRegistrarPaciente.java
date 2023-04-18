@@ -7,8 +7,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import controle.MedicoDAO;
 import controle.PacienteDAO;
+import controle.SecretariaDAO;
+import controle.UsuarioDAO;
 import modelo.Paciente;
+import modelo.Secretaria;
+import modelo.TipoSexo;
+import modelo.TipoUsuario;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
@@ -36,10 +42,10 @@ import java.awt.Color;
 public class TelaRegistrarPaciente extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNomeP;
+	private JTextField txtNome;
 	private JTextField txtcpfP;
 	private JTextField txtTelefoneP;
-	private JTextField txtEmailP;
+	private JTextField txtEmail;
 	private Usuario usuarioLogado;
 
 	/**
@@ -94,15 +100,15 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_1.setBackground(new Color(0, 156, 156));
 		panel.add(panel_1, "cell 1 1,grow");
 
-		txtNomeP = new JTextField();
-		txtNomeP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		txtNomeP.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		txtNome.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
 				gl_panel_1.createSequentialGroup().addContainerGap()
-						.addComponent(txtNomeP, GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE).addContainerGap()));
+						.addComponent(txtNome, GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE).addContainerGap()));
 		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap().addComponent(txtNomeP).addGap(25)));
+				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap().addComponent(txtNome).addGap(25)));
 		panel_1.setLayout(gl_panel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("CPF:");
@@ -122,15 +128,15 @@ public class TelaRegistrarPaciente extends JFrame {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtcpfP = new JFormattedTextField(formatter);
-		txtcpfP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		txtcpfP.setColumns(10);
+		JTextField txtCpf = new JFormattedTextField(formatter);
+		txtCpf.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		txtCpf.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
-						.addComponent(txtcpfP, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
+						.addComponent(txtCpf, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
 		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(21).addComponent(txtcpfP).addGap(24)));
+				.addGroup(gl_panel_2.createSequentialGroup().addGap(21).addComponent(txtCpf).addGap(24)));
 		panel_2.setLayout(gl_panel_2);
 
 		JLabel lblNewLabel_2 = new JLabel("Telefone:");
@@ -149,15 +155,15 @@ public class TelaRegistrarPaciente extends JFrame {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtTelefoneP = new JFormattedTextField(formatter);
-		txtTelefoneP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		txtTelefoneP.setColumns(10);
+		JTextField txtTelefone = new JFormattedTextField(formatter);
+		txtTelefone.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		txtTelefone.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
 				gl_panel_3.createSequentialGroup().addContainerGap()
-						.addComponent(txtTelefoneP, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
+						.addComponent(txtTelefone, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
 		gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_3.createSequentialGroup().addGap(33).addComponent(txtTelefoneP).addGap(26)));
+				.addGroup(gl_panel_3.createSequentialGroup().addGap(33).addComponent(txtTelefone).addGap(26)));
 		panel_3.setLayout(gl_panel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("Sexo:");
@@ -172,9 +178,9 @@ public class TelaRegistrarPaciente extends JFrame {
 
 		JComboBox <String> cbSexo = new JComboBox<>();
 		cbSexo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		cbSexo.addItem("Não Definido");
 		cbSexo.addItem("Masculino");
 		cbSexo.addItem("Feminino");
-		cbSexo.addItem("Não Definir");
 		cbSexo.setEditable(false);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
@@ -195,15 +201,15 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_5.setBackground(new Color(0, 156, 156));
 		panel.add(panel_5, "flowx,cell 1 5,grow");
 
-		txtEmailP = new JTextField();
-		txtEmailP.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		txtEmailP.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		txtEmail.setColumns(10);
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(gl_panel_5.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_5.createSequentialGroup().addContainerGap()
-						.addComponent(txtEmailP, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
+						.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE).addContainerGap()));
 		gl_panel_5.setVerticalGroup(gl_panel_5.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
-				gl_panel_5.createSequentialGroup().addGap(24).addComponent(txtEmailP).addGap(30)));
+				gl_panel_5.createSequentialGroup().addGap(24).addComponent(txtEmail).addGap(30)));
 		panel_5.setLayout(gl_panel_5);
 
 		JButton btnVoltar = new JButton("Voltar");
@@ -226,60 +232,152 @@ public class TelaRegistrarPaciente extends JFrame {
 
 				boolean validarCampoTexto = true;
 
-				String nome = txtNomeP.getText();
-				String cpf = txtcpfP.getText();
-				String telefone = txtTelefoneP.getText();
-				String email = txtEmailP.getText();
+				// 1o passo: pegar o texto dos campos de texto
+				String nome = txtNome.getText();
+				String cpf = txtCpf.getText(); // regex (expressao regular) tambem seria uma forma
+				String telefone = txtTelefone.getText();
+				String sexo = (String) cbSexo.getSelectedItem();
+				String email = txtEmail.getText();
 
 				Paciente paciente = new Paciente();
-//				paciente.setEmail(EmailP);
 
-				if (nome != null && !nome.isEmpty()) {
-					paciente.setNome(nome);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Nome");
+				// 2o passo: validar se texto é vazio ou nao
+				// se nao for vazio
+
+				try {
+					if (nome != null && !nome.isEmpty()) {
+						paciente.setNome(nome);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
+						txtNome.requestFocus();
+						return;
+					}
+					
+
+				} catch (Exception e2) {
+
 				}
 
-				if (cpf != null && !cpf.isEmpty()) {
-					// 3o passo: o que tem mascara usar o metodo REPLACE da String
-					cpf = cpf.replace(".", ""); // forma feia mas facil
-					cpf = cpf.replace("-", "");
+				try {
+					if (cpf != null && !cpf.isEmpty()) {
 
-					Long cpfP = Long.valueOf(cpf);
+						if (cpf.equalsIgnoreCase("   .   .   -  ")) {
+							JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+							txtCpf.requestFocus();
+							return;
+						} else {
+							// 3o passo: o que tem mascara usar o metodo REPLACE da String
+							cpf = cpf.replace(".", ""); // forma feia mas facil
+							cpf = cpf.replace("-", "");
 
-					paciente.setCpf(cpfP);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: CPF");
+							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+							// (valueOf)
+							Long cpfInt = Long.valueOf(cpf);
+
+							// setar no obj
+							paciente.setCpf(cpfInt);
+						}
+
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo CPF precisa ser preenchido");
+						txtCpf.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+				try {
+					
+					if (telefone != null && !telefone.isEmpty()) {
+						    String telefones = telefone.replace(")", ""); // forma feia mas facil
+							telefones = telefones.replace("(", ""); // forma feia mas facil
+							telefones = telefones.replace("-", "");
+							telefones = telefones.strip();
+						//if (telefone.equalsIgnoreCase("(  )    -    ")) {
+							if (telefones.isEmpty()) {
+							JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+							txtTelefone.requestFocus();
+							return;
+						} else {
+							// 3o passo: o que tem mascara usar o metodo REPLACE da String
+							
+
+							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+							// (valueOf)
+							Long telefoneInt = Long.valueOf(telefone);
+
+							// setar no obj
+							paciente.setTelefone(telefoneInt);
+						}
+
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+						txtTelefone.requestFocus();
+						return;
+					}
+				
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+				
+				try {
+					if(cbSexo.equals("Não Definido")) {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
+						cbSexo.requestFocus();
+						return;
+					}else {
+						validarCampoTexto = true;
+						paciente.setSexo(TipoSexo.obterTipo(sexo));
+				
+					}
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+				
+				try {
+					if (email != null && !email.isEmpty()) {
+						paciente.setEmail(email);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
+						txtEmail.requestFocus();
+						return;
+					}
+					
+
+				} catch (Exception e2) {
+
 				}
 
-				if (telefone != null && !telefone.isEmpty()) {
-					telefone = telefone.replace("()", ""); // forma feia mas facil
-					telefone = telefone.replace("-", "");
-					Long telefoneP = Long.valueOf(telefone);
-					paciente.setTelefone(telefoneP);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Telefone");
+				// se passar em todas as validacoes
+				try {
+					// se passar em todas as validacoes
+					if (validarCampoTexto == true) {
+						PacienteDAO pdao = new PacienteDAO();
+			
+						boolean validar = pdao.inserir(paciente);
+						if (validar == true) {
+							// exibir uma mensagem de cadastro com sucesso
+							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+						} else {
+							// exibir mensagem de erro ao cadastrar
+							JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+						}
+					}
+					
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
-
-				if (email != null && !email.isEmpty()) {
-					String emailP = email;
-					paciente.setEmail(emailP);
-				} else {
-					validarCampoTexto = false;
-					JOptionPane.showMessageDialog(null, "Campo obrigatório: Email");
-				}
-
-				if (validarCampoTexto == true) {
-					PacienteDAO dao = new PacienteDAO();
-					boolean validar = dao.inserir(paciente);
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
-				} else {
-					JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
-				}
-
+				
+				
+				
 			}
 		});
 		contentPane.add(btnInserir, "cell 3 2,growx,aligny center");

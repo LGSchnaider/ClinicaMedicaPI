@@ -3,7 +3,7 @@ package modelo;
 public class Paciente extends Pessoa {
 
 	private long telefone;
-	private String sexo;
+	private TipoSexo sexo;
 	private String email;
 
 	public long getTelefone() {
@@ -14,11 +14,11 @@ public class Paciente extends Pessoa {
 		this.telefone = telefone;
 	}
 
-	public String getSexo() {
+	public TipoSexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(TipoSexo sexo) {
 		this.sexo = sexo;
 	}
 

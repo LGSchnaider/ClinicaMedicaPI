@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import modelo.IPacienteDAO;
 import modelo.Medico;
 import modelo.Paciente;
+import modelo.TipoSexo;
 
 public class PacienteDAO implements IPacienteDAO {
 
@@ -31,7 +32,7 @@ public class PacienteDAO implements IPacienteDAO {
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getTelefone());
-			stm.setString(4, p.getSexo());
+			stm.setString(4, p.getSexo().getCodigo());
 			stm.setString(5, p.getEmail());
 
 			stm.executeUpdate();
@@ -44,7 +45,7 @@ public class PacienteDAO implements IPacienteDAO {
 		// fechar conexao
 		con.fechaConexao();
 
-		return false;
+		return true;
 	}
 
 	public boolean atualizar(int id, Paciente p) {
@@ -60,7 +61,7 @@ public class PacienteDAO implements IPacienteDAO {
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getTelefone());
-			stm.setString(4, p.getSexo());
+			stm.setString(4, p.getSexo().getCodigo());
 			stm.setString(5, p.getEmail());
 
 			stm.executeUpdate();
@@ -121,7 +122,7 @@ public class PacienteDAO implements IPacienteDAO {
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setTelefone(telefone);
-				p.setSexo(sexo);
+				p.setSexo(TipoSexo.obterTipo(sexo));
 				p.setEmail(email);
 				Pacientes.add(p);
 			}
