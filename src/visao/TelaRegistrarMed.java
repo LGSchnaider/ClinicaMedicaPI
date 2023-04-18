@@ -207,13 +207,10 @@ public class TelaRegistrarMed extends JPanel {
 
 		// TODO codigo do combobox usando enum
 		JComboBox<TipoUsuario> comboBox = new JComboBox<>();
-		// for (TipoUsuario tipo : TipoUsuario.values()) {
-		// comboBox.addItem(tipo);
-		// }
+		for (TipoUsuario tipo : TipoUsuario.getTiposMedico()) {
+			comboBox.addItem(tipo);
+		}
 		comboBox.setEditable(false);
-		comboBox.addItem(TipoUsuario.MED_ADMIN);
-		comboBox.addItem(TipoUsuario.MED_COMUM);
-
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
 
@@ -330,7 +327,7 @@ public class TelaRegistrarMed extends JPanel {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				try {
 					if (login != null && !login.isEmpty()) {
@@ -372,13 +369,13 @@ public class TelaRegistrarMed extends JPanel {
 				try {
 					TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
 					if (perfilU.equals(TipoUsuario.MED_COMUM)) {
-						medico.getUsuario().setPefil(1); // TODO ajustar
+						medico.getUsuario().setPefil(1); 
 					} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
-						medico.getUsuario().setPefil(0); // TODO ajustar
+						medico.getUsuario().setPefil(0);
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				try {

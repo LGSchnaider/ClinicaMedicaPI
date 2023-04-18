@@ -255,10 +255,10 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.add(panel_5, "cell 2 10,growx,aligny center");
 
 		JComboBox<TipoUsuario> cbFuncao = new JComboBox<>();
-		for (TipoUsuario tipo : TipoUsuario.values()) {
+		for (TipoUsuario tipo : TipoUsuario.getTiposSecretarias()) {
 			cbFuncao.addItem(tipo);
 		}
-
+		cbFuncao.setEditable(false);
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 		gl_panel_5.setHorizontalGroup(gl_panel_5.createParallelGroup(Alignment.LEADING).addGroup(
 				gl_panel_5.createSequentialGroup().addComponent(cbFuncao, 0, 514, Short.MAX_VALUE).addContainerGap()));
@@ -359,7 +359,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 				} 
 				catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				try {
@@ -374,7 +374,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 				}
 				catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				try {
@@ -388,7 +388,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 					}
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				try {
@@ -411,19 +411,19 @@ public class TelaRegistrarSecretaria extends JPanel {
 					}
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				try {
 					TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
 					if (perfilU.equals(TipoUsuario.SEC_COMUM)) {
-						secretaria.getUsuario().setPefil(3); // TODO ajustar
+						secretaria.getUsuario().setPefil(3); 
 					} else {
-						secretaria.getUsuario().setPefil(2); // TODO ajustar
+						secretaria.getUsuario().setPefil(2);
 					}
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 
 				// se passar em todas as validacoes
@@ -450,7 +450,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 					}
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 			}
 		});

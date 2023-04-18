@@ -122,7 +122,7 @@ public class MedicoDAO implements IMedicoDAO {
 				dao.deletar(p.getUsuario());
 			
 				try {
-					String query = "DELETE FROM medico WHERE crm = "+p.getCrm()+"";
+					String query = "DELETE FROM medico WHERE crm = "+p.getCrm()+";";
 					PreparedStatement stm = c.prepareStatement(query);
 
 					

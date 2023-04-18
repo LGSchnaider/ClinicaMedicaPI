@@ -349,9 +349,9 @@ public class VEditDoctor extends JFrame {
 
 				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
 				if (perfilU.equals(TipoUsuario.MED_COMUM)) {
-					medico.getUsuario().setPefil(1); // TODO ajustar
+					medico.getUsuario().setPefil(1);
 				} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
-					medico.getUsuario().setPefil(0); // TODO ajustar
+					medico.getUsuario().setPefil(0);
 				}
 
 				// se passar em todas as validacoes
