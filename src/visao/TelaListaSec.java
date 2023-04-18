@@ -118,18 +118,22 @@ public class TelaListaSec extends JFrame {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
 
-				if (JOptionPane.showConfirmDialog(contentPane, "Deseja deletar mesmo?") == 0) {
+				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					SecretariaTableModel model = (SecretariaTableModel) table.getModel();
+					MedicoTableModel model = (MedicoTableModel) table.getModel();
 
-					Secretaria a = model.getSecretaria(p);
+					Medico a = model.getMedico(p);
 					// JOptionPane.showInputDialog(null);
-					SecretariaDAO sDAO = new SecretariaDAO();
-					sDAO.deletar(a);
-					model = new SecretariaTableModel(sDAO.listaSecretaria());
+					MedicoDAO mDAO = new MedicoDAO();
+					mDAO.deletar(a);
+					model = new MedicoTableModel(mDAO.listaMedico());
 					table.setModel(model);
-					JOptionPane.showMessageDialog(null, "Secretaria excluido com sucesso");
+					JOptionPane.showMessageDialog(null, "Secretáio(a) excluido(a) com sucesso");
 				}
 
 				/*

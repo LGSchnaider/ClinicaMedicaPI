@@ -287,7 +287,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					}
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				try {
 					
@@ -322,7 +322,7 @@ public class TelaRegistrarPaciente extends JFrame {
 				
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				
 				try {
@@ -338,7 +338,7 @@ public class TelaRegistrarPaciente extends JFrame {
 					}
 					
 				} catch (Exception e2) {
-					// TODO: handle exception
+					e2.printStackTrace();
 				}
 				
 				try {
