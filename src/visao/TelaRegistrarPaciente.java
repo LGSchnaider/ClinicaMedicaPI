@@ -326,7 +326,7 @@ public class TelaRegistrarPaciente extends JFrame {
 				}
 				
 				try {
-					if(cbSexo.equals("Não Definido")) {
+					if(cbSexo.getSelectedIndex()== 0) {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
 						cbSexo.requestFocus();
