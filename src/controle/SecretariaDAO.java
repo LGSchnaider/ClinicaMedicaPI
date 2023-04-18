@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import modelo.ISecretariaDAO;
 import modelo.Paciente;
 import modelo.Secretaria;
+import modelo.Usuario;
 
 public class SecretariaDAO implements ISecretariaDAO {
 
@@ -59,8 +60,8 @@ public class SecretariaDAO implements ISecretariaDAO {
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 		//	stm.setLong(3, p.getTelefone());
-			//stm.setString(3, p.getEmail());
-			stm.setInt(3, p.getId());
+			stm.setString(3, p.getEmail());
+			stm.setInt(4, p.getId());
 
 			stm.executeUpdate();
 			return true;
@@ -110,7 +111,8 @@ public class SecretariaDAO implements ISecretariaDAO {
 		ArrayList<Secretaria> Secretarias = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "SELECT * FROM Secretaria";
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf, secretaria.telefone, secretaria.email from  usuario inner join secretaria on secretaria.usuario_idusuario = usuario_id;"
+					+ "";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 				int id = rs.getInt("id");
@@ -118,14 +120,26 @@ public class SecretariaDAO implements ISecretariaDAO {
 				long cpf = rs.getLong("cpf");
 				long telefone = rs.getLong("telefone");
 				String email = rs.getString("email");
-
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
+				
+				
 				Secretaria p = new Secretaria();
 				p.setId(id);
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setTelefone(telefone);
 				p.setEmail(email);
+				
+				Usuario u = new Usuario();
+				u.setLogin(login);
+				u.setSenha(senha);
+				u.setPefil(perfil);
+				p.setUsuario(u);
+
 				Secretarias.add(p);
+
 			}
 
 		} catch (SQLException e) {

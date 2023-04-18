@@ -57,6 +57,10 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JLabel lblCpf;
 	private JPanel panel_6;
 	private JTextField txtCPF;
+	private JPanel panel_7;
+	private JLabel Email;
+	private JPanel panel_8;
+	private JTextField txtEmail;
 
 	/**
 	 * Launch the application.
@@ -86,8 +90,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]",
-				"[184.00,grow][73.00][][grow][28.00,grow][52.00][grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][73.00][][grow][28.00,grow][52.00][58.00,grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
 
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -133,7 +136,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtCPF = new JFormattedTextField(formatter);
+		txtCPF = new JFormattedTextField(formatter);
 		txtCPF.setColumns(10);
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
 		gl_panel_6.setHorizontalGroup(gl_panel_6.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
@@ -168,6 +171,36 @@ public class TelaRegistrarSecretaria extends JPanel {
 								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
 		panel_3.setLayout(gl_panel_3);
+		
+		panel_7 = new JPanel();
+		panel_7.setOpaque(false);
+		contentPane.add(panel_7, "cell 1 6,alignx right,aligny center");
+		
+		Email = new JLabel("Email:");
+		Email.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		Email.setForeground(new Color(255, 255, 255));
+		panel_7.add(Email);
+		
+		panel_8 = new JPanel();
+		panel_8.setOpaque(false);
+		contentPane.add(panel_8, "cell 2 6,growx,aligny center");
+		
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
+		gl_panel_8.setHorizontalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_8.setVerticalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addGap(5)
+					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+		);
+		panel_8.setLayout(gl_panel_8);
 
 		lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
@@ -274,6 +307,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 				String senha = String.valueOf(pswSenha.getPassword());
 				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
+				String Email = txtEmail.getText();
 				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = cbFuncao.getSelectedIndex();
 
@@ -323,7 +357,23 @@ public class TelaRegistrarSecretaria extends JPanel {
 						return;
 					}
 
-				} catch (Exception e2) {
+				} 
+				catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+				try {
+					if (Email != null && !Email.isEmpty()) {
+						
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
+						txtEmail.requestFocus();
+						return;
+					}
+
+				}
+				catch (Exception e2) {
 					// TODO: handle exception
 				}
 
@@ -431,10 +481,11 @@ preencheDados(s);
 		if (s != null) {
 			txtNome.setText(s.getNome());
 			txtCPF.setText(String.valueOf(s.getCpf()));
-			txtLogin.setText(s.getEmail());
-
+			txtLogin.setText(s.getUsuario().getLogin());
+			txtEmail.setText(s.getEmail());
+			pswSenha.setText(s.getUsuario().getSenha());
+			pswConfirmarSenha.setText(s.getUsuario().getSenha());
 		}
 
 	}
-
 }
