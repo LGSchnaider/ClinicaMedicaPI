@@ -84,14 +84,18 @@ public class MedicoDAO implements IMedicoDAO {
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
+				int idUsuario = rs.getInt("usuarioid");
+				int idMedico = rs.getInt("id");
 
 				Medico p = new Medico();
+				p.setId(idMedico);
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setCrm(crm);
 
 				
 				Usuario u = new Usuario();
+				u.setIdusuario(idUsuario);
 				u.setLogin(login);
 				u.setSenha(senha);
 				u.setPefil(perfil);
@@ -122,7 +126,7 @@ public class MedicoDAO implements IMedicoDAO {
 				dao.deletar(p.getUsuario());
 			
 				try {
-					String query = "DELETE FROM medico WHERE crm = "+p.getCrm()+";";
+					String query = "DELETE medico, usuario FROM medico, usuario WHERE medico.usuario_idusuario = usuario.id and medico.crm ="+p.getCrm()+"";
 					PreparedStatement stm = c.prepareStatement(query);
 
 					
