@@ -117,7 +117,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		cbEstado.addItem("AC");
+		cbEstado.addItem("AC");	
 		cbEstado.addItem("AL");
 		cbEstado.addItem("AP");
 		cbEstado.addItem("AM");
