@@ -223,7 +223,7 @@ public class VEditDoctor extends JFrame {
 		panel_1.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_1, "cell 0 10,grow");
 
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new JButton("Cancelar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,14 +235,20 @@ public class VEditDoctor extends JFrame {
 			}
 		});
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				gl_panel_1.createSequentialGroup().addGap(75)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(73, Short.MAX_VALUE)));
-		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				gl_panel_1.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+					.addGap(48)
+					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(18, Short.MAX_VALUE))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 		panel_1.setLayout(gl_panel_1);
 
 		JPanel panel = new JPanel();
@@ -250,7 +256,7 @@ public class VEditDoctor extends JFrame {
 		panel.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 
-		JButton btnCad = new JButton("Editar médico");
+		JButton btnCad = new JButton("Salvar");
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -266,7 +272,7 @@ public class VEditDoctor extends JFrame {
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = comboBox.getSelectedIndex();
 
-				Medico medico = new Medico();
+				Medico medico = d;//new Medico();
 
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
@@ -353,16 +359,13 @@ public class VEditDoctor extends JFrame {
 				} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
 					medico.getUsuario().setPefil(0);
 				}
-
+//				medico.setId(d.getId());
 				// se passar em todas as validacoes
 				if (validarCampoTexto == true) {
 					UsuarioDAO udao = new UsuarioDAO();
-					udao.inserir(medico.getUsuario());
-					// medico.getUsuario().setIdusuario(id);
-
 					MedicoDAO mdao = new MedicoDAO();
 
-					boolean validar = mdao.inserir(medico);
+					boolean validar = mdao.atualizar(medico);
 					if (validar == true) {
 						// exibir uma mensagem de cadastro com sucesso
 						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
@@ -383,8 +386,8 @@ public class VEditDoctor extends JFrame {
 						.addComponent(btnCad, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE).addContainerGap()));
 		panel.setLayout(gl_panel);
 
-		setLayout(new BorderLayout());
-		add(contentPane, BorderLayout.CENTER);
+		getContentPane().setLayout(new BorderLayout());
+		getContentPane().add(contentPane, BorderLayout.CENTER);
 		preencheDados(d);
 	}
 	private void preencheDados(Medico d) {

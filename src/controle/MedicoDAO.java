@@ -46,13 +46,17 @@ public class MedicoDAO implements IMedicoDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE medico SET nome= ?, cpf = ?, crm = ?  WHERE id = ?";
+			String query = "update medico join usuario on medico.usuario_idusuario = usuario.id set medico.nome = ?, medico.cpf = ?, medico.crm = ?, usuario.login = ?, usuario.senha = ?, usuario.perfil = ? where medico.id = ?;";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getCrm());
-
+			stm.setString(4, p.getUsuario().getLogin());
+			stm.setString(5, p.getUsuario().getSenha());
+			stm.setInt(6, p.getUsuario().getPerfil());
+			stm.setLong(7, p.getId());
+			System.out.println(stm);
 			stm.executeUpdate();
 			return true;
 
