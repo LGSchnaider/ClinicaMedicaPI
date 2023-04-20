@@ -165,7 +165,17 @@ public class TelaListaPac extends JFrame {
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma médico");
+					return;
+				}
+				PacienteTableModel model  = (PacienteTableModel) table.getModel();
+				Paciente d = model.getPaciente(position);
+				VEditPatient window = new VEditPatient(d);
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);

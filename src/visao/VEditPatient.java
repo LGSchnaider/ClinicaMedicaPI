@@ -39,7 +39,7 @@ import javax.swing.JFormattedTextField;
 
 import java.awt.Color;
 
-public class TelaRegistrarPaciente extends JFrame {
+public class VEditPatient extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -47,13 +47,13 @@ public class TelaRegistrarPaciente extends JFrame {
 	private JTextField txtTelefoneP;
 	private JTextField txtEmail;
 	private Usuario usuarioLogado;
+	private JComboBox <String> cbSexo = new JComboBox<>();
 
 	/**
 	 * Launch the application.
 	 */
 
-	public TelaRegistrarPaciente(Usuario usuarioLogado) {
-		this.usuarioLogado = usuarioLogado;
+	public VEditPatient(Paciente d) {
 		
 //		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
 //		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
@@ -78,7 +78,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[28.00,grow][][690px,grow][51.00][29.00,grow]",
 				"[44.00,grow][391px,grow][grow][28.00]"));
 
-		JLabel lblNewLabel_5 = new JLabel("Cadastar Paciente");
+		JLabel lblNewLabel_5 = new JLabel("Atualizar Paciente");
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel_5, "cell 2 0,alignx center,growy");
@@ -176,7 +176,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		panel_4.setBackground(new Color(0, 156, 156));
 		panel.add(panel_4, "flowx,cell 1 4,grow");
 
-		JComboBox <String> cbSexo = new JComboBox<>();
+		
 		cbSexo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbSexo.addItem("Não Definido");
 		cbSexo.addItem("Masculino");
@@ -225,7 +225,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		});
 		contentPane.add(btnVoltar, "cell 1 2,growx,aligny center");
 
-		JButton btnInserir = new JButton("Cadastrar");
+		JButton btnInserir = new JButton("Atualizar");
 		btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -297,22 +297,22 @@ public class TelaRegistrarPaciente extends JFrame {
 							telefones = telefones.replace("-", "");
 							telefones = telefones.replace(" ", "");
 							telefones = telefones.strip();
-							//if (telefone.equalsIgnoreCase("(  )    -    ")) {
+						//if (telefone.equalsIgnoreCase("(  )    -    ")) {
 							if (telefones.isEmpty()) {
-								JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
-								txtTelefone.requestFocus();
-								return;
-							} else {
+							JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+							txtTelefone.requestFocus();
+							return;
+						} else {
 							// 3o passo: o que tem mascara usar o metodo REPLACE da String
 							
 
 							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
 							// (valueOf)
-								Long telefoneInt = Long.valueOf(telefones);
+							Long telefoneInt = Long.valueOf(telefones);
 
 							// setar no obj
-								paciente.setTelefone(telefoneInt);
-							}
+							paciente.setTelefone(telefoneInt);
+						}
 
 					} else {
 						validarCampoTexto = false;
@@ -382,5 +382,14 @@ public class TelaRegistrarPaciente extends JFrame {
 			}
 		});
 		contentPane.add(btnInserir, "cell 3 2,growx,aligny center");
+	}
+	private void preencherDados(Paciente d) {
+		if (d != null) {
+			txtNome.setText(d.getNome());
+			txtcpfP.setText(String.valueOf(d.getCpf()));
+			txtTelefoneP.setText(String.valueOf(d.getTelefone()));
+			txtEmail.setText(d.getEmail());
+			cbSexo.setSelectedItem(d.getSexo());
+		}
 	}
 }

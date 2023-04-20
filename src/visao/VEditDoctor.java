@@ -44,6 +44,7 @@ public class VEditDoctor extends JFrame {
 	private JPasswordField pswConfirmarSenha;
 	private Usuario usuarioLogado;
 	private JTextField txtCPFMed;
+	private JComboBox<TipoUsuario> comboBox = new JComboBox<>();
 
 	/**
 	 * Create the frame.
@@ -206,8 +207,6 @@ public class VEditDoctor extends JFrame {
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
 
-		// TODO codigo do combobox usando enum
-		JComboBox<TipoUsuario> comboBox = new JComboBox<>();
 		// for (TipoUsuario tipo : TipoUsuario.values()) {
 		// comboBox.addItem(tipo);
 		// }
@@ -367,11 +366,11 @@ public class VEditDoctor extends JFrame {
 
 					boolean validar = mdao.atualizar(medico);
 					if (validar == true) {
-						// exibir uma mensagem de cadastro com sucesso
-						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+						// exibir uma mensagem de atualizado com sucesso
+						JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
 					} else {
-						// exibir mensagem de erro ao cadastrar
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+						// exibir mensagem de erro ao atualizar
+						JOptionPane.showMessageDialog(null, "Erro ao atualizar Medico");
 					}
 				}
 
@@ -398,6 +397,7 @@ public class VEditDoctor extends JFrame {
 			txtLogin.setText(d.getUsuario().getLogin());
 			pswSenha.setText(d.getUsuario().getSenha());
 			pswConfirmarSenha.setText(d.getUsuario().getSenha());
+			comboBox.setSelectedItem(d.getUsuario().getPerfil());
 	}
 }
 }
