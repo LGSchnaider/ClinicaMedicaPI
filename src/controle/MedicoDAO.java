@@ -19,13 +19,14 @@ public class MedicoDAO implements IMedicoDAO {
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO medico " + "(nome, cpf, crm, usuario_idusuario) VALUES (?,?,?,?);";
+			String query = "INSERT INTO medico " + "(nome, cpf, uf, crm, usuario_idusuario) VALUES (?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
-			stm.setLong(3, p.getCrm());
-			stm.setInt(4, p.getUsuario().getIdusuario());
+			stm.setString(3, p.getUf());
+			stm.setLong(4, p.getCrm());
+			stm.setInt(5, p.getUsuario().getIdusuario());
 			System.out.println(stm);
 			stm.executeUpdate();
 			con.fechaConexao();

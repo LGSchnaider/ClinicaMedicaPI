@@ -117,6 +117,7 @@ public class TelaRegistrarMed extends JPanel {
 
 		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		cbEstado.addItem("  ");
 		cbEstado.addItem("AC");
 		cbEstado.addItem("AL");
 		cbEstado.addItem("AP");
@@ -255,6 +256,7 @@ public class TelaRegistrarMed extends JPanel {
 
 				// 1o passo: pegar o texto dos campos de texto
 				String nome = txtNomeMed.getText();
+				String estado = (String) cbEstado.getSelectedItem();
 				String senha = String.valueOf(pswSenha.getPassword());
 				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
@@ -365,6 +367,17 @@ public class TelaRegistrarMed extends JPanel {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
+				
+				//Fazer a verificação se tem algum estado selecionado se espaço espaço espaço, exibe mensagem
+				
+				
+				medico.setUf(estado);
+				
+				
+				
+				
+				//try catch
+				
 				
 				try {
 					TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
