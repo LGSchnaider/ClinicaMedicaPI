@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controle.MedicoDAO;
 import controle.PacienteDAO;
 import modelTabelas.PacienteTableModel;
 import modelo.Medico;
@@ -33,12 +34,11 @@ public class TelaCadConsulta extends JFrame {
 
 	private JPanel contentPane;
 	private final JButton btnCad = new JButton("Cadastrar");
-	private JTextField txtDoenca;
 	private JTextField txtValor;
 	private Usuario usuarioLogado;
 	private JComboBox comboPasc;
 	private ArrayList<Paciente> listaPaciente;
-	
+	private ArrayList<Medico> listaMedico;
 	
 	
 
@@ -287,7 +287,7 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(panel_3, "cell 0 5,grow");
 		panel_3.setLayout(new MigLayout("", "[46px,grow]", "[grow][14px,grow]"));
 		
-		JLabel lblNewLabel_3 = new JLabel("Doença:");
+		JLabel lblNewLabel_3 = new JLabel("Medico:");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
@@ -302,22 +302,28 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(panel_2, "cell 1 5,grow");
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 		
-		txtDoenca = new JTextField();
-		panel_2.add(txtDoenca, "cell 0 0,growx,aligny center");
-		txtDoenca.setColumns(10);
+		JComboBox comboMed = new JComboBox();
+		panel_2.add(comboMed, "cell 0 0,growx");
+		
+		MedicoDAO Med = new MedicoDAO();
+		listaMedico = Med.listaMedico();
+		for (Medico Medico : listaMedico) {
+			comboMed.addItem(Medico.getNome());
+		}
+		 
 		
 		txtValor = new JTextField();
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
 		txtValor.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Descrição:");
+		JLabel lblNewLabel_5 = new JLabel("Observações:");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
 		
-		TextArea txaDesc = new TextArea();
-		contentPane.add(txaDesc, "cell 1 6,growx,aligny center");
+		TextArea txaObser = new TextArea();
+		contentPane.add(txaObser, "cell 1 6,growx,aligny center");
 		contentPane.add(btnVolta, "cell 0 8,alignx center,aligny center");
 		
 		
@@ -328,6 +334,9 @@ public class TelaCadConsulta extends JFrame {
 				int pos = comboPasc.getSelectedIndex();
 				Paciente paci = listaPaciente.get(pos);
 				
+				int poss = comboMed.getSelectedIndex();
+				Medico Medi = listaMedico.get(poss);
+				
 				boolean validarCampoTexto = true;
 				
 				
@@ -337,11 +346,11 @@ public class TelaCadConsulta extends JFrame {
 				int Ano = cbAno.getSelectedIndex();
 				int Hora = cbHora.getSelectedIndex();
 				int Min = cbMin.getSelectedIndex();
-				String Doeca = txtDoenca.getText();
+				String Medico = (String) comboMed.getSelectedItem();
 				String Valor = txtValor.getText();
-				String Descricao = txaDesc.getText();
+				String Descricao = txaObser.getText();
 	
-				PacienteDAO pasc = new PacienteDAO();
+				
 				
 				}
 		});
