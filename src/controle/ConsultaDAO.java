@@ -13,7 +13,12 @@ public class ConsultaDAO implements IConsultaDAO{
 
 	public boolean inserir(Consulta c) {
 		Conexao con = Conexao.getInstancia();
+		
+		con.conectar();
+		
 		Connection c1 = con.conectar();
+		
+		
 		try {
 			String query = "INSERT INTO agenda_medico " + "(data, hora, descricao, medico_id_medico, paciente_id_paciente) VALUES (?,?,?,?,?);";
 			PreparedStatement stm = c1.prepareStatement(query);
@@ -25,12 +30,12 @@ public class ConsultaDAO implements IConsultaDAO{
 			stm.setInt(5, c.getIdPaciente());
 			stm.executeUpdate();
 			con.fechaConexao();
-			return true;
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return false;
+		return true;
 	}
 
 

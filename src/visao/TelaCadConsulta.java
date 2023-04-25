@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import controle.MedicoDAO;
 import controle.PacienteDAO;
+import controle.ConsultaDAO;
 import modelTabelas.PacienteTableModel;
 import modelo.Medico;
 import modelo.Paciente;
@@ -88,6 +89,8 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing,aligny center");
 		
 		comboPasc = new JComboBox();
+		comboPasc.addItem(null);
+		
 		PacienteDAO Pasc = new PacienteDAO();
 		listaPaciente = Pasc.listaPaciente();
 		for (Paciente paciente : listaPaciente) {
@@ -103,11 +106,11 @@ public class TelaCadConsulta extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
-		contentPane.add(panel, "cell 1 3,grow");
+		contentPane.add(panel, "cell 1 3,growx,aligny center");
 		panel.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow]"));
 		
-		JComboBox cbDia = new JComboBox();
-		panel.add(cbDia, "cell 0 0,growx");
+		JComboBox cbDia = new JComboBox();	
+		panel.add(cbDia, "cell 0 0,growx,aligny center");
 		cbDia.addItem("01");
 		cbDia.addItem("02");
 		cbDia.addItem("03");
@@ -142,7 +145,7 @@ public class TelaCadConsulta extends JFrame {
 		
 		
 		JComboBox cbMes = new JComboBox();
-		panel.add(cbMes, "cell 1 0,growx");
+		panel.add(cbMes, "cell 1 0,growx,aligny center");
 		cbMes.addItem("JAN.");
 		cbMes.addItem("FEV.");
 		cbMes.addItem("MAR.");
@@ -157,7 +160,7 @@ public class TelaCadConsulta extends JFrame {
 		cbMes.addItem("DEZ.");
 		
 		JComboBox cbAno = new JComboBox();
-		panel.add(cbAno, "cell 2 0,growx");
+		panel.add(cbAno, "cell 2 0,growx,aligny center");
 		
 		cbAno.addItem("2010");
 		cbAno.addItem("2011");
@@ -303,6 +306,7 @@ public class TelaCadConsulta extends JFrame {
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 		
 		JComboBox comboMed = new JComboBox();
+		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
 		MedicoDAO Med = new MedicoDAO();
@@ -348,7 +352,9 @@ public class TelaCadConsulta extends JFrame {
 				int Min = cbMin.getSelectedIndex();
 				String Medico = (String) comboMed.getSelectedItem();
 				String Valor = txtValor.getText();
-				String Descricao = txaObser.getText();
+				String Descricao = txaObser	.getText();
+				
+				ConsultaDAO cDAO = new ConsultaDAO();
 	
 				
 				
