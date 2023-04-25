@@ -43,21 +43,20 @@ public class VEditPatient extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
-	private JTextField txtcpfP;
-	private JTextField txtTelefoneP;
 	private JTextField txtEmail;
 	private Usuario usuarioLogado;
 	private JComboBox <String> cbSexo = new JComboBox<>();
+	private JFormattedTextField txtCpf;
+	private JFormattedTextField txtTelefone;
 
 	/**
 	 * Launch the application.
 	 */
 
-	public VEditPatient(Paciente d) {
+	public VEditPatient(Usuario usuarioLogado, Paciente d) {
 		
-//		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
-//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
-//		frame.setVisible(true);
+		this.usuarioLogado = usuarioLogado;
+
 		setTitle("Cadastro de Paciente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);
@@ -121,14 +120,13 @@ public class VEditPatient extends JFrame {
 		panel_2.setBackground(new Color(0, 156, 156));
 		panel.add(panel_2, "flowx,cell 1 2,grow");
 
-		txtcpfP = new JTextField();
 		MaskFormatter formatter = null;
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtCpf = new JFormattedTextField(formatter);
+		txtCpf = new JFormattedTextField(formatter);
 		txtCpf.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtCpf.setColumns(10);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -149,13 +147,12 @@ public class VEditPatient extends JFrame {
 		panel_3.setBackground(new Color(0, 156, 156));
 		panel.add(panel_3, "flowx,cell 1 3,grow");
 
-		txtTelefoneP = new JTextField();
 		try {
 			formatter = new MaskFormatter("(##) #####-####");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtTelefone = new JFormattedTextField(formatter);
+		txtTelefone = new JFormattedTextField(formatter);
 		txtTelefone.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtTelefone.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
@@ -178,9 +175,13 @@ public class VEditPatient extends JFrame {
 
 		
 		cbSexo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		cbSexo.addItem("Não Definido");
-		cbSexo.addItem("Masculino");
-		cbSexo.addItem("Feminino");
+		for (TipoSexo s : TipoSexo.values()) {
+			cbSexo.addItem(s.getDescricao());
+		}
+		
+//		cbSexo.addItem("Não Definido");
+//		cbSexo.addItem("Masculino");
+//		cbSexo.addItem("Feminino");
 		cbSexo.setEditable(false);
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
@@ -369,7 +370,7 @@ public class VEditPatient extends JFrame {
 							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 						} else {
 							// exibir mensagem de erro ao cadastrar
-							JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+							JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
 						}
 					}
 					
@@ -381,15 +382,16 @@ public class VEditPatient extends JFrame {
 				
 			}
 		});
+		preencherDados(d);
 		contentPane.add(btnInserir, "cell 3 2,growx,aligny center");
 	}
 	private void preencherDados(Paciente d) {
 		if (d != null) {
 			txtNome.setText(d.getNome());
-			txtcpfP.setText(String.valueOf(d.getCpf()));
-			txtTelefoneP.setText(String.valueOf(d.getTelefone()));
+			txtCpf.setText(String.valueOf(d.getCpf()));
+			txtTelefone.setText(String.valueOf(d.getTelefone()));
 			txtEmail.setText(d.getEmail());
-			cbSexo.setSelectedItem(d.getSexo());
-		}
+			cbSexo.setSelectedItem(d.getSexo().getDescricao());
+			}
 	}
 }

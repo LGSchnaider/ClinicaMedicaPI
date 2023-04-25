@@ -167,12 +167,12 @@ public class TelaListaPac extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int position = table.getSelectedRow();
 				if(position == -1) {
-					JOptionPane.showMessageDialog(null, "Selecione uma médico");
+					JOptionPane.showMessageDialog(null, "Selecione um Paciente");
 					return;
 				}
 				PacienteTableModel model  = (PacienteTableModel) table.getModel();
 				Paciente d = model.getPaciente(position);
-				VEditPatient window = new VEditPatient(d);
+				VEditPatient window = new VEditPatient(usuarioLogado, d);
 				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				window.setVisible(true);
 				dispose();

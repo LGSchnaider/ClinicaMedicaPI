@@ -389,6 +389,7 @@ public class VEditDoctor extends JFrame {
 		getContentPane().add(contentPane, BorderLayout.CENTER);
 		preencheDados(d);
 	}
+	//TODO olhar como fazer a combo box selecionar o valor correto
 	private void preencheDados(Medico d) {
 		if (d != null) {
 			txtNomeMed.setText(d.getNome());
