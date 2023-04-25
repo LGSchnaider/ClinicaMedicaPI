@@ -29,7 +29,6 @@ public class MedicoDAO implements IMedicoDAO {
 			stm.setInt(5, p.getUsuario().getIdusuario());
 			System.out.println(stm);
 			stm.executeUpdate();
-			con.fechaConexao();
 			return true;
 		} catch (SQLException e) {
 
@@ -37,6 +36,7 @@ public class MedicoDAO implements IMedicoDAO {
 		}
 
 		// fechar conexao
+		con.fechaConexao();
 
 		return false;
 	}

@@ -26,15 +26,17 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO secretaria " + "(nome, cpf, telefone, email) VALUES (?,?,?,?);";
+			String query = "INSERT INTO secretaria " + "(nome, cpf, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getTelefone());
 			stm.setString(4, p.getEmail());
-
+			stm.setInt(5, p.getUsuario().getIdusuario());
+			System.out.println(stm);
 			stm.executeUpdate();
+			return true;
 
 		} catch (SQLException e) {
 

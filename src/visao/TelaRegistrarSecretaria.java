@@ -361,10 +361,23 @@ public class TelaRegistrarSecretaria extends JPanel {
 				catch (Exception e2) {
 					e2.printStackTrace();
 				}
+				try {
+					if (login != null && !login.isEmpty()) {
+						secretaria.getUsuario().setLogin(login);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
+						txtLogin.requestFocus();
+						return;
+					}
+					
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 
 				try {
 					if (Email != null && !Email.isEmpty()) {
-						
+						secretaria.setEmail(Email);
 					} else {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
@@ -377,19 +390,6 @@ public class TelaRegistrarSecretaria extends JPanel {
 					e2.printStackTrace();
 				}
 
-				try {
-					if (login != null && !login.isEmpty()) {
-						secretaria.getUsuario().setLogin(login);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo LOGIN precisa ser preenchido");
-						txtLogin.requestFocus();
-						return;
-					}
-
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
 
 				try {
 					if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
@@ -430,12 +430,24 @@ public class TelaRegistrarSecretaria extends JPanel {
 				try {
 					if (validarCampoTexto == true) {
 						UsuarioDAO udao = new UsuarioDAO();
+			
 						SecretariaDAO sdao = new SecretariaDAO();
+					
+						
 						if (s == null) {
 							udao.inserir(secretaria.getUsuario());
 							// medico.getUsuario().setIdusuario(id);
 
-							sdao.inserir(secretaria);
+							boolean validar = sdao.inserir(secretaria);
+							if (validar == true) {
+								// exibir uma mensagem de cadastro com sucesso
+								JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+							} else {
+								// exibir mensagem de erro ao cadastrar
+								JOptionPane.showMessageDialog(null, "Erro ao cadastrar Secretária");
+							}
+							
+							
 						} else {
 							// acao de alterar no banco registro - UPDATE
 							secretaria.setId(s.getId());
@@ -474,7 +486,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 	
 		//TODO Observar e juntar ao médico.
-preencheDados(s);
+		preencheDados(s);
 	}
 
 	private void preencheDados(Secretaria s) {
