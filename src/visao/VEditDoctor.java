@@ -222,7 +222,7 @@ public class VEditDoctor extends JFrame {
 		panel_1.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_1, "cell 0 10,grow");
 
-		JButton btnVoltar = new JButton("Cancelar");
+		JButton btnVoltar = new VModelButton("Cancelar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -255,7 +255,7 @@ public class VEditDoctor extends JFrame {
 		panel.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 
-		JButton btnCad = new JButton("Salvar");
+		JButton btnCad = new VModelButton("Salvar");
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

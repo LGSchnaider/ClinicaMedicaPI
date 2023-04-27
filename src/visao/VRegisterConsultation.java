@@ -26,7 +26,7 @@ import java.awt.Color;
 public class VRegisterConsultation extends JFrame {
 
 	private JPanel contentPane;
-	private final JButton btnCad = new JButton("Cadastrar");
+	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
 	private JTextField txtValor;
 	private Usuario usuarioLogado;
@@ -60,7 +60,7 @@ public class VRegisterConsultation extends JFrame {
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
 		
-		JButton btnVolta = new JButton("Voltar");
+		JButton btnVolta = new VModelButton("Voltar");
 		btnVolta.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

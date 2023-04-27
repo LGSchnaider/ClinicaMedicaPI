@@ -133,7 +133,7 @@ public class VMainWindow extends JFrame {
 		panel_1.setLayout(new MigLayout("", "[71.00][][17.00px,grow]",
 				"[][1px][15px,grow][23px][15px,grow][23px][15px,grow][23px][15px]"));
 
-		JButton btnNewButton = new JButton("Logout");
+		JButton btnNewButton = new VModelButton("Logout");
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		panel_1.add(btnNewButton, "cell 2 0,alignx right,aligny center");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -164,7 +164,7 @@ public class VMainWindow extends JFrame {
 
 		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
 
-			JButton btnNewButton_4 = new JButton("Usuário");
+			JButton btnNewButton_4 = new VModelButton("Usuário");
 			btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -184,7 +184,7 @@ public class VMainWindow extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("               ");
 		panel_2.add(lblNewLabel_7, "cell 2 0,alignx left,aligny center");
 
-		JButton btnNewButton_1 = new JButton("Paciente");
+		JButton btnNewButton_1 = new VModelButton("Paciente");
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,7 +210,7 @@ public class VMainWindow extends JFrame {
 		panel_3.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_3, "cell 2 5,grow");
 
-		JButton btnNewButton_2 = new JButton("Registrar consultas");
+		JButton btnNewButton_2 = new VModelButton("Registrar consultas");
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -229,7 +229,7 @@ public class VMainWindow extends JFrame {
 		JLabel lblNewLabel_8 = new JLabel("            ");
 		panel_3.add(lblNewLabel_8, "cell 2 0,alignx left,aligny center");
 
-		JButton btnNewButton_5 = new JButton("Listas de consultas");
+		JButton btnNewButton_5 = new VModelButton("Listas de consultas");
 		btnNewButton_5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -260,7 +260,7 @@ public class VMainWindow extends JFrame {
 
 		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
 
-			JButton btnNewButton_3 = new JButton("Listas de Médicos");
+			JButton btnNewButton_3 = new VModelButton("Listas de Médicos");
 			btnNewButton_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -276,7 +276,7 @@ public class VMainWindow extends JFrame {
 			panel_4.add(btnNewButton_3, "cell 1 0,growx,aligny center");
 		}
 
-		JButton btnNewButton_6 = new JButton("Listas de Pacientes");
+		JButton btnNewButton_6 = new VModelButton("Listas de Pacientes");
 		btnNewButton_6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -292,7 +292,7 @@ public class VMainWindow extends JFrame {
 
 		if (tipoUsuarioLogado != TipoUsuario.MED_COMUM && tipoUsuarioLogado != TipoUsuario.SEC_COMUM) {
 
-			JButton btnListaSec = new JButton("Lista de Secretaria");
+			JButton btnListaSec = new VModelButton("Lista de Secretaria");
 			btnListaSec.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 

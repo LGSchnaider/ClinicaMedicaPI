@@ -220,7 +220,7 @@ public class VRegisterDoctor extends JPanel {
 		panel_1.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_1, "cell 0 10,grow");
 
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -247,7 +247,7 @@ public class VRegisterDoctor extends JPanel {
 		panel.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel, "cell 1 10,alignx center,aligny center");
 
-		JButton btnCad = new JButton("Cadastrar novo médico");
+		JButton btnCad = new VModelButton("Cadastrar novo médico");
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

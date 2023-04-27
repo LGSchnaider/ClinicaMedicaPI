@@ -166,7 +166,7 @@ public class VStartScreen extends JFrame {
 		center.add(txtSenha, "cell 3 6,growx");
 		txtSenha.setColumns(10);
 
-		JButton btnLogOff = new JButton("Sair");
+		JButton btnLogOff = new VModelButton("Sair");
 		btnLogOff.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		btnLogOff.addActionListener(new ActionListener() {
@@ -180,7 +180,7 @@ public class VStartScreen extends JFrame {
 		panel.setBackground(new Color(36, 49, 55));
 		center.add(panel, "cell 3 7,alignx center,aligny center");
 
-		JButton btnLogin = new JButton("Login");
+		JButton btnLogin = new VModelButton("Login");
 		btnLogin.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		center.add(btnLogin, "cell 0 0");

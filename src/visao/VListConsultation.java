@@ -39,7 +39,7 @@ public class VListConsultation extends JFrame {
 		
 			//TODO Criar lista d Pacientes e os comandos dos botões 
 			
-			JButton btnNewButton = new JButton("Voltar");
+			JButton btnNewButton = new VModelButton("Voltar");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -52,7 +52,7 @@ public class VListConsultation extends JFrame {
 			btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			contentPane.add(btnNewButton, "cell 0 3,alignx center,aligny center");
 		
-		JButton btnNewButton_1 = new JButton("Deletar Consulta");
+		JButton btnNewButton_1 = new VModelButton("Deletar Consulta");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -60,7 +60,7 @@ public class VListConsultation extends JFrame {
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		contentPane.add(btnNewButton_1, "cell 1 3,alignx center");
 		
-		JButton btnNewButton_2 = new JButton("Editar Consulta");
+		JButton btnNewButton_2 = new VModelButton("Editar Consulta");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

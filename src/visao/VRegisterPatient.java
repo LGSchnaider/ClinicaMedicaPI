@@ -212,7 +212,7 @@ public class VRegisterPatient extends JFrame {
 				gl_panel_5.createSequentialGroup().addGap(24).addComponent(txtEmail).addGap(30)));
 		panel_5.setLayout(gl_panel_5);
 
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -225,7 +225,7 @@ public class VRegisterPatient extends JFrame {
 		});
 		contentPane.add(btnVoltar, "cell 1 2,growx,aligny center");
 
-		JButton btnInserir = new JButton("Cadastrar");
+		JButton btnInserir = new VModelButton("Cadastrar");
 		btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

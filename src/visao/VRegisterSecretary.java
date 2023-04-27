@@ -296,7 +296,7 @@ public class VRegisterSecretary extends JPanel {
 		panel.setOpaque(false);
 		contentPane.add(panel, "cell 2 10,grow");
 
-		btnVoltar = new JButton("Voltar");
+		btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -308,8 +308,7 @@ public class VRegisterSecretary extends JPanel {
 			}
 		});
 
-		btnregistrar = new JButton();
-		btnregistrar.setText("Registrar");
+		btnregistrar = new VModelButton("Registrar");
 		if (s == null) {
 			btnregistrar.setText("Registrar");
 

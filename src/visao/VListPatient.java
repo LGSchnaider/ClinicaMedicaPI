@@ -94,7 +94,7 @@ public class VListPatient extends JFrame {
 		panel_3.setOpaque(false);
 		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
-		JButton btnVoltar = new JButton("Voltar");
+		JButton btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setOpaque(false);
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
@@ -118,7 +118,7 @@ public class VListPatient extends JFrame {
 		panel_2.setOpaque(false);
 		contentPane.add(panel_2, "cell 2 2,alignx center,aligny center");
 
-		JButton btnDeletar = new JButton("Deletar");
+		JButton btnDeletar = new VModelButton("Deletar");
 		btnDeletar.setOpaque(false);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,7 +165,7 @@ public class VListPatient extends JFrame {
 		panel_4.setOpaque(false);
 		contentPane.add(panel_4, "flowy,cell 3 2,alignx right,aligny center");
 
-		JButton btnEditar = new JButton("Editar");
+		JButton btnEditar = new VModelButton("Editar");
 		btnEditar.setOpaque(false);
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
