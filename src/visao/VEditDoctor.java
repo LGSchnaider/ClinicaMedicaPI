@@ -80,7 +80,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Nome:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_1, "cell 0 2,alignx trailing");
+		contentPane.add(lblNewLabel_1, "cell 0 2,alignx trailing,aligny center");
 
 		txtNomeMed = new JTextField();
 		txtNomeMed.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -90,7 +90,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("CPF:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing");
+		contentPane.add(lblNewLabel_2, "cell 0 3,alignx trailing,aligny center");
 
 		textField_2 = new JFormattedTextField();
 		MaskFormatter formatter = null;
@@ -110,7 +110,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("Código CRM:");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_3, "cell 0 4,alignx trailing");
+		contentPane.add(lblNewLabel_3, "cell 0 4,alignx trailing,aligny center");
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
@@ -177,7 +177,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Login:");
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing");
+		contentPane.add(lblNewLabel_4, "cell 0 5,alignx trailing,aligny center");
 
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -187,7 +187,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_5 = new JLabel("Senha:");
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing");
+		contentPane.add(lblNewLabel_5, "cell 0 6,alignx trailing,aligny center");
 
 		pswSenha = new JPasswordField();
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -196,7 +196,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing");
+		contentPane.add(lblNewLabel_6, "cell 0 7,alignx trailing,aligny center");
 
 		pswConfirmarSenha = new JPasswordField();
 		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -205,7 +205,7 @@ public class VEditDoctor extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("Perfil:");
 		lblNewLabel_7.setForeground(new Color(255, 255, 255));
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing");
+		contentPane.add(lblNewLabel_7, "cell 0 8,alignx trailing,aligny center");
 
 		// for (TipoUsuario tipo : TipoUsuario.values()) {
 		// comboBox.addItem(tipo);

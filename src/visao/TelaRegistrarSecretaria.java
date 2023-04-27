@@ -57,10 +57,12 @@ public class TelaRegistrarSecretaria extends JPanel {
 	private JLabel lblCpf;
 	private JPanel panel_6;
 	private JTextField txtCPF;
-	private JPanel panel_7;
 	private JLabel Email;
 	private JPanel panel_8;
 	private JTextField txtEmail;
+	private JLabel lblNewLabel_3;
+	private JPanel panel_9;
+	private JTextField txtTelefone;
 
 	/**
 	 * Launch the application.
@@ -90,7 +92,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][73.00][][grow][28.00,grow][52.00][58.00,grow][45.00][29.00,grow][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][24.00][97.00][][14.00][52.00][58.00,grow][45.00][45.00][61.00,grow][35.00][70.00,grow]"));
 
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -100,7 +102,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		lblnome = new JLabel("Nome:");
 		lblnome.setForeground(new Color(255, 255, 255));
 		lblnome.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblnome, "cell 1 1,alignx trailing");
+		contentPane.add(lblnome, "cell 1 1,alignx trailing,aligny center");
 
 		panel_4 = new JPanel();
 		panel_4.setOpaque(false);
@@ -119,18 +121,51 @@ public class TelaRegistrarSecretaria extends JPanel {
 								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(15, Short.MAX_VALUE)));
 		panel_4.setLayout(gl_panel_4);
+		
+		lblNewLabel_3 = new JLabel("Telefone:");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_3, "cell 1 2,alignx trailing,aligny center");
+		
+		panel_9 = new JPanel();
+		panel_9.setOpaque(false);
+		contentPane.add(panel_9, "cell 2 2,growx,aligny center");
+		
+		txtTelefone = new JTextField();
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("(##) #####-####");
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		txtTelefone = new JFormattedTextField(formatter);
+		txtTelefone.setColumns(10);
+		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
+		gl_panel_9.setHorizontalGroup(
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addComponent(txtTelefone, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel_9.setVerticalGroup(
+			gl_panel_9.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addContainerGap(18, Short.MAX_VALUE)
+					.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		panel_9.setLayout(gl_panel_9);
 
 		lblCpf = new JLabel("CPF:");
 		lblCpf.setForeground(Color.WHITE);
 		lblCpf.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblCpf, "cell 1 3");
+		contentPane.add(lblCpf, "cell 1 3,alignx trailing,aligny center");
 
 		panel_6 = new JPanel();
 		panel_6.setOpaque(false);
 		contentPane.add(panel_6, "cell 2 3,growx,aligny center");
 
 		txtCPF = new JTextField();
-		MaskFormatter formatter = null;
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e2) {
@@ -152,7 +187,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		lblUser = new JLabel("Login:");
 		lblUser.setForeground(new Color(255, 255, 255));
 		lblUser.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblUser, "flowx,cell 1 5,alignx trailing");
+		contentPane.add(lblUser, "flowx,cell 1 5,alignx trailing,aligny center");
 
 		panel_3 = new JPanel();
 		panel_3.setOpaque(false);
@@ -172,14 +207,10 @@ public class TelaRegistrarSecretaria extends JPanel {
 						.addContainerGap()));
 		panel_3.setLayout(gl_panel_3);
 		
-		panel_7 = new JPanel();
-		panel_7.setOpaque(false);
-		contentPane.add(panel_7, "cell 1 6,alignx right,aligny center");
-		
 		Email = new JLabel("Email:");
+		contentPane.add(Email, "cell 1 6,alignx trailing,aligny center");
 		Email.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		Email.setForeground(new Color(255, 255, 255));
-		panel_7.add(Email);
 		
 		panel_8 = new JPanel();
 		panel_8.setOpaque(false);
@@ -190,22 +221,23 @@ public class TelaRegistrarSecretaria extends JPanel {
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_8.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_panel_8.createSequentialGroup()
 					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_panel_8.setVerticalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addGap(5)
-					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+					.addContainerGap()
+					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
 
 		lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_2, "cell 1 7,alignx trailing");
+		contentPane.add(lblNewLabel_2, "cell 1 7,alignx trailing,aligny center");
 
 		panel_2 = new JPanel();
 		panel_2.setOpaque(false);
@@ -226,11 +258,11 @@ public class TelaRegistrarSecretaria extends JPanel {
 		lblNewLabel_1 = new JLabel("Confirme Senha:");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel_1, "cell 1 9,alignx trailing");
+		contentPane.add(lblNewLabel_1, "cell 1 8,alignx trailing,aligny center");
 
 		panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		contentPane.add(panel_1, "cell 2 9,growx,aligny center");
+		contentPane.add(panel_1, "cell 2 8,growx,aligny center");
 
 		pswConfirmarSenha = new JPasswordField();
 		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -248,11 +280,11 @@ public class TelaRegistrarSecretaria extends JPanel {
 		JLabel lblNewLabel = new JLabel("Função:");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		contentPane.add(lblNewLabel, "cell 1 10,alignx right,aligny center");
+		contentPane.add(lblNewLabel, "cell 1 9,alignx right,aligny center");
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setOpaque(false);
-		contentPane.add(panel_5, "cell 2 10,growx,aligny center");
+		contentPane.add(panel_5, "cell 2 9,growx,aligny center");
 
 		JComboBox<TipoUsuario> cbFuncao = new JComboBox<>();
 		for (TipoUsuario tipo : TipoUsuario.getTiposSecretarias()) {
@@ -271,7 +303,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 
 		panel = new JPanel();
 		panel.setOpaque(false);
-		contentPane.add(panel, "cell 2 11,grow");
+		contentPane.add(panel, "cell 2 10,grow");
 
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -308,6 +340,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
 				String Email = txtEmail.getText();
+				String Telefone = txtTelefone.getText();
 				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = cbFuncao.getSelectedIndex();
 
@@ -389,7 +422,26 @@ public class TelaRegistrarSecretaria extends JPanel {
 				catch (Exception e2) {
 					e2.printStackTrace();
 				}
+				
+				try {
+					if(Telefone != null && !Telefone.isEmpty()) {
+						String telefones = Telefone.replace(")", ""); // forma feia mas facil
+						telefones = telefones.replace("(", ""); // forma feia mas facil
+						telefones = telefones.replace("-", "");
+						telefones = telefones.replace(" ", "");
+						telefones = telefones.strip();
+						Long telefoneInt = Long.valueOf(telefones);
+						secretaria.setTelefone(telefoneInt);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+						txtTelefone.requestFocus();
+						return;
+					}
 
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 
 				try {
 					if (!senha.isEmpty() && !confirmaSenha.isEmpty()) {
