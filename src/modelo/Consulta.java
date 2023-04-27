@@ -41,4 +41,7 @@ public class Consulta{
 	public void setIdPaciente(int idPaciente) {
 		this.idPaciente = idPaciente;
 	}
-}
+	
+		
+	}
+

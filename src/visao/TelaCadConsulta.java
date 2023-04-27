@@ -118,7 +118,7 @@ public class TelaCadConsulta extends JFrame {
 		cbDia.addItem("05");
 		cbDia.addItem("06");
 		cbDia.addItem("07");
-		cbDia.addItem("08");
+		cbDia.addItem("08");	
 		cbDia.addItem("09");
 		cbDia.addItem("10");
 		cbDia.addItem("11");
