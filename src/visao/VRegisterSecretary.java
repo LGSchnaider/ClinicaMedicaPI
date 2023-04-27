@@ -92,7 +92,8 @@ public class VRegisterSecretary extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]", "[184.00,grow][24.00][97.00][][14.00][52.00][58.00,grow][45.00][45.00][61.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[56.00,grow][131.00,grow,right][100.00,grow][110.00,grow][51.00,grow]",
+				"[184.00,grow][24.00][97.00][][14.00][52.00][58.00,grow][45.00][45.00][61.00,grow][35.00][70.00,grow]"));
 
 		JLabel lblTitulo = new JLabel("Registrar Secretaria");
 		lblTitulo.setForeground(new Color(255, 255, 255));
@@ -121,16 +122,16 @@ public class VRegisterSecretary extends JPanel {
 								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(15, Short.MAX_VALUE)));
 		panel_4.setLayout(gl_panel_4);
-		
+
 		lblNewLabel_3 = new JLabel("Telefone:");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel_3, "cell 1 2,alignx trailing,aligny center");
-		
+
 		panel_9 = new JPanel();
 		panel_9.setOpaque(false);
 		contentPane.add(panel_9, "cell 2 2,growx,aligny center");
-		
+
 		txtTelefone = new JTextField();
 		MaskFormatter formatter = null;
 		try {
@@ -142,18 +143,13 @@ public class VRegisterSecretary extends JPanel {
 		txtTelefone.setColumns(10);
 		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
 		gl_panel_9.setHorizontalGroup(
-			gl_panel_9.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addComponent(txtTelefone, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_9.setVerticalGroup(
-			gl_panel_9.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_9.createSequentialGroup()
-					.addContainerGap(18, Short.MAX_VALUE)
-					.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
+				gl_panel_9.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_9.createSequentialGroup()
+						.addComponent(txtTelefone, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE).addContainerGap()));
+		gl_panel_9.setVerticalGroup(gl_panel_9.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_9
+						.createSequentialGroup().addContainerGap(18, Short.MAX_VALUE).addComponent(txtTelefone,
+								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
 		panel_9.setLayout(gl_panel_9);
 
 		lblCpf = new JLabel("CPF:");
@@ -206,32 +202,27 @@ public class VRegisterSecretary extends JPanel {
 								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap()));
 		panel_3.setLayout(gl_panel_3);
-		
+
 		Email = new JLabel("Email:");
 		contentPane.add(Email, "cell 1 6,alignx trailing,aligny center");
 		Email.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		Email.setForeground(new Color(255, 255, 255));
-		
+
 		panel_8 = new JPanel();
 		panel_8.setOpaque(false);
 		contentPane.add(panel_8, "cell 2 6,growx,aligny center");
-		
+
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
-		gl_panel_8.setHorizontalGroup(
-			gl_panel_8.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_8.createSequentialGroup()
-					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_8.setVerticalGroup(
-			gl_panel_8.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_8.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+		gl_panel_8.setHorizontalGroup(gl_panel_8.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_panel_8.createSequentialGroup()
+						.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE).addContainerGap()));
+		gl_panel_8.setVerticalGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup().addContainerGap()
+						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 		panel_8.setLayout(gl_panel_8);
 
 		lblNewLabel_2 = new JLabel("Senha:");
@@ -340,7 +331,7 @@ public class VRegisterSecretary extends JPanel {
 				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
 				String Email = txtEmail.getText();
-				String Telefone = txtTelefone.getText();
+				String telefone = txtTelefone.getText();
 				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = cbFuncao.getSelectedIndex();
 
@@ -361,6 +352,26 @@ public class VRegisterSecretary extends JPanel {
 
 				} catch (Exception e2) {
 
+				}
+
+				try {
+					String telefones = telefone.replace(")", ""); // forma feia mas facil
+					telefones = telefones.replace("(", ""); // forma feia mas facil
+					telefones = telefones.replace("-", "");
+					telefones = telefones.replace(" ", "");
+					telefones = telefones.strip();
+					if (!telefones.isEmpty()) {
+						Long telefoneInt = Long.valueOf(telefones);
+						secretaria.setTelefone(telefoneInt);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+						txtTelefone.requestFocus();
+						return;
+					}
+
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
 
 				try {
@@ -390,8 +401,7 @@ public class VRegisterSecretary extends JPanel {
 						return;
 					}
 
-				} 
-				catch (Exception e2) {
+				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
 				try {
@@ -403,7 +413,7 @@ public class VRegisterSecretary extends JPanel {
 						txtLogin.requestFocus();
 						return;
 					}
-					
+
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
@@ -415,27 +425,6 @@ public class VRegisterSecretary extends JPanel {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
 						txtEmail.requestFocus();
-						return;
-					}
-
-				}
-				catch (Exception e2) {
-					e2.printStackTrace();
-				}
-				
-				try {
-					if(Telefone != null && !Telefone.isEmpty()) {
-						String telefones = Telefone.replace(")", ""); // forma feia mas facil
-						telefones = telefones.replace("(", ""); // forma feia mas facil
-						telefones = telefones.replace("-", "");
-						telefones = telefones.replace(" ", "");
-						telefones = telefones.strip();
-						Long telefoneInt = Long.valueOf(telefones);
-						secretaria.setTelefone(telefoneInt);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
-						txtTelefone.requestFocus();
 						return;
 					}
 
@@ -469,7 +458,7 @@ public class VRegisterSecretary extends JPanel {
 				try {
 					TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
 					if (perfilU.equals(TipoUsuario.SEC_COMUM)) {
-						secretaria.getUsuario().setPefil(3); 
+						secretaria.getUsuario().setPefil(3);
 					} else {
 						secretaria.getUsuario().setPefil(2);
 					}
@@ -482,10 +471,9 @@ public class VRegisterSecretary extends JPanel {
 				try {
 					if (validarCampoTexto == true) {
 						UsuarioDAO udao = new UsuarioDAO();
-			
+
 						SecretariaDAO sdao = new SecretariaDAO();
-					
-						
+
 						if (s == null) {
 							udao.inserir(secretaria.getUsuario());
 							// medico.getUsuario().setIdusuario(id);
@@ -498,8 +486,7 @@ public class VRegisterSecretary extends JPanel {
 								// exibir mensagem de erro ao cadastrar
 								JOptionPane.showMessageDialog(null, "Erro ao cadastrar Secretária");
 							}
-							
-							
+
 						} else {
 							// acao de alterar no banco registro - UPDATE
 							secretaria.setId(s.getId());
@@ -536,8 +523,7 @@ public class VRegisterSecretary extends JPanel {
 		setLayout(new BorderLayout());
 		add(contentPane, BorderLayout.CENTER);
 
-	
-		//TODO Observar e juntar ao médico.
+		// TODO Observar e juntar ao médico.
 		preencheDados(s);
 	}
 
