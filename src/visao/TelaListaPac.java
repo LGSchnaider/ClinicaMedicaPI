@@ -122,20 +122,25 @@ public class TelaListaPac extends JFrame {
 		btnDeletar.setOpaque(false);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				if (JOptionPane.showConfirmDialog(contentPane, "Deseja deletar mesmo?") == 0) {
+				
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+				
+				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
 					PacienteTableModel model = (PacienteTableModel) table.getModel();
+					Paciente a = model.getPaciente(p);
+					System.out.println(p);
+					System.out.println(a);
+					System.out.println(a.getNome());
+					System.out.println(a.getCpf());
 
-					Paciente pc = model.getPaciente(p);
-					// JOptionPane.showInputDialog(null);
-					PacienteDAO pDAO = new PacienteDAO();
-					pDAO.deletar(pc);
+					MedicoDAO mDAO = new MedicoDAO();
+					pDAO.deletar(a);
 					model = new PacienteTableModel(pDAO.listaPaciente());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
 				}
-
 				/*
 				
 				

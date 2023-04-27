@@ -118,7 +118,7 @@ public class TelaListaSec extends JFrame {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+					
 				
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
 						JOptionPane.YES_NO_OPTION);
