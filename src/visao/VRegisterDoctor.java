@@ -33,7 +33,7 @@ import modelo.TipoUsuario;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 
-public class TelaRegistrarMed extends JPanel {
+public class VRegisterDoctor extends JPanel {
 
 	private JPanel contentPane;
 	private JPasswordField pswSenha;
@@ -49,7 +49,7 @@ public class TelaRegistrarMed extends JPanel {
 	 * 
 	 * @param telaCadastro
 	 */
-	public TelaRegistrarMed(Usuario usuarioLogado, Cadastro telaCadastro) {
+	public VRegisterDoctor(Usuario usuarioLogado, VRegister telaCadastro) {
 
 		this.usuarioLogado = usuarioLogado;
 
@@ -61,7 +61,7 @@ public class TelaRegistrarMed extends JPanel {
 			e.printStackTrace();
 		}
 
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -225,7 +225,7 @@ public class TelaRegistrarMed extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				telaCadastro.dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
+				VMainWindow frame = new VMainWindow(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

@@ -51,7 +51,7 @@ public class VEditDoctor extends JFrame {
 	 * 
 	 * @param telaCadastro
 	 */
-	public VEditDoctor(Usuario usuarioLogado, Cadastro telaCadastro, Medico d) {
+	public VEditDoctor(Usuario usuarioLogado, VRegister telaCadastro, Medico d) {
 
 		this.usuarioLogado = usuarioLogado;
 
@@ -63,7 +63,7 @@ public class VEditDoctor extends JFrame {
 			e.printStackTrace();
 		}
 
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 
 		contentPane.setBackground(new Color(0, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

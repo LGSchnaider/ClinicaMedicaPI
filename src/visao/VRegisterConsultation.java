@@ -23,7 +23,7 @@ import java.awt.Choice;
 import java.awt.TextArea;
 import java.awt.Color;
 
-public class TelaCadConsulta extends JFrame {
+public class VRegisterConsultation extends JFrame {
 
 	private JPanel contentPane;
 	private final JButton btnCad = new JButton("Cadastrar");
@@ -32,7 +32,7 @@ public class TelaCadConsulta extends JFrame {
 	private Usuario usuarioLogado;
 
 
-	public TelaCadConsulta(Usuario usuarioLogado) {
+	public VRegisterConsultation(Usuario usuarioLogado) {
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -49,7 +49,7 @@ public class TelaCadConsulta extends JFrame {
 			e.printStackTrace();
 		}
 		
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -65,7 +65,7 @@ public class TelaCadConsulta extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
+				VMainWindow frame = new VMainWindow(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

@@ -113,8 +113,8 @@ public class SecretariaDAO implements ISecretariaDAO {
 		ArrayList<Secretaria> Secretarias = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf, secretaria.telefone, secretaria.email from  usuario inner join secretaria on secretaria.usuario_idusuario = usuario_id;"
-					+ "";
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf,"
+					+ " secretaria.telefone, secretaria.email from  usuario inner join secretaria on secretaria.usuario_idusuario = usuario.id;";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 				int id = rs.getInt("id");
@@ -127,20 +127,20 @@ public class SecretariaDAO implements ISecretariaDAO {
 				int perfil = rs.getInt("perfil");
 				
 				
-				Secretaria p = new Secretaria();
-				p.setId(id);
-				p.setNome(nome);
-				p.setCpf(cpf);
-				p.setTelefone(telefone);
-				p.setEmail(email);
+				Secretaria S = new Secretaria();
+				S.setId(id);
+				S.setNome(nome);
+				S.setCpf(cpf);
+				S.setTelefone(telefone);
+				S.setEmail(email);
 				
 				Usuario u = new Usuario();
 				u.setLogin(login);
 				u.setSenha(senha);
 				u.setPefil(perfil);
-				p.setUsuario(u);
+				S.setUsuario(u);
 
-				Secretarias.add(p);
+				Secretarias.add(S);
 
 			}
 

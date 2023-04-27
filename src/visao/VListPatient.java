@@ -22,16 +22,16 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
 import controle.MedicoDAO;
-import controle.SecretariaDAO;
+import controle.PacienteDAO;
 import modelTabelas.MedicoTableModel;
-import modelTabelas.SecretariaTableModel;
+import modelTabelas.PacienteTableModel;
 import modelo.Medico;
-import modelo.Secretaria;
+import modelo.Paciente;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
-public class TelaListaSec extends JFrame {
+public class VListPatient extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -39,12 +39,12 @@ public class TelaListaSec extends JFrame {
 
 	
 
-	public TelaListaSec(Usuario usuarioLogado) {
-		setTitle("Lista de Secretárias");
+	public VListPatient(Usuario usuarioLogado) {
+		setTitle("Lista de Pacientes");
 		this.usuarioLogado = usuarioLogado;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1028, 600);
+		setBounds(100, 100, 961, 600);
 		
 		BufferedImage bg = null;
 		try {
@@ -54,19 +54,20 @@ public class TelaListaSec extends JFrame {
 			e.printStackTrace();
 		}
 		
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
+		contentPane.setOpaque(false);
 	
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(
-				new MigLayout("", "[29.00][40.00,grow][][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
+				new MigLayout("", "[29.00][201.00,grow][516.00][grow][28.00]", "[102.00,grow][361.00,grow][grow][17.00]"));
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		contentPane.add(panel, "cell 2 0,grow");
 
-		JLabel lblNewLabel = new JLabel("Lista de Secretarios");
+		JLabel lblNewLabel = new JLabel("Lista de Paciente");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
@@ -78,13 +79,14 @@ public class TelaListaSec extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		
 		panel_1.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.getViewport().setOpaque(false);	
-
+		
 		table = new JTable();
 		table.setOpaque(false);
-		SecretariaDAO mDAO = new SecretariaDAO();
-		SecretariaTableModel model = new SecretariaTableModel(mDAO.listaSecretaria());
+		PacienteDAO pDAO = new PacienteDAO();
+		PacienteTableModel model = new PacienteTableModel(pDAO.listaPaciente());
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 
@@ -93,11 +95,12 @@ public class TelaListaSec extends JFrame {
 		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setOpaque(false);
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);  
+				VMainWindow frame = new VMainWindow(usuarioLogado);  
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -116,26 +119,28 @@ public class TelaListaSec extends JFrame {
 		contentPane.add(panel_2, "cell 2 2,alignx center,aligny center");
 
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setOpaque(false);
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					
 				
 				int resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Deletar?", "Confirmação",
 						JOptionPane.YES_NO_OPTION);
-
+				
 				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					MedicoTableModel model = (MedicoTableModel) table.getModel();
+					PacienteTableModel model = (PacienteTableModel) table.getModel();
+					Paciente a = model.getPaciente(p);
+					System.out.println(p);
+					System.out.println(a);
+					System.out.println(a.getNome());
+					System.out.println(a.getCpf());
 
-					Medico a = model.getMedico(p);
-					// JOptionPane.showInputDialog(null);
 					MedicoDAO mDAO = new MedicoDAO();
-					mDAO.deletar(a);
-					model = new MedicoTableModel(mDAO.listaMedico());
+					pDAO.deletar(a);
+					model = new PacienteTableModel(pDAO.listaPaciente());
 					table.setModel(model);
-					JOptionPane.showMessageDialog(null, "Secretáio(a) excluido(a) com sucesso");
+					JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
 				}
-
 				/*
 				
 				
@@ -165,28 +170,32 @@ public class TelaListaSec extends JFrame {
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int posicao = table.getSelectedRow();
-				if(posicao == -1) {
-					JOptionPane.showMessageDialog(null, "Selecione uma Secretaria");
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione um Paciente");
 					return;
 				}
-				SecretariaTableModel model  = (SecretariaTableModel) table.getModel();
-				Secretaria s = model.getSecretaria(posicao);
-				TelaRegistrarSecretaria tela = new TelaRegistrarSecretaria(usuarioLogado, null, s);
-				
-				JFrame janela = new JFrame();
-				janela.add(tela);
-				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				janela.setVisible(true);
-				
+				PacienteTableModel model  = (PacienteTableModel) table.getModel();
+				Paciente d = model.getPaciente(position);
+				VEditPatient window = new VEditPatient(usuarioLogado, d);
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup().addGap(5).addComponent(btnEditar)));
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btnEditar))
+		);
 		gl_panel_4.setVerticalGroup(
-				gl_panel_4.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_4.createSequentialGroup().addGap(5)
-						.addComponent(btnEditar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btnEditar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		panel_4.setLayout(gl_panel_4);
 	}
 }

@@ -39,7 +39,7 @@ import javax.swing.JFormattedTextField;
 
 import java.awt.Color;
 
-public class TelaRegistrarPaciente extends JFrame {
+public class VRegisterPatient extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -52,7 +52,7 @@ public class TelaRegistrarPaciente extends JFrame {
 	 * Launch the application.
 	 */
 
-	public TelaRegistrarPaciente(Usuario usuarioLogado) {
+	public VRegisterPatient(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		
 //		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
@@ -70,7 +70,7 @@ public class TelaRegistrarPaciente extends JFrame {
 			e.printStackTrace();
 		}
 
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 		contentPane.setBackground(new Color(0, 156, 156));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -217,7 +217,7 @@ public class TelaRegistrarPaciente extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado); 
+				VMainWindow frame = new VMainWindow(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

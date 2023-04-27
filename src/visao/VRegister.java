@@ -20,7 +20,7 @@ import java.awt.event.ItemEvent;
 import java.awt.Font;
 import javax.swing.JButton;
 
-public class Cadastro extends JFrame {
+public class VRegister extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -35,7 +35,7 @@ public class Cadastro extends JFrame {
 			contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 		}
 
-		TelaRegistrarSecretaria sec = new TelaRegistrarSecretaria(usuarioLogado, this, null);
+		VRegisterSecretary sec = new VRegisterSecretary(usuarioLogado, this, null);
 		sec.setOpaque(false);
 		Panel panel_1 = new Panel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -48,7 +48,7 @@ public class Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro(Usuario usuarioLogado) {
+	public VRegister(Usuario usuarioLogado) {
 		setTitle("Cadastro de Usuário");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -84,7 +84,7 @@ public class Cadastro extends JFrame {
 
 		JRadioButton rbtnMedico = new JRadioButton("Médico");
 		rbtnMedico.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		Cadastro estaTela = this;
+		VRegister estaTela = this;
 		rbtnMedico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 
@@ -94,7 +94,7 @@ public class Cadastro extends JFrame {
 						System.out.println(layout.getLayoutComponent(BorderLayout.CENTER));
 						contentPane.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 					}
-					TelaRegistrarMed med = new TelaRegistrarMed(usuarioLogado, estaTela);
+					VRegisterDoctor med = new VRegisterDoctor(usuarioLogado, estaTela);
  					Panel panel_1 = new Panel();
 					contentPane.add(panel_1, BorderLayout.CENTER);
 					panel_1.setLayout(new BorderLayout());

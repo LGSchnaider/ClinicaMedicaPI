@@ -39,7 +39,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TelaInicio extends JFrame {
+public class VStartScreen extends JFrame {
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
 
@@ -50,7 +50,7 @@ public class TelaInicio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaInicio frame = new TelaInicio();
+					VStartScreen frame = new VStartScreen();
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // maximizar
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -63,7 +63,7 @@ public class TelaInicio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaInicio() {
+	public VStartScreen() {
 		setTitle("Clínica Médica Início");
 		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));
@@ -86,7 +86,7 @@ public class TelaInicio extends JFrame {
 		JLabel lblNewLabel = new JLabel("Farmacos");
 		down.add(lblNewLabel);
 
-		JPanel center = new PanelFundo(bg);
+		JPanel center = new VBackGround(bg);
 		center.setBackground(new Color(0, 128, 128));
 		center.setForeground(new Color(0, 128, 128));
 		getContentPane().add(center, BorderLayout.CENTER);
@@ -235,7 +235,7 @@ public class TelaInicio extends JFrame {
 			JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreto ou Usuário inexistente!");
 		} else {
 			dispose();
-			TelaPrincipal frame = new TelaPrincipal(u);
+			VMainWindow frame = new VMainWindow(u);
 			frame.setLocationRelativeTo(null);
 			frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			frame.setVisible(true);

@@ -59,7 +59,7 @@ public class VListDoctor extends JFrame {
 			e.printStackTrace();
 		}
 
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -103,7 +103,7 @@ public class VListDoctor extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
+				VMainWindow frame = new VMainWindow(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

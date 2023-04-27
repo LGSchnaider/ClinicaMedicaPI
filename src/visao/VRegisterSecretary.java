@@ -35,7 +35,7 @@ import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
-public class TelaRegistrarSecretaria extends JPanel {
+public class VRegisterSecretary extends JPanel {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
@@ -71,7 +71,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 	 * @param s
 	 */
 
-	public TelaRegistrarSecretaria(Usuario usuarioLogado, Cadastro cadastro, Secretaria s) {
+	public VRegisterSecretary(Usuario usuarioLogado, VRegister cadastro, Secretaria s) {
 		this.usuarioLogado = usuarioLogado;
 
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,7 +86,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 			e.printStackTrace();
 		}
 
-		contentPane = new PanelFundo(bg);
+		contentPane = new VBackGround(bg);
 		contentPane.setOpaque(false);
 		contentPane.setForeground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -310,7 +310,7 @@ public class TelaRegistrarSecretaria extends JPanel {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cadastro.dispose();
-				TelaPrincipal frame = new TelaPrincipal(usuarioLogado);
+				VMainWindow frame = new VMainWindow(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);

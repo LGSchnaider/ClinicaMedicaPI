@@ -27,7 +27,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 import java.awt.Cursor;
 
-public class TelaPrincipal extends JFrame {
+public class VMainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTable visaoGeral;
@@ -37,7 +37,7 @@ public class TelaPrincipal extends JFrame {
 	/*
 	 * Construtor da classe
 	 */
-	public TelaPrincipal(Usuario u) {
+	public VMainWindow(Usuario u) {
 		this.usuarioLogado = u;
 		tipoUsuarioLogado = TipoUsuario.getTipoUsuarioPorCodigo(usuarioLogado.getPerfil());
 
@@ -126,7 +126,7 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
-		JPanel panel_1 = new PanelFundo(bg);
+		JPanel panel_1 = new VBackGround(bg);
 		panel_1.setForeground(new Color(255, 255, 255));
 		panel_1.setBackground(new Color(64, 128, 128));
 		panelCentro.add(panel_1, BorderLayout.CENTER);
@@ -139,7 +139,7 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaInicio frame = new TelaInicio();
+				VStartScreen frame = new VStartScreen();
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -170,7 +170,7 @@ public class TelaPrincipal extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					dispose();
-					Cadastro frame = new Cadastro(usuarioLogado);
+					VRegister frame = new VRegister(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
@@ -189,7 +189,7 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaRegistrarPaciente frame = new TelaRegistrarPaciente(usuarioLogado);
+				VRegisterPatient frame = new VRegisterPatient(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -215,7 +215,7 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaCadConsulta frame = new TelaCadConsulta(usuarioLogado);
+				VRegisterConsultation frame = new VRegisterConsultation(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -234,7 +234,7 @@ public class TelaPrincipal extends JFrame {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaListaCon frame = new TelaListaCon(usuarioLogado);
+				VListConsultation frame = new VListConsultation(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -282,7 +282,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				dispose();
-				TelaListaPac frame = new TelaListaPac(usuarioLogado);
+				VListPatient frame = new VListPatient(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -297,7 +297,7 @@ public class TelaPrincipal extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					dispose();
-					TelaListaSec frame = new TelaListaSec(usuarioLogado);
+					VListSecretary frame = new VListSecretary(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);

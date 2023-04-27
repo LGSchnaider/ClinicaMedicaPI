@@ -5,10 +5,10 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-public class PanelFundo extends JPanel{
+public class VBackGround extends JPanel{
 	Image bg;
 
-	PanelFundo(Image bg) {
+	VBackGround(Image bg) {
 		this.bg = bg;
 	}
 

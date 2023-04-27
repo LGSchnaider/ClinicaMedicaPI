@@ -16,13 +16,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
-public class TelaListaCon extends JFrame {
+public class VListConsultation extends JFrame {
 
 	private JPanel contentPane;
 	private Usuario usuarioLogado;
 
 
-	public TelaListaCon(Usuario usuarioLogado) {
+	public VListConsultation(Usuario usuarioLogado) {
 		setTitle("Lista de Consultas");
 		this.usuarioLogado = usuarioLogado;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +43,7 @@ public class TelaListaCon extends JFrame {
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					TelaPrincipal frame = new TelaPrincipal(usuarioLogado);  
+					VMainWindow frame = new VMainWindow(usuarioLogado);  
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
