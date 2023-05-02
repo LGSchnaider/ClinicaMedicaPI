@@ -128,7 +128,7 @@ public class MedicoDAO implements IMedicoDAO {
 				Connection c = con.conectar();
 				
 				UsuarioDAO dao = new UsuarioDAO();
-				dao.deletar(p.getUsuario());
+		//		dao.deletar(p.getUsuario());
 			
 				try {
 					String query = "DELETE medico, usuario FROM medico, usuario WHERE medico.usuario_idusuario = usuario.id and medico.crm ="+p.getCrm()+"";

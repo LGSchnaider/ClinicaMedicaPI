@@ -19,6 +19,10 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.MedicoDAO;
+import controle.PacienteDAO;
+import modelTabelas.MTMain;
+import modelTabelas.PacienteTableModel;
 import modelo.TipoUsuario;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
@@ -26,6 +30,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 import java.awt.Cursor;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class VMainWindow extends JFrame {
 
@@ -78,39 +84,42 @@ public class VMainWindow extends JFrame {
 		panelDireita.setLayout(new BorderLayout(0, 0));
 
 		JPanel Norte = new JPanel();
-		Norte.setBackground(new Color(184, 180, 7));
+		Norte.setBackground(new Color(68, 110, 139));
 		panelDireita.add(Norte, BorderLayout.NORTH);
-		Norte.setLayout(new BorderLayout(0, 0));
 
 		JLabel TituloVisaoGeral = new JLabel("Visão Geral");
+		TituloVisaoGeral.setForeground(new Color(255, 255, 255));
 		TituloVisaoGeral.setBackground(new Color(184, 180, 7));
 		TituloVisaoGeral.setFont(new Font("Times New Roman", Font.BOLD, 50));
-		Norte.add(TituloVisaoGeral);
-
-		JPanel sul = new JPanel();
-		sul.setForeground(new Color(255, 255, 255));
-		sul.setBackground(new Color(255, 255, 255));
-		panelDireita.add(sul, BorderLayout.SOUTH);
-
-		JPanel lest = new JPanel();
-		lest.setBackground(new Color(255, 255, 255));
-		panelDireita.add(lest, BorderLayout.WEST);
-
-		JPanel oeste = new JPanel();
-		oeste.setBackground(new Color(255, 255, 255));
-		panelDireita.add(oeste, BorderLayout.EAST);
+		GroupLayout gl_Norte = new GroupLayout(Norte);
+		gl_Norte.setHorizontalGroup(
+			gl_Norte.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_Norte.createSequentialGroup()
+					.addGap(119)
+					.addComponent(TituloVisaoGeral, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+					.addGap(101))
+		);
+		gl_Norte.setVerticalGroup(
+			gl_Norte.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_Norte.createSequentialGroup()
+					.addComponent(TituloVisaoGeral)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		Norte.setLayout(gl_Norte);
 
 		JPanel centro = new JPanel();
+		centro.setBackground(new Color(116, 158, 186));
 		panelDireita.add(centro, BorderLayout.CENTER);
 
 		visaoGeral = new JTable();
-		visaoGeral.setModel(new DefaultTableModel(new Object[][] { { "Oracio", "Jorge", "10" }, },
-				new String[] { "Paciente", "M\u00E9dico", "Hora" }));
-
+		visaoGeral.setOpaque(false);
+		PacienteDAO pDAO = new PacienteDAO();
+		MedicoDAO dDAO = new MedicoDAO();
+		MTMain model = new MTMain();
+		visaoGeral.setModel(model);
 		JScrollPane scrollPane = new JScrollPane();
 		centro.add(scrollPane);
-
-		scrollPane.add(visaoGeral);
+		scrollPane.setViewportView(visaoGeral);
 
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
