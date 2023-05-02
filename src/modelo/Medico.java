@@ -33,5 +33,20 @@ public class Medico extends Pessoa {
 	public void setCrm(Long crm) {
 		this.crm = crm;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nome;
+	}
+	
+
+/*	public boolean equals(Object obj) {
+		Medico m = (Medico) obj;
+		if(m.id == id) {
+			return true;
+		}else
+			return false;
+	}*/
 
 }

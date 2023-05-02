@@ -38,9 +38,16 @@ ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE;
 
 CREATE TABLE agenda_medico (
   id INT NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   data DATE NOT NULL,
   hora TIME NOT NULL,
   descricao VARCHAR(100) NOT NULL,
+=======
+  data VARCHAR(11) NOT NULL,
+  hora VARCHAR(5) NOT NULL,
+  descricao VARCHAR(100) NOT NULL,
+  valor BIGINT NOT NULL,
+>>>>>>> TelaConsulta
   medico_id_medico INT NOT NULL,
   Paciente_id_paciente INT NOT NULL,
   PRIMARY KEY (id),
