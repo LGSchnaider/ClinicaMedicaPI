@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import controle.ConsultaDAO;
+//import controle.ConsultaDAO;
 import modelTabelas.ConsultaTableModel;
 import modelTabelas.MedicoTableModel;
 import modelo.Consulta;
@@ -73,7 +73,7 @@ public class TelaListaCon extends JFrame {
 			
 			table = new JTable();
 			table.setOpaque(false);
-			ConsultaDAO cDAO = new ConsultaDAO();
+			//ConsultaDAO cDAO = new ConsultaDAO();
 			//ConsultaTableModel model = new ConsultaTableModel(cDAO.listaConsulta());
 			//table.setModel(model);
 			scrollPane.setViewportView(table);
@@ -95,9 +95,9 @@ public class TelaListaCon extends JFrame {
 					System.out.println(cl);
 					System.out.println(c);
 					
-					ConsultaDAO cDAO = new ConsultaDAO();
-					cDAO.deletar(c);
-					model = new ConsultaTableModel(cDAO.listaConsulta());
+					//ConsultaDAO cDAO = new ConsultaDAO();
+					//cDAO.deletar(c);
+					//model = new ConsultaTableModel(cDAO.listaConsulta());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Consulta excluida com sucesso");
 				}

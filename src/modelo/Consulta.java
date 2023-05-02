@@ -4,23 +4,32 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Consulta{
-	private Date data;
-	private Time hora;
+	private String data;
+	private String hora;
 	private String obs;
+	private long valor;
 	private int idMedico;
 	private int idPaciente;
 	
+	public long getValor() {
+		return valor;
+	}
+	public void setValor(long valor) {
+		this.valor = valor;
+	}
 	
-	public Date getData() {
+	
+	
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
-	public Time getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(Time hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	public String getObs() {

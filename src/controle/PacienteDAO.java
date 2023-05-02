@@ -117,13 +117,15 @@ public class PacienteDAO implements IPacienteDAO {
 				long telefone = rs.getLong("telefone");
 				String sexo = rs.getString("sexo");
 				String email = rs.getString("email");
-
+				int id = rs.getInt("id");
+				
 				Paciente p = new Paciente();
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setTelefone(telefone);
 				p.setSexo(TipoSexo.obterTipo(sexo));
 				p.setEmail(email);
+				p.setIdPac(id);
 				Pacientes.add(p);
 			}
 

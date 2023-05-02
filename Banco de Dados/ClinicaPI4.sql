@@ -38,9 +38,10 @@ ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE;
 
 CREATE TABLE agenda_medico (
   id INT NOT NULL AUTO_INCREMENT,
-  data DATE NOT NULL,
-  hora TIME NOT NULL,
+  data VARCHAR(11) NOT NULL,
+  hora VARCHAR(5) NOT NULL,
   descricao VARCHAR(100) NOT NULL,
+  valor BIGINT NOT NULL,
   medico_id_medico INT NOT NULL,
   Paciente_id_paciente INT NOT NULL,
   PRIMARY KEY (id),
@@ -104,7 +105,7 @@ insert into medico (nome, cpf, uf, crm, usuario_idusuario) values ('Dr.Alex Gome
 insert into usuario (id, login, senha, perfil) values (7, 'Ana', 'ana', 1);
 insert into medico (nome, cpf, uf, crm, usuario_idusuario) values ('Dr.Ana Paula', 56154651599, 'SC', 255456, 7);
 
-insert into usuario (id, login, senha, perfil) values (8, 'Francisco', 'fra', 4);	
+insert into usuario (id, login, senha, perfil) values (8, 'Francisco', 'fra', 4);
 insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Matilda Frank', 65656595956, 54545888, 'mfrank@gmail.com', 8);
 
-drop database clinicapi
+

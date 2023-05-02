@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import controle.MedicoDAO;
 import controle.PacienteDAO;
 import controle.ConsultaDAO;
+import modelo.Consulta;
 import modelTabelas.PacienteTableModel;
 import modelo.Medico;
 import modelo.Paciente;
@@ -40,6 +41,7 @@ public class TelaCadConsulta extends JFrame {
 	private JComboBox comboPasc;
 	private ArrayList<Paciente> listaPaciente;
 	private ArrayList<Medico> listaMedico;
+	private JComboBox comboMed;
 	
 	
 
@@ -94,7 +96,7 @@ public class TelaCadConsulta extends JFrame {
 		PacienteDAO Pasc = new PacienteDAO();
 		listaPaciente = Pasc.listaPaciente();
 		for (Paciente paciente : listaPaciente) {
-			comboPasc.addItem(paciente.getNome());
+			comboPasc.addItem(paciente);
 		} 
 		
 		contentPane.add(comboPasc, "cell 1 2,growx,aligny center");
@@ -146,18 +148,18 @@ public class TelaCadConsulta extends JFrame {
 		
 		JComboBox cbMes = new JComboBox();
 		panel.add(cbMes, "cell 1 0,growx,aligny center");
-		cbMes.addItem("JAN.");
-		cbMes.addItem("FEV.");
-		cbMes.addItem("MAR.");
-		cbMes.addItem("ABR.");
-		cbMes.addItem("MAIO");
-		cbMes.addItem("JUN.");
-		cbMes.addItem("JUL.");
-		cbMes.addItem("AGO.");
-		cbMes.addItem("SET.");
-		cbMes.addItem("OUT.");
-		cbMes.addItem("NOV.");
-		cbMes.addItem("DEZ.");
+		cbMes.addItem("JAN");
+		cbMes.addItem("FEV");
+		cbMes.addItem("MAR");
+		cbMes.addItem("ABR");
+		cbMes.addItem("MAI");
+		cbMes.addItem("JUN");
+		cbMes.addItem("JUL");
+		cbMes.addItem("AGO");
+		cbMes.addItem("SET");
+		cbMes.addItem("OUT");
+		cbMes.addItem("NOV");
+		cbMes.addItem("DEZ");
 		
 		JComboBox cbAno = new JComboBox();
 		panel.add(cbAno, "cell 2 0,growx,aligny center");
@@ -305,14 +307,14 @@ public class TelaCadConsulta extends JFrame {
 		contentPane.add(panel_2, "cell 1 5,grow");
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 		
-		JComboBox comboMed = new JComboBox();
+		comboMed = new JComboBox();
 		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
 		MedicoDAO Med = new MedicoDAO();
 		listaMedico = Med.listaMedico();
 		for (Medico Medico : listaMedico) {
-			comboMed.addItem(Medico.getNome());
+			comboMed.addItem(Medico);
 		}
 		 
 		
@@ -335,28 +337,45 @@ public class TelaCadConsulta extends JFrame {
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int pos = comboPasc.getSelectedIndex();
-				Paciente paci = listaPaciente.get(pos);
 				
-				int poss = comboMed.getSelectedIndex();
-				Medico Medi = listaMedico.get(poss);
 				
+			
 				boolean validarCampoTexto = true;
 				
 				
-				String pac = (String) comboPasc.getSelectedItem();
-				int Dia = cbDia.getSelectedIndex();
-				int Mes = cbMes.getSelectedIndex();
-				int Ano = cbAno.getSelectedIndex();
-				int Hora = cbHora.getSelectedIndex();
-				int Min = cbMin.getSelectedIndex();
-				String Medico = (String) comboMed.getSelectedItem();
-				String Valor = txtValor.getText();
-				String Descricao = txaObser	.getText();
+
+				String dia = String.valueOf(cbDia.getSelectedItem());
+				System.out.println(dia);
+				String mes = String.valueOf(cbMes.getSelectedItem());
+				String ano = String.valueOf(cbAno.getSelectedItem());
+				String hora = String.valueOf(cbHora.getSelectedItem());
+				String min = String.valueOf(cbMin.getSelectedItem());
+				Medico medico = (Medico) comboMed.getSelectedItem();
 				
-				ConsultaDAO cDAO = new ConsultaDAO();
-	
+				int idm = medico.getId();
+				System.out.println(idm);
 				
+				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
+				int idp = paciente.getIdPac();
+				System.out.println(idp);
+				
+				long Valor = Long.valueOf(txtValor.getText());
+				String Descricao = txaObser.getText();
+				
+				String data = dia+"/"+mes+"/"+ano;
+				String horario = hora+":"+min;
+				System.out.println(data);
+				Consulta consulta = new Consulta();
+				consulta.setData(data);
+				consulta.setHora(horario);
+				consulta.setValor(Valor);
+				consulta.setObs(Descricao);
+				consulta.setIdMedico(idm);
+				consulta.setIdPaciente(idp);
+				ConsultaDAO cdao = new ConsultaDAO();
+				cdao.inserir(consulta);
+				
+				//consulta.s
 				
 				}
 		});
