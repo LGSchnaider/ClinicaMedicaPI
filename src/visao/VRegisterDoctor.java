@@ -136,12 +136,8 @@ public class VRegisterDoctor extends JPanel {
 
 		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-<<<<<<< HEAD:src/visao/VRegisterDoctor.java
 		cbEstado.addItem("  ");
 		cbEstado.addItem("AC");
-=======
-		cbEstado.addItem("AC");	
->>>>>>> TelaConsulta:src/visao/TelaRegistrarMed.java
 		cbEstado.addItem("AL");
 		cbEstado.addItem("AP");
 		cbEstado.addItem("AM");

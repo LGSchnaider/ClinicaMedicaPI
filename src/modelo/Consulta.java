@@ -4,13 +4,40 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Consulta{
+	private int id;
 	private String data;
 	private String hora;
 	private String obs;
 	private long valor;
 	private int idMedico;
 	private int idPaciente;
+	private String nameDoctor;
+	private String namePatient;
 	
+	public String getNameDoctor() {
+		return nameDoctor;
+	}
+	
+	public void setNameDoctor(String nameDoctor) {
+		this.nameDoctor = nameDoctor;
+	}
+	
+	public String getNamePatient() {
+		return namePatient;
+	}
+	
+	public void setNamePatient(String namePatient) {
+		this.namePatient = namePatient;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public long getValor() {
 		return valor;
 	}

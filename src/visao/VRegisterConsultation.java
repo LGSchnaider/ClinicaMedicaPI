@@ -35,12 +35,8 @@ import java.awt.Color;
 public class VRegisterConsultation extends JFrame {
 
 	private JPanel contentPane;
-<<<<<<< HEAD:src/visao/VRegisterConsultation.java
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
-=======
-	private final JButton btnCad = new JButton("Cadastrar");
->>>>>>> TelaConsulta:src/visao/TelaCadConsulta.java
 	private JTextField txtValor;
 	private Usuario usuarioLogado;
 	private JComboBox comboPasc;

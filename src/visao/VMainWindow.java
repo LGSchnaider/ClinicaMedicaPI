@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.ConsultaDAO;
 import controle.MedicoDAO;
 import controle.PacienteDAO;
 import modelTabelas.MTMain;
@@ -110,16 +111,18 @@ public class VMainWindow extends JFrame {
 		JPanel centro = new JPanel();
 		centro.setBackground(new Color(116, 158, 186));
 		panelDireita.add(centro, BorderLayout.CENTER);
-
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		centro.add(scrollPane);
+				
 		visaoGeral = new JTable();
 		visaoGeral.setOpaque(false);
-		PacienteDAO pDAO = new PacienteDAO();
-		MedicoDAO dDAO = new MedicoDAO();
-		MTMain model = new MTMain();
+		ConsultaDAO cDAO = new ConsultaDAO();
+		MTMain model = new MTMain(cDAO.listaConsulta());
 		visaoGeral.setModel(model);
-		JScrollPane scrollPane = new JScrollPane();
-		centro.add(scrollPane);
-		scrollPane.setViewportView(visaoGeral);
+		scrollPane.setViewportView(visaoGeral);		
 
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
