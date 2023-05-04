@@ -15,9 +15,9 @@ public class VModelButton extends JButton
 	    super(label);
 	    setOpaque(false);
 	    
-	    setBackground(new Color(163, 240, 255));
+	    setBackground(new Color(16,59,93));
 	    
-	    setForeground(Color.BLACK);
+	    setForeground(Color.WHITE);
 	  }
 	  
 	  protected void paintComponent(Graphics g) {
