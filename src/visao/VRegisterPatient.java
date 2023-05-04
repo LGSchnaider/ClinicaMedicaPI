@@ -87,7 +87,7 @@ public class VRegisterPatient extends JFrame {
 		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 156, 156));
 		contentPane.add(panel, "cell 2 1,alignx center,growy");
-		panel.setLayout(new MigLayout("", "[72.00][321.00,grow]", "[grow][56.00,grow][68.00,grow][66.00,grow][68.00,grow]"));
+		panel.setLayout(new MigLayout("", "[72.00][321.00,grow]", "[grow][56.00,grow][68.00,grow][61.00,grow][68.00,grow]"));
 
 		JLabel lblNewLabel_4 = new JLabel("Nome:");
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
@@ -402,22 +402,21 @@ public class VRegisterPatient extends JFrame {
 				});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.TRAILING)
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
-					.addGap(145)
+					.addGap(102)
 					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(93)
+					.addPreferredGap(ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
 					.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(179, Short.MAX_VALUE))
+					.addGap(74))
 		);
 		gl_panel_4.setVerticalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
-					.addGap(26)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(25, Short.MAX_VALUE))
+					.addContainerGap(34, Short.MAX_VALUE))
 		);
 		panel_4.setLayout(gl_panel_4);
 	}
