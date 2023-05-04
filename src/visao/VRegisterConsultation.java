@@ -98,7 +98,7 @@ public class VRegisterConsultation extends JFrame {
 		
 		PacienteDAO Pasc = new PacienteDAO();
 		listaPaciente = Pasc.listaPaciente();
-		for (Paciente paciente : listaPaciente) {
+		for (Paciente paciente : listaPaciente) {	
 			comboPasc.addItem(paciente);
 		} 
 		
