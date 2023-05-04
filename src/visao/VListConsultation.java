@@ -128,6 +128,17 @@ public class VListConsultation extends JFrame {
 		btnNewButton_2.setText("Editar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
+					return;
+				}
+				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
+				Consulta c = model.getConsulta(position);
+				VEditConsultation window = new VEditConsultation(usuarioLogado, c);
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
