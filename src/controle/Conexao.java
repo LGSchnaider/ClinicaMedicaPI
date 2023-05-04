@@ -10,7 +10,7 @@ public class Conexao {
 	private static Conexao instancia;
 	private static final String DATABASE = "ClinicaPi";
 	private static final String USER = "root";
-	private static final String PSW = "200105Gaspar@quaMe9umin2022";
+	private static final String PSW = "aluno";
 
 	private Conexao() {
 
