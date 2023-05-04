@@ -47,6 +47,21 @@ public class ConsultaDAO implements IConsultaDAO{
 
 
 	public boolean deletar(Consulta c) {
+		Conexao con = Conexao.getInstancia();
+		Connection c1 = con.conectar();
+
+		try {
+			String query = "DELETE FROM agenda_medico WHERE id = ?;";
+			PreparedStatement stm = c1.prepareStatement(query);
+			stm.setInt(1, c.getId());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		con.fechaConexao();
 
 		return false;
 	}
@@ -61,7 +76,9 @@ public class ConsultaDAO implements IConsultaDAO{
 		ArrayList<Consulta> consultas = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "select agenda_medico.id, agenda_medico.data, agenda_medico.hora, agenda_medico.descricao, agenda_medico.valor, agenda_medico.medico_id_medico, agenda_medico.Paciente_id_paciente, medico.id as idMed, medico.nome as medNome, paciente.id as idPac, paciente.nome as pacNome from agenda_medico join medico on agenda_medico.medico_id_medico = medico.id join paciente on agenda_medico.Paciente_id_paciente = paciente.id;";
+			String query = "select agenda_medico.id, agenda_medico.data, agenda_medico.hora, agenda_medico.descricao, agenda_medico.valor, agenda_medico.medico_id_medico,"
+					+ " agenda_medico.Paciente_id_paciente, medico.id as idMed, medico.nome as medNome, paciente.id as idPac, paciente.nome as pacNome from agenda_medico"
+					+ " join medico on agenda_medico.medico_id_medico = medico.id join paciente on agenda_medico.Paciente_id_paciente = paciente.id;";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 
