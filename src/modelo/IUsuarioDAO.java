@@ -1,8 +1,6 @@
-package controle;
+package modelo;
 
 import java.util.ArrayList;
-
-import modelo.Usuario;
 
 public interface IUsuarioDAO {
 

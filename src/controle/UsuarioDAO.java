@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import modelo.IUsuarioDAO;
 import modelo.Usuario;
 
 public class UsuarioDAO implements IUsuarioDAO {

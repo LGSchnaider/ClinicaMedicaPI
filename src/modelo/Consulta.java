@@ -45,8 +45,6 @@ public class Consulta{
 		this.valor = valor;
 	}
 	
-	
-	
 	public String getData() {
 		return data;
 	}
