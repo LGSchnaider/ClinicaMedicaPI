@@ -2,6 +2,7 @@ package modelo;
 
 public class Medicamento {
 	
+	private int id;
 	private String nome;
 	private String tarja;
 	private String formula;
@@ -23,6 +24,12 @@ public class Medicamento {
 	}
 	public void setFormula(String formula) {
 		this.formula = formula;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

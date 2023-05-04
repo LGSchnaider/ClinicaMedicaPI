@@ -3,6 +3,8 @@ package modelo;
 public class Medico extends Pessoa {
 
 	private String uf;
+	private Long crm;
+	private Usuario usuario;
 	public String getUf() {
 		return uf;
 	}
@@ -11,8 +13,7 @@ public class Medico extends Pessoa {
 		this.uf = uf;
 	}
 
-	private Long crm;
-	private Usuario usuario;
+
 
 	public Medico() {
 		this.usuario = new Usuario();
