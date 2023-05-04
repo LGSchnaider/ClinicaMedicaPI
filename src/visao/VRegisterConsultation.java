@@ -16,6 +16,8 @@ import modelo.Paciente;
 import modelo.Usuario;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -200,6 +202,7 @@ public class VRegisterConsultation extends JFrame {
 		JComboBox cbHora = new JComboBox();
 		panel_1.add(cbHora, "cell 0 0");
 		
+		cbHora.addItem(null);
 		cbHora.addItem("00");
 		cbHora.addItem("01");
 		cbHora.addItem("02");
@@ -223,10 +226,12 @@ public class VRegisterConsultation extends JFrame {
 		cbHora.addItem("20");
 		cbHora.addItem("21");
 		cbHora.addItem("22");
+		cbHora.addItem("23");
 		
 		JComboBox cbMin = new JComboBox();
 		panel_1.add(cbMin, "cell 1 0,growx");
 		
+		cbMin.addItem(null);
 		cbMin.addItem("00");
 		cbMin.addItem("01");
 		cbMin.addItem("02");
@@ -315,6 +320,7 @@ public class VRegisterConsultation extends JFrame {
 		MedicoDAO Med = new MedicoDAO();
 		listaMedico = Med.listaMedico();
 		for (Medico Medico : listaMedico) {
+			comboMed.addItem(null);
 			comboMed.addItem(Medico);
 		}
 		 
@@ -337,48 +343,162 @@ public class VRegisterConsultation extends JFrame {
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
 			
 				boolean validarCampoTexto = true;
 				
-				
-
+				//get da data
 				String dia = String.valueOf(cbDia.getSelectedItem());
-				System.out.println(dia);
 				String mes = String.valueOf(cbMes.getSelectedItem());
 				String ano = String.valueOf(cbAno.getSelectedItem());
+				
+				//get da hora
 				String hora = String.valueOf(cbHora.getSelectedItem());
 				String min = String.valueOf(cbMin.getSelectedItem());
+				
+				//get id do medico
 				Medico medico = (Medico) comboMed.getSelectedItem();
 				
-				int idm = medico.getId();
-				System.out.println(idm);
 				
+				
+				//get id do paciente
 				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
-				int idp = paciente.getIdPac();
-				System.out.println(idp);
 				
-				long Valor = Long.valueOf(txtValor.getText());
+				//valor da consulta
+				Long Valor = Long.valueOf(txtValor.getText());
+				
 				String Descricao = txaObser.getText();
 				
-				String data = dia+"/"+mes+"/"+ano;
-				String horario = hora+":"+min;
-				System.out.println(data);
+				
 				Consulta consulta = new Consulta();
-				consulta.setData(data);
-				consulta.setHora(horario);
-				consulta.setValor(Valor);
-				consulta.setObs(Descricao);
-				consulta.setIdMedico(idm);
-				consulta.setIdPaciente(idp);
-				ConsultaDAO cdao = new ConsultaDAO();
-				cdao.inserir(consulta);
-				
-				//consulta.s
-				
+
+				//try Paciente
+				try {
+					if(paciente != null) {
+						int idp = paciente.getIdPac();
+						consulta.setIdPaciente(idp);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Paciente precisa ser preenchido");
+						comboPasc.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
 				}
+				//Try Data
+				try {
+					if(dia != null && !dia.isEmpty()) {
+						if(mes != null && !mes.isEmpty()) {
+							if(ano != null && !ano.isEmpty()) {
+								String data = dia+"/"+mes+"/"+ano;
+								consulta.setData(data);
+							}else {
+								validarCampoTexto = false;
+								JOptionPane.showInternalMessageDialog(null, "O campo Ano precisa ser preenchido");
+								cbAno.requestFocus();
+								return;
+							}
+						}else {
+							validarCampoTexto = false;
+							JOptionPane.showInternalMessageDialog(null, "O campo Mês precisa ser preenchido");
+							cbMes.requestFocus();
+							return;
+						}
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Dia precisa ser preenchido");
+						cbDia.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Hora
+				try {
+					if (hora != null) {
+						if(min != null) {
+							String horario = hora+":"+min;
+							consulta.setHora(horario);
+						}else {
+							validarCampoTexto = false;
+							JOptionPane.showInternalMessageDialog(null, "O campo Minuto precisa ser preenchido");
+							cbMin.requestFocus();
+							return;
+						}
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Hora precisa ser preenchido");
+						cbHora.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Medico
+				try {
+					if(medico != null) {
+						int idm = medico.getId();
+						consulta.setIdMedico(idm);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Medico precisa ser preenchido");
+						comboMed.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Valor
+				try {
+					if (Valor != null) {
+						consulta.setValor(Valor);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo Valor precisa ser preenchido");
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Obs.
+				try {
+					if (Descricao != null && !Descricao.isEmpty()) {
+						consulta.setObs(Descricao);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Descrição precisa ser preenchido");
+						txaObser.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}			
+				
+				//Passou pelas validações
+				try {
+					if (validarCampoTexto ==  true) {
+						ConsultaDAO cdao = new ConsultaDAO();
+						cdao.inserir(consulta);
+						
+						boolean validar = cdao.inserir(consulta);
+						if (validar == true) {
+							// exibir uma mensagem de cadastro com sucesso
+							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+						} else {
+							// exibir mensagem de erro ao cadastrar
+							JOptionPane.showMessageDialog(null, "Erro ao cadastrar consulta");
+						}
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+						
+		
+			}
 		});
 		contentPane.add(btnCad, "cell 2 8,alignx center,aligny center");
 	}
