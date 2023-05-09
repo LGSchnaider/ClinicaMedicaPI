@@ -320,7 +320,6 @@ public class VRegisterConsultation extends JFrame {
 		MedicoDAO Med = new MedicoDAO();
 		listaMedico = Med.listaMedico();
 		for (Medico Medico : listaMedico) {
-			comboMed.addItem(null);
 			comboMed.addItem(Medico);
 		}
 		 
@@ -329,6 +328,7 @@ public class VRegisterConsultation extends JFrame {
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
 		txtValor.setColumns(10);
+		
 		
 		JLabel lblNewLabel_5 = new JLabel("Observações:");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));

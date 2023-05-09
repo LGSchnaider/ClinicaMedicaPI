@@ -327,11 +327,21 @@ public class VRegisterSecretary extends JPanel {
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 22));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cadastro.dispose();
+			
+				//esse if pode mudar, mas fica assim por enquanto
+				if(s== null) {
+				dispose();
 				VMainWindow frame = new VMainWindow(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
+				}else {
+				dispose();
+				VListSecretary frame = new VListSecretary(usuarioLogado); 
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+				}
 			}
 		});
 
@@ -522,7 +532,9 @@ public class VRegisterSecretary extends JPanel {
 
 							udao.atualizar(secretaria.getUsuario());
 							sdao.atualizar(secretaria);
+							
 							return;
+							
 
 						}
 
@@ -559,6 +571,11 @@ public class VRegisterSecretary extends JPanel {
 
 		// TODO Observar e juntar ao médico.
 		preencheDados(s);
+	}
+
+	protected void dispose() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void preencheDados(Secretaria s) {

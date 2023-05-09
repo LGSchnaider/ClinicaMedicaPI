@@ -45,6 +45,7 @@ public class VEditDoctor extends JFrame {
 	private Usuario usuarioLogado;
 	private JTextField txtCPFMed;
 	private JComboBox<TipoUsuario> comboBox = new JComboBox<>();
+	private JComboBox cbEstado;
 
 	/**
 	 * Create the frame.
@@ -117,7 +118,7 @@ public class VEditDoctor extends JFrame {
 		panel_2.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
-		JComboBox<String> cbEstado = new JComboBox<>();
+		cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbEstado.addItem("AC");
 		cbEstado.addItem("AL");
@@ -268,10 +269,12 @@ public class VEditDoctor extends JFrame {
 				String confirmaSenha = String.valueOf(pswConfirmarSenha.getPassword());
 				String login = txtLogin.getText();
 				String crm = txtCRM.getText();
+				String uf = (String) cbEstado.getSelectedItem();
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = comboBox.getSelectedIndex();
 
 				Medico medico = d;//new Medico();
+				medico.setUf(uf);
 
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
@@ -395,6 +398,7 @@ public class VEditDoctor extends JFrame {
 			txtNomeMed.setText(d.getNome());
 			txtCPFMed.setText(String.valueOf(d.getCpf()));
 			txtCRM.setText(String.valueOf(d.getCrm()));
+			cbEstado.setSelectedItem(d.getUf());
 			txtLogin.setText(d.getUsuario().getLogin());
 			pswSenha.setText(d.getUsuario().getSenha());
 			pswConfirmarSenha.setText(d.getUsuario().getSenha());

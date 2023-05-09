@@ -125,13 +125,12 @@ public class VListSecretary extends JFrame {
 
 				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					MedicoTableModel model = (MedicoTableModel) table.getModel();
-
-					Medico a = model.getMedico(p);
+					SecretariaTableModel model = (SecretariaTableModel) table.getModel();
+					Secretaria a = model.getSecretaria(p);
 					// JOptionPane.showInputDialog(null);
-					MedicoDAO mDAO = new MedicoDAO();
+					SecretariaDAO mDAO = new SecretariaDAO();
 					mDAO.deletar(a);
-					model = new MedicoTableModel(mDAO.listaMedico());
+					model = new SecretariaTableModel(mDAO.listaSecretaria());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Secretáio(a) excluido(a) com sucesso");
 				}
@@ -176,6 +175,7 @@ public class VListSecretary extends JFrame {
 				
 				JFrame janela = new JFrame();
 				janela.add(tela);
+				dispose();
 				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				janela.setVisible(true);
 				

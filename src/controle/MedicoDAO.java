@@ -47,16 +47,17 @@ public class MedicoDAO implements IMedicoDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "update medico join usuario on medico.usuario_idusuario = usuario.id set medico.nome = ?, medico.cpf = ?, medico.crm = ?, usuario.login = ?, usuario.senha = ?, usuario.perfil = ? where medico.id = ?;";
+			String query = "update medico join usuario on medico.usuario_idusuario = usuario.id set medico.nome = ?, medico.cpf = ?,medico.uf = ?, medico.crm = ?, usuario.login = ?, usuario.senha = ?, usuario.perfil = ? where medico.id = ?;";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
-			stm.setLong(3, p.getCrm());
-			stm.setString(4, p.getUsuario().getLogin());
-			stm.setString(5, p.getUsuario().getSenha());
-			stm.setInt(6, p.getUsuario().getPerfil());
-			stm.setLong(7, p.getId());
+			stm.setString(3, p.getUf());
+			stm.setLong(4, p.getCrm());
+			stm.setString(5, p.getUsuario().getLogin());
+			stm.setString(6, p.getUsuario().getSenha());
+			stm.setInt(7, p.getUsuario().getPerfil());
+			stm.setLong(8, p.getId());
 			System.out.println(stm);
 			stm.executeUpdate();
 			return true;
@@ -79,13 +80,15 @@ public class MedicoDAO implements IMedicoDAO {
 		ArrayList<Medico> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
-			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id;";
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.UF, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id;";
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
 
 				String nome = rs.getString("nome");
 				long cpf = rs.getLong("cpf");
 				Long crm = rs.getLong("crm");
+				String UF = rs.getString("Uf");
+
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
@@ -97,6 +100,7 @@ public class MedicoDAO implements IMedicoDAO {
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setCrm(crm);
+				p.setUf(UF);
 
 				
 				Usuario u = new Usuario();

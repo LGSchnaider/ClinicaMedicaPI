@@ -56,14 +56,14 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 		try {
 			//String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ?  WHERE id = ?";
-			String query = "UPDATE secretaria SET nome= ?, cpf = ? WHERE id = ?";
+			String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ? WHERE id = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
-		//	stm.setLong(3, p.getTelefone());
-			stm.setString(3, p.getEmail());
-			stm.setInt(4, p.getId());
+			stm.setLong(3, p.getTelefone());
+			stm.setString(4, p.getEmail());
+			stm.setInt(5, p.getId());
 
 			stm.executeUpdate();
 			return true;

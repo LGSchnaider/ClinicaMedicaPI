@@ -153,6 +153,7 @@ public class VEditPatient extends JFrame {
 			e2.printStackTrace();
 		}
 		txtTelefone = new JFormattedTextField(formatter);
+		txtTelefone.setText("(  )      -    ");
 		txtTelefone.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtTelefone.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
@@ -328,7 +329,7 @@ public class VEditPatient extends JFrame {
 				}
 				
 				try {
-					if(cbSexo.getSelectedIndex()== 0) {
+					if(cbSexo.getSelectedIndex()== 3) {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
 						cbSexo.requestFocus();
