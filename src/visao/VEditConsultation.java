@@ -42,6 +42,11 @@ public class VEditConsultation extends JFrame {
 	private ArrayList<Medico> listaMedico;
 	private JComboBox comboMed;
 	private JComboBox cbDia;
+	private JComboBox cbMes;
+	private JComboBox cbAno;
+	private JComboBox cbHora;
+	private JComboBox cbMin;
+	private TextArea txaObser;
 
 	/**
 	 * Launch the application.
@@ -152,7 +157,7 @@ public class VEditConsultation extends JFrame {
 		cbDia.addItem("31");
 		
 		
-		JComboBox cbMes = new JComboBox();
+		cbMes = new JComboBox();
 		panel.add(cbMes, "cell 1 0,growx,aligny center");
 		cbMes.addItem("JAN");
 		cbMes.addItem("FEV");
@@ -167,7 +172,7 @@ public class VEditConsultation extends JFrame {
 		cbMes.addItem("NOV");
 		cbMes.addItem("DEZ");
 		
-		JComboBox cbAno = new JComboBox();
+		cbAno = new JComboBox();
 		panel.add(cbAno, "cell 2 0,growx,aligny center");
 		
 		cbAno.addItem("2010");
@@ -202,7 +207,7 @@ public class VEditConsultation extends JFrame {
 		contentPane.add(panel_1, "cell 1 4,growx,aligny center");
 		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
 		
-		JComboBox cbHora = new JComboBox();
+		cbHora = new JComboBox();
 		panel_1.add(cbHora, "cell 0 0");
 		
 		cbHora.addItem("00");
@@ -229,7 +234,7 @@ public class VEditConsultation extends JFrame {
 		cbHora.addItem("21");
 		cbHora.addItem("22");
 		
-		JComboBox cbMin = new JComboBox();
+		cbMin = new JComboBox();
 		panel_1.add(cbMin, "cell 1 0,growx");
 		
 		cbMin.addItem("00");
@@ -334,7 +339,7 @@ public class VEditConsultation extends JFrame {
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
 		
-		TextArea txaObser = new TextArea();
+		txaObser = new TextArea();
 		contentPane.add(txaObser, "cell 1 6,growx,aligny center");
 		contentPane.add(btnVolta, "cell 0 8,alignx center,aligny center");
 		btnCad.setText("Salvar");
@@ -395,15 +400,16 @@ public class VEditConsultation extends JFrame {
 			comboPasc.setSelectedIndex(c.getIdPaciente());
 			String d = c.getData();
 			String[] dma = d.split("/"); 
-			System.out.println(dma[0]);
-			System.out.println(dma[1]);
-			System.out.println(dma[2]);
 			String h = c.getHora();
 			String[] hm = h.split(":");
-			System.out.println(hm[0]);
-			System.out.println(hm[1]);
 			cbDia.setSelectedItem(dma[0]);
-			
+			cbMes.setSelectedItem(dma[1]);
+			cbAno.setSelectedItem(dma[2]);
+			cbHora.setSelectedItem(hm[0]);
+			cbMin.setSelectedItem(hm[1]);
+			comboMed.setSelectedIndex(c.getIdMedico());
+			txtValor.setText(String.valueOf(c.getValor()));
+			txaObser.setText(c.getObs());
 	}
 		
 	}
