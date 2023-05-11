@@ -27,8 +27,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
@@ -46,7 +50,16 @@ public class VListConsultation extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1110, 697);
 
-		contentPane = new JPanel();
+		BufferedImage bg = null;
+		;
+		try {
+			bg = ImageIO.read(new File("src/imagens/TelaConsulta.png"));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		contentPane = new VBackGround(bg);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -70,6 +83,7 @@ public class VListConsultation extends JFrame {
 		});
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		contentPane.add(panel, "cell 2 1,grow");
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -128,6 +142,17 @@ public class VListConsultation extends JFrame {
 		btnNewButton_2.setText("Editar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
+					return;
+				}
+				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
+				Consulta c = model.getConsulta(position);
+				VEditConsultation window = new VEditConsultation(usuarioLogado, c);
+				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				window.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));

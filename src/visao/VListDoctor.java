@@ -166,7 +166,6 @@ public class VListDoctor extends JFrame {
 		contentPane.add(panel_4, "flowy,cell 3 2,alignx center,aligny center");
 
 		JButton btnEditar = new VModelButton("Editar");
-
 		btnEditar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
