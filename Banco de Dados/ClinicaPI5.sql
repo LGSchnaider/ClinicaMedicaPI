@@ -88,11 +88,11 @@ CREATE TABLE medicamento_has_prontoario (
  
 insert into usuario (login, senha, perfil	) values ('admin', 'admin', 0);
 
-insert into paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 99099974, 'M', 'pedronomecomum@gmail.com');
-insert into paciente (nome, cpf, telefone, sexo, email) values ('Miguel dias', 09101502903, 94056942, 'M', 'miguel@gmail.com');
-insert into paciente (nome, cpf, telefone, sexo, email) values ('Rovberto Carlos', 92992893221, 88985566, 'M', 'rovber122344@gmail.com');
-insert into paciente (nome, cpf, telefone, sexo, email) values ('Amy da Silva', 65258515244, 95252151, 'F', 'amysilva77@gmail.com');
-insert into paciente (nome, cpf, telefone, sexo, email) values ('Kerly Zimmermann', 45465568899, 55455454, 'F', 'kzimmermann@gmail.com');
+insert into paciente (nome, cpf, telefone, sexo, email) values ('Pedro Nome Comum', 01024507702, 45699099974, 'M', 'pedronomecomum@gmail.com');
+insert into paciente (nome, cpf, telefone, sexo, email) values ('Miguel dias', 09101502903, 41794056942, 'M', 'miguel@gmail.com');
+insert into paciente (nome, cpf, telefone, sexo, email) values ('Rovberto Carlos', 92992893221, 43788985566, 'M', 'rovber122344@gmail.com');
+insert into paciente (nome, cpf, telefone, sexo, email) values ('Amy da Silva', 65258515244, 45995252151, 'F', 'amysilva77@gmail.com');
+insert into paciente (nome, cpf, telefone, sexo, email) values ('Kerly Zimmermann', 45465568899, 47554554549, 'F', 'kzimmermann@gmail.com');
 
 insert into usuario (id, login, senha, perfil) values (3, 'Francisco', 'fra', 1);
 insert into medico (nome, cpf, uf, crm, usuario_idusuario) values ('Dr.Francisco Pereira', 12332123122, 'SC', 335598, 3);
@@ -107,3 +107,4 @@ insert into medico (nome, cpf, uf, crm, usuario_idusuario) values ('Dr.Ana Paula
 
 insert into usuario (id, login, senha, perfil) values (8, 'Francisco', 'fra', 4);
 insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Matilda Frank', 65656595956, 54545888, 'mfrank@gmail.com', 8);
+
