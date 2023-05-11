@@ -118,7 +118,7 @@ public class VEditDoctor extends JFrame {
 		panel_2.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
-		cbEstado = new JComboBox<>();
+		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbEstado.addItem("AC");
 		cbEstado.addItem("AL");
