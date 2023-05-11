@@ -79,7 +79,7 @@ public class VRegisterPatient extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[28.00,grow][][690px,grow][51.00][29.00,grow]", "[44.00,grow][391px,grow][][grow][28.00]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Cadastar Paciente");
-		lblNewLabel_5.setForeground(new Color(19, 59, 93));
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel_5, "cell 2 0,alignx center,growy");
 
@@ -90,7 +90,7 @@ public class VRegisterPatient extends JFrame {
 		panel.setLayout(new MigLayout("", "[72.00][321.00,grow]", "[grow][56.00,grow][68.00,grow][61.00,grow][68.00,grow]"));
 
 		JLabel lblNewLabel_4 = new JLabel("Nome:");
-		lblNewLabel_4.setForeground(new Color(19, 59, 93));
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		panel.add(lblNewLabel_4, "cell 0 1,alignx center,aligny center");
 
@@ -100,12 +100,11 @@ public class VRegisterPatient extends JFrame {
 		panel.add(panel_1, "cell 1 1,alignx center,aligny center");
 
 		txtNome = new JTextField();
-		txtNome.setForeground(new Color(19, 59, 93));
 		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtNome.setColumns(10);
 		
 				JLabel lblNewLabel_3 = new JLabel("CPF:");
-				lblNewLabel_3.setForeground(new Color(19, 59, 93));
+				lblNewLabel_3.setForeground(new Color(255, 255, 255));
 				lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 				txtcpfP = new JTextField();
 				MaskFormatter formatter = null;
@@ -116,7 +115,6 @@ public class VRegisterPatient extends JFrame {
 				}
 				
 		JTextField txtCpf = new JFormattedTextField(formatter);
-		txtCpf.setForeground(new Color(19, 59, 93));
 		txtCpf.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtCpf.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -144,7 +142,7 @@ public class VRegisterPatient extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 		
 				JLabel lblNewLabel_2 = new JLabel("Telefone:");
-				lblNewLabel_2.setForeground(new Color(19, 59, 93));
+				lblNewLabel_2.setForeground(new Color(255, 255, 255));
 				lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 23));
 				panel.add(lblNewLabel_2, "cell 0 2,alignx center,aligny center");
 
@@ -159,17 +157,15 @@ public class VRegisterPatient extends JFrame {
 			e2.printStackTrace();
 		}
 		JTextField txtTelefone = new JFormattedTextField(formatter);
-		txtTelefone.setForeground(new Color(19, 59, 93));
 		txtTelefone.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtTelefone.setColumns(10);
 		txtTelefoneP = new JTextField();
 		
 				JLabel lblNewLabel_1 = new JLabel("Sexo:");
-				lblNewLabel_1.setForeground(new Color(19, 59, 93));
+				lblNewLabel_1.setForeground(new Color(255, 255, 255));
 				lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		
 				JComboBox <String> cbSexo = new JComboBox<>();
-				cbSexo.setForeground(new Color(19, 59, 93));
 				cbSexo.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 				cbSexo.addItem("Não Definido");
 				cbSexo.addItem("Masculino");
@@ -184,8 +180,8 @@ public class VRegisterPatient extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblNewLabel_1)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(cbSexo, 0, 256, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(cbSexo, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -202,7 +198,7 @@ public class VRegisterPatient extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		
 				JLabel lblNewLabel = new JLabel("E-mail:");
-				lblNewLabel.setForeground(new Color(19, 59, 93));
+				lblNewLabel.setForeground(new Color(255, 255, 255));
 				lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 				panel.add(lblNewLabel, "cell 0 3,alignx center,aligny center");
 
@@ -212,7 +208,6 @@ public class VRegisterPatient extends JFrame {
 		panel.add(panel_3, "flowx,cell 1 3,alignx center,aligny center");
 		
 				txtEmail = new JTextField();
-				txtEmail.setForeground(new Color(19, 59, 93));
 				txtEmail.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 				txtEmail.setColumns(10);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
@@ -220,15 +215,15 @@ public class VRegisterPatient extends JFrame {
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(txtEmail, GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 589, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addGap(27)
 					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(22, Short.MAX_VALUE))
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		panel_3.setLayout(gl_panel_3);
 

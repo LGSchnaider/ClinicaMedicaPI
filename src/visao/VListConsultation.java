@@ -35,7 +35,6 @@ import javax.swing.JCheckBox;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Color;
 
 public class VListConsultation extends JFrame {
 
@@ -67,7 +66,6 @@ public class VListConsultation extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[grow][][grow][][grow]", "[][419.00,grow][grow][][grow]"));
 
 		JLabel lblNewLabel = new JLabel("Lista de Consultas");
-		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 2 0,alignx center");
 
@@ -89,7 +87,6 @@ public class VListConsultation extends JFrame {
 		contentPane.add(panel, "cell 2 1,grow");
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setForeground(new Color(19, 59, 93));
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 

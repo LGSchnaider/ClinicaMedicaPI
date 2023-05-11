@@ -33,7 +33,6 @@ import javax.swing.UIManager;
 import java.awt.Cursor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.SoftBevelBorder;
 
 public class VMainWindow extends JFrame {
 
@@ -162,8 +161,8 @@ public class VMainWindow extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Cadastros");
 		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		lblNewLabel_1.setInheritsPopupMenu(false);
-		lblNewLabel_1.setBackground(new Color(19, 59, 93));
-		lblNewLabel_1.setForeground(new Color(19, 59, 93));
+		lblNewLabel_1.setBackground(new Color(204, 204, 204));
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		panel_1.add(lblNewLabel_1, "flowx,cell 2 2,alignx center,aligny center");
 
@@ -211,7 +210,7 @@ public class VMainWindow extends JFrame {
 		panel_2.add(btnNewButton_1, "cell 3 0,growx,aligny top");
 
 		JLabel lblNewLabel_2 = new JLabel("Consulta");
-		lblNewLabel_2.setForeground(new Color(19, 59, 93));
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		panel_1.add(lblNewLabel_2, "cell 2 4,alignx center,aligny center");
 
@@ -256,7 +255,7 @@ public class VMainWindow extends JFrame {
 		panel_3.add(btnNewButton_5, "cell 3 0,growx,aligny top");
 
 		JLabel lblNewLabel_5 = new JLabel("Listas");
-		lblNewLabel_5.setForeground(new Color(19, 59, 93));
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		panel_1.add(lblNewLabel_5, "cell 2 6,alignx center,aligny center");
 

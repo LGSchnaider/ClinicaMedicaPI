@@ -38,7 +38,6 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class VStartScreen extends JFrame {
 	private JTextField txtLogin;
@@ -96,11 +95,11 @@ public class VStartScreen extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(36, 49, 55));
 		panel_1.setOpaque(false);
-		center.add(panel_1, "cell 3 1,alignx center,aligny top");
+		center.add(panel_1, "cell 3 1,grow");
 		
 				JLabel lblNewLabel_1 = new JLabel("Clínica Médica");
 				panel_1.add(lblNewLabel_1);
-				lblNewLabel_1.setForeground(new Color(19, 59, 93));
+				lblNewLabel_1.setForeground(new Color(255, 255, 255));
 				lblNewLabel_1.setBackground(new Color(255, 0, 0));
 				lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 50));
 				lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -111,110 +110,61 @@ public class VStartScreen extends JFrame {
 		center.add(LOG, "cell 3 3,alignx center");
 		GroupLayout gl_LOG = new GroupLayout(LOG);
 		LOG.setLayout(gl_LOG);
-				
-				JPanel panel_2 = new JPanel();
-				panel_2.setOpaque(false);
-				center.add(panel_2, "flowx,cell 3 5,alignx center,aligny center");
-		
-				JLabel lblLogin = new JLabel("Login:");
-				lblLogin.setForeground(new Color(19, 59, 93));
-				lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 30));
-				
-						txtLogin = new JTextField();
-						txtLogin.setFont(new Font("Times New Roman", Font.BOLD, 15));
-						txtLogin.setBackground(new Color(19, 59, 93));
-						txtLogin.setForeground(Color.WHITE);
-						txtLogin.setText("admin");
-						txtLogin.addKeyListener(new KeyAdapter() {
-							@Override
-							public void keyPressed(KeyEvent e) {
-								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-									String tl = txtLogin.getText();
-									String ts = txtSenha.getText();
-									if (tl.equals("")) {
-										JOptionPane.showMessageDialog(null, "Insira seus dados");
-									} else {
-										if (ts.equals("")) {
-											JOptionPane.showMessageDialog(null, "Insira sua senha");
-										} else {
-											fazerLogin();
-										}
-									}
-								}
-							}
-						});
+
+		JLabel lblLogin = new JLabel("Login:");
+		lblLogin.setForeground(new Color(255, 255, 255));
+		lblLogin.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		center.add(lblLogin, "cell 2 5,alignx trailing");
+
+		txtLogin = new JTextField();
+		txtLogin.setText("admin");
+		txtLogin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String tl = txtLogin.getText();
+					String ts = txtSenha.getText();
+					if (tl.equals("")) {
+						JOptionPane.showMessageDialog(null, "Insira seus dados");
+					} else {
+						if (ts.equals("")) {
+							JOptionPane.showMessageDialog(null, "Insira sua senha");
+						} else {
+							fazerLogin();
+						}
+					}
+				}
+			}
+		});
+		center.add(txtLogin, "cell 3 5,growx,aligny center");
 		txtLogin.setColumns(10);
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(3)
-					.addComponent(lblLogin)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtLogin, GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLogin)
-						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-		);
-		panel_2.setLayout(gl_panel_2);
-				
-				JPanel panel_3 = new JPanel();
-				panel_3.setOpaque(false);
-				center.add(panel_3, "flowx,cell 2 6 2 1,alignx center,aligny center");
-		
-				JLabel lblSenha = new JLabel("Senha:");
-				lblSenha.setForeground(new Color(19, 59, 93));
-				lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
-				
-						txtSenha = new JPasswordField();
-						txtSenha.setFont(new Font("Times New Roman", Font.BOLD, 15));
-						txtSenha.setBackground(new Color(19, 59, 93));
-						txtSenha.setForeground(Color.WHITE);
-						txtSenha.addKeyListener(new KeyAdapter() {
-							@Override
-							public void keyPressed(KeyEvent e) {
-								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-									String tl = txtLogin.getText();
-									String ts = txtSenha.getText();
-									if (tl.equals("")) {
-										JOptionPane.showMessageDialog(null, "Insira seus dados");
-									} else {
-										if (ts.equals("")) {
-											JOptionPane.showMessageDialog(null, "Insira sua senha");
-										} else {
-											fazerLogin();
-										}
-									}
-								}
-							}
-						});
+
+		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setForeground(new Color(255, 255, 255));
+		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		center.add(lblSenha, "cell 2 6,alignx trailing");
+
+		txtSenha = new JPasswordField();
+		txtSenha.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String tl = txtLogin.getText();
+					String ts = txtSenha.getText();
+					if (tl.equals("")) {
+						JOptionPane.showMessageDialog(null, "Insira seus dados");
+					} else {
+						if (ts.equals("")) {
+							JOptionPane.showMessageDialog(null, "Insira sua senha");
+						} else {
+							fazerLogin();
+						}
+					}
+				}
+			}
+		});
+		center.add(txtSenha, "cell 3 6,growx");
 		txtSenha.setColumns(10);
-		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(9)
-					.addComponent(lblSenha)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtSenha, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(10)
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblSenha, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(24, Short.MAX_VALUE))
-		);
-		panel_3.setLayout(gl_panel_3);
 
 		JButton btnLogOff = new VModelButton("Sair");
 		btnLogOff.setFont(new Font("Times New Roman", Font.PLAIN, 20));

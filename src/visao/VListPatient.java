@@ -68,7 +68,7 @@ public class VListPatient extends JFrame {
 		contentPane.add(panel, "cell 2 0,grow");
 
 		JLabel lblNewLabel = new JLabel("Lista de Paciente");
-		lblNewLabel.setForeground(new Color(19, 59, 93));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
@@ -78,14 +78,12 @@ public class VListPatient extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setForeground(new Color(19, 59, 93));
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		
 		panel_1.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
-		table.setForeground(new Color(19, 59, 93));
 		table.setOpaque(false);
 		PacienteDAO pDAO = new PacienteDAO();
 		PacienteTableModel model = new PacienteTableModel(pDAO.listaPaciente());
