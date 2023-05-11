@@ -586,6 +586,7 @@ public class VRegisterSecretary extends JPanel {
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
+			txtTelefone.setText(String.valueOf(s.getTelefone()));
 		}
 
 	}
