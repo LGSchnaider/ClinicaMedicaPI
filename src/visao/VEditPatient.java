@@ -376,36 +376,7 @@ public class VEditPatient extends JFrame {
 
 																} catch (Exception e2) {
 
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-				
-				try {
-					if(cbSexo.getSelectedIndex()== 3) {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
-						cbSexo.requestFocus();
-						return;
-					}else {
-						validarCampoTexto = true;
-						paciente.setSexo(TipoSexo.obterTipo(sexo));
-				
-					}
-					
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-				
-				try {
-					if (email != null && !email.isEmpty()) {
-						paciente.setEmail(email);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
-						txtEmail.requestFocus();
-						return;
-					}
-					
+																}
 
 																// se passar em todas as validacoes
 																try {
