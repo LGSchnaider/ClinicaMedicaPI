@@ -92,7 +92,7 @@ public class VRegisterSecretary extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[350,grow,right][100.00,grow,fill][50,grow,left]", "[170.00,grow][24.00,grow][98.00,grow][58.00,grow][45.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[350,grow,right][100.00,grow,fill][50,grow,left]", "[170.00,grow][24.00][98.00][58.00][45.00][35.00][70.00,grow]"));
 				
 				panel_2 = new JPanel();
 				panel_2.setOpaque(false);

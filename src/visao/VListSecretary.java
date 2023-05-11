@@ -135,13 +135,6 @@ public class VListSecretary extends JFrame {
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Secretáio(a) excluido(a) com sucesso");
 				}
-
-				/*
-				
-				
-				
-				*/
-
 			}
 		});
 		btnDeletar.setFont(new Font("Times New Roman", Font.PLAIN, 20));

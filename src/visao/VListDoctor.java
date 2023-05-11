@@ -96,7 +96,7 @@ public class VListDoctor extends JFrame {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "flowy,cell 1 2,alignx center,aligny center");
+		contentPane.add(panel_3, "flowy,cell 1 2,alignx left,aligny center");
 
 		JButton btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
