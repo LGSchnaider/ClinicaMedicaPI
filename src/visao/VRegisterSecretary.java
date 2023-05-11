@@ -55,6 +55,7 @@ public class VRegisterSecretary extends JPanel {
 	private Usuario usuarioLogado;
 	private JLabel lblCpf;
 	private JTextField txtCPF;
+	private JTextField txtCPF_1;
 	private JLabel Email;
 	private JPanel panel_8;
 	private JTextField txtEmail;
@@ -91,16 +92,16 @@ public class VRegisterSecretary extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[100px][207.00,grow,right][100.00,grow,fill][110.00,grow,left]", "[170.00,grow][24.00,grow][98.00,grow][58.00,grow][45.00,grow][35.00][70.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[350,grow,right][100.00,grow,fill][50,grow,left]", "[170.00,grow][24.00][98.00][58.00][45.00][35.00][70.00,grow]"));
 				
 				panel_2 = new JPanel();
 				panel_2.setOpaque(false);
-				contentPane.add(panel_2, "cell 2 0");
+				contentPane.add(panel_2, "cell 1 0,alignx center,aligny center");
 				
-				JLabel lblNewLabel_4 = new JLabel("Registrar Secetária");
+				JLabel lblNewLabel_4 = new JLabel("Registrar Secretária");
 				lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-				lblNewLabel_4.setForeground(Color.WHITE);
-				lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 35));
+				lblNewLabel_4.setForeground(new Color(19, 59, 93));
+				lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
 				GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 				gl_panel_2.setHorizontalGroup(
 					gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -119,14 +120,15 @@ public class VRegisterSecretary extends JPanel {
 
 		panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		contentPane.add(panel_4, "cell 2 1,alignx center,aligny center");
+		contentPane.add(panel_4, "cell 1 1,alignx center,aligny center");
 
 		txtNome = new JTextField();
+		txtNome.setForeground(new Color(19, 59, 93));
 		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		txtNome.setColumns(10);
 
 		lblNewLabel_3 = new JLabel("Telefone:");
-		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setForeground(new Color(19, 59, 93));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
 		MaskFormatter formatter = null;
@@ -136,42 +138,44 @@ public class VRegisterSecretary extends JPanel {
 			e2.printStackTrace();
 		}
 		txtTelefone = new JFormattedTextField(formatter);
+		txtTelefone.setForeground(new Color(19, 59, 93));
 		txtTelefone.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		txtTelefone.setColumns(10);
 		
 				lblnome = new JLabel("Nome:");
-				lblnome.setForeground(new Color(255, 255, 255));
+				lblnome.setForeground(new Color(19, 59, 93));
 				lblnome.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblnome)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-					.addGap(63)
-					.addComponent(lblNewLabel_3)
-					.addGap(18)
-					.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(36, Short.MAX_VALUE))
+					.addGap(102)
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblnome))
+					.addGap(135)
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_3)
+						.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE))
+					.addGap(253))
 		);
 		gl_panel_4.setVerticalGroup(
-			gl_panel_4.createParallelGroup(Alignment.TRAILING)
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblnome)
 						.addComponent(lblNewLabel_3)
+						.addComponent(lblnome))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(19))
+					.addContainerGap())
 		);
 		panel_4.setLayout(gl_panel_4);
 
 		panel_9 = new JPanel();
 		panel_9.setOpaque(false);
-		contentPane.add(panel_9, "cell 2 2,alignx center,aligny center");
+		contentPane.add(panel_9, "cell 1 2,alignx center,aligny center");
 
 		txtCPF = new JTextField();
 		try {
@@ -179,129 +183,135 @@ public class VRegisterSecretary extends JPanel {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		txtCPF = new JFormattedTextField(formatter);
-		txtCPF.setHorizontalAlignment(SwingConstants.LEFT);
-		txtCPF.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		txtCPF.setColumns(10);
+		txtCPF_1 = new JFormattedTextField(formatter);
+		txtCPF_1.setForeground(new Color(19, 59, 93));
+		txtCPF_1.setHorizontalAlignment(SwingConstants.LEFT);
+		txtCPF_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		txtCPF_1.setColumns(10);
 
 		Email = new JLabel("Email:");
 		Email.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		Email.setForeground(new Color(255, 255, 255));
+		Email.setForeground(new Color(19, 59, 93));
 
 		txtEmail = new JTextField();
+		txtEmail.setForeground(new Color(19, 59, 93));
 		txtEmail.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		txtEmail.setColumns(10);
 		
 				lblCpf = new JLabel("CPF:");
-				lblCpf.setForeground(Color.WHITE);
+				lblCpf.setForeground(new Color(19, 59, 93));
 				lblCpf.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
 		gl_panel_9.setHorizontalGroup(
 			gl_panel_9.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_9.createSequentialGroup()
-					.addGap(18)
-					.addComponent(lblCpf)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-					.addGap(70)
-					.addComponent(Email)
-					.addGap(16)
-					.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(33, Short.MAX_VALUE))
+					.addGap(99)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCpf)
+						.addComponent(txtCPF_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
+					.addGap(138)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Email)))
 		);
 		gl_panel_9.setVerticalGroup(
-			gl_panel_9.createParallelGroup(Alignment.TRAILING)
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_9.createSequentialGroup()
-					.addContainerGap(18, Short.MAX_VALUE)
 					.addGroup(gl_panel_9.createParallelGroup(Alignment.BASELINE)
-						.addComponent(Email)
-						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCpf))
-					.addGap(16))
+						.addComponent(lblCpf)
+						.addComponent(Email))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtCPF_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		panel_9.setLayout(gl_panel_9);
 
 		panel_8 = new JPanel();
 		panel_8.setOpaque(false);
-		contentPane.add(panel_8, "cell 2 3,alignx center,aligny center");
+		contentPane.add(panel_8, "cell 1 3,alignx center,aligny center");
 
 		txtLogin = new JTextField();
+		txtLogin.setForeground(new Color(19, 59, 93));
 		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		txtLogin.setColumns(10);
 
 		lblNewLabel_2 = new JLabel("Senha:");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(19, 59, 93));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
 		pswSenha = new JPasswordField();
+		pswSenha.setForeground(new Color(19, 59, 93));
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		
 				lblUser = new JLabel("Login:");
-				lblUser.setForeground(new Color(255, 255, 255));
+				lblUser.setForeground(new Color(19, 59, 93));
 				lblUser.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblUser)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 226, GroupLayout.PREFERRED_SIZE)
-					.addGap(70)
-					.addComponent(lblNewLabel_2)
-					.addGap(12)
-					.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(31, Short.MAX_VALUE))
+					.addGap(98)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 226, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUser))
+					.addGap(140)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_2)
+						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(249, Short.MAX_VALUE))
 		);
 		gl_panel_8.setVerticalGroup(
 			gl_panel_8.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2)
-						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(19))
-				.addGroup(Alignment.LEADING, gl_panel_8.createSequentialGroup()
+					.addGap(12)
+					.addComponent(lblNewLabel_2)
+					.addContainerGap(48, Short.MAX_VALUE))
+				.addGroup(gl_panel_8.createSequentialGroup()
 					.addContainerGap()
+					.addComponent(lblUser)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUser)
-						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(19, Short.MAX_VALUE))
+						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		panel_8.setLayout(gl_panel_8);
 
 		panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		contentPane.add(panel_1, "cell 2 4,alignx center,aligny center");
+		contentPane.add(panel_1, "cell 1 4,alignx center,aligny center");
 
 		pswConfirmarSenha = new JPasswordField();
+		pswConfirmarSenha.setForeground(new Color(19, 59, 93));
 		pswConfirmarSenha.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 
 		JLabel lblNewLabel = new JLabel("Função:");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
 		JComboBox<TipoUsuario> cbFuncao = new JComboBox<>();
+		cbFuncao.setForeground(new Color(19, 59, 93));
 		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		cbFuncao.setEditable(false);
 		
 				lblNewLabel_1 = new JLabel("Confirme Senha:");
-				lblNewLabel_1.setForeground(new Color(255, 255, 255));
+				lblNewLabel_1.setForeground(new Color(19, 59, 93));
 				lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(cbFuncao, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(28, Short.MAX_VALUE))
+					.addGap(95)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE))
+					.addGap(143)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel)
+						.addComponent(cbFuncao, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(298, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -309,10 +319,12 @@ public class VRegisterSecretary extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel)
-						.addComponent(cbFuncao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+						.addComponent(cbFuncao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		panel_1.setLayout(gl_panel_1);
 		for (TipoUsuario tipo : TipoUsuario.getTiposSecretarias()) {
@@ -321,7 +333,7 @@ public class VRegisterSecretary extends JPanel {
 
 		panel = new JPanel();
 		panel.setOpaque(false);
-		contentPane.add(panel, "cell 2 5,alignx center,growy");
+		contentPane.add(panel, "cell 1 5,alignx center,growy");
 
 		btnVoltar = new VModelButton("Voltar");
 		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 22));
