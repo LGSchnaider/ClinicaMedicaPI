@@ -26,7 +26,7 @@ public class PacienteDAO implements IPacienteDAO {
 
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO paciente " + "(nome, cpf, telefone, sexo, email) VALUES (?,?,?,?,?);";
+			String query = "INSERT INTO paciente (nome, cpf, telefone, sexo, email) VALUES (?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
@@ -54,14 +54,13 @@ public class PacienteDAO implements IPacienteDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE paciente SET nome= ?, cpf = ?, telefone = ?, sexo = ?, email = ?  WHERE id = " + id+ ";";
+			String query = "UPDATE paciente SET nome= ?, telefone = ?, sexo = ?, email = ?  WHERE id = " + id+ ";";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
-			stm.setLong(2, p.getCpf());
-			stm.setLong(3, p.getTelefone());
-			stm.setString(4, p.getSexo().getCodigo());
-			stm.setString(5, p.getEmail());
+			stm.setLong(2, p.getTelefone());
+			stm.setString(3, p.getSexo().getCodigo());
+			stm.setString(4, p.getEmail());
 
 			stm.executeUpdate();
 			return true;

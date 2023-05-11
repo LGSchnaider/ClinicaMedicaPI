@@ -261,8 +261,17 @@ public class VRegisterPatient extends JFrame {
 						String cpf = txtCpf.getText(); // regex (expressao regular) tambem seria uma forma
 						String telefone = txtTelefone.getText();
 						String sexo = (String) cbSexo.getSelectedItem();
+						
+						if(sexo.equals("Masculino")){
+							sexo = "M";
+						}else if(sexo.equals("Feminino")) {
+							sexo = "F";
+						}else {
+							sexo = "N";
+						}
+							
 						String email = txtEmail.getText();
-
+	
 						Paciente paciente = new Paciente();
 
 						// 2o passo: validar se texto é vazio ou nao

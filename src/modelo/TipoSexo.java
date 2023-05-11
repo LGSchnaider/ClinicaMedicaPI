@@ -28,7 +28,7 @@ public enum TipoSexo {
 	private String codigo;
 
 	public static TipoSexo obterTipo(String descricao) {
-		if(descricao.equals(MASCULINO.getCodigo())) {
+		if(descricao.equals(MASCULINO.getCodigo())) {	
 			return MASCULINO;
 		}
 		if(descricao.equals(FEMININO.getCodigo())) {
