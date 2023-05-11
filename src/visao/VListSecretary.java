@@ -67,7 +67,7 @@ public class VListSecretary extends JFrame {
 		contentPane.add(panel, "cell 2 0,grow");
 
 		JLabel lblNewLabel = new JLabel("Lista de Secretarios");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		panel.add(lblNewLabel);
 
@@ -82,6 +82,7 @@ public class VListSecretary extends JFrame {
 		scrollPane.getViewport().setOpaque(false);	
 
 		table = new JTable();
+		table.setForeground(new Color(19, 59, 93));
 		table.setOpaque(false);
 		SecretariaDAO mDAO = new SecretariaDAO();
 		SecretariaTableModel model = new SecretariaTableModel(mDAO.listaSecretaria());
@@ -168,7 +169,7 @@ public class VListSecretary extends JFrame {
 				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, null, s);
 				
 				JFrame janela = new JFrame();
-				janela.add(tela);
+				janela.getContentPane().add(tela);
 				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				janela.setVisible(true);
 				

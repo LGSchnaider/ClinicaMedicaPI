@@ -112,11 +112,14 @@ public class VRegisterDoctor extends JPanel {
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_1)
 						.addComponent(txtNomeMed, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtCPFMed, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE))
-					.addGap(102))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+							.addGap(331))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(txtCPFMed, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+							.addGap(102))))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -196,14 +199,14 @@ public class VRegisterDoctor extends JPanel {
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(lblNewLabel_3_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(cbEstado, 0, 60, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_3_1)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_3))
-					.addGap(105))
+					.addGap(102))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -214,8 +217,8 @@ public class VRegisterDoctor extends JPanel {
 						.addComponent(lblNewLabel_3))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_2.setLayout(gl_panel_2);
@@ -246,16 +249,16 @@ public class VRegisterDoctor extends JPanel {
 				.addGroup(gl_panel_3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addComponent(txtLogin, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-							.addGap(89))
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
+						.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-					.addGap(120))
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addGap(22)
+							.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_3.createSequentialGroup()
+							.addGap(18)
+							.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)))
+					.addGap(96))
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -301,13 +304,13 @@ public class VRegisterDoctor extends JPanel {
 				.addGroup(gl_panel_4.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 269, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_7, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(55))
+					.addGap(104))
 		);
 		gl_panel_4.setVerticalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -509,20 +512,24 @@ public class VRegisterDoctor extends JPanel {
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.TRAILING).addGroup(Alignment.LEADING,
-				gl_panel.createSequentialGroup().addContainerGap()
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 434, Short.MAX_VALUE).addComponent(btnCad,
-								GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap()));
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
+					.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(86))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
 		panel.setLayout(gl_panel);
 
 		setLayout(new BorderLayout());
