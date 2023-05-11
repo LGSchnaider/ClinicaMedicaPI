@@ -481,7 +481,6 @@ public class VRegisterConsultation extends JFrame {
 				try {
 					if (validarCampoTexto ==  true) {
 						ConsultaDAO cdao = new ConsultaDAO();
-						cdao.inserir(consulta);
 						
 						boolean validar = cdao.inserir(consulta);
 						if (validar == true) {
@@ -502,7 +501,5 @@ public class VRegisterConsultation extends JFrame {
 		});
 		contentPane.add(btnCad, "cell 2 8,alignx center,aligny center");
 	}
-	private void preencheDados(PacienteDAO p) {
-	
-}
+
 }
