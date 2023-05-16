@@ -341,19 +341,14 @@ public class VRegisterSecretary extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			
 				//esse if pode mudar, mas fica assim por enquanto
-				if(s== null) {
-				dispose();
+			
+				
+				cadastro.dispose();
 				VMainWindow frame = new VMainWindow(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
-				}else {
-				dispose();
-				VListSecretary frame = new VListSecretary(usuarioLogado); 
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-				}
+
 			}
 		});
 

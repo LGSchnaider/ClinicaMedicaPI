@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import controle.MedicoDAO;
 import controle.PacienteDAO;
@@ -21,6 +23,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -28,7 +31,10 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 import java.awt.Choice;
 import java.awt.TextArea;
@@ -39,7 +45,7 @@ public class VRegisterConsultation extends JFrame {
 	private JPanel contentPane;
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
-	private JTextField txtValor;
+	private JFormattedTextField txtValor;
 	private Usuario usuarioLogado;
 	private JComboBox comboPasc;
 	private ArrayList<Paciente> listaPaciente;
@@ -201,7 +207,7 @@ public class VRegisterConsultation extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 1 4,growx,aligny center");
-		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
+		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][][grow]", "[22px,grow,fill]"));
 		
 		JComboBox cbHora = new JComboBox();
 		cbHora.setForeground(new Color(19, 59, 93));
@@ -233,9 +239,14 @@ public class VRegisterConsultation extends JFrame {
 		cbHora.addItem("22");
 		cbHora.addItem("23");
 		
+		JLabel lblNewLabel_2_1 = new JLabel("Minutos:");
+		lblNewLabel_2_1.setForeground(new Color(19, 59, 93));
+		lblNewLabel_2_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		panel_1.add(lblNewLabel_2_1, "cell 1 0,alignx center,aligny center");
+		
 		JComboBox cbMin = new JComboBox();
 		cbMin.setForeground(new Color(19, 59, 93));
-		panel_1.add(cbMin, "cell 1 0,growx");
+		panel_1.add(cbMin, "cell 2 0,growx");
 		
 		cbMin.addItem(null);
 		cbMin.addItem("00");
@@ -329,9 +340,21 @@ public class VRegisterConsultation extends JFrame {
 		for (Medico Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
-		 
 		
-		txtValor = new JTextField();
+		
+		Locale meuLocal = new Locale( "pt", "BR" );
+
+		NumberFormat format = NumberFormat.getCurrencyInstance(meuLocal);
+		format.setMaximumFractionDigits(0);
+		NumberFormatter formatter = new NumberFormatter(format);
+		formatter.setMinimum(5.0);
+		formatter.setMaximum(10000000.0);
+		//formatter.setAllowsInvalid(false);
+		//formatter.setOverwriteMode(true);
+
+		
+		txtValor = new JFormattedTextField(formatter);
+
 		txtValor.setForeground(new Color(19, 59, 93));
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
