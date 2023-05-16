@@ -75,8 +75,7 @@ public class VEditPatient extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[28.00,grow][][690px,grow][51.00][29.00,grow]",
-				"[44.00,grow][391px,grow][grow][28.00]"));
+		contentPane.setLayout(new MigLayout("", "[42.00,grow][42.00,grow][690px][51.00,grow][39.00,grow]", "[44.00,grow][391px,grow][grow][28.00]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Atualizar Paciente");
 		lblNewLabel_5.setForeground(new Color(19, 59, 93));
@@ -87,7 +86,7 @@ public class VEditPatient extends JFrame {
 		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 156, 156));
 		contentPane.add(panel, "cell 2 1,grow");
-		panel.setLayout(new MigLayout("", "[72.00][321.00,grow]", "[grow][56.00,grow][66.00,grow][80.00,grow]"));
+		panel.setLayout(new MigLayout("", "[pref!][321.00][pref!]", "[grow][56.00,grow][66.00,grow][80.00]"));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
@@ -243,10 +242,8 @@ public class VEditPatient extends JFrame {
 				JPanel panel_6 = new JPanel();
 				panel_6.setOpaque(false);
 				contentPane.add(panel_6, "flowx,cell 2 2,growx,aligny center");
-						panel_6.setLayout(new MigLayout("", "[105px][83px][][][][][][][][][][][][][][][][]", "[33px]"));
 												
 														JButton btnInserir = new VModelButton("Atualizar");
-														panel_6.add(btnInserir, "cell 1 0,alignx center,aligny top");
 														btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 														btnInserir.addActionListener(new ActionListener() {
 															public void actionPerformed(ActionEvent e) {
@@ -404,8 +401,27 @@ public class VEditPatient extends JFrame {
 														});
 										
 												JButton btnVoltar = new VModelButton("Voltar");
-												panel_6.add(btnVoltar, "cell 17 0,alignx center,aligny top");
 												btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+												GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+												gl_panel_6.setHorizontalGroup(
+													gl_panel_6.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_panel_6.createSequentialGroup()
+															.addGap(62)
+															.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+															.addGap(397)
+															.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+															.addGap(46))
+												);
+												gl_panel_6.setVerticalGroup(
+													gl_panel_6.createParallelGroup(Alignment.LEADING)
+														.addGroup(gl_panel_6.createSequentialGroup()
+															.addContainerGap()
+															.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
+																.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+															.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+												);
+												panel_6.setLayout(gl_panel_6);
 								btnVoltar.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent e) {
 										dispose();

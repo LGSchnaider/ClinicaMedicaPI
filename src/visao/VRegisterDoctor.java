@@ -77,7 +77,7 @@ public class VRegisterDoctor extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		contentPane.add(panel_1, "flowx,cell 1 1,alignx center,aligny center");
+		contentPane.add(panel_1, "flowx,cell 1 1,growx,aligny center");
 
 		txtNomeMed = new JTextField();
 		txtNomeMed.setForeground(new Color(19, 59, 93));
@@ -112,14 +112,11 @@ public class VRegisterDoctor extends JPanel {
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_1)
 						.addComponent(txtNomeMed, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-							.addGap(331))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(txtCPFMed, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-							.addGap(102))))
+					.addGap(47)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtCPFMed, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE))
+					.addGap(62))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -140,7 +137,7 @@ public class VRegisterDoctor extends JPanel {
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
 		panel_2.setBackground(new Color(0, 153, 153));
-		contentPane.add(panel_2, "cell 1 2,alignx center,aligny center");
+		contentPane.add(panel_2, "cell 1 2,growx,aligny center");
 
 		JComboBox<String> cbEstado = new JComboBox<>();
 		cbEstado.setForeground(new Color(19, 59, 93));
@@ -201,12 +198,12 @@ public class VRegisterDoctor extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_3_1)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
-					.addGap(102))
+						.addComponent(lblNewLabel_3)
+						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
+					.addGap(68))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
@@ -225,7 +222,7 @@ public class VRegisterDoctor extends JPanel {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		contentPane.add(panel_3, "cell 1 3,alignx center,aligny center");
+		contentPane.add(panel_3, "cell 1 3,growx,aligny center");
 
 		txtLogin = new JTextField();
 		txtLogin.setForeground(new Color(19, 59, 93));
@@ -251,14 +248,11 @@ public class VRegisterDoctor extends JPanel {
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
+					.addGap(48)
 					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addGap(22)
-							.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_3.createSequentialGroup()
-							.addGap(18)
-							.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)))
-					.addGap(96))
+						.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE))
+					.addGap(66))
 		);
 		gl_panel_3.setVerticalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -306,11 +300,11 @@ public class VRegisterDoctor extends JPanel {
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(52)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_7, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(104))
+					.addGap(70))
 		);
 		gl_panel_4.setVerticalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
