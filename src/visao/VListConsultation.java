@@ -178,6 +178,32 @@ public class VListConsultation extends JFrame {
 		btnObs.setText("Ver observações");
 		btnObs.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		contentPane.add(btnObs, "cell 2 3");
+		
+		
+		
+		JButton btnCos = new VModelButton("New button");
+		btnCos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
+					return;
+				}
+				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
+				Consulta c = model.getConsulta(position);
+				dispose();
+				VConsultation frame = new VConsultation(usuarioLogado);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
+		btnCos.setText("Iniciar consulta");
+		btnCos.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		contentPane.add(btnCos, "cell 2 3");
+		
+		
+
 
 	}
 
