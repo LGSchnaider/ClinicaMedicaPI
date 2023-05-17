@@ -5,6 +5,8 @@ public class Medico extends Pessoa {
 	private String uf;
 	private Long crm;
 	private Usuario usuario;
+	
+	
 	public String getUf() {
 		return uf;
 	}
