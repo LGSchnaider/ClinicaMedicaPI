@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
@@ -24,6 +25,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -31,6 +33,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -39,6 +42,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Choice;
 import java.awt.TextArea;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VRegisterConsultation extends JFrame {
 
@@ -352,8 +357,23 @@ public class VRegisterConsultation extends JFrame {
 		//formatter.setAllowsInvalid(false);
 		//formatter.setOverwriteMode(true);
 
-		
-		txtValor = new JFormattedTextField(formatter);
+		 // Cria um MaskFormatter para a máscara de Real brasileiro
+		JNumberFormatField maskFormatter = new JNumberFormatField();
+		try {
+			maskFormatter = new MaskFormatter("R$####,##");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+
+        // Cria um DefaultFormatterFactory com o MaskFormatter e DecimalFormat
+        DefaultFormatterFactory formatterFactory = new DefaultFormatterFactory();
+
+        
+        
+		txtValor = new JFormattedTextField(formatterFactory);
+	
 
 		txtValor.setForeground(new Color(19, 59, 93));
 		txtValor.setToolTipText("");
