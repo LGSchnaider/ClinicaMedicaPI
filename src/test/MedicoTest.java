@@ -31,7 +31,6 @@ class MedicoTest {
 		 m.getUsuario().setPefil(1); 
 		 UsuarioDAO udao = new UsuarioDAO();
 		 udao.inserir(m.getUsuario());
-		  
 		 assertTrue(mdDao.inserir(m));
 		
 		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);

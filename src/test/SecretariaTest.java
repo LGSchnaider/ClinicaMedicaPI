@@ -1,44 +1,48 @@
 package test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 
 import controle.SecretariaDAO;
 import controle.UsuarioDAO;
-import modelo.Medico;
 import modelo.Secretaria;
 
-class SecretariaTest {
+@TestMethodOrder(OrderAnnotation.class)
+public class SecretariaTest {
 
 	@Test
+	@Order(1)
 	public void testCadastro() {
-		SecretariaDAO secDAO = new SecretariaDAO();
+		SecretariaDAO secDao = new SecretariaDAO();
 		// chama conexão
-		 Secretaria s = new Secretaria();
-		
-		 s.setNome("Dr.Lucas pereira");
-		 s.setCpf((long) 554454477);
-		 s.setTelefone((long) 54545888);
-		 s.setId((int) 352464);
-		 s.getUsuario().setLogin("Francis");
-		 s.getUsuario().setSenha("fras");
-		 s.getUsuario().setPefil(3); 
+		Secretaria s = new Secretaria();
+
+		s.setNome("Matilda Frank");
+		s.setCpf((long) 515155664);
+		s.setEmail("mfrank@gmail.com");
+		s.setTelefone(44444555);
+		s.getUsuario().setLogin("BlaBla");
+		s.getUsuario().setSenha("blabla");
+		s.getUsuario().setPefil(1);
 		 UsuarioDAO udao = new UsuarioDAO();
 		 udao.inserir(s.getUsuario());
-		  
-		 assertTrue(secDAO.inserir(s));
-		
-/*		Secretaria medicoBuscado = secDAO.();
+		 assertTrue(secDao.inserir(s));
 
-		assertEquals("Dr.Lucas pereira", medicoBuscado.getNome());
-		assertEquals(554454477, medicoBuscado.getCpf());
-		assertEquals("AC", medicoBuscado.getId());
-		assertEquals(352464, medicoBuscado.getTelefone());
-		assertEquals("BlaBla", medicoBuscado.getUsuario().getLogin());
-		assertEquals("blabla", medicoBuscado.getUsuario().getSenha());
-		assertEquals(1, medicoBuscado.getUsuario().getPerfil());
+		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+
+		assertEquals("Matilda Frank", secretariaBuscada.getNome());
+		assertEquals(515155664, secretariaBuscada.getCpf());
+		assertEquals("mfrank@gmail.com", secretariaBuscada.getEmail());
+		assertEquals(44444555, secretariaBuscada.getTelefone());
+
+		assertEquals("BlaBla", secretariaBuscada.getUsuario().getLogin());
+		assertEquals("blabla", secretariaBuscada.getUsuario().getSenha());
+		assertEquals(1, secretariaBuscada.getUsuario().getPerfil());
 
 	}
 
@@ -47,41 +51,38 @@ class SecretariaTest {
 	public void testCadastroNaoE() {
 		SecretariaDAO secDao = new SecretariaDAO();
 		// chama conexão
-		Medico medicoBuscado = secDao.listaSecretaria(22);
-		assertNull(medicoBuscado);
+		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(252);
+		assertNull(secretariaBuscada);
 	}
 
 	@Test
 	@Order(4)
 	public void testDeletar() {
-		MedicoDAO mdDao = new MedicoDAO();
+		SecretariaDAO secDao = new SecretariaDAO();
 		// chama conexão
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
-		assertTrue(mdDao.deletar(medicoBuscado));
+		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		assertTrue(secDao.deletar(secretariaBuscada));
 	}
-
 
 	@Test
 	@Order(3)
 	public void testAlterar() {
-		MedicoDAO mdDao = new MedicoDAO();
+		SecretariaDAO secDao = new SecretariaDAO();
 		// chama conexão
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
-		medicoBuscado.setNome("Alterado");
-		medicoBuscado.setUf("SC");
-		medicoBuscado.getUsuario().setLogin("Alt");
-		medicoBuscado.getUsuario().setSenha("alt");
-		assertTrue(mdDao.atualizar(medicoBuscado));;
-		
-		medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		secretariaBuscada.setNome("Alterado");
+		secretariaBuscada.setEmail("esse@emailaki");
+		secretariaBuscada.setTelefone(66666666);
 
-		assertEquals("Alterado", medicoBuscado.getNome());
-		assertEquals(554454477, medicoBuscado.getCpf());
-		assertEquals("SC", medicoBuscado.getUf());
-		assertEquals(352464, medicoBuscado.getCrm());
-		assertEquals("Alt", medicoBuscado.getUsuario().getLogin());
-		assertEquals("alt", medicoBuscado.getUsuario().getSenha());
-		assertEquals(1, medicoBuscado.getUsuario().getPerfil());
+		assertTrue(secDao.atualizar(secretariaBuscada));
+		secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		assertEquals("Alterado", secretariaBuscada.getNome());
+		assertEquals(515155664, secretariaBuscada.getCpf());
+		assertEquals(66666666, secretariaBuscada.getTelefone());
+		assertEquals("esse@emailaki", secretariaBuscada.getEmail());
 		
-	*/}
+		assertEquals(1, secretariaBuscada.getUsuario().getPerfil());
+
+	}
+
 }
