@@ -70,7 +70,6 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 
-
 	public ArrayList<Medico> listaMedico() {
 
 		// Instacia classe Conexao
@@ -102,16 +101,15 @@ public class MedicoDAO implements IMedicoDAO {
 				p.setCrm(crm);
 				p.setUf(UF);
 
-				
 				Usuario u = new Usuario();
 				u.setIdusuario(idUsuario);
 				u.setLogin(login);
 				u.setSenha(senha);
 				u.setPefil(perfil);
 				p.setUsuario(u);
-				
+
 				Medicos.add(p);
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -128,27 +126,79 @@ public class MedicoDAO implements IMedicoDAO {
 	@Override
 	public boolean deletar(Medico p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
-				Connection c = con.conectar();
-				
-				UsuarioDAO dao = new UsuarioDAO();
-		//		dao.deletar(p.getUsuario());
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		UsuarioDAO dao = new UsuarioDAO();
+		// dao.deletar(p.getUsuario());
+
+		try {
+			String query = "DELETE medico, usuario FROM medico, usuario WHERE medico.usuario_idusuario = usuario.id and medico.crm ="
+					+ p.getCrm() + "";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return false;
+	}
+
+	public Medico buscarMedicoPorCrm(long crm) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		UsuarioDAO dao = new UsuarioDAO();
+		// dao.deletar(p.getUsuario());
+		System.out.println(crm);
+		Usuario u = new Usuario();
+		Medico p = null;
+		try {
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.UF, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id where medico.crm = "+crm+";";
+			Statement stm = c.createStatement();
+			ResultSet rs = stm.executeQuery(query);
 			
-				try {
-					String query = "DELETE medico, usuario FROM medico, usuario WHERE medico.usuario_idusuario = usuario.id and medico.crm ="+p.getCrm()+"";
-					PreparedStatement stm = c.prepareStatement(query);
+			if(rs.next()) 
+			{
+				 p = new Medico();
+				String nome = rs.getString("nome");
+				long cpf = rs.getLong("cpf");
+				Long crm1 = rs.getLong("crm");
+				String UF = rs.getString("Uf");
+	
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
+				int idUsuario = rs.getInt("usuarioid");
+				int idMedico = rs.getInt("id");
+	
+	
+				p.setId(idMedico);
+				p.setNome(nome);
+				p.setCpf(cpf);
+				p.setCrm(crm1);
+				p.setUf(UF);
+	
+	
+				u.setIdusuario(idUsuario);
+				u.setLogin(login);
+				u.setSenha(senha);
+				u.setPefil(perfil);
+				p.setUsuario(u);
+			}
+			
+			
 
-					
+		} catch (SQLException e) {
 
-					stm.executeUpdate();
-					return true;
-
-				} catch (SQLException e) {
-
-					e.printStackTrace();
-				}
-				con.fechaConexao();
-				return false;
+			e.printStackTrace();
+		}
+		con.fechaConexao();
+		return p;
 	}
 
 }
