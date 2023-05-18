@@ -14,6 +14,7 @@ import modelo.Medico;
 @TestMethodOrder(OrderAnnotation.class)
 class MedicoTest {
 
+
 	@Test
 	@Order(1)
 	public void testCadastro() {
@@ -54,5 +55,38 @@ class MedicoTest {
 		assertNull(medicoBuscado);
 	}
 
+	@Test
+	@Order(4)
+	public void testDeletar() {
+		MedicoDAO mdDao = new MedicoDAO();
+		// chama conexão
+		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		assertTrue(mdDao.deletar(medicoBuscado));
+	}
+
+
+	@Test
+	@Order(3)
+	public void testAlterar() {
+		MedicoDAO mdDao = new MedicoDAO();
+		// chama conexão
+		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		medicoBuscado.setNome("Alterado");
+		medicoBuscado.setUf("SC");
+		medicoBuscado.getUsuario().setLogin("Alt");
+		medicoBuscado.getUsuario().setSenha("alt");
+		assertTrue(mdDao.atualizar(medicoBuscado));;
+		
+		medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+
+		assertEquals("Alterado", medicoBuscado.getNome());
+		assertEquals(554454477, medicoBuscado.getCpf());
+		assertEquals("SC", medicoBuscado.getUf());
+		assertEquals(352464, medicoBuscado.getCrm());
+		assertEquals("Alt", medicoBuscado.getUsuario().getLogin());
+		assertEquals("alt", medicoBuscado.getUsuario().getSenha());
+		assertEquals(1, medicoBuscado.getUsuario().getPerfil());
+		
+	}
 
 }
