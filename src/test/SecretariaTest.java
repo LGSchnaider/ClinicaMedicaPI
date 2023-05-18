@@ -24,7 +24,7 @@ public class SecretariaTest {
 		 * values ('Matilda Frank', 65656595956, 54545888, 'mfrank@gmail.com', 8);
 		 */
 		
-		s.setNome("Nog");
+		s.setNome("M");
 		s.setCpf((long) 656565959);
 		s.setTelefone(54545888);
 		s.setEmail("mfrank@gmail.com");
@@ -33,10 +33,15 @@ public class SecretariaTest {
 		secDao.inserir(s);
 		
 		secDao.listaSecretaria();
-		assertTrue(secDao.inserir(s));
 		
-		System.out.println("Teste feito com sucesso");
 		
+		if(s.getNome() == "Matilda Frank" || s.getCpf()== 656565959 || s.getTelefone() == 54545888 || s.getEmail() == "mfrank@gmail.com" ) 
+		{
+			assertTrue(secDao.inserir(s));
+			System.out.println("Teste feito com sucesso");
+		} else {
+			System.out.println("Não está correto");
+		}
 		
 		return false;
 	}
