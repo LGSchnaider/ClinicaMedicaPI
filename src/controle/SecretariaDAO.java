@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ISecretariaDAO;
+import modelo.Medico;
 import modelo.Paciente;
 import modelo.Secretaria;
 import modelo.Usuario;
@@ -154,5 +155,53 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 		return Secretarias;
 	}
+/*	
+	public Secretaria buscarSecretaria(int cpf) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+
+		UsuarioDAO dao = new UsuarioDAO();
+		Usuario u = new Usuario();
+		Secretaria p = null;
+		try {
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.UF, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id where medico.crm = "
+					+ cpf + ";";
+			Statement stm = c.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+
+			if (rs.next()) {
+				p = new Secretaria();
+				String nome = rs.getString("nome");
+				long cpf1 = rs.getLong("cpf");
+				Long telefone = rs.getLong("telefone");
+				String  = rs.getString("email");
+
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
+				int idUsuario = rs.getInt("usuarioid");
+				int idMedico = rs.getInt("id");
+
+				p.setId(id);
+				p.setNome(nome);
+				p.setCpf(cpf1);
+				p.setTelefone(telefone);
+				p.setUsuario(u);
+
+				u.setIdusuario(idUsuario);
+				u.setLogin(login);
+				u.setSenha(senha);
+				u.setPefil(perfil);
+				p.setUsuario(u);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
+		}
+		return p;
+	}*/
 
 }
