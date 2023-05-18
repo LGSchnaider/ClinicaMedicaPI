@@ -34,8 +34,10 @@ public class PacienteDAO implements IPacienteDAO {
 			stm.setLong(3, p.getTelefone());
 			stm.setString(4, p.getSexo().getCodigo());
 			stm.setString(5, p.getEmail());
-
+			System.out.println(stm);
 			stm.executeUpdate();
+			return false;
+			
 
 		} catch (SQLException e) {
 

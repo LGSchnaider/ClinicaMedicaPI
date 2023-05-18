@@ -2,9 +2,10 @@ package modelo;
 
 public enum TipoSexo {
 	
+	NAO_DEFINIDO("N", "Não Definido"),
 	MASCULINO("M", "Masculino"),
-	FEMININO("F", "Feminino"),
-	NAO_DEFINIDO("N", "Não Definido");
+	FEMININO("F", "Feminino");
+	
 	
 	
 

@@ -56,8 +56,7 @@ public class VRegisterSecretary extends JPanel {
 	private JTextField txtLogin;
 	private Usuario usuarioLogado;
 	private JLabel lblCpf;
-	private JTextField txtCPF;
-	private JTextField txtCPF_1;
+	private JFormattedTextField txtCPF;
 	private JLabel Email;
 	private JPanel panel_8;
 	private JTextField txtEmail;
@@ -166,17 +165,17 @@ public class VRegisterSecretary extends JPanel {
 		panel_9.setOpaque(false);
 		contentPane.add(panel_9, "cell 1 2,alignx center,aligny center");
 
-		txtCPF = new JTextField();
+		txtCPF = new JFormattedTextField(formatter);
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		txtCPF_1 = new JFormattedTextField(formatter);
-		txtCPF_1.setForeground(new Color(19, 59, 93));
-		txtCPF_1.setHorizontalAlignment(SwingConstants.LEFT);
-		txtCPF_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		txtCPF_1.setColumns(10);
+		JTextField txtCPF = new JFormattedTextField(formatter);
+		txtCPF.setForeground(new Color(19, 59, 93));
+		txtCPF.setHorizontalAlignment(SwingConstants.LEFT);
+		txtCPF.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		txtCPF.setColumns(10);
 
 		Email = new JLabel("Email:");
 		Email.setFont(new Font("Times New Roman", Font.BOLD, 30));
@@ -196,7 +195,7 @@ public class VRegisterSecretary extends JPanel {
 				.addGroup(gl_panel_9.createSequentialGroup()
 					.addGap(177)
 					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtCPF_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCpf))
 					.addGap(93)
 					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
@@ -213,7 +212,7 @@ public class VRegisterSecretary extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel_9.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCPF_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtCPF, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		panel_9.setLayout(gl_panel_9);
@@ -392,22 +391,28 @@ public class VRegisterSecretary extends JPanel {
 				}
 
 				try {
+					
+					if(telefone != null && !telefone.isEmpty()) {
 					String telefones = telefone.replace(")", ""); // forma feia mas facil
 					telefones = telefones.replace("(", ""); // forma feia mas facil
 					telefones = telefones.replace("-", "");
 					telefones = telefones.replace(" ", "");
 					telefones = telefones.strip();
-					if (!telefones.isEmpty()) {
+					if (telefones.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+						txtTelefone.requestFocus();
+						return;
+					} else {
 						Long telefoneInt = Long.valueOf(telefones);
 						secretaria.setTelefone(telefoneInt);
-					} else {
-						System.out.println(telefones);
+					}
+					}else {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
 						txtTelefone.requestFocus();
 						return;
 					}
-
+						
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}

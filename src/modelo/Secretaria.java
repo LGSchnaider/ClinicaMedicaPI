@@ -9,6 +9,7 @@ public class Secretaria extends Pessoa {
 	private String senha;
 	
 	
+	
 	public String getSenha() {
 		return senha;
 	}
