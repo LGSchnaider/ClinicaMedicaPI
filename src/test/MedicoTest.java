@@ -15,12 +15,10 @@ import modelo.Pessoa;
 
 class MedicoTest {
 
-
-	
 	@Test
-	 public void testCadastro() {
+	public void testCadastro() {
 		MedicoDAO mdDao = new MedicoDAO();
-		//chama conexão
+		// chama conexão
 		Medico m = new Medico();
 		m.setNome("Dr.Lucas pereira");
 		m.setCpf((long) 751542154);
@@ -31,13 +29,17 @@ class MedicoTest {
 		m.getUsuario().setPefil(1);
 		UsuarioDAO udao = new UsuarioDAO();
 		udao.inserir(m.getUsuario());
-        mdDao.inserir(m);
-		assertEquals("Dr.Lucas pereira", m.getNome());
-		assertEquals(751542154, m.getCpf());
-		assertEquals("AC", m.getUf());
-		assertEquals(954828, m.getCrm());
-		assertEquals("BlaBla", m.getUsuario().getLogin());
-		assertEquals("blabla", m.getUsuario().getSenha());
-		assertEquals(1, m.getUsuario().getPerfil());
+
+		assertTrue(mdDao.inserir(m));
+		
+		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(crm);
+		
+		assertEquals("Dr.Lucas pereira",medicoBuscado.getNome());
+		assertEquals(751542154, medicoBuscado.getCpf());
+		assertEquals("AC", medicoBuscado.getUf());
+		assertEquals(954828, medicoBuscado.getCrm());
+		assertEquals("BlaBla", medicoBuscado.getUsuario().getLogin());
+		assertEquals("blabla", medicoBuscado.getUsuario().getSenha());
+		assertEquals(1, medicoBuscado.getUsuario().getPerfil());
 	}
 }
