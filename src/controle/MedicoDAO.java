@@ -127,8 +127,6 @@ public class MedicoDAO implements IMedicoDAO {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
-
-		UsuarioDAO dao = new UsuarioDAO();
 		// dao.deletar(p.getUsuario());
 
 		try {

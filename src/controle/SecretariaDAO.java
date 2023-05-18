@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ISecretariaDAO;
+import modelo.Medico;
 import modelo.Paciente;
 import modelo.Secretaria;
 import modelo.Usuario;
@@ -26,7 +27,7 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 		Connection c = con.conectar();
 		try {
-			String query = "INSERT INTO secretaria " + "(nome, cpf, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?);";
+			String query = "INSERT INTO secretaria (nome, cpf, telefone, email, usuario_idusuario) VALUES (?,?,?,?,?);";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
@@ -83,10 +84,8 @@ public class SecretariaDAO implements ISecretariaDAO {
 		Connection c = con.conectar();
 	
 		try {
-			String query = "DELETE FROM secretaria WHERE cpf = ?";
+			String query = "DELETE FROM secretaria WHERE cpf = "+p.getCpf()+"";
 			PreparedStatement stm = c.prepareStatement(query);
-
-			stm.setLong(1, p.getCpf());
 
 			stm.executeUpdate();
 			return true;
@@ -153,6 +152,52 @@ public class SecretariaDAO implements ISecretariaDAO {
 		con.fechaConexao();
 
 		return Secretarias;
+	}
+
+	public Secretaria buscarSecretariaPorCpf(long cpf) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		Usuario u = null;
+		Secretaria s = null;
+		try {
+			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha,"
+					+ " usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf,"
+					+ "secretaria.telefone, secretaria.email from  usuario inner join secretaria"
+					+ " on secretaria.usuario_idusuario = usuario.id where cpf ="+cpf+";";
+			Statement stm = c.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+
+			if (rs.next()) {
+				s = new Secretaria();
+				String nome = rs.getString("nome");
+				long cpf1 = rs.getLong("cpf");
+				long telefone = rs.getLong("telefone");
+				String gmail = rs.getString("email");
+				
+				u = new Usuario();
+				String login = rs.getString("login");
+				String senha = rs.getString("senha");
+				int perfil = rs.getInt("perfil");
+				
+
+				s.setNome(nome);
+				s.setCpf(cpf1);
+				s.setEmail(gmail);
+				s.setTelefone(telefone);
+
+				u.setLogin(login);
+				u.setSenha(senha);
+				u.setPefil(perfil);
+				s.setUsuario(u);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
+		}
+		return s;
 	}
 
 }
