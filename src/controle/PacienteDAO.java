@@ -53,19 +53,20 @@ public class PacienteDAO implements IPacienteDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE paciente SET nome= ?, telefone = ?, sexo = ?, email = ?  WHERE id = " + id+ ";";
+			String query = "UPDATE paciente SET nome= ?, telefone = ?, sexo = ?, email = ?  WHERE id = ?;";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getTelefone());
 			stm.setString(3, p.getSexo().getCodigo());
 			stm.setString(4, p.getEmail());
+			stm.setInt(5, p.getId());
 
 			stm.executeUpdate();
 			return true;
 
 		} catch (SQLException e) {
-
+ 
 			e.printStackTrace();
 		}finally {
 			con.fechaConexao();
@@ -73,13 +74,13 @@ public class PacienteDAO implements IPacienteDAO {
 		return false;
 	}
 
-	public boolean deletar(String del) {
+	public boolean deletar(long cpf) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
 		try {
-			String query = "DELETE FROM paciente WHERE cpf = " + del + ";";
+			String query = "DELETE FROM paciente WHERE cpf = " + cpf + ";";
 			PreparedStatement stm = c.prepareStatement(query);
 
 //			stm.setLong(1, p.getCpf());

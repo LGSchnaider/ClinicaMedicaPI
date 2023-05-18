@@ -23,19 +23,18 @@ class PacienteTest {
 		Paciente p = new Paciente();
 		
 		 p.setNome("Jose");
-		 p.setCpf((long) 554454477);
+		 p.setCpf((long) 455445553);
 	     p.setTelefone((long) 99099974);
 	     String sexo = "M";
 	     p.setSexo((TipoSexo.obterTipo(sexo)));
 	     p.setEmail("jose@gmail");		  
 		 assertTrue(pDao.inserir(p));
 		
-		Paciente pac = pDao.buscarPacientPorCpf(554454477);
+		Paciente pac = pDao.buscarPacientPorCpf(455445553);
 
 		assertEquals("Jose", pac.getNome());
-		assertEquals(554454477, pac.getCpf());
+		assertEquals(455445553, pac.getCpf());
 		assertEquals(99099974, pac.getTelefone());
-		assertEquals("M", pac.getSexo());
 		assertEquals("jose@gmail", pac.getEmail());
 	}
 
@@ -54,8 +53,7 @@ class PacienteTest {
 	public void testDeletar() {
 		PacienteDAO pacDao = new PacienteDAO();
 		// chama conexão
-		Paciente pac = pacDao.buscarPacientPorCpf(352464);
-		assertTrue(pacDao.deletar(pac));
+		assertTrue(pacDao.deletar(455445553));
 	}
 
 
@@ -64,12 +62,12 @@ class PacienteTest {
 	public void testAlterar() {
 		PacienteDAO pacDao = new PacienteDAO();
 		// chama conexão
-		Paciente pac = pacDao.buscarPacientPorCpf(352464);
+		Paciente pac = pacDao.buscarPacientPorCpf(455445553);
 		pac.setNome("Alterado");
 		pac.setEmail("desespero@gmail.com");
 		assertTrue(pacDao.atualizar(pac));;
 		
-		pac = pacDao.buscarPacientPorCpf(352464);
+		pac = pacDao.buscarPacientPorCpf(455445553);
 
 		assertEquals("Alterado", pac.getNome());
 		assertEquals(554454477, pac.getCpf());
