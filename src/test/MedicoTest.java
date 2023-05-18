@@ -23,19 +23,6 @@ class MedicoTest {
 		Medico m = new Medico();
 		
 		
-		/*m.setUf("SP");
-		m.setCrm((long) 952565);
-		
-		
-		
-		mdDao.inserir(m);
-		
-		mdDao.listaMedico();
-		assertTrue(mdDao.inserir(m));
-		
-		System.out.println("Teste feito com sucesso");
-		*/
-		
 		m.setNome("Dr.Lucas pereira");
 		m.setCpf((long) 554578445);
 		m.setUf("SP");
