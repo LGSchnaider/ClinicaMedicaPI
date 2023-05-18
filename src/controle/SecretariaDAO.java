@@ -42,11 +42,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return false;
 	}
 	
@@ -72,9 +70,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-		
 		return false;
 	}
 	
@@ -93,9 +91,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-		
 		return false;
 
 	}
@@ -146,11 +144,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return Secretarias;
 	}
 
@@ -169,6 +165,7 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 			if (rs.next()) {
 				s = new Secretaria();
+				int id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				long cpf1 = rs.getLong("cpf");
 				long telefone = rs.getLong("telefone");
@@ -179,7 +176,7 @@ public class SecretariaDAO implements ISecretariaDAO {
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
 				
-
+				s.setId(id);
 				s.setNome(nome);
 				s.setCpf(cpf1);
 				s.setEmail(gmail);

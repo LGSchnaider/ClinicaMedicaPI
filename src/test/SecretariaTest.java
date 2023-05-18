@@ -62,27 +62,26 @@ public class SecretariaTest {
 		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 		assertTrue(secDao.deletar(secretariaBuscada));
 	}
-/*
+
 	@Test
 	@Order(3)
 	public void testAlterar() {
 		SecretariaDAO secDao = new SecretariaDAO();
 		// chama conexão
-		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(56556888);
+		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 		secretariaBuscada.setNome("Alterado");
-		secretariaBuscada.getUsuario().setLogin("Alt");
-		secretariaBuscada.getUsuario().setSenha("alt");
+		secretariaBuscada.setEmail("esse@emailaki");
+		secretariaBuscada.setTelefone(66666666);
+
 		assertTrue(secDao.atualizar(secretariaBuscada));
-		;
-
-		secretariaBuscada = secDao.buscarSecretariaPorCpf(656565959);
-
+		secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 		assertEquals("Alterado", secretariaBuscada.getNome());
-		assertEquals(656565959, secretariaBuscada.getCpf());
-		assertEquals("Alt", secretariaBuscada.getUsuario().getLogin());
-		assertEquals("alt", secretariaBuscada.getUsuario().getSenha());
+		assertEquals(515155664, secretariaBuscada.getCpf());
+		assertEquals(66666666, secretariaBuscada.getTelefone());
+		assertEquals("esse@emailaki", secretariaBuscada.getEmail());
+		
 		assertEquals(1, secretariaBuscada.getUsuario().getPerfil());
 
 	}
-*/
+
 }

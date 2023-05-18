@@ -47,5 +47,36 @@ class PacienteTest {
 		Paciente pac = pDao.buscarPacientPorCpf(22);
 		assertNull(pac);
 	}
+	
+
+	@Test
+	@Order(4)
+	public void testDeletar() {
+		PacienteDAO pacDao = new PacienteDAO();
+		// chama conexão
+		Paciente pac = pacDao.buscarPacientPorCpf(352464);
+		assertTrue(pacDao.deletar(pac));
+	}
+
+
+	@Test
+	@Order(3)
+	public void testAlterar() {
+		PacienteDAO pacDao = new PacienteDAO();
+		// chama conexão
+		Paciente pac = pacDao.buscarPacientPorCpf(352464);
+		pac.setNome("Alterado");
+		pac.setEmail("desespero@gmail.com");
+		assertTrue(pacDao.atualizar(pac));;
+		
+		pac = pacDao.buscarPacientPorCpf(352464);
+
+		assertEquals("Alterado", pac.getNome());
+		assertEquals(554454477, pac.getCpf());
+		assertEquals(99099974, pac.getTelefone());
+		assertEquals("M", pac.getSexo());
+		assertEquals("desespero@gmail.com", pac.getEmail());
+		
+	}
 
 }

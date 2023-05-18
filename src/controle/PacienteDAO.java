@@ -41,11 +41,9 @@ public class PacienteDAO implements IPacienteDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return true;
 	}
 
@@ -69,9 +67,9 @@ public class PacienteDAO implements IPacienteDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-
 		return false;
 	}
 
@@ -91,9 +89,9 @@ public class PacienteDAO implements IPacienteDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-
 		return false;
 
 	}
@@ -131,11 +129,9 @@ public class PacienteDAO implements IPacienteDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return Pacientes;
 	}
 
