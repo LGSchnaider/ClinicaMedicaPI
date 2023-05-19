@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import controle.MedicoDAO;
 import controle.PacienteDAO;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.imageio.ImageIO;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
@@ -28,6 +30,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Choice;
@@ -45,6 +49,8 @@ public class VRegisterConsultation extends JFrame {
 	private ArrayList<Paciente> listaPaciente;
 	private ArrayList<Medico> listaMedico;
 	private JComboBox comboMed;
+	public static final LocalDate MAX = null;
+	LocalDate a = LocalDate.MAX;
 	
 	
 
@@ -95,7 +101,7 @@ public class VRegisterConsultation extends JFrame {
 		
 		comboPasc = new JComboBox();
 		comboPasc.setForeground(new Color(19, 59, 93));
-		comboPasc.addItem(null);
+		comboPasc.addItem("--Selecione--");
 		
 		PacienteDAO Pasc = new PacienteDAO();
 		listaPaciente = Pasc.listaPaciente();
@@ -118,6 +124,7 @@ public class VRegisterConsultation extends JFrame {
 		JComboBox cbDia = new JComboBox();	
 		cbDia.setForeground(new Color(19, 59, 93));
 		panel.add(cbDia, "cell 0 0,growx,aligny center");
+	
 		cbDia.addItem("01");
 		cbDia.addItem("02");
 		cbDia.addItem("03");
@@ -154,6 +161,7 @@ public class VRegisterConsultation extends JFrame {
 		JComboBox cbMes = new JComboBox();
 		cbMes.setForeground(new Color(19, 59, 93));
 		panel.add(cbMes, "cell 1 0,growx,aligny center");
+		
 		cbMes.addItem("JAN");
 		cbMes.addItem("FEV");
 		cbMes.addItem("MAR");
@@ -170,6 +178,9 @@ public class VRegisterConsultation extends JFrame {
 		JComboBox cbAno = new JComboBox();
 		cbAno.setForeground(new Color(19, 59, 93));
 		panel.add(cbAno, "cell 2 0,growx,aligny center");
+		
+		
+		
 		
 		cbAno.addItem("2010");
 		cbAno.addItem("2011");
@@ -207,7 +218,7 @@ public class VRegisterConsultation extends JFrame {
 		cbHora.setForeground(new Color(19, 59, 93));
 		panel_1.add(cbHora, "cell 0 0");
 		
-		cbHora.addItem(null);
+		cbHora.addItem("--Selecione--");
 		cbHora.addItem("00");
 		cbHora.addItem("01");
 		cbHora.addItem("02");
@@ -237,7 +248,7 @@ public class VRegisterConsultation extends JFrame {
 		cbMin.setForeground(new Color(19, 59, 93));
 		panel_1.add(cbMin, "cell 1 0,growx");
 		
-		cbMin.addItem(null);
+		cbMin.addItem("--Selecione--");
 		cbMin.addItem("00");
 		cbMin.addItem("01");
 		cbMin.addItem("02");
@@ -321,7 +332,7 @@ public class VRegisterConsultation extends JFrame {
 		
 		comboMed = new JComboBox();
 		comboMed.setForeground(new Color(19, 59, 93));
-		comboMed.addItem(null);
+		comboMed.addItem("--Selecione--");
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
 		MedicoDAO Med = new MedicoDAO();
@@ -330,8 +341,13 @@ public class VRegisterConsultation extends JFrame {
 			comboMed.addItem(Medico);
 		}
 		 
-		
-		txtValor = new JTextField();
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("R$ ######,##");
+		}catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		txtValor = new JFormattedTextField(formatter);
 		txtValor.setForeground(new Color(19, 59, 93));
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
@@ -373,12 +389,34 @@ public class VRegisterConsultation extends JFrame {
 				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
 				
 				//valor da consulta
-				Long Valor = Long.valueOf(txtValor.getText());
+				String Valor = String.valueOf(txtValor.getText());
 				
 				String Descricao = txaObser.getText();
 				
 				//criando consulta
 				Consulta consulta = new Consulta();
+				//try Valor
+				
+				if(Valor !=null && !Valor.isEmpty()) {
+					if(Valor.equalsIgnoreCase("R$      ,  ")) {
+					JOptionPane.showMessageDialog(null, "Nada é de graça, alem do meu amor");
+					txtValor.requestFocus();
+					return;
+				}else {
+					Valor = Valor.replace("R","");
+					Valor = Valor.replace("$","");
+					Valor = Valor.replace(",","");
+					
+					String valorInt = String.valueOf(Valor);
+					
+					consulta.setValor(valorInt);
+				}
+				}else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Nada é de graça, alem do meu amor");
+					txtValor.requestFocus();
+					return;
+				}
 
 				//try Paciente
 				try {
@@ -460,17 +498,6 @@ public class VRegisterConsultation extends JFrame {
 					e2.printStackTrace();
 				}
 				
-				//Try Valor
-				try {
-					if (Valor != null) {
-						consulta.setValor(Valor);
-					}else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo Valor precisa ser preenchido");
-					}
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
 				
 				//Try Obs.
 				try {

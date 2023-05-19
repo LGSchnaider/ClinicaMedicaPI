@@ -26,7 +26,7 @@ public class ConsultaDAO implements IConsultaDAO{
 			stm.setString(1, c.getData());
 			stm.setString(2, c.getHora());
 			stm.setString(3, c.getObs());
-			stm.setLong(4, c.getValor());
+			stm.setString(4, c.getValor());
 			stm.setInt(5, c.getIdMedico());
 			stm.setInt(6, c.getIdPaciente());
 			stm.executeUpdate();
@@ -86,7 +86,7 @@ public class ConsultaDAO implements IConsultaDAO{
 				String data = rs.getString("data");
 				String hora = rs.getString("hora");
 				String descricao = rs.getString("descricao");
-				long valor = rs.getLong("valor");
+				String valor = rs.getString("valor");
 				int idDoctor = rs.getInt("medico_id_medico");
 				int idPatient = rs.getInt("Paciente_id_paciente");
 				int idMed = rs.getInt("idMed");
