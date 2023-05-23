@@ -35,9 +35,10 @@ public class PacienteDAO implements IPacienteDAO {
 			stm.setLong(3, p.getTelefone());
 			stm.setString(4, p.getSexo().getCodigo());
 			stm.setString(5, p.getEmail());
-			System.out.println(stm);
+
+			
 			stm.executeUpdate();
-			return false;
+			return true;
 			
 
 		} catch (SQLException e) {
@@ -46,7 +47,7 @@ public class PacienteDAO implements IPacienteDAO {
 		}finally {
 			con.fechaConexao();
 		}
-		return true;
+		return false;
 	}
 
 	public boolean atualizar(int id, Paciente p) {

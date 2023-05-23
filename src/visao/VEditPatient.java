@@ -381,14 +381,14 @@ public class VEditPatient extends JFrame {
 																	if (validarCampoTexto == true) {
 																		PacienteDAO pdao = new PacienteDAO();
 															
-																		/*boolean validar = pdao.inserir(paciente);
+																		boolean validar = pdao.inserir(paciente);
 																		if (validar == true) {
 																			// exibir uma mensagem de cadastro com sucesso
 																			JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 																		} else {
 																			// exibir mensagem de erro ao cadastrar
 																			JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
-																		}*/
+																		}
 																	}
 																	
 																} catch (Exception e2) {
