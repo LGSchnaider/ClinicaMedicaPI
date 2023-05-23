@@ -365,21 +365,28 @@ public class VRegisterConsultation extends JFrame {
 		//formatter.setOverwriteMode(true);
 
 		 // Cria um MaskFormatter para a máscara de Real brasileiro
-		JNumberFormatField maskFormatter = new JNumberFormatField();
-		try {
-			maskFormatter = new MaskFormatter("R$####,##");
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		//JNumberFormatField maskFormatter = new JNumberFormatField();
+		
 
 
         // Cria um DefaultFormatterFactory com o MaskFormatter e DecimalFormat
-        DefaultFormatterFactory formatterFactory = new DefaultFormatterFactory();
+        //DefaultFormatterFactory formatterFactory = new DefaultFormatterFactory();
 
         
         
-		txtValor = new JFormattedTextField(formatterFactory);
+		txtValor = new JFormattedTextField();
+		 DecimalFormat decimal = new DecimalFormat("#,###,###.00");
+         NumberFormatter numFormatter = new NumberFormatter(decimal);
+         numFormatter.setFormat(decimal);
+         numFormatter.setAllowsInvalid(false);
+         DefaultFormatterFactory dfFactory = new DefaultFormatterFactory(numFormatter);
+         
+         JLabel lblNewLabel_7 = new JLabel("R$");
+         lblNewLabel_7.setForeground(new Color(19, 59, 93));
+         lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 20));
+         panel_2.add(lblNewLabel_7, "flowx,cell 0 1");
+         
+         txtValor.setFormatterFactory(dfFactory);
 	
 
 		txtValor.setForeground(new Color(19, 59, 93));
