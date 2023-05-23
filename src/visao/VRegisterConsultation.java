@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
@@ -430,7 +431,7 @@ public class VRegisterConsultation extends JFrame {
 				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
 				
 				//valor da consulta
-				String Valor = String.valueOf(txtValor.getText());
+				String valor = String.valueOf(txtValor.getText());
 				
 				String Descricao = txaObser.getText();
 				
@@ -438,18 +439,16 @@ public class VRegisterConsultation extends JFrame {
 				Consulta consulta = new Consulta();
 				//try Valor
 				
-				if(Valor !=null && !Valor.isEmpty()) {
-					if(Valor.equalsIgnoreCase("R$      ,  ")) {
+				if(valor !=null && !valor.isEmpty()) {
+					if(valor.equalsIgnoreCase("R$      ,  ")) {
 					JOptionPane.showMessageDialog(null, "Nada é de graça, alem do meu amor");
 					txtValor.requestFocus();
 					return;
 				}else {
-					Valor = Valor.replace("R","");
-					Valor = Valor.replace("$","");
-					Valor = Valor.replace(",","");
-					
-					String valorInt = String.valueOf(Valor);
-					
+					valor = valor.replace("R","");
+					valor = valor.replace("$","");
+					valor = valor.replace(",","");
+					String valorInt = String.valueOf(valor);
 					consulta.setValor(valorInt);
 				}
 				}else {
