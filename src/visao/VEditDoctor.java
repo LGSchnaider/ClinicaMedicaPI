@@ -45,7 +45,7 @@ public class VEditDoctor extends JFrame {
 	private Usuario usuarioLogado;
 	private JTextField txtCPFMed;
 	private JComboBox<TipoUsuario> comboBox = new JComboBox<>();
-	private JComboBox cbEstado;
+	private JComboBox<String> cbEstado;
 
 	/**
 	 * Create the frame.
@@ -70,17 +70,18 @@ public class VEditDoctor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]", "[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
+		contentPane.setLayout(new MigLayout("", "[212.00,grow][443.00,grow][][196.00,grow]",
+				"[70.00,grow][28.00,grow][64.00][55.00][60.00,grow][62.00,grow][57.00][44.00,grow][][grow][67.00,grow]"));
 
 		JLabel lblNewLabel = new JLabel("Editar Médico");
 		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center,aligny bottom");
-		
-				JLabel lblNewLabel_1 = new JLabel("Nome:");
-				lblNewLabel_1.setForeground(new Color(19, 59, 93));
-				lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_1, "flowy,cell 1 2,alignx left,aligny center");
+
+		JLabel lblNewLabel_1 = new JLabel("Nome:");
+		lblNewLabel_1.setForeground(new Color(19, 59, 93));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_1, "flowy,cell 1 2,alignx left,aligny center");
 
 		txtNomeMed = new JTextField();
 		txtNomeMed.setForeground(new Color(19, 59, 93));
@@ -95,11 +96,11 @@ public class VEditDoctor extends JFrame {
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		
-				JLabel lblNewLabel_2 = new JLabel("CPF:");
-				lblNewLabel_2.setForeground(new Color(19, 59, 93));
-				lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_2, "flowy,cell 1 3,alignx left,aligny center");
+
+		JLabel lblNewLabel_2 = new JLabel("CPF:");
+		lblNewLabel_2.setForeground(new Color(19, 59, 93));
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_2, "flowy,cell 1 3,alignx left,aligny center");
 		txtCPFMed = new JFormattedTextField(formatter);
 		txtCPFMed.setForeground(new Color(19, 59, 93));
 		txtCPFMed.setBounds(165, 190, 174, 20);
@@ -114,7 +115,7 @@ public class VEditDoctor extends JFrame {
 		panel_2.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_2, "cell 1 4,growx,aligny center");
 
-		JComboBox<String> cbEstado = new JComboBox<>();
+		cbEstado = new JComboBox<>();
 		cbEstado.setForeground(new Color(19, 59, 93));
 		cbEstado.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		cbEstado.addItem("AC");
@@ -156,68 +157,66 @@ public class VEditDoctor extends JFrame {
 		txtCRM.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtCRM.setColumns(10);
 		textField_2 = new JFormattedTextField();
-		
-				JLabel lblNewLabel_3 = new JLabel("Código CRM:");
-				lblNewLabel_3.setForeground(new Color(19, 59, 93));
-				lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		
+
+		JLabel lblNewLabel_3 = new JLabel("Código CRM:");
+		lblNewLabel_3.setForeground(new Color(19, 59, 93));
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
+
 		JLabel lblNewLabel_3_1 = new JLabel("UF");
 		lblNewLabel_3_1.setForeground(new Color(19, 59, 93));
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_2
+				.createSequentialGroup()
+				.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
-					.addGap(21)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_2.createSequentialGroup()
-							.addComponent(lblNewLabel_3)
-							.addContainerGap(217, Short.MAX_VALUE))
-						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGap(21)
+				.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_2.createSequentialGroup().addComponent(lblNewLabel_3).addContainerGap(217,
+								Short.MAX_VALUE))
+						.addComponent(txtCRM, GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 30,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_3))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
 		panel_2.setLayout(gl_panel_2);
-		
-				JLabel lblNewLabel_4 = new JLabel("Login:");
-				lblNewLabel_4.setForeground(new Color(19, 59, 93));
-				lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_4, "flowy,cell 1 5,alignx left,aligny center");
+
+		JLabel lblNewLabel_4 = new JLabel("Login:");
+		lblNewLabel_4.setForeground(new Color(19, 59, 93));
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_4, "flowy,cell 1 5,alignx left,aligny center");
 
 		txtLogin = new JTextField();
 		txtLogin.setForeground(new Color(19, 59, 93));
 		txtLogin.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(txtLogin, "cell 1 5,growx,aligny center");
 		txtLogin.setColumns(10);
-		
-				JLabel lblNewLabel_5 = new JLabel("Senha:");
-				lblNewLabel_5.setForeground(new Color(19, 59, 93));
-				lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_5, "flowy,cell 1 6,alignx left,aligny center");
+
+		JLabel lblNewLabel_5 = new JLabel("Senha:");
+		lblNewLabel_5.setForeground(new Color(19, 59, 93));
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_5, "flowy,cell 1 6,alignx left,aligny center");
 
 		pswSenha = new JPasswordField();
 		pswSenha.setForeground(new Color(19, 59, 93));
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(pswSenha, "cell 1 6,growx,aligny center");
-		
-				JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
-				lblNewLabel_6.setForeground(new Color(19, 59, 93));
-				lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_6, "flowy,cell 1 7,alignx left,aligny center");
+
+		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
+		lblNewLabel_6.setForeground(new Color(19, 59, 93));
+		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_6, "flowy,cell 1 7,alignx left,aligny center");
 
 		pswConfirmarSenha = new JPasswordField();
 		pswConfirmarSenha.setForeground(new Color(19, 59, 93));
@@ -231,11 +230,11 @@ public class VEditDoctor extends JFrame {
 		comboBox.setEditable(false);
 		comboBox.addItem(TipoUsuario.MED_ADMIN);
 		comboBox.addItem(TipoUsuario.MED_COMUM);
-		
-				JLabel lblNewLabel_7 = new JLabel("Perfil:");
-				lblNewLabel_7.setForeground(new Color(19, 59, 93));
-				lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
-				contentPane.add(lblNewLabel_7, "flowy,cell 1 8,alignx left,aligny center");
+
+		JLabel lblNewLabel_7 = new JLabel("Perfil:");
+		lblNewLabel_7.setForeground(new Color(19, 59, 93));
+		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		contentPane.add(lblNewLabel_7, "flowy,cell 1 8,alignx left,aligny center");
 
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(comboBox, "cell 1 8,growx,aligny center");
@@ -245,14 +244,9 @@ public class VEditDoctor extends JFrame {
 		panel_1.setBackground(new Color(0, 153, 153));
 		contentPane.add(panel_1, "cell 0 10,grow");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 218, Short.MAX_VALUE)
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 62, Short.MAX_VALUE)
-		);
+		gl_panel_1
+				.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGap(0, 218, Short.MAX_VALUE));
+		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING).addGap(0, 62, Short.MAX_VALUE));
 		panel_1.setLayout(gl_panel_1);
 
 		JPanel panel = new JPanel();
@@ -277,7 +271,7 @@ public class VEditDoctor extends JFrame {
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = comboBox.getSelectedIndex();
 
-				Medico medico = d;//new Medico();
+				Medico medico = d;// new Medico();
 				medico.setUf(uf);
 
 				// 2o passo: validar se texto é vazio ou nao
@@ -317,7 +311,7 @@ public class VEditDoctor extends JFrame {
 					txtCPFMed.requestFocus();
 					return;
 				}
-				
+
 				if (crm != null) {
 					crm = crm.trim();
 					if (!crm.isEmpty() && crm.length() == 6) {
@@ -331,7 +325,7 @@ public class VEditDoctor extends JFrame {
 					}
 
 				}
-				
+
 				if (login != null && !login.isEmpty()) {
 					medico.getUsuario().setLogin(login);
 				} else {
@@ -383,53 +377,48 @@ public class VEditDoctor extends JFrame {
 
 			}
 		});
-		
-				JButton btnVoltar = new VModelButton("Cancelar");
-				btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-				btnVoltar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-						VListDoctor frame = new VListDoctor(usuarioLogado);
-						frame.setLocationRelativeTo(null);
-						frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-						frame.setVisible(true);
-					}
-				});
+
+		JButton btnVoltar = new VModelButton("Cancelar");
+		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VListDoctor frame = new VListDoctor(usuarioLogado);
+				frame.setLocationRelativeTo(null);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				frame.setVisible(true);
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-					.addGap(160)
-					.addComponent(btnCad, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCad, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-					.addContainerGap())
-		);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+						.addGap(160).addComponent(btnCad, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnCad, GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+						.addContainerGap()));
 		panel.setLayout(gl_panel);
 
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(contentPane, BorderLayout.CENTER);
 		preencheDados(d);
 	}
-	//TODO olhar como fazer a combo box selecionar o valor correto
+
+	// TODO olhar como fazer a combo box selecionar o valor correto
 	private void preencheDados(Medico d) {
 		if (d != null) {
 			txtNomeMed.setText(d.getNome());
 			txtCPFMed.setText(String.valueOf(d.getCpf()));
 			txtCRM.setText(String.valueOf(d.getCrm()));
 			cbEstado.setSelectedItem(d.getUf());
+
 			txtLogin.setText(d.getUsuario().getLogin());
 			pswSenha.setText(d.getUsuario().getSenha());
 			pswConfirmarSenha.setText(d.getUsuario().getSenha());
 			comboBox.setSelectedItem(d.getUsuario().getPerfil());
+		}
 	}
-}
 }
