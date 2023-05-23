@@ -56,8 +56,8 @@ public class VRegisterConsultation extends JFrame {
 	private ArrayList<Paciente> listaPaciente;
 	private ArrayList<Medico> listaMedico;
 	private JComboBox comboMed;
-	public static final LocalDate MAX = null;
-	LocalDate a = LocalDate.MAX;
+//	public static final LocalDate MAX = null;
+//	LocalDate a = LocalDate.MAX;
 	
 	
 
@@ -365,8 +365,9 @@ public class VRegisterConsultation extends JFrame {
 		//formatter.setOverwriteMode(true);
 
 		 // Cria um MaskFormatter para a máscara de Real brasileiro
-		JNumberFormatField maskFormatter = new JNumberFormatField();
+		MaskFormatter maskFormatter = null;
 		try {
+
 			maskFormatter = new MaskFormatter("R$####,##");
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
