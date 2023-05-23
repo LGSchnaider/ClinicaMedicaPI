@@ -70,7 +70,7 @@ ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE;
 
 CREATE TABLE prontuario (
   id INT NOT NULL AUTO_INCREMENT,
-  data DATETIME NOT NULL,
+  data VARCHAR(11) NOT NULL,
   observacao VARCHAR(300) NOT NULL,
   medico_id_medico INT NOT NULL,
   paciente_id_paciente INT NOT NULL,
@@ -108,8 +108,10 @@ insert into medico (nome, cpf, uf, crm, usuario_idusuario) values ('Dr.Ana Paula
 insert into usuario (id, login, senha, perfil) values (8, 'Francisco', 'fra', 4);
 insert into secretaria (nome, cpf, telefone, email, usuario_idusuario) values ('Matilda Frank', 65656595956, 54545888, 'mfrank@gmail.com', 8);
 
-insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/11/2016", "12:13", "SDAJFDJASF", 214214, 5, 3);
-insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("21/05/2018", "17:05", "SDAJF jhlkmk", 214214, 3, 2);
-insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/11/2016", "20:00", "SDAJ asjfl JASF", 214214, 2, 2);
-insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/11/2016", "10:20", "SDAJFDJ ksakdk SF", 214214, 2, 3);
-insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/11/2016", "19:10", "SDAJFDJA asdS Fasd", 214214, 5, 4);
+insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/JUN/2016", "12:13", "SDAJFDJASF", 214214, 5, 3);
+insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("21/MAI/2018", "17:05", "SDAJF jhlkmk", 214214, 3, 2);
+insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/JAN/2016", "20:00", "SDAJ asjfl JASF", 214214, 2, 2);
+insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/MAI/2016", "10:20", "SDAJFDJ ksakdk SF", 214214, 2, 3);
+insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/JUN/2016", "19:10", "SDAJFDJA asdS Fasd", 214214, 5, 4);
+
+

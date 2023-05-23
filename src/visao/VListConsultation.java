@@ -192,7 +192,7 @@ public class VListConsultation extends JFrame {
 				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
 				Consulta c = model.getConsulta(position);
 				dispose();
-				VConsultation frame = new VConsultation(usuarioLogado);
+				VConsultation frame = new VConsultation(usuarioLogado, c);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
