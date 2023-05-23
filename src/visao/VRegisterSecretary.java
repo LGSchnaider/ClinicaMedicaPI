@@ -363,7 +363,7 @@ public class VRegisterSecretary extends JPanel {
 				String login = txtLogin.getText();
 				String Email = txtEmail.getText();
 				String telefone = txtTelefone.getText();
-				String cpf = txtCPF_1.getText(); // regex (expressao regular) tambem seria uma forma
+				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = cbFuncao.getSelectedIndex();
 
 				Secretaria secretaria = new Secretaria();
@@ -581,7 +581,7 @@ public class VRegisterSecretary extends JPanel {
 	private void preencheDados(Secretaria s) {
 		if (s != null) {
 			txtNome.setText(s.getNome());
-			txtCPF_1.setText(String.valueOf(s.getCpf()));
+			txtCPF.setText(String.valueOf(s.getCpf()));
 			txtLogin.setText(s.getUsuario().getLogin());
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
