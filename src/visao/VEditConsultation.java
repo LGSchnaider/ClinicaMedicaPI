@@ -371,7 +371,7 @@ public class VEditConsultation extends JFrame {
 				int idp = paciente.getIdPac();
 				System.out.println(idp);
 				
-				long Valor = Long.valueOf(txtValor.getText());
+				String Valor = String.valueOf(txtValor.getText());
 				String Descricao = txaObser.getText();
 				
 				String data = dia+"/"+mes+"/"+ano;

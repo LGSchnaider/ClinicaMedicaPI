@@ -8,7 +8,7 @@ public class Consulta{
 	private String data;
 	private String hora;
 	private String obs;
-	private long valor;
+	private String valor;
 	private int idMedico;
 	private int idPaciente;
 	private String nameDoctor;
@@ -38,11 +38,11 @@ public class Consulta{
 		this.id = id;
 	}
 
-	public long getValor() {
+	public String getValor() {
 		return valor;
 	}
-	public void setValor(long valor) {
-		this.valor = valor;
+	public void setValor(String valorInt) {
+		this.valor = valorInt;
 	}
 	
 	public String getData() {
