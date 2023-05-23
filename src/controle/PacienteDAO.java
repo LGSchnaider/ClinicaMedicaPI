@@ -13,6 +13,7 @@ import modelo.IPacienteDAO;
 import modelo.Medico;
 import modelo.Paciente;
 import modelo.TipoSexo;
+import modelo.Usuario;
 
 public class PacienteDAO implements IPacienteDAO {
 
@@ -42,11 +43,9 @@ public class PacienteDAO implements IPacienteDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return true;
 	}
 
@@ -56,33 +55,34 @@ public class PacienteDAO implements IPacienteDAO {
 		Connection c = con.conectar();
 
 		try {
-			String query = "UPDATE paciente SET nome= ?, telefone = ?, sexo = ?, email = ?  WHERE id = " + id+ ";";
+			String query = "UPDATE paciente SET nome= ?, telefone = ?, sexo = ?, email = ?  WHERE id = ?;";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getTelefone());
 			stm.setString(3, p.getSexo().getCodigo());
 			stm.setString(4, p.getEmail());
+			stm.setInt(5, p.getId());
 
 			stm.executeUpdate();
 			return true;
 
 		} catch (SQLException e) {
-
+ 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-
 		return false;
 	}
 
-	public boolean deletar(String del) {
+	public boolean deletar(long cpf) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
 		try {
-			String query = "DELETE FROM paciente WHERE cpf = " + del + ";";
+			String query = "DELETE FROM paciente WHERE cpf = " + cpf + ";";
 			PreparedStatement stm = c.prepareStatement(query);
 
 //			stm.setLong(1, p.getCpf());
@@ -92,9 +92,9 @@ public class PacienteDAO implements IPacienteDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-		con.fechaConexao();
-
 		return false;
 
 	}
@@ -132,11 +132,9 @@ public class PacienteDAO implements IPacienteDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
-
-		// fechar conexao
-		con.fechaConexao();
-
 		return Pacientes;
 	}
 
@@ -148,6 +146,44 @@ public class PacienteDAO implements IPacienteDAO {
 	@Override
 	public boolean deletar(Paciente p) {
 		return false;
+	}
+
+	public Paciente buscarPacientPorCpf(int cpf) {
+		Conexao con = Conexao.getInstancia();
+		Connection c = con.conectar();
+		Paciente p = null;
+		try {
+			String query = "select * from paciente where cpf ="+cpf+";";
+			Statement stm = c.createStatement();
+			ResultSet rs = stm.executeQuery(query);
+
+			if (rs.next()) {
+				p = new Paciente();
+				int id = rs.getInt("id");
+				String nome = rs.getString("nome");
+				long cpf1 = rs.getLong("cpf");
+				long tel = rs.getLong("telefone");
+				String sexo = rs.getString("sexo");
+				String email = rs.getString("email");
+
+
+				
+				p.setId(id);
+				p.setNome(nome);
+				p.setCpf(cpf1);
+				p.setTelefone(tel);
+				p.setSexo((TipoSexo.obterTipo(sexo)));
+				p.setEmail(email);
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
+		}
+		return p;
 	}
 
 }
