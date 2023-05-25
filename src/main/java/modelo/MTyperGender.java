@@ -1,6 +1,6 @@
 package modelo;
 
-public enum TipoSexo {
+public enum MTyperGender {
 	
 	NAO_DEFINIDO("N", "Não Definido"),
 	MASCULINO("M", "Masculino"),
@@ -9,7 +9,7 @@ public enum TipoSexo {
 	
 	
 
-	TipoSexo(String sexo, String descricao) {
+	MTyperGender(String sexo, String descricao) {
 		this.codigo = sexo;
 		this.descricao = descricao;
 	}
@@ -28,7 +28,7 @@ public enum TipoSexo {
 	}
 	private String codigo;
 
-	public static TipoSexo obterTipo(String descricao) {
+	public static MTyperGender obterTipo(String descricao) {
 		if(descricao.equals(MASCULINO.getCodigo())) {	
 			return MASCULINO;
 		}

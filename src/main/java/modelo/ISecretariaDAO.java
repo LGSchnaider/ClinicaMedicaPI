@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public interface ISecretariaDAO {
 	
-	public boolean inserir(Secretaria p);
+	public boolean inserir(MSecretary p);
 	
-	public boolean atualizar( Secretaria p);
+	public boolean atualizar( MSecretary p);
 	
-	public boolean deletar( Secretaria p);
+	public boolean deletar( MSecretary p);
 	
-	public ArrayList<Secretaria> listaSecretaria();
+	public ArrayList<MSecretary> listaSecretaria();
 
 }

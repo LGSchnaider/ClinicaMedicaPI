@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import modelo.Secretaria;
+import modelo.MSecretary;
 
 
 
-public class SecretariaTableModel  extends AbstractTableModel {
+public class MTSecretariaTableModel  extends AbstractTableModel {
     private String[] columnNames = { "Nome", "CPF"};
-    	private ArrayList<Secretaria> listaSecretaria;
+    	private ArrayList<MSecretary> listaSecretaria;
     	
-    	public SecretariaTableModel(ArrayList<Secretaria> listaSecretaria) {
+    	public MTSecretariaTableModel(ArrayList<MSecretary> listaSecretaria) {
 			this.listaSecretaria = listaSecretaria;
 		}
 
@@ -30,7 +30,7 @@ public class SecretariaTableModel  extends AbstractTableModel {
         }
 
         public Object getValueAt(int row, int col) {
-        	Secretaria s = listaSecretaria.get(row);
+        	MSecretary s = listaSecretaria.get(row);
         	if(col == 0) {
         		return s.getNome();
         	}else {
@@ -38,7 +38,7 @@ public class SecretariaTableModel  extends AbstractTableModel {
         	}
         }
         
-        public Secretaria getSecretaria(int p) {
+        public MSecretary getSecretaria(int p) {
         	return listaSecretaria.get(p);
         }
         

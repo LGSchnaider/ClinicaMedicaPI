@@ -4,21 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao {
+public class CConnection {
 
 	private static Connection conexao;
-	private static Conexao instancia;
+	private static CConnection instancia;
 	private static final String DATABASE = "ClinicaPi";
 	private static final String USER = "root";
 	private static final String PSW = "aluno";
 
-	private Conexao() {
+	private CConnection() {
 
 	}
 
-	public static Conexao getInstancia() {
+	public static CConnection getInstancia() {
 		if (instancia == null) {
-			instancia = new Conexao();
+			instancia = new CConnection();
 		}
 		return instancia;
 	}

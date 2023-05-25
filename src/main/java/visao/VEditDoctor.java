@@ -26,11 +26,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.MedicoDAO;
-import controle.UsuarioDAO;
-import modelo.Medico;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CUserDAO;
+import modelo.MDoctor;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 
 public class VEditDoctor extends JFrame {
@@ -42,9 +42,9 @@ public class VEditDoctor extends JFrame {
 	private JFormattedTextField textField_2;
 	private JTextField txtNomeMed;
 	private JPasswordField pswConfirmarSenha;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JTextField txtCPFMed;
-	private JComboBox<TipoUsuario> comboBox = new JComboBox<>();
+	private JComboBox<MTypeUser> comboBox = new JComboBox<>();
 	private JComboBox<String> cbEstado;
 
 	/**
@@ -52,7 +52,7 @@ public class VEditDoctor extends JFrame {
 	 * 
 	 * @param telaCadastro
 	 */
-	public VEditDoctor(Usuario usuarioLogado, VRegister telaCadastro, Medico d) {
+	public VEditDoctor(MUser usuarioLogado, VRegister telaCadastro, MDoctor d) {
 
 		this.usuarioLogado = usuarioLogado;
 
@@ -228,8 +228,8 @@ public class VEditDoctor extends JFrame {
 		// comboBox.addItem(tipo);
 		// }
 		comboBox.setEditable(false);
-		comboBox.addItem(TipoUsuario.MED_ADMIN);
-		comboBox.addItem(TipoUsuario.MED_COMUM);
+		comboBox.addItem(MTypeUser.MED_ADMIN);
+		comboBox.addItem(MTypeUser.MED_COMUM);
 
 		JLabel lblNewLabel_7 = new JLabel("Perfil:");
 		lblNewLabel_7.setForeground(new Color(19, 59, 93));
@@ -271,7 +271,7 @@ public class VEditDoctor extends JFrame {
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = comboBox.getSelectedIndex();
 
-				Medico medico = d;// new Medico();
+				MDoctor medico = d;// new Medico();
 				medico.setUf(uf);
 
 				// 2o passo: validar se texto é vazio ou nao
@@ -353,17 +353,17 @@ public class VEditDoctor extends JFrame {
 					return;
 				}
 
-				TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
-				if (perfilU.equals(TipoUsuario.MED_COMUM)) {
+				MTypeUser perfilU = (MTypeUser) comboBox.getSelectedItem();
+				if (perfilU.equals(MTypeUser.MED_COMUM)) {
 					medico.getUsuario().setPefil(1);
-				} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
+				} else if (perfilU.equals(MTypeUser.MED_ADMIN)) {
 					medico.getUsuario().setPefil(0);
 				}
 //				medico.setId(d.getId());
 				// se passar em todas as validacoes
 				if (validarCampoTexto == true) {
-					UsuarioDAO udao = new UsuarioDAO();
-					MedicoDAO mdao = new MedicoDAO();
+					CUserDAO udao = new CUserDAO();
+					CDoctorDAO mdao = new CDoctorDAO();
 
 					boolean validar = mdao.atualizar(medico);
 					if (validar == true) {
@@ -408,7 +408,7 @@ public class VEditDoctor extends JFrame {
 	}
 
 	// TODO olhar como fazer a combo box selecionar o valor correto
-	private void preencheDados(Medico d) {
+	private void preencheDados(MDoctor d) {
 		if (d != null) {
 			txtNomeMed.setText(d.getNome());
 			txtCPFMed.setText(String.valueOf(d.getCpf()));

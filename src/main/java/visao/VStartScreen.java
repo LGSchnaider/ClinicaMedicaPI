@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
-import controle.UsuarioDAO;
-import modelo.Usuario;
+import controle.CUserDAO;
+import modelo.MUser;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -280,8 +280,8 @@ public class VStartScreen extends JFrame {
 		String login = txtLogin.getText();
 		String senha = txtSenha.getText();
 
-		UsuarioDAO dao = new UsuarioDAO();
-		Usuario u = dao.buscarUsuarioPorLoginSenha(login, senha);
+		CUserDAO dao = new CUserDAO();
+		MUser u = dao.buscarUsuarioPorLoginSenha(login, senha);
 		if (u == null) {
 			JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreto ou Usuário inexistente!");
 		} else {

@@ -26,11 +26,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.MedicoDAO;
-import controle.UsuarioDAO;
-import modelo.Medico;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CUserDAO;
+import modelo.MDoctor;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 
 public class VRegisterDoctor extends JPanel {
@@ -41,7 +41,7 @@ public class VRegisterDoctor extends JPanel {
 	private JTextField txtCRM;
 	private JFormattedTextField textField_2;
 	private JTextField txtNomeMed;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JPasswordField pswSenha;
 
 	/**
@@ -50,7 +50,7 @@ public class VRegisterDoctor extends JPanel {
 	 * @param telaCadastro
 	 * @param formatter
 	 */
-	public VRegisterDoctor(Usuario usuarioLogado, VRegister telaCadastro) {
+	public VRegisterDoctor(MUser usuarioLogado, VRegister telaCadastro) {
 
 		this.usuarioLogado = usuarioLogado;
 
@@ -288,7 +288,7 @@ public class VRegisterDoctor extends JPanel {
 				lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		
 				// TODO codigo do combobox usando enum
-				JComboBox<TipoUsuario> comboBox = new JComboBox<>();
+				JComboBox<MTypeUser> comboBox = new JComboBox<>();
 				comboBox.setForeground(new Color(19, 59, 93));
 				comboBox.setEditable(false);
 				comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -318,7 +318,7 @@ public class VRegisterDoctor extends JPanel {
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		panel_4.setLayout(gl_panel_4);
-		for (TipoUsuario tipo : TipoUsuario.getTiposMedico()) {
+		for (MTypeUser tipo : MTypeUser.getTiposMedico()) {
 			comboBox.addItem(tipo);
 		}
 
@@ -357,7 +357,7 @@ public class VRegisterDoctor extends JPanel {
 				String cpf = txtCPFMed.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = comboBox.getSelectedIndex();
 
-				Medico medico = new Medico();
+				MDoctor medico = new MDoctor();
 
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
@@ -469,10 +469,10 @@ public class VRegisterDoctor extends JPanel {
 				// try catch
 
 				try {
-					TipoUsuario perfilU = (TipoUsuario) comboBox.getSelectedItem();
-					if (perfilU.equals(TipoUsuario.MED_COMUM)) {
+					MTypeUser perfilU = (MTypeUser) comboBox.getSelectedItem();
+					if (perfilU.equals(MTypeUser.MED_COMUM)) {
 						medico.getUsuario().setPefil(1);
-					} else if (perfilU.equals(TipoUsuario.MED_ADMIN)) {
+					} else if (perfilU.equals(MTypeUser.MED_ADMIN)) {
 						medico.getUsuario().setPefil(0);
 					}
 
@@ -483,11 +483,11 @@ public class VRegisterDoctor extends JPanel {
 				try {
 					// se passar em todas as validacoes
 					if (validarCampoTexto == true) {
-						UsuarioDAO udao = new UsuarioDAO();
+						CUserDAO udao = new CUserDAO();
 						udao.inserir(medico.getUsuario());
 						// medico.getUsuario().setIdusuario(id);
 
-						MedicoDAO mdao = new MedicoDAO();
+						CDoctorDAO mdao = new CDoctorDAO();
 
 						boolean validar = mdao.inserir(medico);
 						if (validar == true) {

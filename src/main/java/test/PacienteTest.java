@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import controle.UsuarioDAO;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.TipoSexo;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import controle.CUserDAO;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MTyperGender;
 
 class PacienteTest {
 
@@ -18,19 +18,19 @@ class PacienteTest {
 	@Test
 	@Order(1)
 	public void testCadastro() {
-		PacienteDAO pDao = new PacienteDAO();
+		CPatientDAO pDao = new CPatientDAO();
 		// chama conexão
-		Paciente p = new Paciente();
+		MPatient p = new MPatient();
 		
 		 p.setNome("Jose");
 		 p.setCpf((long) 455445553);
 	     p.setTelefone((long) 99099974);
 	     String sexo = "M";
-	     p.setSexo((TipoSexo.obterTipo(sexo)));
+	     p.setSexo((MTyperGender.obterTipo(sexo)));
 	     p.setEmail("jose@gmail");		  
 		 assertTrue(pDao.inserir(p));
 		
-		Paciente pac = pDao.buscarPacientPorCpf(455445553);
+		MPatient pac = pDao.buscarPacientPorCpf(455445553);
 
 		assertEquals("Jose", pac.getNome());
 		assertEquals(455445553, pac.getCpf());
@@ -41,9 +41,9 @@ class PacienteTest {
 	@Test
 	@Order(2)
 	public void testCadastroNaoE() {
-		PacienteDAO pDao = new PacienteDAO();
+		CPatientDAO pDao = new CPatientDAO();
 		// chama conexão
-		Paciente pac = pDao.buscarPacientPorCpf(22);
+		MPatient pac = pDao.buscarPacientPorCpf(22);
 		assertNull(pac);
 	}
 	
@@ -51,7 +51,7 @@ class PacienteTest {
 	@Test
 	@Order(4)
 	public void testDeletar() {
-		PacienteDAO pacDao = new PacienteDAO();
+		CPatientDAO pacDao = new CPatientDAO();
 		// chama conexão
 		assertTrue(pacDao.deletar(455445553));
 	}
@@ -60,9 +60,9 @@ class PacienteTest {
 	@Test
 	@Order(3)
 	public void testAlterar() {
-		PacienteDAO pacDao = new PacienteDAO();
+		CPatientDAO pacDao = new CPatientDAO();
 		// chama conexão
-		Paciente pac = pacDao.buscarPacientPorCpf(455445553);
+		MPatient pac = pacDao.buscarPacientPorCpf(455445553);
 		pac.setNome("Alterado");
 		pac.setEmail("desespero@gmail.com");
 		assertTrue(pacDao.atualizar(pac));;

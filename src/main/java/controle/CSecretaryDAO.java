@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ISecretariaDAO;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.Secretaria;
-import modelo.Usuario;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MSecretary;
+import modelo.MUser;
 
-public class SecretariaDAO implements ISecretariaDAO {
+public class CSecretaryDAO implements ISecretariaDAO {
 
 	@Override
-	public boolean inserir(Secretaria p) {
+	public boolean inserir(MSecretary p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 
 		// abrir conexao
 		con.conectar();
@@ -48,9 +48,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		return false;
 	}
 	
-	public boolean atualizar(Secretaria p) {
+	public boolean atualizar(MSecretary p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
+				CConnection con = CConnection.getInstancia();
 				Connection c = con.conectar();
 
 		try {
@@ -76,9 +76,9 @@ public class SecretariaDAO implements ISecretariaDAO {
 		return false;
 	}
 	
-	public boolean deletar(Secretaria p) {
+	public boolean deletar(MSecretary p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 	
 		try {
@@ -98,16 +98,16 @@ public class SecretariaDAO implements ISecretariaDAO {
 
 	}
 
-	public ArrayList<Secretaria> listaSecretaria() {
+	public ArrayList<MSecretary> listaSecretaria() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 
 		// abrir conexao
 		con.conectar();
 
 		Connection c = con.conectar();
-		ArrayList<Secretaria> Secretarias = new ArrayList<>();
+		ArrayList<MSecretary> Secretarias = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf,"
@@ -124,14 +124,14 @@ public class SecretariaDAO implements ISecretariaDAO {
 				int perfil = rs.getInt("perfil");
 				
 				
-				Secretaria S = new Secretaria();
+				MSecretary S = new MSecretary();
 				S.setId(id);
 				S.setNome(nome);
 				S.setCpf(cpf);
 				S.setTelefone(telefone);
 				S.setEmail(email);
 				
-				Usuario u = new Usuario();
+				MUser u = new MUser();
 				u.setLogin(login);
 				u.setSenha(senha);
 				u.setPefil(perfil);
@@ -150,11 +150,11 @@ public class SecretariaDAO implements ISecretariaDAO {
 		return Secretarias;
 	}
 
-	public Secretaria buscarSecretariaPorCpf(long cpf) {
-		Conexao con = Conexao.getInstancia();
+	public MSecretary buscarSecretariaPorCpf(long cpf) {
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
-		Usuario u = null;
-		Secretaria s = null;
+		MUser u = null;
+		MSecretary s = null;
 		try {
 			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha,"
 					+ " usuario.perfil, secretaria.id, secretaria.nome, secretaria.cpf,"
@@ -164,14 +164,14 @@ public class SecretariaDAO implements ISecretariaDAO {
 			ResultSet rs = stm.executeQuery(query);
 
 			if (rs.next()) {
-				s = new Secretaria();
+				s = new MSecretary();
 				int id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				long cpf1 = rs.getLong("cpf");
 				long telefone = rs.getLong("telefone");
 				String gmail = rs.getString("email");
 				
-				u = new Usuario();
+				u = new MUser();
 				String login = rs.getString("login");
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");

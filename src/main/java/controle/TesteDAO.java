@@ -2,13 +2,13 @@ package controle;
 
 import java.util.ArrayList;
 
-import modelo.Paciente;
+import modelo.MPatient;
 
 public class TesteDAO {
 
 	public static void main(String[] args) {
-		PacienteDAO pdao = new PacienteDAO();
-		Paciente p = new Paciente();
+		CPatientDAO pdao = new CPatientDAO();
+		MPatient p = new MPatient();
 
 		
 		

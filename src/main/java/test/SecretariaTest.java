@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 
-import controle.SecretariaDAO;
-import controle.UsuarioDAO;
-import modelo.Secretaria;
+import controle.CSecretaryDAO;
+import controle.CUserDAO;
+import modelo.MSecretary;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class SecretariaTest {
@@ -18,9 +18,9 @@ public class SecretariaTest {
 	@Test
 	@Order(1)
 	public void testCadastro() {
-		SecretariaDAO secDao = new SecretariaDAO();
+		CSecretaryDAO secDao = new CSecretaryDAO();
 		// chama conexão
-		Secretaria s = new Secretaria();
+		MSecretary s = new MSecretary();
 
 		s.setNome("Matilda Frank");
 		s.setCpf((long) 515155664);
@@ -29,11 +29,11 @@ public class SecretariaTest {
 		s.getUsuario().setLogin("BlaBla");
 		s.getUsuario().setSenha("blabla");
 		s.getUsuario().setPefil(1);
-		 UsuarioDAO udao = new UsuarioDAO();
+		 CUserDAO udao = new CUserDAO();
 		 udao.inserir(s.getUsuario());
 		 assertTrue(secDao.inserir(s));
 
-		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		MSecretary secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 
 		assertEquals("Matilda Frank", secretariaBuscada.getNome());
 		assertEquals(515155664, secretariaBuscada.getCpf());
@@ -49,27 +49,27 @@ public class SecretariaTest {
 	@Test
 	@Order(2)
 	public void testCadastroNaoE() {
-		SecretariaDAO secDao = new SecretariaDAO();
+		CSecretaryDAO secDao = new CSecretaryDAO();
 		// chama conexão
-		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(252);
+		MSecretary secretariaBuscada = secDao.buscarSecretariaPorCpf(252);
 		assertNull(secretariaBuscada);
 	}
 
 	@Test
 	@Order(4)
 	public void testDeletar() {
-		SecretariaDAO secDao = new SecretariaDAO();
+		CSecretaryDAO secDao = new CSecretaryDAO();
 		// chama conexão
-		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		MSecretary secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 		assertTrue(secDao.deletar(secretariaBuscada));
 	}
 
 	@Test
 	@Order(3)
 	public void testAlterar() {
-		SecretariaDAO secDao = new SecretariaDAO();
+		CSecretaryDAO secDao = new CSecretaryDAO();
 		// chama conexão
-		Secretaria secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
+		MSecretary secretariaBuscada = secDao.buscarSecretariaPorCpf(515155664);
 		secretariaBuscada.setNome("Alterado");
 		secretariaBuscada.setEmail("esse@emailaki");
 		secretariaBuscada.setTelefone(66666666);

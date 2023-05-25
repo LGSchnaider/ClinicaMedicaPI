@@ -21,13 +21,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controle.ConsultaDAO;
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import modelo.Consulta;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.Usuario;
+import controle.CConsulationDAO;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import modelo.MConsultation;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 
 public class VEditConsultation extends JFrame {
@@ -36,10 +36,10 @@ public class VEditConsultation extends JFrame {
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
 	private JTextField txtValor;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JComboBox comboPasc;
-	private ArrayList<Paciente> listaPaciente;
-	private ArrayList<Medico> listaMedico;
+	private ArrayList<MPatient> listaPaciente;
+	private ArrayList<MDoctor> listaMedico;
 	private JComboBox comboMed;
 	private JComboBox cbDia;
 	private JComboBox cbMes;
@@ -55,7 +55,7 @@ public class VEditConsultation extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VEditConsultation(Usuario usuarioLogado, Consulta c) {
+	public VEditConsultation(MUser usuarioLogado, MConsultation c) {
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -104,9 +104,9 @@ public class VEditConsultation extends JFrame {
 		comboPasc = new JComboBox();
 		comboPasc.addItem(null);
 		
-		PacienteDAO Pasc = new PacienteDAO();
+		CPatientDAO Pasc = new CPatientDAO();
 		listaPaciente = Pasc.listaPaciente();
-		for (Paciente paciente : listaPaciente) {
+		for (MPatient paciente : listaPaciente) {
 			comboPasc.addItem(paciente);
 		} 
 		
@@ -322,9 +322,9 @@ public class VEditConsultation extends JFrame {
 		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
-		MedicoDAO Med = new MedicoDAO();
+		CDoctorDAO Med = new CDoctorDAO();
 		listaMedico = Med.listaMedico();
-		for (Medico Medico : listaMedico) {
+		for (MDoctor Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
 		 
@@ -362,12 +362,12 @@ public class VEditConsultation extends JFrame {
 				String ano = String.valueOf(cbAno.getSelectedItem());
 				String hora = String.valueOf(cbHora.getSelectedItem());
 				String min = String.valueOf(cbMin.getSelectedItem());
-				Medico medico = (Medico) comboMed.getSelectedItem();
+				MDoctor medico = (MDoctor) comboMed.getSelectedItem();
 				
 				int idm = medico.getId();
 				System.out.println(idm);
 				
-				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
+				MPatient paciente = (MPatient) comboPasc.getSelectedItem();
 				int idp = paciente.getIdPac();
 				System.out.println(idp);
 				
@@ -377,14 +377,14 @@ public class VEditConsultation extends JFrame {
 				String data = dia+"/"+mes+"/"+ano;
 				String horario = hora+":"+min;
 				System.out.println(data);
-				Consulta consulta = new Consulta();
+				MConsultation consulta = new MConsultation();
 				consulta.setData(data);
 				consulta.setHora(horario);
 				consulta.setValor(Valor);
 				consulta.setObs(Descricao);
 				consulta.setIdMedico(idm);
 				consulta.setIdPaciente(idp);
-				ConsultaDAO cdao = new ConsultaDAO();
+				CConsulationDAO cdao = new CConsulationDAO();
 				cdao.inserir(consulta);
 				
 				//consulta.s
@@ -395,7 +395,7 @@ public class VEditConsultation extends JFrame {
 		fillInData(c);
 	}
 
-	protected void fillInData(Consulta c) {
+	protected void fillInData(MConsultation c) {
 		if (c != null) {
 			comboPasc.setSelectedIndex(c.getIdPaciente());
 			String d = c.getData();

@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.IMedicamentoDAO;
-import modelo.Medicamento;
-import modelo.Medico;
+import modelo.MIMedicineDAO;
+import modelo.MMedicine;
+import modelo.MDoctor;
 
-public class MedicamentoDAO implements IMedicamentoDAO {
+public class CMedicamentoDAO implements MIMedicineDAO {
 	@Override
-	public boolean inserir(Medicamento p){
+	public boolean inserir(MMedicine p){
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
+				CConnection con = CConnection.getInstancia();
 				Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO medicamento " + "(nome, tarja, formula) VALUES (?,?,?);";
@@ -38,9 +38,9 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 		return false;
 	}
 	
-	public boolean atualizar(Medicamento p) {
+	public boolean atualizar(MMedicine p) {
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
+				CConnection con = CConnection.getInstancia();
 				Connection c = con.conectar();
 
 		try {
@@ -63,9 +63,9 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 		return false;
 	}
 	
-	public boolean deletar(Medicamento p) {
+	public boolean deletar(MMedicine p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 	
 		try {
@@ -87,13 +87,13 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 	}
 
 
-	public ArrayList<Medicamento> listaMedicamento() {
+	public ArrayList<MMedicine> listaMedicamento() {
 
 		// Instacia classe Conexao
-				Conexao con = Conexao.getInstancia();
+				CConnection con = CConnection.getInstancia();
 				Connection c = con.conectar();
 				
-		ArrayList<Medicamento> Medicamentos = new ArrayList<>();
+		ArrayList<MMedicine> Medicamentos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "SELECT * FROM Medicamento";
@@ -104,7 +104,7 @@ public class MedicamentoDAO implements IMedicamentoDAO {
 				String tarja = rs.getString("tarja");
 				String formula = rs.getString("formula");
 
-				Medicamento p = new Medicamento();
+				MMedicine p = new MMedicine();
 				p.setNome(nome);
 				p.setTarja(tarja);
 				p.setFormula(formula);

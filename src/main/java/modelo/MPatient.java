@@ -1,9 +1,9 @@
 package modelo;
 
-public class Paciente extends Pessoa {
+public class MPatient extends MPerson {
 
 	private long telefone;
-	private TipoSexo sexo;
+	private MTyperGender sexo;
 	private String email;
 	private int idPac;
 
@@ -23,11 +23,11 @@ public class Paciente extends Pessoa {
 		this.telefone = telefone;
 	}
 
-	public TipoSexo getSexo() {
+	public MTyperGender getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(TipoSexo sexo) {
+	public void setSexo(MTyperGender sexo) {
 		this.sexo = sexo;
 	}
 

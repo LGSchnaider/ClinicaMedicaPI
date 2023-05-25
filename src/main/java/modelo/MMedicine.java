@@ -1,6 +1,6 @@
 package modelo;
 
-public class Medicamento {
+public class MMedicine {
 	
 	private int id;
 	private String nome;

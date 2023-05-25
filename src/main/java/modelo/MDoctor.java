@@ -1,10 +1,10 @@
 package modelo;
 
-public class Medico extends Pessoa {
+public class MDoctor extends MPerson {
 
 	private String uf;
 	private Long crm;
-	private Usuario usuario;
+	private MUser usuario;
 	
 	
 	public String getUf() {
@@ -17,15 +17,15 @@ public class Medico extends Pessoa {
 
 
 
-	public Medico() {
-		this.usuario = new Usuario();
+	public MDoctor() {
+		this.usuario = new MUser();
 	}
 
-	public Usuario getUsuario() {
+	public MUser getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(MUser usuario) {
 		this.usuario = usuario;
 	}
 

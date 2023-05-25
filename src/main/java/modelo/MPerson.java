@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Pessoa {
+public abstract class MPerson {
 
 	protected int id;
 	protected Long cpf;

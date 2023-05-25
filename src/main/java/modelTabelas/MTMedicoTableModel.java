@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import modelo.Medico;
+import modelo.MDoctor;
 
-public class MedicoTableModel  extends AbstractTableModel {
+public class MTMedicoTableModel  extends AbstractTableModel {
     private String[] columnNames = { "Nome", "CRM"};
-    	private ArrayList<Medico> listaMedico;
+    	private ArrayList<MDoctor> listaMedico;
     	
-    	public MedicoTableModel(ArrayList<Medico> listaMedico) {
+    	public MTMedicoTableModel(ArrayList<MDoctor> listaMedico) {
 			this.listaMedico = listaMedico;
 		}
 
@@ -28,7 +28,7 @@ public class MedicoTableModel  extends AbstractTableModel {
         }
 
         public Object getValueAt(int row, int col) {
-        	Medico m = listaMedico.get(row);
+        	MDoctor m = listaMedico.get(row);
         	if(col == 0) {
         		return m.getNome();
         	}else {
@@ -36,7 +36,7 @@ public class MedicoTableModel  extends AbstractTableModel {
         	}
         }
         
-        public Medico getMedico(int p) {
+        public MDoctor getMedico(int p) {
         	return listaMedico.get(p);
         }
         

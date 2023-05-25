@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import modelo.Usuario;
+import modelo.MUser;
 
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
@@ -24,7 +24,7 @@ public class VRegister extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 
 	/**
 	 * Launch the application.
@@ -48,7 +48,7 @@ public class VRegister extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VRegister(Usuario usuarioLogado) {
+	public VRegister(MUser usuarioLogado) {
 		setTitle("Cadastro de Usuário");
 		this.usuarioLogado = usuarioLogado;
 		

@@ -9,26 +9,26 @@ import java.util.ArrayList;
  * Este enum nao eh uma classe. Nao eh instanciavel.
  * 
  */
-public enum TipoUsuario {
+public enum MTypeUser {
 
 	MED_ADMIN(0, "Médico Administrativo"),
 	MED_COMUM(1, "Médico Comum"),
 	SEC_ADMIN(2, "Secretária Administrativo"),
 	SEC_COMUM(3, "Secretária Comum");
 
-	public static ArrayList<TipoUsuario> getTiposMedico() {
-		ArrayList<TipoUsuario> arr = new ArrayList<TipoUsuario>();
+	public static ArrayList<MTypeUser> getTiposMedico() {
+		ArrayList<MTypeUser> arr = new ArrayList<MTypeUser>();
 		arr.add(MED_ADMIN);
 		arr.add(MED_COMUM);
 		return arr;
 	}
-	public static ArrayList<TipoUsuario> getTiposSecretarias() {
-		ArrayList<TipoUsuario> arr = new ArrayList<TipoUsuario>();
+	public static ArrayList<MTypeUser> getTiposSecretarias() {
+		ArrayList<MTypeUser> arr = new ArrayList<MTypeUser>();
 		arr.add(SEC_ADMIN);
 		arr.add(SEC_COMUM);
 		return arr;
 	}
-	TipoUsuario(int codigo, String descricao) {
+	MTypeUser(int codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
@@ -44,10 +44,10 @@ public enum TipoUsuario {
 		return descricao;
 	}
 
-	public static TipoUsuario getTipoUsuarioPorCodigo(int codigo) {
+	public static MTypeUser getTipoUsuarioPorCodigo(int codigo) {
 
-		TipoUsuario tipoUsuario = null;
-		for (TipoUsuario tipo : TipoUsuario.values()) {
+		MTypeUser tipoUsuario = null;
+		for (MTypeUser tipo : MTypeUser.values()) {
 			if (codigo == tipo.getCodigo()) {
 				tipoUsuario = tipo;
 			}

@@ -14,11 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import controle.MedicoDAO;
-import modelTabelas.MedicoTableModel;
-import modelo.Medico;
-import modelo.Secretaria;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import modelTabelas.MTMedicoTableModel;
+import modelo.MDoctor;
+import modelo.MSecretary;
+import modelo.MUser;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -41,10 +41,10 @@ public class VListDoctor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 
 
-	public VListDoctor(Usuario usuarioLogado) {
+	public VListDoctor(MUser usuarioLogado) {
 		setTitle("Lista de Médicos");
 		this.usuarioLogado = usuarioLogado;
 
@@ -91,8 +91,8 @@ public class VListDoctor extends JFrame {
 		table = new JTable();
 		table.setForeground(new Color(19, 59, 93));
 		table.setOpaque(false);
-		MedicoDAO mDAO = new MedicoDAO();
-		MedicoTableModel model = new MedicoTableModel(mDAO.listaMedico());
+		CDoctorDAO mDAO = new CDoctorDAO();
+		MTMedicoTableModel model = new MTMedicoTableModel(mDAO.listaMedico());
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 
@@ -135,17 +135,17 @@ public class VListDoctor extends JFrame {
 
 				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					MedicoTableModel model = (MedicoTableModel) table.getModel();
+					MTMedicoTableModel model = (MTMedicoTableModel) table.getModel();
 
-					Medico a = model.getMedico(p);
+					MDoctor a = model.getMedico(p);
 					System.out.println(p);
 					System.out.println(a);
 					System.out.println(a.getUsuario());
 					System.out.println(a.getUsuario().getIdusuario());
 					// JOptionPane.showInputDialog(null);
-					MedicoDAO mDAO = new MedicoDAO();
+					CDoctorDAO mDAO = new CDoctorDAO();
 					mDAO.deletar(a);
-					model = new MedicoTableModel(mDAO.listaMedico());
+					model = new MTMedicoTableModel(mDAO.listaMedico());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
 				}
@@ -177,8 +177,8 @@ public class VListDoctor extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma médico");
 					return;
 				}
-				MedicoTableModel model  = (MedicoTableModel) table.getModel();
-				Medico d = model.getMedico(position);
+				MTMedicoTableModel model  = (MTMedicoTableModel) table.getModel();
+				MDoctor d = model.getMedico(position);
 				VEditDoctor window = new VEditDoctor(usuarioLogado, null, d);
 				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				window.setVisible(true);

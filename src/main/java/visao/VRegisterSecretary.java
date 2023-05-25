@@ -28,11 +28,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.SecretariaDAO;
-import controle.UsuarioDAO;
-import modelo.Secretaria;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import controle.CSecretaryDAO;
+import controle.CUserDAO;
+import modelo.MSecretary;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 
 public class VRegisterSecretary extends JPanel {
@@ -51,7 +51,7 @@ public class VRegisterSecretary extends JPanel {
 	private JPasswordField pswSenha;
 	private JPanel panel_4;
 	private JTextField txtLogin;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JLabel lblCpf;
 	private JFormattedTextField txtCPF;
 	private JLabel Email;
@@ -69,7 +69,7 @@ public class VRegisterSecretary extends JPanel {
 	 * @param s
 	 */
 
-	public VRegisterSecretary(Usuario usuarioLogado, VRegister cadastro, Secretaria s) {
+	public VRegisterSecretary(MUser usuarioLogado, VRegister cadastro, MSecretary s) {
 		this.usuarioLogado = usuarioLogado;
 
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -263,7 +263,7 @@ public class VRegisterSecretary extends JPanel {
 		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
-		JComboBox<TipoUsuario> cbFuncao = new JComboBox<>();
+		JComboBox<MTypeUser> cbFuncao = new JComboBox<>();
 		cbFuncao.setForeground(new Color(19, 59, 93));
 		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		cbFuncao.setEditable(false);
@@ -292,7 +292,7 @@ public class VRegisterSecretary extends JPanel {
 						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap()));
 		panel_1.setLayout(gl_panel_1);
-		for (TipoUsuario tipo : TipoUsuario.getTiposSecretarias()) {
+		for (MTypeUser tipo : MTypeUser.getTiposSecretarias()) {
 			cbFuncao.addItem(tipo);
 		}
 
@@ -306,13 +306,15 @@ public class VRegisterSecretary extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				// esse if pode mudar, mas fica assim por enquanto
-
+				
 				if (s == null) {
+					
 					VMainWindow frame = new VMainWindow(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} else {
+					
 					VListSecretary frame = new VListSecretary(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -349,7 +351,7 @@ public class VRegisterSecretary extends JPanel {
 				String cpf = txtCPF.getText(); // regex (expressao regular) tambem seria uma forma
 				int perfil = cbFuncao.getSelectedIndex();
 
-				Secretaria secretaria = new Secretaria();
+				MSecretary secretaria = new MSecretary();
 
 				// 2o passo: validar se texto é vazio ou nao
 				// se nao for vazio
@@ -476,8 +478,8 @@ public class VRegisterSecretary extends JPanel {
 				}
 
 				try {
-					TipoUsuario perfilU = (TipoUsuario) cbFuncao.getSelectedItem();
-					if (perfilU.equals(TipoUsuario.SEC_COMUM)) {
+					MTypeUser perfilU = (MTypeUser) cbFuncao.getSelectedItem();
+					if (perfilU.equals(MTypeUser.SEC_COMUM)) {
 						secretaria.getUsuario().setPefil(3);
 					} else {
 						secretaria.getUsuario().setPefil(2);
@@ -490,9 +492,9 @@ public class VRegisterSecretary extends JPanel {
 				// se passar em todas as validacoes
 				try {
 					if (validarCampoTexto == true) {
-						UsuarioDAO udao = new UsuarioDAO();
+						CUserDAO udao = new CUserDAO();
 
-						SecretariaDAO sdao = new SecretariaDAO();
+						CSecretaryDAO sdao = new CSecretaryDAO();
 
 						if (s == null) {
 							udao.inserir(secretaria.getUsuario());
@@ -549,7 +551,12 @@ public class VRegisterSecretary extends JPanel {
 		preencheDados(s);
 	}
 
-	private void preencheDados(Secretaria s) {
+	protected void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void preencheDados(MSecretary s) {
 
 		if (s != null) {
 			txtNome.setText(s.getNome());

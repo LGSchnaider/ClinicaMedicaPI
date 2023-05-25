@@ -9,14 +9,14 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.NumberFormatter;
 
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import controle.ConsultaDAO;
-import modelo.Consulta;
-import modelTabelas.PacienteTableModel;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import controle.CConsulationDAO;
+import modelo.MConsultation;
+import modelTabelas.MTPacienteTableModel;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -52,17 +52,17 @@ public class VRegisterConsultation extends JFrame {
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
 	private JFormattedTextField txtValor;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JComboBox comboPasc;
-	private ArrayList<Paciente> listaPaciente;
-	private ArrayList<Medico> listaMedico;
+	private ArrayList<MPatient> listaPaciente;
+	private ArrayList<MDoctor> listaMedico;
 	private JComboBox comboMed;
 	//public static final LocalDate MAX = null;
 	//LocalDate a = LocalDate.MAX;
 	
 	
 
-	public VRegisterConsultation(Usuario usuarioLogado) {
+	public VRegisterConsultation(MUser usuarioLogado) {
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -111,9 +111,9 @@ public class VRegisterConsultation extends JFrame {
 		comboPasc.setForeground(new Color(19, 59, 93));
 		comboPasc.addItem("--Selecione--");
 		
-		PacienteDAO Pasc = new PacienteDAO();
+		CPatientDAO Pasc = new CPatientDAO();
 		listaPaciente = Pasc.listaPaciente();
-		for (Paciente paciente : listaPaciente) {	
+		for (MPatient paciente : listaPaciente) {	
 			comboPasc.addItem(paciente);
 		} 
 		
@@ -348,9 +348,9 @@ public class VRegisterConsultation extends JFrame {
 		comboMed.addItem("--Selecione--");
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
-		MedicoDAO Med = new MedicoDAO();
+		CDoctorDAO Med = new CDoctorDAO();
 		listaMedico = Med.listaMedico();
-		for (Medico Medico : listaMedico) {
+		for (MDoctor Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
 		
@@ -428,12 +428,12 @@ public class VRegisterConsultation extends JFrame {
 				String min = String.valueOf(cbMin.getSelectedItem());
 				
 				//get id do medico
-				Medico medico = (Medico) comboMed.getSelectedItem();
+				MDoctor medico = (MDoctor) comboMed.getSelectedItem();
 				
 				
 				
 				//get id do paciente
-				Paciente paciente = (Paciente) comboPasc.getSelectedItem();
+				MPatient paciente = (MPatient) comboPasc.getSelectedItem();
 				
 				//valor da consulta
 				String valor = String.valueOf(txtValor.getText());
@@ -441,7 +441,7 @@ public class VRegisterConsultation extends JFrame {
 				String Descricao = txaObser.getText();
 				
 				//criando consulta
-				Consulta consulta = new Consulta();
+				MConsultation consulta = new MConsultation();
 				//try Valor
 				
 				if(valor !=null && !valor.isEmpty()) {
@@ -561,7 +561,7 @@ public class VRegisterConsultation extends JFrame {
 				//Passou pelas validações
 				try {
 					if (validarCampoTexto ==  true) {
-						ConsultaDAO cdao = new ConsultaDAO();
+						CConsulationDAO cdao = new CConsulationDAO();
 						boolean validar = cdao.inserir(consulta);
 						if (validar == true) {
 							// exibir uma mensagem de cadastro com sucesso
