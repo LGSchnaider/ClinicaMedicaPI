@@ -163,14 +163,15 @@ public class VListSecretary extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma Secretaria");
 					return;
 				}
+				dispose();
 				SecretariaTableModel model  = (SecretariaTableModel) table.getModel();
 				Secretaria s = model.getSecretaria(posicao);
-				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, null, s);
 				JFrame janela = new JFrame();
+
+				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, janela, s);
 				janela.getContentPane().add(tela);
 				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				janela.setVisible(true);
-				
 			}
 		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);

@@ -69,7 +69,7 @@ public class VRegisterSecretary extends JPanel {
 	 * @param s
 	 */
 
-	public VRegisterSecretary(Usuario usuarioLogado, VRegister cadastro, Secretaria s) {
+	public VRegisterSecretary(Usuario usuarioLogado, JFrame cadastro, Secretaria s) {
 		this.usuarioLogado = usuarioLogado;
 
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,13 +157,13 @@ public class VRegisterSecretary extends JPanel {
 		panel_9.setOpaque(false);
 		contentPane.add(panel_9, "cell 1 2,alignx center,aligny center");
 
-		txtCPF = new JFormattedTextField(formatter);
+		//txtCPF = new JFormattedTextField(formatter);
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e2) {
 			e2.printStackTrace();
 		}
-		JTextField txtCPF = new JFormattedTextField(formatter);
+		txtCPF = new JFormattedTextField(formatter);
 		txtCPF.setForeground(new Color(19, 59, 93));
 		txtCPF.setHorizontalAlignment(SwingConstants.LEFT);
 		txtCPF.setFont(new Font("Times New Roman", Font.PLAIN, 18));
@@ -307,18 +307,21 @@ public class VRegisterSecretary extends JPanel {
 
 				// esse if pode mudar, mas fica assim por enquanto
 
-				if (s == null) {
+				if (s == null) 
+				{
 					VMainWindow frame = new VMainWindow(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
+					cadastro.dispose();
 				} else {
 					VListSecretary frame = new VListSecretary(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
+					cadastro.dispose();
 				}
-
+		
 			}
 		});
 
@@ -549,24 +552,37 @@ public class VRegisterSecretary extends JPanel {
 		preencheDados(s);
 	}
 
+
+
 	private void preencheDados(Secretaria s) {
 
 		if (s != null) {
 			txtNome.setText(s.getNome());
-			txtCPF.setText(String.valueOf(s.getCpf()));
 			txtLogin.setText(s.getUsuario().getLogin());
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
 			MaskFormatter formatter = null;
 			try {
-				formatter = new MaskFormatter("(##) ###-###-###");
+				formatter = new MaskFormatter("(##) #####-####");
 			} catch (ParseException e2) {
 				e2.printStackTrace();
 			}
 			try {
 				formatter.setValueContainsLiteralCharacters(false);
 				txtTelefone.setText(formatter.valueToString(s.getTelefone()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			MaskFormatter formatter1 = null;
+			try {
+				formatter1 = new MaskFormatter("###.###.###-##");
+			} catch (ParseException e2) {
+				e2.printStackTrace();
+			}
+			try {
+				formatter1.setValueContainsLiteralCharacters(false);
+				txtCPF.setText(formatter1.valueToString(s.getCpf()));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
