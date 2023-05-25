@@ -402,7 +402,7 @@ public class VRegisterPatient extends JFrame {
 									JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 								} else {
 									// exibir mensagem de erro ao cadastrar
-									JOptionPane.showMessageDialog(null, "Erro ao cadastrar Medico");
+									JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
 								}
 							}
 							
