@@ -77,16 +77,16 @@ public class PacienteDAO implements IPacienteDAO {
 		return false;
 	}
 
-	public boolean deletar(long cpf) {
+	public boolean deletar(Paciente p) {
 		// Instacia classe Conexao
 		Conexao con = Conexao.getInstancia();
 		Connection c = con.conectar();
 
 		try {
-			String query = "DELETE FROM paciente WHERE cpf = " + cpf + ";";
+			String query = "DELETE FROM paciente WHERE cpf = ?;";
 			PreparedStatement stm = c.prepareStatement(query);
 
-//			stm.setLong(1, p.getCpf());
+			stm.setLong(1, p.getCpf());
 
 			stm.executeUpdate();
 			return true;
@@ -141,11 +141,6 @@ public class PacienteDAO implements IPacienteDAO {
 
 	@Override
 	public boolean atualizar(Paciente p) {
-		return false;
-	}
-
-	@Override
-	public boolean deletar(Paciente p) {
 		return false;
 	}
 
