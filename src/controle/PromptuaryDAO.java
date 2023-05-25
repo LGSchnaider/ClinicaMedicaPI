@@ -15,15 +15,14 @@ public class PromptuaryDAO implements IPromptuaryDAO{
 		Conexao con = Conexao.getInstancia();
 		Connection c1 = con.conectar();
 		try {
-			String query = "INSERT INTO agenda_medico " + "(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) VALUES (?,?,?,?,?,?);";
+			String query = "insert into prontuario(data, observacao, valor, medico_id_medico, paciente_id_paciente) values (?, ?, ?, ?, ?);";
 			PreparedStatement stm = c1.prepareStatement(query);
 
 			stm.setString(1, pr.getData());
-			stm.setString(2, pr.getHora());
-			stm.setString(3, pr.getObs());
-			stm.setString(4, pr.getValor());
-			stm.setInt(5, pr.getIdMedico());
-			stm.setInt(6, pr.getIdPaciente());
+			stm.setString(2, pr.getObs());
+			stm.setString(3, pr.getValor());
+			stm.setInt(4, pr.getIdMedico());
+			stm.setInt(5, pr.getIdPaciente());
 			stm.executeUpdate();
 			con.fechaConexao();
 			return true;

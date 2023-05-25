@@ -311,6 +311,13 @@ public class VConsultation extends JFrame {
 					e2.printStackTrace();
 				}
 				
+				//Try Patient
+				try {
+					promptuary.setIdPaciente(c.getIdPaciente());
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
 				//Try Obs.
 				try {
 					if (Descricao != null && !Descricao.isEmpty()) {
@@ -359,7 +366,8 @@ public class VConsultation extends JFrame {
 		contentPane.add(btnPront, "cell 1 6,alignx center,aligny center");
 		contentPane.add(btnCad, "cell 2 6,alignx center,aligny center");
 		
-		
+		txtValor.setText(c.getValor());
 	}
+	
 
 }

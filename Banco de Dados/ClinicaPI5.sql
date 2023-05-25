@@ -72,6 +72,7 @@ CREATE TABLE prontuario (
   id INT NOT NULL AUTO_INCREMENT,
   data VARCHAR(11) NOT NULL,
   observacao VARCHAR(300) NOT NULL,
+  valor BIGINT NOT NULL,
   medico_id_medico INT NOT NULL,
   paciente_id_paciente INT NOT NULL,
   PRIMARY KEY (id, medico_id_medico, paciente_id_paciente),
