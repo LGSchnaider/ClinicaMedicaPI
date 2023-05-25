@@ -562,8 +562,6 @@ public class VRegisterConsultation extends JFrame {
 				try {
 					if (validarCampoTexto ==  true) {
 						ConsultaDAO cdao = new ConsultaDAO();
-						cdao.inserir(consulta);
-						
 						boolean validar = cdao.inserir(consulta);
 						if (validar == true) {
 							// exibir uma mensagem de cadastro com sucesso
