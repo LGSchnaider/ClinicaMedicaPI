@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.Consulta;
+import modelo.Promptuary;
 
 public class MTPromptuary extends AbstractTableModel {
-	private String[] columnNames = {"Paciente", "Medico", "Data", "Hora", "Valor"};
-	private ArrayList<Consulta> listaConsulta;
+	private String[] columnNames = {"Medico", "Data", "Valor"};
+	private ArrayList<Promptuary> listaPronptuary;
 	
-	public MTPromptuary(ArrayList<Consulta> listaConsulta) {
-		this.listaConsulta = listaConsulta;
+	public MTPromptuary(ArrayList<Promptuary> listaPronptuary) {
+		this.listaPronptuary = listaPronptuary;
 	}
 
 	public int getRowCount() {
-		return listaConsulta.size();
+		return listaPronptuary.size();
 	}
 
 	public int getColumnCount() {
@@ -27,24 +28,17 @@ public class MTPromptuary extends AbstractTableModel {
 	}
 	
 	public Object getValueAt(int row, int col) {
-		Consulta c = listaConsulta.get(row);
+		Promptuary pr = listaPronptuary.get(row);
 		if(col == 0) {
-			return c.getNamePatient();
+			return pr.getNameDoctor();
 		}
 		if(col == 1) {
-			return c.getNameDoctor();
-		}
-		if(col == 2) {
-			return c.getData();
-		}
-		if(col == 3) {
-			return c.getHora();
-		}
-		else {
-			return c.getValor();
+			return pr.getData();
+		}else {
+			return pr.getValor();
 		}
 	}
-	public Consulta getConsulta(int p) {
-		return listaConsulta.get(p);
+	public Promptuary getPromptuary(int pr) {
+		return listaPronptuary.get(pr);
 	}
 }

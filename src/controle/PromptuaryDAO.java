@@ -2,9 +2,12 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import modelo.Consulta;
 import modelo.IPromptuaryDAO;
 import modelo.Promptuary;
 
@@ -29,26 +32,61 @@ public class PromptuaryDAO implements IPromptuaryDAO{
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
 		}
 		return false;
 	}
 
-	@Override
-	public boolean atualizar(Promptuary pr) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public ArrayList<Promptuary> listaPronptuary(int idp) {
+		// Instacia classe Conexao
+				Conexao con = Conexao.getInstancia();
+				Connection c = con.conectar();
 
-	@Override
-	public boolean deletar(Promptuary pr) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+				ArrayList<Promptuary> promptuarys = new ArrayList<>();
+				try {
+					Statement stm = c.createStatement();
+					String query = "select prontuario.id, prontuario.data, prontuario.observacao, prontuario.valor, prontuario.medico_id_medico, prontuario.Paciente_id_paciente, medico.id as idMed, medico.nome as medNome, paciente.id as idPac, paciente.nome as pacNome from prontuario join medico on prontuario.medico_id_medico = medico.id join paciente on prontuario.Paciente_id_paciente = paciente.id where prontuario.paciente_id_paciente ="+idp+";";
+					ResultSet rs = stm.executeQuery(query);
+					while (rs.next()) {
 
-	@Override
-	public ArrayList<Promptuary> listaConsulta() {
-		// TODO Auto-generated method stub
-		return null;
+						int id = rs.getInt("id");
+						String data = rs.getString("data");
+						String obs = rs.getString("observacao");
+						String valor = rs.getString("valor");
+						int idDoctor = rs.getInt("medico_id_medico");
+						int idPatient = rs.getInt("Paciente_id_paciente");
+						int idMed = rs.getInt("idMed");
+						String nomeMed = rs.getString("medNome");
+						int idPac = rs.getInt("idPac");
+						String nomePac = rs.getString("pacNome");
+						
+						Promptuary pr = new Promptuary();
+						pr.setId(id);
+						pr.setData(data);
+						pr.setObs(obs);
+						pr.setValor(valor);
+						pr.setIdPaciente(idPatient);
+						pr.setIdMedico(idDoctor);		
+						pr.setIdMedico(idMed);
+						pr.setNameDoctor(nomeMed);
+					    pr.setIdPaciente(idPac);
+					    pr.setNamePatient(nomePac);
+						
+						promptuarys.add(pr);
+						
+						
+					}
+
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}finally {
+					con.fechaConexao();
+				}
+
+				return promptuarys;
+
 	}
 
 }

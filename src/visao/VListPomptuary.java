@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controle.ConsultaDAO;
+import controle.PromptuaryDAO;
 import modelTabelas.ConsultaTableModel;
+import modelTabelas.MTPromptuary;
 import modelo.Usuario;
 
 import java.awt.BorderLayout;
@@ -26,7 +28,7 @@ public class VListPomptuary extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	public VListPomptuary(Usuario usuarioLogado) {
+	public VListPomptuary(Usuario usuarioLogado, int idp) {
 		setTitle("Cadastro de Consulta");
 	 	
 		this.usuarioLogado = usuarioLogado;
@@ -52,8 +54,8 @@ public class VListPomptuary extends JFrame {
 		
 		table = new JTable();
 		table.setOpaque(false);
-		ConsultaDAO cDAO = new ConsultaDAO();
-		ConsultaTableModel model = new ConsultaTableModel(cDAO.listaConsulta());
+		PromptuaryDAO prDAO = new PromptuaryDAO();
+		MTPromptuary model = new MTPromptuary(prDAO.listaPronptuary(idp));
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 		

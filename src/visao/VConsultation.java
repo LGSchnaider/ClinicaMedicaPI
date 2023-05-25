@@ -84,7 +84,7 @@ public class VConsultation extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VMainWindow frame = new VMainWindow(usuarioLogado); 
+				VListConsultation frame = new VListConsultation(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -358,7 +358,7 @@ public class VConsultation extends JFrame {
 		btnPront.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnPront.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VListPomptuary frame = new VListPomptuary(usuarioLogado);
+				VListPomptuary frame = new VListPomptuary(usuarioLogado, c.getIdPaciente());
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
 			}
