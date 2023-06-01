@@ -15,7 +15,12 @@
 			<artifactId>miglayout</artifactId>
 			<version>3.7.4</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.30</version>
+		</dependency>
 	</dependencies>
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>

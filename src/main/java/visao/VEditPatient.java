@@ -86,12 +86,12 @@ public class VEditPatient extends JFrame {
 		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 156, 156));
 		contentPane.add(panel, "cell 2 1,grow");
-		panel.setLayout(new MigLayout("", "[pref!][321.00][pref!]", "[grow][56.00,grow][66.00,grow][80.00]"));
+		panel.setLayout(new MigLayout("", "[pref!][321.00][pref!]", "[grow][117.00][66.00,grow][80.00]"));
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
 		panel_1.setBackground(new Color(0, 156, 156));
-		panel.add(panel_1, "cell 1 1,grow");
+		panel.add(panel_1, "cell 1 1,growx,aligny center");
 
 		txtNome = new JTextField();
 		txtNome.setForeground(new Color(19, 59, 93));
@@ -127,7 +127,7 @@ public class VEditPatient extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 		panel_3.setBackground(new Color(0, 156, 156));
-		panel.add(panel_3, "flowx,cell 1 2,grow");
+		panel.add(panel_3, "flowx,cell 1 2,growx,aligny top");
 
 		try {
 			formatter = new MaskFormatter("(##) #####-####");
