@@ -165,9 +165,7 @@ public class VListSecretary extends JFrame {
 				}
 				MTSecretariaTableModel model  = (MTSecretariaTableModel) table.getModel();
 				MSecretary s = model.getSecretaria(posicao);
-				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, null, s);
 				JFrame janela = new JFrame();
-
 				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, janela, s);
 				janela.getContentPane().add(tela);
 				janela.setExtendedState(JFrame.MAXIMIZED_BOTH);

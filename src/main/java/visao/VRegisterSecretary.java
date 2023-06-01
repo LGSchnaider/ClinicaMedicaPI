@@ -65,11 +65,11 @@ public class VRegisterSecretary extends JPanel {
 	/**
 	 * Launch the application.
 	 * 
-	 * @param cadastro
+	 * @param janela
 	 * @param s
 	 */
 
-	public VRegisterSecretary(MUser usuarioLogado, VRegister cadastro, MSecretary s) {
+	public VRegisterSecretary(MUser usuarioLogado, JFrame janela, MSecretary s) {
 		this.usuarioLogado = usuarioLogado;
 
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -313,14 +313,14 @@ public class VRegisterSecretary extends JPanel {
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
-					cadastro.dispose();
+					janela.dispose();
 				} else {
 					
 					VListSecretary frame = new VListSecretary(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
-					cadastro.dispose();
+					janela.dispose();
 				}
 		
 			}

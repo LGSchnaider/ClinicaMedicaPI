@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -61,7 +62,6 @@ public class VEditConsultation extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 562);
-	
 		
 		BufferedImage bg = null;
 		;
@@ -89,7 +89,7 @@ public class VEditConsultation extends JFrame {
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VMainWindow frame = new VMainWindow(usuarioLogado); 
+				VListConsultation frame = new VListConsultation(usuarioLogado); 
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
@@ -348,48 +348,160 @@ public class VEditConsultation extends JFrame {
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-			
-				boolean validarCampoTexto = true;
-				
-				
+						
+				boolean validarCampoTexto = true;				
 
 				String dia = String.valueOf(cbDia.getSelectedItem());
-				System.out.println(dia);
+
 				String mes = String.valueOf(cbMes.getSelectedItem());
 				String ano = String.valueOf(cbAno.getSelectedItem());
 				String hora = String.valueOf(cbHora.getSelectedItem());
 				String min = String.valueOf(cbMin.getSelectedItem());
 				MDoctor medico = (MDoctor) comboMed.getSelectedItem();
 				
-				int idm = medico.getId();
-				System.out.println(idm);
-				
 				MPatient paciente = (MPatient) comboPasc.getSelectedItem();
-				int idp = paciente.getIdPac();
-				System.out.println(idp);
 				
-				String Valor = String.valueOf(txtValor.getText());
+				String valor = String.valueOf(txtValor.getText());
 				String Descricao = txaObser.getText();
-				
-				String data = dia+"/"+mes+"/"+ano;
-				String horario = hora+":"+min;
-				System.out.println(data);
-				MConsultation consulta = new MConsultation();
-				consulta.setData(data);
-				consulta.setHora(horario);
-				consulta.setValor(Valor);
-				consulta.setObs(Descricao);
-				consulta.setIdMedico(idm);
-				consulta.setIdPaciente(idp);
-				CConsulationDAO cdao = new CConsulationDAO();
-				cdao.inserir(consulta);
-				
-				//consulta.s
 
+				MConsultation consulta = c;
+				
+				
+				if(valor !=null && !valor.isEmpty()) {
+					if(valor.equalsIgnoreCase("R$      ,  ")) {
+					JOptionPane.showMessageDialog(null, "Informe um valor");
+					txtValor.requestFocus();
+					return;
+				}else {
+					valor = valor.replace("R","");
+					valor = valor.replace("$","");
+					valor = valor.replace(",","");
+					String valorInt = String.valueOf(valor);
+					consulta.setValor(valorInt);
 				}
+				}else {
+					validarCampoTexto = false;
+					JOptionPane.showMessageDialog(null, "Informe um valor");
+					txtValor.requestFocus();
+					return;
+				}
+
+				//try Paciente
+				try {
+					if(paciente != null) {
+						int idp = paciente.getIdPac();
+						consulta.setIdPaciente(idp);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Paciente precisa ser preenchido");
+						comboPasc.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				//Try Data
+				try {
+					if(dia != null && !dia.isEmpty()) {
+						if(mes != null && !mes.isEmpty()) {
+							if(ano != null && !ano.isEmpty()) {
+								String data = dia+"/"+mes+"/"+ano;
+								consulta.setData(data);
+							}else {
+								validarCampoTexto = false;
+								JOptionPane.showInternalMessageDialog(null, "O campo Ano precisa ser preenchido");
+								cbAno.requestFocus();
+								return;
+							}
+						}else {
+							validarCampoTexto = false;
+							JOptionPane.showInternalMessageDialog(null, "O campo Mês precisa ser preenchido");
+							cbMes.requestFocus();
+							return;
+						}
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Dia precisa ser preenchido");
+						cbDia.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Hora
+				try {
+					if (hora != null) {
+						if(min != null) {
+							String horario = hora+":"+min;
+							consulta.setHora(horario);
+						}else {
+							validarCampoTexto = false;
+							JOptionPane.showInternalMessageDialog(null, "O campo Minuto precisa ser preenchido");
+							cbMin.requestFocus();
+							return;
+						}
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Hora precisa ser preenchido");
+						cbHora.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				//Try Medico
+				try {
+					if(medico != null) {
+						int idm = medico.getId();
+						consulta.setIdMedico(idm);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Medico precisa ser preenchido");
+						comboMed.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+				
+				//Try Obs.
+				try {
+					if (Descricao != null && !Descricao.isEmpty()) {
+						consulta.setObs(Descricao);
+					}else {
+						validarCampoTexto = false;
+						JOptionPane.showInternalMessageDialog(null, "O campo Descrição precisa ser preenchido");
+						txaObser.requestFocus();
+						return;
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}			
+				
+				//Passou pelas validações
+				try {
+					if (validarCampoTexto ==  true) {
+						CConsulationDAO cdao = new CConsulationDAO();
+						boolean validar = cdao.edit(consulta);
+						if (validar == true) {
+							// exibir uma mensagem de cadastro com sucesso
+							JOptionPane.showMessageDialog(null, "Editado com sucesso");
+						} else {
+							// exibir mensagem de erro ao cadastrar
+							JOptionPane.showMessageDialog(null, "Erro ao editar consulta");
+						}
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				
+						
+		
+			}
+			
 		});
 		contentPane.add(btnCad, "cell 2 8,alignx center,aligny center");
 		fillInData(c);

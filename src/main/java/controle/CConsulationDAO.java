@@ -40,8 +40,29 @@ public class CConsulationDAO implements MIConsultationDAO{
 	}
 
 
-	public boolean atualizar(MConsultation c) {
+	public boolean edit(MConsultation c) {
+		CConnection con = CConnection.getInstancia();
+		Connection c1 = con.conectar();
+		
+		try {
+			String query = "update agenda_medico set data = ?, hora = ?, descricao = ?, valor = ?, medico_id_medico = ?, paciente_id_paciente = ? where id = ?;";
+			PreparedStatement stm = c1.prepareStatement(query);
 
+			stm.setString(1, c.getData());
+			stm.setString(2, c.getHora());
+			stm.setString(3, c.getObs());
+			stm.setString(4, c.getValor());
+			stm.setInt(5, c.getIdMedico());
+			stm.setInt(6, c.getIdPaciente());
+			stm.setInt(7, c.getId());
+			stm.executeUpdate();
+			con.fechaConexao();
+			return true;
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
