@@ -418,7 +418,7 @@ public class VEditDoctor extends JFrame {
 			txtLogin.setText(d.getUsuario().getLogin());
 			pswSenha.setText(d.getUsuario().getSenha());
 			pswConfirmarSenha.setText(d.getUsuario().getSenha());
-			comboBox.setSelectedItem(d.getUsuario().getPerfil());
+			comboBox.setSelectedIndex(d.getUsuario().getPerfil());
 		}
 	}
 }

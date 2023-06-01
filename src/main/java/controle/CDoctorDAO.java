@@ -104,6 +104,7 @@ public class CDoctorDAO implements MIDoctorDAO {
 				u.setIdusuario(idUsuario);
 				u.setLogin(login);
 				u.setSenha(senha);
+				
 				u.setPefil(perfil);
 				p.setUsuario(u);
 
