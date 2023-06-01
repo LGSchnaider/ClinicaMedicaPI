@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.IUsuarioDAO;
-import modelo.Usuario;
+import modelo.MIUserDAO;
+import modelo.MUser;
 
-public class UsuarioDAO implements IUsuarioDAO {
+public class CUserDAO implements MIUserDAO {
 
 	@Override
-	public boolean inserir(Usuario p) {
+	public boolean inserir(MUser p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO usuario " + "(login, senha, perfil) VALUES (?,?,?);";
@@ -49,9 +49,9 @@ public class UsuarioDAO implements IUsuarioDAO {
 		return false;
 	}
 
-	public boolean atualizar(Usuario p) {
+	public boolean atualizar(MUser p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
 		try {
@@ -74,9 +74,9 @@ public class UsuarioDAO implements IUsuarioDAO {
 		return false;
 	}
 
-	public boolean deletar(Usuario p) {
+	public boolean deletar(MUser p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
 		try {
@@ -97,12 +97,12 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 	}
 
-	public ArrayList<Usuario> listaAdministrador() {
+	public ArrayList<MUser> listaAdministrador() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
-		ArrayList<Usuario> Usuarios = new ArrayList<>();
+		ArrayList<MUser> Usuarios = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "SELECT * FROM usuario";
@@ -113,7 +113,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 				String senha = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
 
-				Usuario p = new Usuario();
+				MUser p = new MUser();
 				p.setLogin(login);
 				p.setSenha(senha);
 				p.setPefil(perfil);
@@ -131,10 +131,10 @@ public class UsuarioDAO implements IUsuarioDAO {
 		return Usuarios;
 	}
 
-	public Usuario buscarUsuarioPorLoginSenha(String login, String senha) {
+	public MUser buscarUsuarioPorLoginSenha(String login, String senha) {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 		try {
 			Statement stm = c.createStatement();
@@ -146,7 +146,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 				String senhaa = rs.getString("senha");
 				int perfil = rs.getInt("perfil");
 
-				Usuario p = new Usuario();
+				MUser p = new MUser();
 				p.setLogin(loginn);
 				p.setSenha(senhaa);
 				p.setPefil(perfil);

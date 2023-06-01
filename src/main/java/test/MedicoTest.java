@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import controle.MedicoDAO;
-import controle.UsuarioDAO;
-import modelo.Medico;
+import controle.CDoctorDAO;
+import controle.CUserDAO;
+import modelo.MDoctor;
 
 @TestMethodOrder(OrderAnnotation.class)
 class MedicoTest {
@@ -18,9 +18,9 @@ class MedicoTest {
 	@Test
 	@Order(1)
 	public void testCadastro() {
-		MedicoDAO mdDao = new MedicoDAO();
+		CDoctorDAO mdDao = new CDoctorDAO();
 		// chama conexão
-		Medico m = new Medico();
+		MDoctor m = new MDoctor();
 		
 		 m.setNome("Dr.Lucas pereira");
 		 m.setCpf((long) 554454477);
@@ -29,11 +29,11 @@ class MedicoTest {
 		 m.getUsuario().setLogin("BlaBla");
 		 m.getUsuario().setSenha("blabla");
 		 m.getUsuario().setPefil(1); 
-		 UsuarioDAO udao = new UsuarioDAO();
+		 CUserDAO udao = new CUserDAO();
 		 udao.inserir(m.getUsuario());
 		 assertTrue(mdDao.inserir(m));
 		
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		MDoctor medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
 
 		assertEquals("Dr.Lucas pereira", medicoBuscado.getNome());
 		assertEquals(554454477, medicoBuscado.getCpf());
@@ -48,18 +48,18 @@ class MedicoTest {
 	@Test
 	@Order(2)
 	public void testCadastroNaoE() {
-		MedicoDAO mdDao = new MedicoDAO();
+		CDoctorDAO mdDao = new CDoctorDAO();
 		// chama conexão
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(22);
+		MDoctor medicoBuscado = mdDao.buscarMedicoPorCrm(22);
 		assertNull(medicoBuscado);
 	}
 
 	@Test
 	@Order(4)
 	public void testDeletar() {
-		MedicoDAO mdDao = new MedicoDAO();
+		CDoctorDAO mdDao = new CDoctorDAO();
 		// chama conexão
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		MDoctor medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
 		assertTrue(mdDao.deletar(medicoBuscado));
 	}
 
@@ -67,9 +67,9 @@ class MedicoTest {
 	@Test
 	@Order(3)
 	public void testAlterar() {
-		MedicoDAO mdDao = new MedicoDAO();
+		CDoctorDAO mdDao = new CDoctorDAO();
 		// chama conexão
-		Medico medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
+		MDoctor medicoBuscado = mdDao.buscarMedicoPorCrm(352464);
 		medicoBuscado.setNome("Alterado");
 		medicoBuscado.setUf("SC");
 		medicoBuscado.getUsuario().setLogin("Alt");

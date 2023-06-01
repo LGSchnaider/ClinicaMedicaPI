@@ -9,14 +9,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import controle.ConsultaDAO;
+import controle.CConsulationDAO;
 //import controle.ConsultaDAO;
-import modelTabelas.ConsultaTableModel;
+import modelTabelas.MTConsultaTableModel;
 import modelTabelas.MTMain;
-import modelTabelas.MedicoTableModel;
-import modelo.Consulta;
-import modelo.Medico;
-import modelo.Usuario;
+import modelTabelas.MTMedicoTableModel;
+import modelo.MConsultation;
+import modelo.MDoctor;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -41,10 +41,10 @@ public class VListConsultation extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JTable table_1;
 
-	public VListConsultation(Usuario usuarioLogado) {
+	public VListConsultation(MUser usuarioLogado) {
 		setTitle("Lista de Consultas");
 		this.usuarioLogado = usuarioLogado;
 
@@ -95,8 +95,8 @@ public class VListConsultation extends JFrame {
 
 		table = new JTable();
 		table.setOpaque(false);
-		ConsultaDAO cDAO = new ConsultaDAO();
-		ConsultaTableModel model = new ConsultaTableModel(cDAO.listaConsulta());
+		CConsulationDAO cDAO = new CConsulationDAO();
+		MTConsultaTableModel model = new MTConsultaTableModel(cDAO.listaConsulta());
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -124,15 +124,15 @@ public class VListConsultation extends JFrame {
 
 				if (resposta == JOptionPane.YES_OPTION) {
 					int cl = table.getSelectedRow();
-					ConsultaTableModel model = (ConsultaTableModel) table.getModel();
+					MTConsultaTableModel model = (MTConsultaTableModel) table.getModel();
 
-					Consulta c = model.getConsulta(cl);
+					MConsultation c = model.getConsulta(cl);
 					System.out.println(cl);
 					System.out.println(c);
 
-					ConsultaDAO cDAO = new ConsultaDAO();
+					CConsulationDAO cDAO = new CConsulationDAO();
 					cDAO.deletar(c);
-					model = new ConsultaTableModel(cDAO.listaConsulta());
+					model = new MTConsultaTableModel(cDAO.listaConsulta());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Consulta excluida com sucesso");
 				}
@@ -150,8 +150,8 @@ public class VListConsultation extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
 					return;
 				}
-				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
-				Consulta c = model.getConsulta(position);
+				MTConsultaTableModel model  = (MTConsultaTableModel) table.getModel();
+				MConsultation c = model.getConsulta(position);
 				VEditConsultation window = new VEditConsultation(usuarioLogado, c);
 				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				window.setVisible(true);
@@ -169,8 +169,8 @@ public class VListConsultation extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
 					return;
 				}
-				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
-				Consulta c = model.getConsulta(position);
+				MTConsultaTableModel model  = (MTConsultaTableModel) table.getModel();
+				MConsultation c = model.getConsulta(position);
 				String obs = c.getObs();
 				JOptionPane.showMessageDialog(null, obs);
 			}
@@ -189,8 +189,8 @@ public class VListConsultation extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
 					return;
 				}
-				ConsultaTableModel model  = (ConsultaTableModel) table.getModel();
-				Consulta c = model.getConsulta(position);
+				MTConsultaTableModel model  = (MTConsultaTableModel) table.getModel();
+				MConsultation c = model.getConsulta(position);
 				dispose();
 				VConsultation frame = new VConsultation(usuarioLogado, c);
 				frame.setLocationRelativeTo(null);

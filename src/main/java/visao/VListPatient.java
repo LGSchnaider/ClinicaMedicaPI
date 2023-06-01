@@ -21,13 +21,13 @@ import javax.swing.JTable;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import modelTabelas.MedicoTableModel;
-import modelTabelas.PacienteTableModel;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import modelTabelas.MTMedicoTableModel;
+import modelTabelas.MTPacienteTableModel;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
@@ -35,11 +35,11 @@ public class VListPatient extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 
 	
 
-	public VListPatient(Usuario usuarioLogado) {
+	public VListPatient(MUser usuarioLogado) {
 		setTitle("Lista de Pacientes");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -87,8 +87,8 @@ public class VListPatient extends JFrame {
 		table = new JTable();
 		table.setForeground(new Color(19, 59, 93));
 		table.setOpaque(false);
-		PacienteDAO pDAO = new PacienteDAO();
-		PacienteTableModel model = new PacienteTableModel(pDAO.listaPaciente());
+		CPatientDAO pDAO = new CPatientDAO();
+		MTPacienteTableModel model = new MTPacienteTableModel(pDAO.listaPaciente());
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 
@@ -130,16 +130,16 @@ public class VListPatient extends JFrame {
 				
 				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					PacienteTableModel model = (PacienteTableModel) table.getModel();
-					Paciente a = model.getPaciente(p);
+					MTPacienteTableModel model = (MTPacienteTableModel) table.getModel();
+					MPatient a = model.getPaciente(p);
 					System.out.println(p);
 					System.out.println(a);
 					System.out.println(a.getNome());
 					System.out.println(a.getCpf());
 
-					MedicoDAO mDAO = new MedicoDAO();
+					CDoctorDAO mDAO = new CDoctorDAO();
 					pDAO.deletar(a);
-					model = new PacienteTableModel(pDAO.listaPaciente());
+					model = new MTPacienteTableModel(pDAO.listaPaciente());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
 				}
@@ -177,8 +177,8 @@ public class VListPatient extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione um Paciente");
 					return;
 				}
-				PacienteTableModel model  = (PacienteTableModel) table.getModel();
-				Paciente d = model.getPaciente(position);
+				MTPacienteTableModel model  = (MTPacienteTableModel) table.getModel();
+				MPatient d = model.getPaciente(position);
 				VEditPatient window = new VEditPatient(usuarioLogado, d);
 				window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				window.setVisible(true);

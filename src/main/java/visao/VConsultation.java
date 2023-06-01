@@ -25,16 +25,16 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
-import controle.ConsultaDAO;
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import controle.PromptuaryDAO;
-import modelTabelas.ConsultaTableModel;
-import modelo.Consulta;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.Promptuary;
-import modelo.Usuario;
+import controle.CConsulationDAO;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import controle.CPromptuaryDAO;
+import modelTabelas.MTConsultaTableModel;
+import modelo.MConsultation;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MPromptuary;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 
 public class VConsultation extends JFrame {
@@ -44,14 +44,14 @@ public class VConsultation extends JFrame {
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
 	private JTextField txtValor;
-	private Usuario usuarioLogado;
-	private ArrayList<Paciente> listaPaciente;
-	private ArrayList<Medico> listaMedico;
+	private MUser usuarioLogado;
+	private ArrayList<MPatient> listaPaciente;
+	private ArrayList<MDoctor> listaMedico;
 	private JComboBox comboMed;
 	
 	
 
-	public VConsultation(Usuario usuarioLogado, Consulta c) {
+	public VConsultation(MUser usuarioLogado, MConsultation c) {
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -204,9 +204,9 @@ public class VConsultation extends JFrame {
 		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
 		
-		MedicoDAO Med = new MedicoDAO();
+		CDoctorDAO Med = new CDoctorDAO();
 		listaMedico = Med.listaMedico();
-		for (Medico Medico : listaMedico) {
+		for (MDoctor Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
 		 
@@ -237,13 +237,13 @@ public class VConsultation extends JFrame {
 				String mes = String.valueOf(cbMes.getSelectedItem());
 				String ano = String.valueOf(cbAno.getSelectedItem());
 				
-				Medico medico = (Medico) comboMed.getSelectedItem();
+				MDoctor medico = (MDoctor) comboMed.getSelectedItem();
 				
 				String Valor = String.valueOf(txtValor.getText());
 				
 				String Descricao = txaObser.getText();
 				
-				Promptuary promptuary = new Promptuary();
+				MPromptuary promptuary = new MPromptuary();
 				
 				//Try valor
 				if(Valor !=null && !Valor.isEmpty()) {
@@ -335,7 +335,7 @@ public class VConsultation extends JFrame {
 				//Passou pelas validações
 				try {
 					if (validarCampoTexto ==  true) {
-						PromptuaryDAO prdao = new PromptuaryDAO();
+						CPromptuaryDAO prdao = new CPromptuaryDAO();
 
 						
 						boolean validar = prdao.inserir(promptuary);

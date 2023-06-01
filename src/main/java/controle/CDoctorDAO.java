@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.Usuario;
-import modelo.IMedicoDAO;
-import modelo.Medico;
+import modelo.MUser;
+import modelo.MIDoctorDAO;
+import modelo.MDoctor;
 
-public class MedicoDAO implements IMedicoDAO {
+public class CDoctorDAO implements MIDoctorDAO {
 
 	@Override
-	public boolean inserir(Medico p) {
+	public boolean inserir(MDoctor p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO medico " + "(nome, cpf, uf, crm, usuario_idusuario) VALUES (?,?,?,?,?);";
@@ -40,9 +40,9 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 
-	public boolean atualizar(Medico p) {
+	public boolean atualizar(MDoctor p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
 		try {
@@ -69,13 +69,13 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 
-	public ArrayList<Medico> listaMedico() {
+	public ArrayList<MDoctor> listaMedico() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
-		ArrayList<Medico> Medicos = new ArrayList<>();
+		ArrayList<MDoctor> Medicos = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.UF, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id;";
@@ -93,14 +93,14 @@ public class MedicoDAO implements IMedicoDAO {
 				int idUsuario = rs.getInt("usuarioid");
 				int idMedico = rs.getInt("id");
 
-				Medico p = new Medico();
+				MDoctor p = new MDoctor();
 				p.setId(idMedico);
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setCrm(crm);
 				p.setUf(UF);
 
-				Usuario u = new Usuario();
+				MUser u = new MUser();
 				u.setIdusuario(idUsuario);
 				u.setLogin(login);
 				u.setSenha(senha);
@@ -123,9 +123,9 @@ public class MedicoDAO implements IMedicoDAO {
 	}
 
 	@Override
-	public boolean deletar(Medico p) {
+	public boolean deletar(MDoctor p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 		// dao.deletar(p.getUsuario());
 
@@ -146,13 +146,13 @@ public class MedicoDAO implements IMedicoDAO {
 		return false;
 	}
 
-	public Medico buscarMedicoPorCrm(long crm) {
-		Conexao con = Conexao.getInstancia();
+	public MDoctor buscarMedicoPorCrm(long crm) {
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
-		UsuarioDAO dao = new UsuarioDAO();
-		Usuario u = new Usuario();
-		Medico p = null;
+		CUserDAO dao = new CUserDAO();
+		MUser u = new MUser();
+		MDoctor p = null;
 		try {
 			String query = "select usuario.id as usuarioid, usuario.login, usuario.senha, usuario.perfil, medico.id, medico.nome, medico.cpf, medico.UF, medico.crm  from usuario inner join medico on medico.usuario_idusuario = usuario.id where medico.crm = "
 					+ crm + ";";
@@ -160,7 +160,7 @@ public class MedicoDAO implements IMedicoDAO {
 			ResultSet rs = stm.executeQuery(query);
 
 			if (rs.next()) {
-				p = new Medico();
+				p = new MDoctor();
 				String nome = rs.getString("nome");
 				long cpf = rs.getLong("cpf");
 				Long crm1 = rs.getLong("crm");

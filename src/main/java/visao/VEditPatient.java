@@ -7,15 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import controle.SecretariaDAO;
-import controle.UsuarioDAO;
-import modelo.Paciente;
-import modelo.Secretaria;
-import modelo.TipoSexo;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import controle.CSecretaryDAO;
+import controle.CUserDAO;
+import modelo.MPatient;
+import modelo.MSecretary;
+import modelo.MTyperGender;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -45,7 +45,7 @@ public class VEditPatient extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtEmail;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 	private JComboBox <String> cbSexo = new JComboBox<>();
 	private JFormattedTextField txtCpf;
 	private JFormattedTextField txtTelefone;
@@ -54,7 +54,7 @@ public class VEditPatient extends JFrame {
 	 * Launch the application.
 	 */
 
-	public VEditPatient(Usuario usuarioLogado, Paciente d) {
+	public VEditPatient(MUser usuarioLogado, MPatient d) {
 		
 		this.usuarioLogado = usuarioLogado;
 
@@ -219,7 +219,7 @@ public class VEditPatient extends JFrame {
 					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		panel_3.setLayout(gl_panel_3);
-		for (TipoSexo s : TipoSexo.values()) {
+		for (MTyperGender s : MTyperGender.values()) {
 			cbSexo.addItem(s.getDescricao());
 		}
 
@@ -257,7 +257,7 @@ public class VEditPatient extends JFrame {
 																String sexo = (String) cbSexo.getSelectedItem();
 																String email = txtEmail.getText();
 
-																Paciente paciente = new Paciente();
+																MPatient paciente = new MPatient();
 
 																// 2o passo: validar se texto é vazio ou nao
 																// se nao for vazio
@@ -352,7 +352,7 @@ public class VEditPatient extends JFrame {
 																		return;
 																	}else {
 																		validarCampoTexto = true;
-																		paciente.setSexo(TipoSexo.obterTipo(sexo));
+																		paciente.setSexo(MTyperGender.obterTipo(sexo));
 																
 																	}
 																	
@@ -379,7 +379,7 @@ public class VEditPatient extends JFrame {
 																try {
 																	// se passar em todas as validacoes
 																	if (validarCampoTexto == true) {
-																		PacienteDAO pdao = new PacienteDAO();
+																		CPatientDAO pdao = new CPatientDAO();
 															
 																		boolean validar = pdao.inserir(paciente);
 																		if (validar == true) {
@@ -432,7 +432,7 @@ public class VEditPatient extends JFrame {
 									}
 								});
 	}
-	private void preencherDados(Paciente d) {
+	private void preencherDados(MPatient d) {
 		if (d != null) {
 			txtNome.setText(d.getNome());
 			txtCpf.setText(String.valueOf(d.getCpf()));

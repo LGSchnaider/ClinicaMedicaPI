@@ -1,10 +1,10 @@
 package modelo;
 
-public class Secretaria extends Pessoa {
+public class MSecretary extends MPerson {
 
 	private long telefone;
 	private String email;
-	private Usuario usuario;
+	private MUser usuario;
 	private String login;
 	private String senha;
 	
@@ -16,13 +16,13 @@ public class Secretaria extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Secretaria() {
-		this.usuario = new Usuario();
+	public MSecretary() {
+		this.usuario = new MUser();
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(MUser usuario) {
 		this.usuario = usuario;
 	}
-	public Usuario getUsuario() {
+	public MUser getUsuario() {
 		return usuario;
 	}
 	

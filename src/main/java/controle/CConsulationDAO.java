@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.Consulta;
-import modelo.IConsultaDAO;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.TipoSexo;
+import modelo.MConsultation;
+import modelo.MIConsultationDAO;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MTyperGender;
 
-public class ConsultaDAO implements IConsultaDAO{
+public class CConsulationDAO implements MIConsultationDAO{
 
 
-	public boolean inserir(Consulta c) {
-		Conexao con = Conexao.getInstancia();
+	public boolean inserir(MConsultation c) {
+		CConnection con = CConnection.getInstancia();
 		Connection c1 = con.conectar();
 		try {
 			String query = "INSERT INTO agenda_medico " + "(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) VALUES (?,?,?,?,?,?);";
@@ -40,14 +40,14 @@ public class ConsultaDAO implements IConsultaDAO{
 	}
 
 
-	public boolean atualizar(Consulta c) {
+	public boolean atualizar(MConsultation c) {
 
 		return false;
 	}
 
 
-	public boolean deletar(Consulta c) {
-		Conexao con = Conexao.getInstancia();
+	public boolean deletar(MConsultation c) {
+		CConnection con = CConnection.getInstancia();
 		Connection c1 = con.conectar();
 
 		try {
@@ -67,13 +67,13 @@ public class ConsultaDAO implements IConsultaDAO{
 	}
 
 	@Override
-	public ArrayList<Consulta> listaConsulta() {
+	public ArrayList<MConsultation> listaConsulta() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
-		ArrayList<Consulta> consultas = new ArrayList<>();
+		ArrayList<MConsultation> consultas = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "select agenda_medico.id, agenda_medico.data, agenda_medico.hora, agenda_medico.descricao, agenda_medico.valor, agenda_medico.medico_id_medico,"
@@ -94,7 +94,7 @@ public class ConsultaDAO implements IConsultaDAO{
 				int idPac = rs.getInt("idPac");
 				String nomePac = rs.getString("pacNome");
 				
-				Consulta ct = new Consulta();
+				MConsultation ct = new MConsultation();
 				ct.setId(id);
 				ct.setData(data);
 				ct.setHora(hora);

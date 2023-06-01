@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import modelo.Secretaria;
-import modelo.Usuario;
+import modelo.MSecretary;
+import modelo.MUser;
 
 public class VEditSecretary extends JFrame {
 
@@ -22,7 +22,7 @@ public class VEditSecretary extends JFrame {
 	 * @param usuarioLogado 
 	 * @param s 
 	 */
-	public VEditSecretary(Usuario usuarioLogado, Secretaria s) {
+	public VEditSecretary(MUser usuarioLogado, MSecretary s) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

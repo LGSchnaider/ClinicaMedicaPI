@@ -21,13 +21,13 @@ import javax.swing.JTable;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
-import controle.MedicoDAO;
-import controle.SecretariaDAO;
-import modelTabelas.MedicoTableModel;
-import modelTabelas.SecretariaTableModel;
-import modelo.Medico;
-import modelo.Secretaria;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CSecretaryDAO;
+import modelTabelas.MTMedicoTableModel;
+import modelTabelas.MTSecretariaTableModel;
+import modelo.MDoctor;
+import modelo.MSecretary;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
@@ -35,11 +35,11 @@ public class VListSecretary extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 
 	
 
-	public VListSecretary(Usuario usuarioLogado) {
+	public VListSecretary(MUser usuarioLogado) {
 		setTitle("Lista de Secretárias");
 		this.usuarioLogado = usuarioLogado;
 		
@@ -84,8 +84,8 @@ public class VListSecretary extends JFrame {
 		table = new JTable();
 		table.setForeground(new Color(19, 59, 93));
 		table.setOpaque(false);
-		SecretariaDAO mDAO = new SecretariaDAO();
-		SecretariaTableModel model = new SecretariaTableModel(mDAO.listaSecretaria());
+		CSecretaryDAO mDAO = new CSecretaryDAO();
+		MTSecretariaTableModel model = new MTSecretariaTableModel(mDAO.listaSecretaria());
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 
@@ -126,12 +126,12 @@ public class VListSecretary extends JFrame {
 
 				if (resposta == JOptionPane.YES_OPTION) {
 					int p = table.getSelectedRow();
-					SecretariaTableModel model = (SecretariaTableModel) table.getModel();
-					Secretaria a = model.getSecretaria(p);
+					MTSecretariaTableModel model = (MTSecretariaTableModel) table.getModel();
+					MSecretary a = model.getSecretaria(p);
 					// JOptionPane.showInputDialog(null);
-					SecretariaDAO mDAO = new SecretariaDAO();
+					CSecretaryDAO mDAO = new CSecretaryDAO();
 					mDAO.deletar(a);
-					model = new SecretariaTableModel(mDAO.listaSecretaria());
+					model = new MTSecretariaTableModel(mDAO.listaSecretaria());
 					table.setModel(model);
 					JOptionPane.showMessageDialog(null, "Secretáio(a) excluido(a) com sucesso");
 				}
@@ -163,8 +163,8 @@ public class VListSecretary extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma Secretaria");
 					return;
 				}
-				SecretariaTableModel model  = (SecretariaTableModel) table.getModel();
-				Secretaria s = model.getSecretaria(posicao);
+				MTSecretariaTableModel model  = (MTSecretariaTableModel) table.getModel();
+				MSecretary s = model.getSecretaria(posicao);
 				VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, null, s);
 				JFrame janela = new JFrame();
 				janela.getContentPane().add(tela);

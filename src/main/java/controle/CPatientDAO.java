@@ -9,18 +9,18 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import modelo.IPacienteDAO;
-import modelo.Medico;
-import modelo.Paciente;
-import modelo.TipoSexo;
-import modelo.Usuario;
+import modelo.MIPatientDAO;
+import modelo.MDoctor;
+import modelo.MPatient;
+import modelo.MTyperGender;
+import modelo.MUser;
 
-public class PacienteDAO implements IPacienteDAO {
+public class CPatientDAO implements MIPatientDAO {
 
 	@Override
-	public boolean inserir(Paciente p) {
+	public boolean inserir(MPatient p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 
 		// abrir conexao
 		con.conectar();
@@ -50,9 +50,9 @@ public class PacienteDAO implements IPacienteDAO {
 		return false;
 	}
 
-	public boolean atualizar(int id, Paciente p) {
+	public boolean atualizar(int id, MPatient p) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
 		try {
@@ -79,7 +79,7 @@ public class PacienteDAO implements IPacienteDAO {
 
 	public boolean deletar(long cpf) {
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
 		try {
@@ -100,13 +100,13 @@ public class PacienteDAO implements IPacienteDAO {
 
 	}
 
-	public ArrayList<Paciente> listaPaciente() {
+	public ArrayList<MPatient> listaPaciente() {
 
 		// Instacia classe Conexao
-		Conexao con = Conexao.getInstancia();
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
 
-		ArrayList<Paciente> Pacientes = new ArrayList<>();
+		ArrayList<MPatient> Pacientes = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
 			String query = "SELECT * FROM Paciente";
@@ -120,11 +120,11 @@ public class PacienteDAO implements IPacienteDAO {
 				String email = rs.getString("email");
 				int id = rs.getInt("id");
 				
-				Paciente p = new Paciente();
+				MPatient p = new MPatient();
 				p.setNome(nome);
 				p.setCpf(cpf);
 				p.setTelefone(telefone);
-				p.setSexo(TipoSexo.obterTipo(sexo));
+				p.setSexo(MTyperGender.obterTipo(sexo));
 				p.setEmail(email);
 				p.setIdPac(id);
 				Pacientes.add(p);
@@ -140,26 +140,26 @@ public class PacienteDAO implements IPacienteDAO {
 	}
 
 	@Override
-	public boolean atualizar(Paciente p) {
+	public boolean atualizar(MPatient p) {
 		return false;
 	}
 
 	@Override
-	public boolean deletar(Paciente p) {
+	public boolean deletar(MPatient p) {
 		return false;
 	}
 
-	public Paciente buscarPacientPorCpf(int cpf) {
-		Conexao con = Conexao.getInstancia();
+	public MPatient buscarPacientPorCpf(int cpf) {
+		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
-		Paciente p = null;
+		MPatient p = null;
 		try {
 			String query = "select * from paciente where cpf ="+cpf+";";
 			Statement stm = c.createStatement();
 			ResultSet rs = stm.executeQuery(query);
 
 			if (rs.next()) {
-				p = new Paciente();
+				p = new MPatient();
 				int id = rs.getInt("id");
 				String nome = rs.getString("nome");
 				long cpf1 = rs.getLong("cpf");
@@ -173,7 +173,7 @@ public class PacienteDAO implements IPacienteDAO {
 				p.setNome(nome);
 				p.setCpf(cpf1);
 				p.setTelefone(tel);
-				p.setSexo((TipoSexo.obterTipo(sexo)));
+				p.setSexo((MTyperGender.obterTipo(sexo)));
 				p.setEmail(email);
 
 			}

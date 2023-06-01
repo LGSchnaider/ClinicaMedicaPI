@@ -7,15 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import controle.MedicoDAO;
-import controle.PacienteDAO;
-import controle.SecretariaDAO;
-import controle.UsuarioDAO;
-import modelo.Paciente;
-import modelo.Secretaria;
-import modelo.TipoSexo;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
+import controle.CSecretaryDAO;
+import controle.CUserDAO;
+import modelo.MPatient;
+import modelo.MSecretary;
+import modelo.MTyperGender;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -47,13 +47,13 @@ public class VRegisterPatient extends JFrame {
 	private JTextField txtcpfP;
 	private JTextField txtTelefoneP;
 	private JTextField txtEmail;
-	private Usuario usuarioLogado;
+	private MUser usuarioLogado;
 
 	/**
 	 * Launch the application.
 	 */
 
-	public VRegisterPatient(Usuario usuarioLogado) {
+	public VRegisterPatient(MUser usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		
 //		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();
@@ -272,7 +272,7 @@ public class VRegisterPatient extends JFrame {
 							
 						String email = txtEmail.getText();
 	
-						Paciente paciente = new Paciente();
+						MPatient paciente = new MPatient();
 
 						// 2o passo: validar se texto é vazio ou nao
 						// se nao for vazio
@@ -367,7 +367,7 @@ public class VRegisterPatient extends JFrame {
 								return;
 							}else {
 								validarCampoTexto = true;
-								paciente.setSexo(TipoSexo.obterTipo(sexo));
+								paciente.setSexo(MTyperGender.obterTipo(sexo));
 						
 							}
 							
@@ -394,7 +394,7 @@ public class VRegisterPatient extends JFrame {
 						try {
 							// se passar em todas as validacoes
 							if (validarCampoTexto == true) {
-								PacienteDAO pdao = new PacienteDAO();
+								CPatientDAO pdao = new CPatientDAO();
 					
 								boolean validar = pdao.inserir(paciente);
 								if (validar == true) {

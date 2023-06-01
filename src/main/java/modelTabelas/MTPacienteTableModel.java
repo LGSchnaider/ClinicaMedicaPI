@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import modelo.Paciente;
+import modelo.MPatient;
 
 
-public class PacienteTableModel  extends AbstractTableModel {
+public class MTPacienteTableModel  extends AbstractTableModel {
     private String[] columnNames = { "Nome", "CPF"};
-    	private ArrayList<Paciente> listaPaciente;
+    	private ArrayList<MPatient> listaPaciente;
     	
-    	public PacienteTableModel(ArrayList<Paciente> listaPaciente) {
+    	public MTPacienteTableModel(ArrayList<MPatient> listaPaciente) {
 			this.listaPaciente = listaPaciente;
 		}
 
@@ -29,7 +29,7 @@ public class PacienteTableModel  extends AbstractTableModel {
         }
 
         public Object getValueAt(int row, int col) {
-        	Paciente pc = listaPaciente.get(row);
+        	MPatient pc = listaPaciente.get(row);
         	if(col == 0) {
         		return pc.getNome();
         	}else {
@@ -37,7 +37,7 @@ public class PacienteTableModel  extends AbstractTableModel {
         	}
         }
         
-        public Paciente getPaciente(int p) {
+        public MPatient getPaciente(int p) {
         	return listaPaciente.get(p);
         }
         

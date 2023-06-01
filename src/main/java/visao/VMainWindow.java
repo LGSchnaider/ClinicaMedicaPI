@@ -19,13 +19,13 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import controle.ConsultaDAO;
-import controle.MedicoDAO;
-import controle.PacienteDAO;
+import controle.CConsulationDAO;
+import controle.CDoctorDAO;
+import controle.CPatientDAO;
 import modelTabelas.MTMain;
-import modelTabelas.PacienteTableModel;
-import modelo.TipoUsuario;
-import modelo.Usuario;
+import modelTabelas.MTPacienteTableModel;
+import modelo.MTypeUser;
+import modelo.MUser;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -39,15 +39,15 @@ public class VMainWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTable visaoGeral;
-	private Usuario usuarioLogado;
-	private TipoUsuario tipoUsuarioLogado;
+	private MUser usuarioLogado;
+	private MTypeUser tipoUsuarioLogado;
 
 	/*
 	 * Construtor da classe
 	 */
-	public VMainWindow(Usuario u) {
+	public VMainWindow(MUser u) {
 		this.usuarioLogado = u;
-		tipoUsuarioLogado = TipoUsuario.getTipoUsuarioPorCodigo(usuarioLogado.getPerfil());
+		tipoUsuarioLogado = MTypeUser.getTipoUsuarioPorCodigo(usuarioLogado.getPerfil());
 
 		/*
 		 * Cria tela Admin
@@ -120,7 +120,7 @@ public class VMainWindow extends JFrame {
 				
 		visaoGeral = new JTable();
 		visaoGeral.setOpaque(false);
-		ConsultaDAO cDAO = new ConsultaDAO();
+		CConsulationDAO cDAO = new CConsulationDAO();
 		MTMain model = new MTMain(cDAO.listaConsulta());
 		visaoGeral.setModel(model);
 		scrollPane.setViewportView(visaoGeral);		
@@ -175,7 +175,7 @@ public class VMainWindow extends JFrame {
 		panel_2.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_2, "cell 2 3,grow");
 
-		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
+		if (tipoUsuarioLogado != MTypeUser.SEC_COMUM && tipoUsuarioLogado != MTypeUser.MED_COMUM) {
 
 			JButton btnNewButton_4 = new VModelButton("Usuário");
 			btnNewButton_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -271,7 +271,7 @@ public class VMainWindow extends JFrame {
 				"[28.00,grow][150.00,fill][150px,grow][150.00,fill][150.00,grow][150.00px,fill][30.00px,grow]",
 				"[33px,grow]"));
 
-		if (tipoUsuarioLogado != TipoUsuario.SEC_COMUM && tipoUsuarioLogado != TipoUsuario.MED_COMUM) {
+		if (tipoUsuarioLogado != MTypeUser.SEC_COMUM && tipoUsuarioLogado != MTypeUser.MED_COMUM) {
 
 			JButton btnNewButton_3 = new VModelButton("Listas de Médicos");
 			btnNewButton_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -303,7 +303,7 @@ public class VMainWindow extends JFrame {
 		});
 		panel_4.add(btnNewButton_6, "cell 3 0,growx,aligny center");
 
-		if (tipoUsuarioLogado != TipoUsuario.MED_COMUM && tipoUsuarioLogado != TipoUsuario.SEC_COMUM) {
+		if (tipoUsuarioLogado != MTypeUser.MED_COMUM && tipoUsuarioLogado != MTypeUser.SEC_COMUM) {
 
 			JButton btnListaSec = new VModelButton("Lista de Secretaria");
 			btnListaSec.addActionListener(new ActionListener() {
