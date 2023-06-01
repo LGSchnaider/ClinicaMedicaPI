@@ -27,7 +27,7 @@ public class VEditSecretary extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, null, s);
+		//VRegisterSecretary tela = new VRegisterSecretary(usuarioLogado, this, s);
 		setContentPane(contentPane);
 	}
 
