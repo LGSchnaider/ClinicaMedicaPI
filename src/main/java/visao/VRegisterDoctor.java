@@ -363,7 +363,12 @@ public class VRegisterDoctor extends JPanel {
 				// se nao for vazio
 				try {
 					if (nome != null && !nome.isEmpty()) {
+						if(containsNumber(nome)) {
+							JOptionPane.showMessageDialog(null, "O campo nome não pode conter numeros");
+							return;
+						}else {
 						medico.setNome(nome);
+						}
 					} else {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
@@ -530,4 +535,8 @@ public class VRegisterDoctor extends JPanel {
 		add(contentPane, BorderLayout.CENTER);
 
 	}
+	public boolean containsNumber(String text) {
+        return text.matches(".*\\d.*");
+    }
+	
 }
