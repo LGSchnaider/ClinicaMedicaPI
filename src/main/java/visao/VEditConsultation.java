@@ -10,17 +10,23 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 import controle.CConsulationDAO;
 import controle.CDoctorDAO;
@@ -36,7 +42,7 @@ public class VEditConsultation extends JFrame {
 	private JPanel contentPane;
 	private final JButton btnCad = new VModelButton("Cadastrar");
 	private JTextField txtDoenca;
-	private JTextField txtValor;
+	private JFormattedTextField txtValor;
 	private MUser usuarioLogado;
 	private JComboBox comboPasc;
 	private ArrayList<MPatient> listaPaciente;
@@ -59,10 +65,10 @@ public class VEditConsultation extends JFrame {
 	public VEditConsultation(MUser usuarioLogado, MConsultation c) {
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 562);
-		
+
 		BufferedImage bg = null;
 		;
 		try {
@@ -71,58 +77,59 @@ public class VEditConsultation extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		contentPane = new VBackGround(bg);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]", "[grow][grow][grow][grow][grow][grow][110.00][grow][35.00,grow][grow]"));
-		
+		contentPane.setLayout(new MigLayout("", "[grow,right][grow][grow]",
+				"[grow][grow][grow][grow][grow][grow][110.00][grow][35.00,grow][grow]"));
+
 		JLabel lblNewLabel = new JLabel("Editar Consulta");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
-		
+
 		JButton btnVolta = new VModelButton("Voltar");
 		btnVolta.setText("Cancelar");
 		btnVolta.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnVolta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VListConsultation frame = new VListConsultation(usuarioLogado); 
+				VListConsultation frame = new VListConsultation(usuarioLogado);
 				frame.setLocationRelativeTo(null);
 				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame.setVisible(true);
 			}
 		});
-		
+
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_6.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing,aligny center");
-		
+
 		comboPasc = new JComboBox();
 		comboPasc.addItem(null);
-		
+
 		CPatientDAO Pasc = new CPatientDAO();
 		listaPaciente = Pasc.listaPaciente();
 		for (MPatient paciente : listaPaciente) {
 			comboPasc.addItem(paciente);
-		} 
-		
+		}
+
 		contentPane.add(comboPasc, "cell 1 2,growx,aligny center");
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Data:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_1, "cell 0 3,aligny center");
-		
+
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		contentPane.add(panel, "cell 1 3,growx,aligny center");
 		panel.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow]"));
-		
-		cbDia = new JComboBox();	
+
+		cbDia = new JComboBox();
 		panel.add(cbDia, "cell 0 0,growx,aligny center");
 		cbDia.addItem("01");
 		cbDia.addItem("02");
@@ -131,7 +138,7 @@ public class VEditConsultation extends JFrame {
 		cbDia.addItem("05");
 		cbDia.addItem("06");
 		cbDia.addItem("07");
-		cbDia.addItem("08");	
+		cbDia.addItem("08");
 		cbDia.addItem("09");
 		cbDia.addItem("10");
 		cbDia.addItem("11");
@@ -152,11 +159,10 @@ public class VEditConsultation extends JFrame {
 		cbDia.addItem("26");
 		cbDia.addItem("27");
 		cbDia.addItem("28");
-		cbDia.addItem("29"); 
+		cbDia.addItem("29");
 		cbDia.addItem("30");
 		cbDia.addItem("31");
-		
-		
+
 		cbMes = new JComboBox();
 		panel.add(cbMes, "cell 1 0,growx,aligny center");
 		cbMes.addItem("JAN");
@@ -171,10 +177,10 @@ public class VEditConsultation extends JFrame {
 		cbMes.addItem("OUT");
 		cbMes.addItem("NOV");
 		cbMes.addItem("DEZ");
-		
+
 		cbAno = new JComboBox();
 		panel.add(cbAno, "cell 2 0,growx,aligny center");
-		
+
 		cbAno.addItem("2010");
 		cbAno.addItem("2011");
 		cbAno.addItem("2012");
@@ -196,20 +202,20 @@ public class VEditConsultation extends JFrame {
 		cbAno.addItem("2028");
 		cbAno.addItem("2029");
 		cbAno.addItem("2030");
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Hora:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_2, "cell 0 4,aligny center");
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
 		contentPane.add(panel_1, "cell 1 4,growx,aligny center");
 		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
-		
+
 		cbHora = new JComboBox();
 		panel_1.add(cbHora, "cell 0 0");
-		
+
 		cbHora.addItem("00");
 		cbHora.addItem("01");
 		cbHora.addItem("02");
@@ -233,10 +239,10 @@ public class VEditConsultation extends JFrame {
 		cbHora.addItem("20");
 		cbHora.addItem("21");
 		cbHora.addItem("22");
-		
+
 		cbMin = new JComboBox();
 		panel_1.add(cbMin, "cell 1 0,growx");
-		
+
 		cbMin.addItem("00");
 		cbMin.addItem("01");
 		cbMin.addItem("02");
@@ -297,59 +303,76 @@ public class VEditConsultation extends JFrame {
 		cbMin.addItem("57");
 		cbMin.addItem("58");
 		cbMin.addItem("59");
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 		contentPane.add(panel_3, "cell 0 5,grow");
-		panel_3.setLayout(new MigLayout("", "[46px,grow]", "[grow][14px,grow]"));
-		
+		panel_3.setLayout(new MigLayout("", "[46px,grow][]", "[grow][14px,grow]"));
+
 		JLabel lblNewLabel_3 = new JLabel("Medico:");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Valor:");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
 		contentPane.add(panel_2, "cell 1 5,grow");
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
-		
+
 		comboMed = new JComboBox();
 		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
-		
+
 		CDoctorDAO Med = new CDoctorDAO();
 		listaMedico = Med.listaMedico();
 		for (MDoctor Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
-		 
+
+		MaskFormatter maskFormatter = null;
+		try {
+			maskFormatter = new MaskFormatter("R$######,##");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		txtValor = new JFormattedTextField();
+		DecimalFormat decimal = new DecimalFormat("#,###,###.00");
+		NumberFormatter numFormatter = new NumberFormatter(decimal);
+		numFormatter.setFormat(decimal);
+		numFormatter.setAllowsInvalid(false);
+		DefaultFormatterFactory dfFactory = new DefaultFormatterFactory(numFormatter);
 		
-		txtValor = new JTextField();
+		txtValor.setFormatterFactory(dfFactory);
+		JLabel lblNewLabel_7 = new JLabel("R$");
+		panel_2.add(lblNewLabel_7, "flowx,cell 0 1");
+		lblNewLabel_7.setForeground(new Color(19, 59, 93));
+		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+		txtValor = new JFormattedTextField();
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
 		txtValor.setColumns(10);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("Observações:");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
-		
+
 		txaObser = new TextArea();
 		contentPane.add(txaObser, "cell 1 6,growx,aligny center");
 		contentPane.add(btnVolta, "cell 0 8,alignx center,aligny center");
 		btnCad.setText("Salvar");
-		
-		
+
 		btnCad.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-						
-				boolean validarCampoTexto = true;				
+
+				boolean validarCampoTexto = true;
 
 				String dia = String.valueOf(cbDia.getSelectedItem());
 
@@ -358,40 +381,39 @@ public class VEditConsultation extends JFrame {
 				String hora = String.valueOf(cbHora.getSelectedItem());
 				String min = String.valueOf(cbMin.getSelectedItem());
 				MDoctor medico = (MDoctor) comboMed.getSelectedItem();
-				
+
 				MPatient paciente = (MPatient) comboPasc.getSelectedItem();
-				
+
 				String valor = String.valueOf(txtValor.getText());
 				String Descricao = txaObser.getText();
 
 				MConsultation consulta = c;
-				
-				
-				if(valor !=null && !valor.isEmpty()) {
-					if(valor.equalsIgnoreCase("R$      ,  ")) {
-					JOptionPane.showMessageDialog(null, "Informe um valor");
-					txtValor.requestFocus();
-					return;
-				}else {
-					valor = valor.replace("R","");
-					valor = valor.replace("$","");
-					valor = valor.replace(",","");
-					String valorInt = String.valueOf(valor);
-					consulta.setValor(valorInt);
-				}
-				}else {
+
+				if (valor != null && !valor.isEmpty()) {
+					if (valor.equalsIgnoreCase("R$      ,  ")) {
+						JOptionPane.showMessageDialog(null, "Informe um valor");
+						txtValor.requestFocus();
+						return;
+					} else {
+						valor = valor.replace("R", "");
+						valor = valor.replace("$", "");
+						valor = valor.replace(",", "");
+						String valorInt = String.valueOf(valor);
+						consulta.setValor(valorInt);
+					}
+				} else {
 					validarCampoTexto = false;
 					JOptionPane.showMessageDialog(null, "Informe um valor");
 					txtValor.requestFocus();
 					return;
 				}
 
-				//try Paciente
+				// try Paciente
 				try {
-					if(paciente != null) {
+					if (paciente != null) {
 						int idp = paciente.getIdPac();
 						consulta.setIdPaciente(idp);
-					}else {
+					} else {
 						validarCampoTexto = false;
 						JOptionPane.showInternalMessageDialog(null, "O campo Paciente precisa ser preenchido");
 						comboPasc.requestFocus();
@@ -400,26 +422,26 @@ public class VEditConsultation extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				//Try Data
+				// Try Data
 				try {
-					if(dia != null && !dia.isEmpty()) {
-						if(mes != null && !mes.isEmpty()) {
-							if(ano != null && !ano.isEmpty()) {
-								String data = dia+"/"+mes+"/"+ano;
+					if (dia != null && !dia.isEmpty()) {
+						if (mes != null && !mes.isEmpty()) {
+							if (ano != null && !ano.isEmpty()) {
+								String data = dia + "/" + mes + "/" + ano;
 								consulta.setData(data);
-							}else {
+							} else {
 								validarCampoTexto = false;
 								JOptionPane.showInternalMessageDialog(null, "O campo Ano precisa ser preenchido");
 								cbAno.requestFocus();
 								return;
 							}
-						}else {
+						} else {
 							validarCampoTexto = false;
 							JOptionPane.showInternalMessageDialog(null, "O campo Mês precisa ser preenchido");
 							cbMes.requestFocus();
 							return;
 						}
-					}else {
+					} else {
 						validarCampoTexto = false;
 						JOptionPane.showInternalMessageDialog(null, "O campo Dia precisa ser preenchido");
 						cbDia.requestFocus();
@@ -428,20 +450,20 @@ public class VEditConsultation extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				
-				//Try Hora
+
+				// Try Hora
 				try {
 					if (hora != null) {
-						if(min != null) {
-							String horario = hora+":"+min;
+						if (min != null) {
+							String horario = hora + ":" + min;
 							consulta.setHora(horario);
-						}else {
+						} else {
 							validarCampoTexto = false;
 							JOptionPane.showInternalMessageDialog(null, "O campo Minuto precisa ser preenchido");
 							cbMin.requestFocus();
 							return;
 						}
-					}else {
+					} else {
 						validarCampoTexto = false;
 						JOptionPane.showInternalMessageDialog(null, "O campo Hora precisa ser preenchido");
 						cbHora.requestFocus();
@@ -450,13 +472,13 @@ public class VEditConsultation extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				
-				//Try Medico
+
+				// Try Medico
 				try {
-					if(medico != null) {
+					if (medico != null) {
 						int idm = medico.getId();
 						consulta.setIdMedico(idm);
-					}else {
+					} else {
 						validarCampoTexto = false;
 						JOptionPane.showInternalMessageDialog(null, "O campo Medico precisa ser preenchido");
 						comboMed.requestFocus();
@@ -465,13 +487,12 @@ public class VEditConsultation extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				
-				
-				//Try Obs.
+
+				// Try Obs.
 				try {
 					if (Descricao != null && !Descricao.isEmpty()) {
 						consulta.setObs(Descricao);
-					}else {
+					} else {
 						validarCampoTexto = false;
 						JOptionPane.showInternalMessageDialog(null, "O campo Descrição precisa ser preenchido");
 						txaObser.requestFocus();
@@ -479,11 +500,11 @@ public class VEditConsultation extends JFrame {
 					}
 				} catch (Exception e2) {
 					e2.printStackTrace();
-				}			
-				
-				//Passou pelas validações
+				}
+
+				// Passou pelas validações
 				try {
-					if (validarCampoTexto ==  true) {
+					if (validarCampoTexto == true) {
 						CConsulationDAO cdao = new CConsulationDAO();
 						boolean validar = cdao.edit(consulta);
 						if (validar == true) {
@@ -497,11 +518,9 @@ public class VEditConsultation extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				
-						
-		
+
 			}
-			
+
 		});
 		contentPane.add(btnCad, "cell 2 8,alignx center,aligny center");
 		fillInData(c);
@@ -511,7 +530,7 @@ public class VEditConsultation extends JFrame {
 		if (c != null) {
 			comboPasc.setSelectedIndex(c.getIdPaciente());
 			String d = c.getData();
-			String[] dma = d.split("/"); 
+			String[] dma = d.split("/");
 			String h = c.getHora();
 			String[] hm = h.split(":");
 			cbDia.setSelectedItem(dma[0]);
@@ -522,9 +541,8 @@ public class VEditConsultation extends JFrame {
 			comboMed.setSelectedIndex(c.getIdMedico());
 			txtValor.setText(String.valueOf(c.getValor()));
 			txaObser.setText(c.getObs());
-	}
-		
-	}
+		}
 
+	}
 
 }

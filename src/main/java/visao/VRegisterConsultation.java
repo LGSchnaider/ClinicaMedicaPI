@@ -380,7 +380,7 @@ public class VRegisterConsultation extends JFrame {
 
         
         
-		txtValor = new JFormattedTextField();
+		 txtValor = new JFormattedTextField();
 		 DecimalFormat decimal = new DecimalFormat("#,###,###.00");
          NumberFormatter numFormatter = new NumberFormatter(decimal);
          numFormatter.setFormat(decimal);

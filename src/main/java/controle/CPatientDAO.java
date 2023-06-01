@@ -146,6 +146,24 @@ public class CPatientDAO implements MIPatientDAO {
 
 	@Override
 	public boolean deletar(MPatient p) {
+		// Instacia classe Conexao
+		CConnection con = CConnection.getInstancia();
+		Connection c = con.conectar();
+
+		try {
+			String query = "DELETE FROM paciente WHERE cpf = ?;";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setLong(1, p.getCpf());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			con.fechaConexao();
+		}
 		return false;
 	}
 

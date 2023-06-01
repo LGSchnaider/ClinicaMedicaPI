@@ -132,12 +132,7 @@ public class VListPatient extends JFrame {
 					int p = table.getSelectedRow();
 					MTPacienteTableModel model = (MTPacienteTableModel) table.getModel();
 					MPatient a = model.getPaciente(p);
-					System.out.println(p);
-					System.out.println(a);
-					System.out.println(a.getNome());
-					System.out.println(a.getCpf());
-
-					CDoctorDAO mDAO = new CDoctorDAO();
+					CPatientDAO pDAO = new CPatientDAO();
 					pDAO.deletar(a);
 					model = new MTPacienteTableModel(pDAO.listaPaciente());
 					table.setModel(model);
