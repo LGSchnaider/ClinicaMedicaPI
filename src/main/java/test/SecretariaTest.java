@@ -3,14 +3,15 @@ package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
+import controll.CSecretaryDAO;
+import controll.CUserDAO;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-
-import controle.CSecretaryDAO;
-import controle.CUserDAO;
-import modelo.MSecretary;
+import model.MSecretary;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class SecretariaTest {
