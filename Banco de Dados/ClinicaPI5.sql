@@ -19,9 +19,9 @@ CREATE TABLE medico (
     FOREIGN KEY (usuario_idusuario) REFERENCES usuario (id));
 
 ALTER TABLE clinicapi.medico 
-ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE,
-ADD UNIQUE INDEX crm_UNIQUE (crm ASC) VISIBLE;
-;
+ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) ,
+ADD UNIQUE INDEX crm_UNIQUE (crm ASC) ;
+
 
 CREATE TABLE paciente (
   id INT NOT NULL AUTO_INCREMENT,
@@ -33,8 +33,8 @@ CREATE TABLE paciente (
   PRIMARY KEY (id));
   
   ALTER TABLE clinicapi.paciente 
-ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE;
-;
+ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) ;
+
 
 CREATE TABLE agenda_medico (
   id INT NOT NULL AUTO_INCREMENT,
@@ -42,11 +42,11 @@ CREATE TABLE agenda_medico (
   hora VARCHAR(5) NOT NULL,
   descricao VARCHAR(100) NOT NULL,
   valor BIGINT NOT NULL,
-  medico_id_medico INT NOT NULL,
+  medico_id_medico INT NOT NULL ,
   Paciente_id_paciente INT NOT NULL,
   PRIMARY KEY (id),
-    FOREIGN KEY (medico_id_medico) REFERENCES medico (id),
-    FOREIGN KEY (Paciente_id_paciente) REFERENCES paciente (id));
+    FOREIGN KEY (medico_id_medico) REFERENCES medico (id) ON DELETE CASCADE,
+    FOREIGN KEY (Paciente_id_paciente) REFERENCES paciente (id) ON DELETE CASCADE);
 
 CREATE TABLE medicamento (
   id INT NOT NULL AUTO_INCREMENT,
@@ -66,7 +66,7 @@ CREATE TABLE secretaria (
     FOREIGN KEY (usuario_idusuario) REFERENCES usuario (id));
     
 ALTER TABLE clinicapi.secretaria 
-ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE;
+ADD UNIQUE INDEX cpf_UNIQUE (cpf ASC);
 
 CREATE TABLE prontuario (
   id INT NOT NULL AUTO_INCREMENT,
@@ -83,7 +83,7 @@ CREATE TABLE medicamento_has_prontoario (
   medicamento_id_medicamento INT NOT NULL,
   prontoario_idprontoario INT NOT NULL,
   PRIMARY KEY (medicamento_id_medicamento, prontoario_idprontoario),
-    FOREIGN KEY (medicamento_id_medicamento)REFERENCES medicamento (id), 
+    FOREIGN KEY (medicamento_id_medicamento)REFERENCES medicamento (id)ON DELETE CASCADE, 
 	FOREIGN KEY (prontoario_idprontoario) REFERENCES prontuario (id));
     
  
@@ -114,5 +114,4 @@ insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, pacien
 insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/JAN/2016", "20:00", "SDAJ asjfl JASF", 214214, 2, 2);
 insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/MAI/2016", "10:20", "SDAJFDJ ksakdk SF", 214214, 2, 3);
 insert into agenda_medico(data, hora, descricao, valor, medico_id_medico, paciente_id_paciente) values ("12/JUN/2016", "19:10", "SDAJFDJA asdS Fasd", 214214, 5, 4);
-
 
