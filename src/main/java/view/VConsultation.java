@@ -366,7 +366,11 @@ public class VConsultation extends JFrame {
 		contentPane.add(btnPront, "cell 1 6,alignx center,aligny center");
 		contentPane.add(btnCad, "cell 2 6,alignx center,aligny center");
 		
-		txtValor.setText(c.getValor());
+		String v = String.valueOf(c.getValor());
+		String v1 = v.substring(v.length()-2);
+		String v2 = v.substring(0,v.length()-2);
+		String v3 = v2+","+v1;
+		txtValor.setText(v3);
 	}
 	
 

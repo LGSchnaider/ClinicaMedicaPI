@@ -11,8 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -333,27 +335,43 @@ public class VEditConsultation extends JFrame {
 		for (MDoctor Medico : listaMedico) {
 			comboMed.addItem(Medico);
 		}
+		Locale meuLocal = new Locale("pt", "BR");
 
+		NumberFormat format = NumberFormat.getCurrencyInstance(meuLocal);
+		format.setMaximumFractionDigits(0);
+		NumberFormatter formatter = new NumberFormatter(format);
+		formatter.setMinimum(5.0);
+		formatter.setMaximum(10000000.0);
+		// formatter.setAllowsInvalid(false);
+		// formatter.setOverwriteMode(true);
+
+		// Cria um MaskFormatter para a máscara de Real brasileiro
 		MaskFormatter maskFormatter = null;
 		try {
 			maskFormatter = new MaskFormatter("R$######,##");
 		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
+		// Cria um DefaultFormatterFactory com o MaskFormatter e DecimalFormat
+		// DefaultFormatterFactory formatterFactory = new DefaultFormatterFactory();
+
 		txtValor = new JFormattedTextField();
 		DecimalFormat decimal = new DecimalFormat("#,###,###.00");
 		NumberFormatter numFormatter = new NumberFormatter(decimal);
 		numFormatter.setFormat(decimal);
 		numFormatter.setAllowsInvalid(false);
 		DefaultFormatterFactory dfFactory = new DefaultFormatterFactory(numFormatter);
-		
-		txtValor.setFormatterFactory(dfFactory);
+
 		JLabel lblNewLabel_7 = new JLabel("R$");
-		panel_2.add(lblNewLabel_7, "flowx,cell 0 1");
 		lblNewLabel_7.setForeground(new Color(19, 59, 93));
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		panel_2.add(lblNewLabel_7, "flowx,cell 0 1");
 
-		txtValor = new JFormattedTextField();
+		txtValor.setFormatterFactory(dfFactory);
+
+		txtValor.setForeground(new Color(19, 59, 93));
 		txtValor.setToolTipText("");
 		panel_2.add(txtValor, "cell 0 1,growx,aligny center");
 		txtValor.setColumns(10);
@@ -539,7 +557,11 @@ public class VEditConsultation extends JFrame {
 			cbHora.setSelectedItem(hm[0]);
 			cbMin.setSelectedItem(hm[1]);
 			comboMed.setSelectedIndex(c.getIdMedico());
-			txtValor.setText(String.valueOf(c.getValor()));
+			String v = String.valueOf(c.getValor());
+			String v1 = v.substring(v.length()-2);
+			String v2 = v.substring(0,v.length()-2);
+			String v3 = v2+","+v1;
+			txtValor.setText(v3);
 			txaObser.setText(c.getObs());
 		}
 

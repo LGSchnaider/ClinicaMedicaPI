@@ -74,18 +74,17 @@ public class VEditPatient extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[42.00,grow][42.00,grow][690px][51.00,grow][39.00,grow]",
-				"[44.00,grow][391px,grow][grow][28.00]"));
+		contentPane.setLayout(new MigLayout("", "[42.00,grow][][42.00,grow][690px][][][][][][][51.00,grow][39.00,grow]", "[44.00,grow][391px,grow][grow][28.00]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Atualizar Paciente");
 		lblNewLabel_5.setForeground(new Color(19, 59, 93));
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 50));
-		contentPane.add(lblNewLabel_5, "cell 2 0,alignx center,growy");
+		contentPane.add(lblNewLabel_5, "cell 3 0,alignx center,growy");
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		panel.setBackground(new Color(0, 156, 156));
-		contentPane.add(panel, "cell 2 1,grow");
+		contentPane.add(panel, "cell 3 1,grow");
 		panel.setLayout(new MigLayout("", "[pref!][321.00][pref!]", "[grow][117.00][66.00,grow][80.00]"));
 
 		JPanel panel_1 = new JPanel();
@@ -210,156 +209,158 @@ public class VEditPatient extends JFrame {
 
 		JPanel panel_6 = new JPanel();
 		panel_6.setOpaque(false);
-		contentPane.add(panel_6, "flowx,cell 2 2,growx,aligny center");
-
-		JButton btnInserir = new VModelButton("Atualizar");
-		btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		btnInserir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				boolean validarCampoTexto = true;
-
-				// 1o passo: pegar o texto dos campos de texto
-				String nome = txtNome.getText();
-				String telefone = txtTelefone.getText();
-				String sexo = (String) cbSexo.getSelectedItem();
-				String email = txtEmail.getText();
-
-				MPatient paciente = new MPatient();
-
-				// 2o passo: validar se texto é vazio ou nao
-				// se nao for vazio
-
-				try {
-					if (nome != null && !nome.isEmpty()) {
-						paciente.setNome(nome);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
-						txtNome.requestFocus();
-						return;
+		contentPane.add(panel_6, "flowx,cell 3 2,growx,aligny center");
+		
+				JButton btnVoltar = new VModelButton("Voltar");
+				btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+				btnVoltar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+						VListPatient frame = new VListPatient(usuarioLogado);
+						frame.setLocationRelativeTo(null);
+						frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+						frame.setVisible(true);
 					}
+				});
+		
+				JButton btnInserir = new VModelButton("Atualizar");
+				btnInserir.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+				btnInserir.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
 
-				} catch (Exception e2) {
+						boolean validarCampoTexto = true;
 
-				}
+						// 1o passo: pegar o texto dos campos de texto
+						String nome = txtNome.getText();
+						String telefone = txtTelefone.getText();
+						String sexo = (String) cbSexo.getSelectedItem();
+						String email = txtEmail.getText();
 
-				try {
+						MPatient paciente = new MPatient();
 
-					if (telefone != null && !telefone.isEmpty()) {
-						String telefones = telefone.replace(")", ""); // forma feia mas facil
-						telefones = telefones.replace("(", ""); // forma feia mas facil
-						telefones = telefones.replace("-", "");
-						telefones = telefones.replace(" ", "");
-						telefones = telefones.strip();
-						// if (telefone.equalsIgnoreCase("( ) - ")) {
-						if (telefones.isEmpty()) {
-							JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
-							txtTelefone.requestFocus();
-							return;
-						} else {
-							// 3o passo: o que tem mascara usar o metodo REPLACE da String
+						// 2o passo: validar se texto é vazio ou nao
+						// se nao for vazio
 
-							// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
-							// (valueOf)
-							Long telefoneInt = Long.valueOf(telefones);
+						try {
+							if (nome != null && !nome.isEmpty()) {
+								paciente.setNome(nome);
+							} else {
+								validarCampoTexto = false;
+								JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
+								txtNome.requestFocus();
+								return;
+							}
 
-							// setar no obj
-							paciente.setTelefone(telefoneInt);
+						} catch (Exception e2) {
+
 						}
 
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
-						txtTelefone.requestFocus();
-						return;
-					}
+						try {
 
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+							if (telefone != null && !telefone.isEmpty()) {
+								String telefones = telefone.replace(")", ""); // forma feia mas facil
+								telefones = telefones.replace("(", ""); // forma feia mas facil
+								telefones = telefones.replace("-", "");
+								telefones = telefones.replace(" ", "");
+								telefones = telefones.strip();
+								// if (telefone.equalsIgnoreCase("( ) - ")) {
+								if (telefones.isEmpty()) {
+									JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+									txtTelefone.requestFocus();
+									return;
+								} else {
+									// 3o passo: o que tem mascara usar o metodo REPLACE da String
 
-				try {
-					if (cbSexo.getSelectedIndex() == 0) {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
-						cbSexo.requestFocus();
-						return;
-					} else {
-						validarCampoTexto = true;
-						paciente.setSexo(MTyperGender.obterTipo(sexo));
+									// 4o passo: conversao de tipo pras variaveis que precisa (numeros) --- casting
+									// (valueOf)
+									Long telefoneInt = Long.valueOf(telefones);
 
-					}
+									// setar no obj
+									paciente.setTelefone(telefoneInt);
+								}
 
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+							} else {
+								validarCampoTexto = false;
+								JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
+								txtTelefone.requestFocus();
+								return;
+							}
 
-				try {
-					if (email != null && !email.isEmpty()) {
-						paciente.setEmail(email);
-					} else {
-						validarCampoTexto = false;
-						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
-						txtEmail.requestFocus();
-						return;
-					}
-
-				} catch (Exception e2) {
-
-				}
-
-				// se passar em todas as validacoes
-				try {
-					// se passar em todas as validacoes
-					if (validarCampoTexto == true) {
-						CPatientDAO pdao = new CPatientDAO();
-
-						boolean validar = pdao.atualizar(paciente);
-						if (validar == true) {
-							// exibir uma mensagem de cadastro com sucesso
-							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
-						} else {
-							// exibir mensagem de erro ao cadastrar
-							JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente");
+						} catch (Exception e2) {
+							e2.printStackTrace();
 						}
+
+						try {
+							if (cbSexo.getSelectedIndex() == 0) {
+								validarCampoTexto = false;
+								JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
+								cbSexo.requestFocus();
+								return;
+							} else {
+								validarCampoTexto = true;
+								paciente.setSexo(MTyperGender.obterTipo(sexo));
+
+							}
+
+						} catch (Exception e2) {
+							e2.printStackTrace();
+						}
+
+						try {
+							if (email != null && !email.isEmpty()) {
+								paciente.setEmail(email);
+							} else {
+								validarCampoTexto = false;
+								JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
+								txtEmail.requestFocus();
+								return;
+							}
+
+						} catch (Exception e2) {
+
+						}
+
+						// se passar em todas as validacoes
+						try {
+							// se passar em todas as validacoes
+							if (validarCampoTexto == true) {
+								CPatientDAO pdao = new CPatientDAO();
+
+								boolean validar = pdao.atualizar(paciente);
+								if (validar == true) {
+									// exibir uma mensagem de cadastro com sucesso
+									JOptionPane.showMessageDialog(null, "Editado com sucesso");
+								} else {
+									// exibir mensagem de erro ao cadastrar
+									JOptionPane.showMessageDialog(null, "Erro ao editar Paciente");
+								}
+							}
+
+						} catch (Exception e2) {
+							e2.printStackTrace();
+						}
+
 					}
-
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-
-			}
-		});
-
-		JButton btnVoltar = new VModelButton("Voltar");
-		btnVoltar.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+				});
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup().addGap(62)
-						.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(397).addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(46)));
-		gl_panel_6.setVerticalGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGap(41)
+					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+					.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(73))
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnInserir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(19, Short.MAX_VALUE))
+		);
 		panel_6.setLayout(gl_panel_6);
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				VListPatient frame = new VListPatient(usuarioLogado);
-				frame.setLocationRelativeTo(null);
-				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame.setVisible(true);
-			}
-		});
 	}
 
 	private void preencherDados(MPatient d) {

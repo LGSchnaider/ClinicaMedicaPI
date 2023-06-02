@@ -171,7 +171,10 @@ public class VListConsultation extends JFrame {
 				MTConsultaTableModel model  = (MTConsultaTableModel) table.getModel();
 				MConsultation c = model.getConsulta(position);
 				String obs = c.getObs();
-				JOptionPane.showMessageDialog(null, obs);
+				
+				VObservation frame = new VObservation(obs);
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
 			}
 		});
 		btnObs.setText("Ver observações");

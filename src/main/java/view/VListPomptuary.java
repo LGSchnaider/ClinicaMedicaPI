@@ -42,6 +42,7 @@ public class VListPomptuary extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE );
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(140, 166, 189));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -53,21 +54,21 @@ public class VListPomptuary extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setForeground(new Color(19, 59, 93));
-		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
-		table.setOpaque(false);
+		table.setBackground(new Color(255, 255, 255));
 		CPromptuaryDAO prDAO = new CPromptuaryDAO();
 		MTPromptuary model = new MTPromptuary(prDAO.listaPronptuary(idp));
 		table.setModel(model);
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(140, 166, 189));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Ver observações");
+		JButton btnNewButton = new VModelButton("Ver observações");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int position = table.getSelectedRow();
@@ -78,7 +79,10 @@ public class VListPomptuary extends JFrame {
 				MTPromptuary model  = (MTPromptuary) table.getModel();
 				MPromptuary p = model.getPromptuary(position);
 				String obs = p.getObs();
-				JOptionPane.showMessageDialog(null, obs);
+
+				VObservation frame = new VObservation(obs);
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
 			}
 		});
 		panel.add(btnNewButton);
