@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import controle.CDoctorDAO;
-import controle.CPatientDAO;
-import controle.CUserDAO;
-import modelo.MDoctor;
-import modelo.MPatient;
-import modelo.MTyperGender;
+import controll.CDoctorDAO;
+import controll.CPatientDAO;
+import controll.CUserDAO;
+import model.MDoctor;
+import model.MPatient;
+import model.MTyperGender;
 
 class PacienteTest {
 
