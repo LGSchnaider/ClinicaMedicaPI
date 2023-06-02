@@ -144,10 +144,12 @@ public class VListDoctor extends JFrame {
 					System.out.println(a.getUsuario().getIdusuario());
 					// JOptionPane.showInputDialog(null);
 					CDoctorDAO mDAO = new CDoctorDAO();
-					mDAO.deletar(a);
 					model = new MTMedicoTableModel(mDAO.listaMedico());
 					table.setModel(model);
-					JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
+					if(mDAO.deletar(a)) {
+						JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
+					}
+
 				}
 			}
 		});

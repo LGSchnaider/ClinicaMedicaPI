@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import model.MDoctor;
 import model.MIDoctorDAO;
@@ -138,8 +141,10 @@ public class CDoctorDAO implements MIDoctorDAO {
 			stm.executeUpdate();
 			return true;
 
-		} catch (SQLException e) {
-
+		}catch (SQLIntegrityConstraintViolationException e) {
+			JOptionPane.showMessageDialog(null, "O médico possuí uma consulta agendada");
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fechaConexao();
@@ -186,8 +191,8 @@ public class CDoctorDAO implements MIDoctorDAO {
 				p.setUsuario(u);
 			}
 
-		} catch (SQLException e) {
-
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			con.fechaConexao();
