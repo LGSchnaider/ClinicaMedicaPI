@@ -68,7 +68,8 @@ public class VRegisterDoctor extends JPanel {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		// setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[212.00,grow][224.00][196.00,grow]", "[70.00,grow][59.00][55.00][48.00][55.00][27.00][grow]"));
+		contentPane.setLayout(new MigLayout("", "[212.00,grow][224.00][196.00,grow]",
+				"[70.00,grow][59.00][55.00][48.00][55.00][27.00][grow]"));
 
 		JLabel lblNewLabel = new JLabel("Cadastrar Médico");
 		lblNewLabel.setForeground(new Color(19, 59, 93));
@@ -105,31 +106,25 @@ public class VRegisterDoctor extends JPanel {
 		lblNewLabel_1.setForeground(new Color(19, 59, 93));
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1)
+		gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_1
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel_1)
 						.addComponent(txtNomeMed, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
-					.addGap(47)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGap(47)
+				.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(txtCPFMed, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE))
-					.addGap(62))
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(5)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblNewLabel_2))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtNomeMed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCPFMed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-		);
+				.addGap(62)));
+		gl_panel_1.setVerticalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup().addGap(5)
+						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE).addComponent(lblNewLabel_1)
+								.addComponent(lblNewLabel_2))
+						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtNomeMed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtCPFMed, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))));
 		panel_1.setLayout(gl_panel_1);
 
 		textField_2 = new JFormattedTextField();
@@ -186,38 +181,33 @@ public class VRegisterDoctor extends JPanel {
 
 		lblNewLabel_3.setForeground(new Color(19, 59, 93));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		
+
 		JLabel lblNewLabel_3_1 = new JLabel("UF:");
 		lblNewLabel_3_1.setForeground(new Color(19, 59, 93));
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_3_1)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_3)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
-					.addGap(68))
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_3))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel_3_1)
+								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel_3)
+								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
+						.addGap(68)));
+		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel_3_1, GroupLayout.PREFERRED_SIZE, 30,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_3))
+						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cbEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtCRM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
 		panel_2.setLayout(gl_panel_2);
 
 		JPanel panel_3 = new JPanel();
@@ -241,32 +231,29 @@ public class VRegisterDoctor extends JPanel {
 		pswSenha.setForeground(new Color(19, 59, 93));
 		pswSenha.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
-					.addGap(48)
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE))
-					.addGap(66))
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_3.createSequentialGroup()
-					.addGap(22)
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE))
+						.addGap(48)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 95,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE))
+						.addGap(66)));
+		gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_3
+				.createSequentialGroup().addGap(22)
+				.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)
 						.addComponent(lblNewLabel_4_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addGroup(gl_panel_3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
 						.addComponent(pswSenha, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+				.addContainerGap()));
 		panel_3.setLayout(gl_panel_3);
 
 		textField_2 = new JFormattedTextField();
@@ -282,41 +269,37 @@ public class VRegisterDoctor extends JPanel {
 		JLabel lblNewLabel_6 = new JLabel("Confirme Senha:");
 		lblNewLabel_6.setForeground(new Color(19, 59, 93));
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		
-				JLabel lblNewLabel_7 = new JLabel("Perfil:");
-				lblNewLabel_7.setForeground(new Color(19, 59, 93));
-				lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		
-				// TODO codigo do combobox usando enum
-				JComboBox<MTypeUser> comboBox = new JComboBox<>();
-				comboBox.setForeground(new Color(19, 59, 93));
-				comboBox.setEditable(false);
-				comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+
+		JLabel lblNewLabel_7 = new JLabel("Perfil:");
+		lblNewLabel_7.setForeground(new Color(19, 59, 93));
+		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD, 30));
+
+		// TODO codigo do combobox usando enum
+		JComboBox<MTypeUser> comboBox = new JComboBox<>();
+		comboBox.setForeground(new Color(19, 59, 93));
+		comboBox.setEditable(false);
+		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
-		gl_panel_4.setHorizontalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_4.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+		gl_panel_4.setHorizontalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING).addGroup(gl_panel_4
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE))
-					.addGap(52)
-					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGap(52)
+				.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_7, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-					.addGap(70))
-		);
-		gl_panel_4.setVerticalGroup(
-			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGap(70)));
+		gl_panel_4.setVerticalGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_4.createSequentialGroup()
-					.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_6)
-						.addComponent(lblNewLabel_7))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-						.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-		);
+						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE).addComponent(lblNewLabel_6)
+								.addComponent(lblNewLabel_7))
+						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
+								.addComponent(pswConfirmarSenha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE))));
 		panel_4.setLayout(gl_panel_4);
 		for (MTypeUser tipo : MTypeUser.getTiposMedico()) {
 			comboBox.addItem(tipo);
@@ -363,11 +346,11 @@ public class VRegisterDoctor extends JPanel {
 				// se nao for vazio
 				try {
 					if (nome != null && !nome.isEmpty()) {
-						if(containsNumber(nome)) {
+						if (containsNumber(nome)) {
 							JOptionPane.showMessageDialog(null, "O campo nome não pode conter numeros");
 							return;
-						}else {
-						medico.setNome(nome);
+						} else {
+							medico.setNome(nome);
 						}
 					} else {
 						validarCampoTexto = false;
@@ -407,6 +390,18 @@ public class VRegisterDoctor extends JPanel {
 						return;
 					}
 
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+
+				try {
+					if (estado != "  ") {
+						medico.setUf(estado);
+					} else {
+						validarCampoTexto = false;
+						JOptionPane.showMessageDialog(null, "O campo UF precisa ser preenchido");
+						return;
+					}
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
@@ -511,32 +506,29 @@ public class VRegisterDoctor extends JPanel {
 			}
 		});
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
-					.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(86))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.TRAILING).addGroup(gl_panel
+				.createSequentialGroup().addContainerGap()
+				.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
+				.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(86)));
+		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup().addContainerGap()
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnCad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnVoltar, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap()));
 		panel.setLayout(gl_panel);
 
 		setLayout(new BorderLayout());
 		add(contentPane, BorderLayout.CENTER);
 
 	}
+
 	public boolean containsNumber(String text) {
-        return text.matches(".*\\d.*");
-    }
-	
+		return text.matches(".*\\d.*");
+	}
+
 }

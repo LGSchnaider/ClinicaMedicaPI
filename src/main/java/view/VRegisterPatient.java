@@ -33,6 +33,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -279,7 +281,12 @@ public class VRegisterPatient extends JFrame {
 
 						try {
 							if (nome != null && !nome.isEmpty()) {
+								if(containsNumber(nome)) {
+									JOptionPane.showMessageDialog(null, "O campo nome não pode conter numeros");
+									return;
+								}else {
 								paciente.setNome(nome);
+								}
 							} else {
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
@@ -377,7 +384,12 @@ public class VRegisterPatient extends JFrame {
 						
 						try {
 							if (email != null && !email.isEmpty()) {
-								paciente.setEmail(email);
+								if (isValidEmail(email)) {
+									paciente.setEmail(email);
+								} else {
+									JOptionPane.showMessageDialog(null, "Email inválido");
+									return;
+								}
 							} else {
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
@@ -433,5 +445,17 @@ public class VRegisterPatient extends JFrame {
 					.addContainerGap(34, Short.MAX_VALUE))
 		);
 		panel_4.setLayout(gl_panel_4);
+	}
+	public boolean containsNumber(String text) {
+        return text.matches(".*\\d.*");
+    }
+	public static boolean isValidEmail(String email) {
+		String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+		Pattern pattern = Pattern.compile(regex);
+
+		Matcher matcher = pattern.matcher(email);
+
+		return matcher.matches();
 	}
 }

@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
@@ -99,20 +101,18 @@ public class VRegisterSecretary extends JPanel {
 		contentPane.add(panel_2, "cell 1 0,alignx center,aligny center");
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		
-		
-		if(s==null) {
-		JLabel lblNewLabel_4 = new JLabel("Cadastrar Secretária");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setForeground(new Color(19, 59, 93));
-		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
-		panel_2.add(lblNewLabel_4);
-		}else {
-		JLabel lblNewLabel_4 = new JLabel("Editar Secretária");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setForeground(new Color(19, 59, 93));
-		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
-		panel_2.add(lblNewLabel_4);
+		if (s == null) {
+			JLabel lblNewLabel_4 = new JLabel("Cadastrar Secretária");
+			lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_4.setForeground(new Color(19, 59, 93));
+			lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
+			panel_2.add(lblNewLabel_4);
+		} else {
+			JLabel lblNewLabel_4 = new JLabel("Editar Secretária");
+			lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_4.setForeground(new Color(19, 59, 93));
+			lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
+			panel_2.add(lblNewLabel_4);
 		}
 
 		panel_4 = new JPanel();
@@ -168,7 +168,7 @@ public class VRegisterSecretary extends JPanel {
 		panel_9.setOpaque(false);
 		contentPane.add(panel_9, "cell 1 2,alignx center,aligny center");
 
-		//txtCPF = new JFormattedTextField(formatter);
+		// txtCPF = new JFormattedTextField(formatter);
 		try {
 			formatter = new MaskFormatter("###.###.###-##");
 		} catch (ParseException e2) {
@@ -274,11 +274,9 @@ public class VRegisterSecretary extends JPanel {
 		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
-		
-		
 		cbFuncao.setForeground(new Color(19, 59, 93));
 		cbFuncao.setEditable(false);
-		
+
 		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		contentPane.add(cbFuncao, "cell 1 8,growx,aligny center");
 
@@ -320,28 +318,28 @@ public class VRegisterSecretary extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				// esse if pode mudar, mas fica assim por enquanto
-				
+
 				if (s == null) {
-					
+
 					VMainWindow frame = new VMainWindow(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					janela.dispose();
 				} else {
-					
+
 					VListSecretary frame = new VListSecretary(usuarioLogado);
 					frame.setLocationRelativeTo(null);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					janela.dispose();
 				}
-		
+
 			}
 		});
 
 		btnregistrar = new VModelButton("Registrar");
-		
+
 		if (s == null) {
 			btnregistrar.setText("Registrar");
 
@@ -374,7 +372,12 @@ public class VRegisterSecretary extends JPanel {
 
 				try {
 					if (nome != null && !nome.isEmpty()) {
-						secretaria.setNome(nome);
+						if (containsNumber(nome)) {
+							JOptionPane.showMessageDialog(null, "O campo nome não pode conter numeros");
+							return;
+						} else {
+							secretaria.setNome(nome);
+						}
 					} else {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
@@ -445,7 +448,12 @@ public class VRegisterSecretary extends JPanel {
 				}
 				try {
 					if (Email != null && !Email.isEmpty()) {
-						secretaria.setEmail(Email);
+						if (isValidEmail(Email)) {
+							secretaria.setEmail(Email);
+						} else {
+							JOptionPane.showMessageDialog(null, "Email inválido");
+							return;
+						}
 					} else {
 						validarCampoTexto = false;
 						JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
@@ -532,6 +540,7 @@ public class VRegisterSecretary extends JPanel {
 
 							udao.atualizar(secretaria.getUsuario());
 							sdao.atualizar(secretaria);
+							JOptionPane.showMessageDialog(null, "Secretário(a) editada com sucesso.");
 
 							return;
 
@@ -569,7 +578,7 @@ public class VRegisterSecretary extends JPanel {
 
 	protected void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void preencheDados(MSecretary s) {
@@ -580,9 +589,9 @@ public class VRegisterSecretary extends JPanel {
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
-			
-			cbFuncao.setSelectedIndex((s.getUsuario().getPerfil())-3);
-			
+
+			cbFuncao.setSelectedIndex((s.getUsuario().getPerfil()) - 3);
+
 			MaskFormatter formatter = null;
 			try {
 				formatter = new MaskFormatter("(##) #####-####");
@@ -609,5 +618,19 @@ public class VRegisterSecretary extends JPanel {
 			}
 		}
 
+	}
+
+	public boolean containsNumber(String text) {
+		return text.matches(".*\\d.*");
+	}
+
+	public static boolean isValidEmail(String email) {
+		String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+		Pattern pattern = Pattern.compile(regex);
+
+		Matcher matcher = pattern.matcher(email);
+
+		return matcher.matches();
 	}
 }

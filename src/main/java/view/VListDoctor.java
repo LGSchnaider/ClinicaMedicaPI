@@ -138,10 +138,6 @@ public class VListDoctor extends JFrame {
 					MTMedicoTableModel model = (MTMedicoTableModel) table.getModel();
 
 					MDoctor a = model.getMedico(p);
-					System.out.println(p);
-					System.out.println(a);
-					System.out.println(a.getUsuario());
-					System.out.println(a.getUsuario().getIdusuario());
 					// JOptionPane.showInputDialog(null);
 					CDoctorDAO mDAO = new CDoctorDAO();
 					model = new MTMedicoTableModel(mDAO.listaMedico());
