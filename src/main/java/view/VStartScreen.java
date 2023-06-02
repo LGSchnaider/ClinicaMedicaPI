@@ -295,7 +295,4 @@ public class VStartScreen extends JFrame {
 
 	}
 
-	private void verificaCampoTexto() {
-
-	}
 }

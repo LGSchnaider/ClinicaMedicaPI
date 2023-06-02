@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import controll.CConsulationDAO;
 import controll.CPromptuaryDAO;
+import model.MConsultation;
+import model.MPromptuary;
 import model.MUser;
 import modelTabel.MTConsultaTableModel;
 import modelTabel.MTPromptuary;
@@ -19,8 +21,11 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VListPomptuary extends JFrame {
 
@@ -63,6 +68,19 @@ public class VListPomptuary extends JFrame {
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Ver observações");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int position = table.getSelectedRow();
+				if(position == -1) {
+					JOptionPane.showMessageDialog(null, "Selecione uma consulta");
+					return;
+				}
+				MTPromptuary model  = (MTPromptuary) table.getModel();
+				MPromptuary p = model.getPromptuary(position);
+				String obs = p.getObs();
+				JOptionPane.showMessageDialog(null, obs);
+			}
+		});
 		panel.add(btnNewButton);
 		
 
