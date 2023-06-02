@@ -61,6 +61,7 @@ public class VRegisterSecretary extends JPanel {
 	private JPanel panel_9;
 	private JTextField txtTelefone;
 	private JPanel panel_2;
+	private JComboBox<MTypeUser> cbFuncao = new JComboBox<>();
 
 	/**
 	 * Launch the application.
@@ -98,11 +99,21 @@ public class VRegisterSecretary extends JPanel {
 		contentPane.add(panel_2, "cell 1 0,alignx center,aligny center");
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
+		
+		
+		if(s==null) {
 		JLabel lblNewLabel_4 = new JLabel("Cadastrar Secretária");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setForeground(new Color(19, 59, 93));
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		panel_2.add(lblNewLabel_4);
+		}else {
+		JLabel lblNewLabel_4 = new JLabel("Editar Secretária");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setForeground(new Color(19, 59, 93));
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 40));
+		panel_2.add(lblNewLabel_4);
+		}
 
 		panel_4 = new JPanel();
 		panel_4.setOpaque(false);
@@ -263,10 +274,13 @@ public class VRegisterSecretary extends JPanel {
 		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 
-		JComboBox<MTypeUser> cbFuncao = new JComboBox<>();
+		
+		
 		cbFuncao.setForeground(new Color(19, 59, 93));
-		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		cbFuncao.setEditable(false);
+		
+		cbFuncao.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		contentPane.add(cbFuncao, "cell 1 8,growx,aligny center");
 
 		lblNewLabel_1 = new JLabel("Confirme Senha:");
 		lblNewLabel_1.setForeground(new Color(19, 59, 93));
@@ -327,7 +341,7 @@ public class VRegisterSecretary extends JPanel {
 		});
 
 		btnregistrar = new VModelButton("Registrar");
-		btnregistrar.setText("Cadastrar");
+		
 		if (s == null) {
 			btnregistrar.setText("Registrar");
 
@@ -483,7 +497,7 @@ public class VRegisterSecretary extends JPanel {
 					MTypeUser perfilU = (MTypeUser) cbFuncao.getSelectedItem();
 					if (perfilU.equals(MTypeUser.SEC_COMUM)) {
 						secretaria.getUsuario().setPefil(3);
-					} else {
+					} else if (perfilU.equals(MTypeUser.SEC_ADMIN)) {
 						secretaria.getUsuario().setPefil(2);
 					}
 
@@ -566,6 +580,9 @@ public class VRegisterSecretary extends JPanel {
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
+			
+			cbFuncao.setSelectedIndex((s.getUsuario().getPerfil())-3);
+			
 			MaskFormatter formatter = null;
 			try {
 				formatter = new MaskFormatter("(##) #####-####");
