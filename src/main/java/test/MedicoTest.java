@@ -3,13 +3,15 @@ package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
+import controll.CDoctorDAO;
+import controll.CUserDAO;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import controle.CDoctorDAO;
-import controle.CUserDAO;
-import modelo.MDoctor;
+import model.MDoctor;
 
 @TestMethodOrder(OrderAnnotation.class)
 class MedicoTest {
