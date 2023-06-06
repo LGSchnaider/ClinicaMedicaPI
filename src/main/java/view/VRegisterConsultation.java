@@ -438,6 +438,7 @@ public class VRegisterConsultation extends JFrame {
 						valor = valor.replace("R", "");
 						valor = valor.replace("$", "");
 						valor = valor.replace(",", "");
+						valor = valor.replace(".", "");
 						String valorInt = String.valueOf(valor);
 						consulta.setValor(valorInt);
 					}
