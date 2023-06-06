@@ -45,7 +45,7 @@ CREATE TABLE agenda_medico (
   medico_id_medico INT NOT NULL ,
   Paciente_id_paciente INT NOT NULL,
   PRIMARY KEY (id),
-    FOREIGN KEY (medico_id_medico) REFERENCES medico (id) ON DELETE CASCADE,
+    FOREIGN KEY (medico_id_medico) REFERENCES medico (id),
     FOREIGN KEY (Paciente_id_paciente) REFERENCES paciente (id) ON DELETE CASCADE);
 
 CREATE TABLE medicamento (
