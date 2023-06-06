@@ -28,7 +28,7 @@ public class VObservation extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBackground(new Color(16, 59, 93));
+		lblNewLabel.setBackground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.CENTER);

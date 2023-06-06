@@ -88,7 +88,7 @@ public class VEditConsultation extends JFrame {
 				"[grow][grow][grow][grow][grow][grow][110.00][grow][35.00,grow][grow]"));
 
 		JLabel lblNewLabel = new JLabel("Editar Consulta");
-		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 		contentPane.add(lblNewLabel, "cell 1 0,alignx center");
 
@@ -107,10 +107,11 @@ public class VEditConsultation extends JFrame {
 
 		JLabel lblNewLabel_6 = new JLabel("Paciente:");
 		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_6.setForeground(new Color(255, 255, 255));
+		lblNewLabel_6.setForeground(new Color(19, 59, 93));
 		contentPane.add(lblNewLabel_6, "cell 0 2,alignx trailing,aligny center");
 
 		comboPasc = new JComboBox();
+		comboPasc.setForeground(new Color(19, 59, 93));
 		comboPasc.addItem(null);
 
 		CPatientDAO Pasc = new CPatientDAO();
@@ -123,7 +124,7 @@ public class VEditConsultation extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("Data:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setForeground(new Color(19, 59, 93));
 		contentPane.add(lblNewLabel_1, "cell 0 3,aligny center");
 
 		JPanel panel = new JPanel();
@@ -132,6 +133,7 @@ public class VEditConsultation extends JFrame {
 		panel.setLayout(new MigLayout("", "[grow][grow][grow]", "[][grow]"));
 
 		cbDia = new JComboBox();
+		cbDia.setForeground(new Color(19, 59, 93));
 		panel.add(cbDia, "cell 0 0,growx,aligny center");
 		cbDia.addItem("01");
 		cbDia.addItem("02");
@@ -166,6 +168,7 @@ public class VEditConsultation extends JFrame {
 		cbDia.addItem("31");
 
 		cbMes = new JComboBox();
+		cbMes.setForeground(new Color(19, 59, 93));
 		panel.add(cbMes, "cell 1 0,growx,aligny center");
 		cbMes.addItem("JAN");
 		cbMes.addItem("FEV");
@@ -181,6 +184,7 @@ public class VEditConsultation extends JFrame {
 		cbMes.addItem("DEZ");
 
 		cbAno = new JComboBox();
+		cbAno.setForeground(new Color(19, 59, 93));
 		panel.add(cbAno, "cell 2 0,growx,aligny center");
 
 		cbAno.addItem("2010");
@@ -207,7 +211,7 @@ public class VEditConsultation extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("Hora:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(19, 59, 93));
 		contentPane.add(lblNewLabel_2, "cell 0 4,aligny center");
 
 		JPanel panel_1 = new JPanel();
@@ -216,6 +220,7 @@ public class VEditConsultation extends JFrame {
 		panel_1.setLayout(new MigLayout("", "[30px,grow,fill][grow]", "[22px,grow,fill]"));
 
 		cbHora = new JComboBox();
+		cbHora.setForeground(new Color(19, 59, 93));
 		panel_1.add(cbHora, "cell 0 0");
 
 		cbHora.addItem("00");
@@ -243,6 +248,7 @@ public class VEditConsultation extends JFrame {
 		cbHora.addItem("22");
 
 		cbMin = new JComboBox();
+		cbMin.setForeground(new Color(19, 59, 93));
 		panel_1.add(cbMin, "cell 1 0,growx");
 
 		cbMin.addItem("00");
@@ -313,12 +319,12 @@ public class VEditConsultation extends JFrame {
 
 		JLabel lblNewLabel_3 = new JLabel("Medico:");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setForeground(new Color(19, 59, 93));
 		panel_3.add(lblNewLabel_3, "cell 0 0,alignx right,aligny center");
 
 		JLabel lblNewLabel_4 = new JLabel("Valor:");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.setForeground(new Color(19, 59, 93));
 		panel_3.add(lblNewLabel_4, "cell 0 1,alignx right,aligny center");
 
 		JPanel panel_2 = new JPanel();
@@ -327,6 +333,7 @@ public class VEditConsultation extends JFrame {
 		panel_2.setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 
 		comboMed = new JComboBox();
+		comboMed.setForeground(new Color(19, 59, 93));
 		comboMed.addItem(null);
 		panel_2.add(comboMed, "cell 0 0,growx");
 
@@ -378,10 +385,11 @@ public class VEditConsultation extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("Observações:");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblNewLabel_5.setForeground(new Color(255, 255, 255));
+		lblNewLabel_5.setForeground(new Color(19, 59, 93));
 		contentPane.add(lblNewLabel_5, "cell 0 6,alignx right,aligny top");
 
 		txaObser = new TextArea();
+		txaObser.setForeground(new Color(19, 59, 93));
 		contentPane.add(txaObser, "cell 1 6,growx,aligny center");
 		contentPane.add(btnVolta, "cell 0 8,alignx center,aligny center");
 		btnCad.setText("Salvar");

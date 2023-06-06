@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class VListPomptuary extends JFrame {
 
@@ -40,7 +41,7 @@ public class VListPomptuary extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE );
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 574, 430);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(140, 166, 189));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,6 +50,8 @@ public class VListPomptuary extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel = new JLabel("Histórico medico");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel.setForeground(new Color(19, 59, 93));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
@@ -58,6 +61,7 @@ public class VListPomptuary extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
+		table.setForeground(new Color(19, 59, 93));
 		table.setBackground(new Color(255, 255, 255));
 		CPromptuaryDAO prDAO = new CPromptuaryDAO();
 		MTPromptuary model = new MTPromptuary(prDAO.listaPronptuary(idp));
