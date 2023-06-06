@@ -4,7 +4,7 @@ public class MDoctor extends MPerson {
 
 	private String uf;
 	private Long crm;
-	private MUser usuario;
+	private MUser user;
 	
 	
 	public String getUf() {
@@ -18,15 +18,15 @@ public class MDoctor extends MPerson {
 
 
 	public MDoctor() {
-		this.usuario = new MUser();
+		this.user = new MUser();
 	}
 
 	public MUser getUsuario() {
-		return usuario;
+		return user;
 	}
 
 	public void setUsuario(MUser usuario) {
-		this.usuario = usuario;
+		this.user = usuario;
 	}
 
 	public Long getCrm() {

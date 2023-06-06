@@ -5,12 +5,12 @@ import java.sql.Time;
 
 public class MConsultation{
 	private int id;
-	private String data;
-	private String hora;
+	private String date;
+	private String hour;
 	private String obs;
-	private String valor;
-	private int idMedico;
-	private int idPaciente;
+	private String value;
+	private int idDoctor;
+	private int idPatient;
 	private String nameDoctor;
 	private String namePatient;
 	
@@ -39,23 +39,23 @@ public class MConsultation{
 	}
 
 	public String getValor() {
-		return valor;
+		return value;
 	}
 	public void setValor(String valorInt) {
-		this.valor = valorInt;
+		this.value = valorInt;
 	}
 	
 	public String getData() {
-		return data;
+		return date;
 	}
 	public void setData(String data) {
-		this.data = data;
+		this.date = data;
 	}
 	public String getHora() {
-		return hora;
+		return hour;
 	}
 	public void setHora(String hora) {
-		this.hora = hora;
+		this.hour = hora;
 	}
 	public String getObs() {
 		return obs;
@@ -64,16 +64,16 @@ public class MConsultation{
 		this.obs = obs;
 	}
 	public int getIdMedico() {
-		return idMedico;
+		return idDoctor;
 	}
 	public void setIdMedico(int idMedico) {
-		this.idMedico = idMedico;
+		this.idDoctor = idMedico;
 	}
 	public int getIdPaciente() {
-		return idPaciente;
+		return idPatient;
 	}
 	public void setIdPaciente(int idPaciente) {
-		this.idPaciente = idPaciente;
+		this.idPatient = idPaciente;
 	}
 	
 		

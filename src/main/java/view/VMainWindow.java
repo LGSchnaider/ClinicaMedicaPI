@@ -223,7 +223,7 @@ public class VMainWindow extends JFrame {
 		panel_3.setBackground(new Color(64, 128, 128));
 		panel_1.add(panel_3, "cell 2 5,grow");
 
-		JButton btnNewButton_2 = new VModelButton("Registrar consultas");
+		JButton btnNewButton_2 = new VModelButton("Agendar consultas");
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

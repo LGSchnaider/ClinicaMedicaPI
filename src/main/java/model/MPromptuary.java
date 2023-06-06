@@ -2,11 +2,11 @@ package model;
 
 public class MPromptuary {
 	private int id;
-	private String data;
+	private String date;
 	private String obs;
-	private String valor;
-	private int idMedico;
-	private int idPaciente;
+	private String value;
+	private int idDoctor;
+	private int idPatient;
 	private String nameDoctor;
 	private String namePatient;
 	
@@ -17,10 +17,10 @@ public class MPromptuary {
 		this.id = id;
 	}
 	public String getData() {
-		return data;
+		return date;
 	}
 	public void setData(String data) {
-		this.data = data;
+		this.date = data;
 	}
 	public String getObs() {
 		return obs;
@@ -29,22 +29,22 @@ public class MPromptuary {
 		this.obs = obs;
 	}
 	public String getValor() {
-		return valor;
+		return value;
 	}
 	public void setValor(String valor) {
-		this.valor = valor;
+		this.value = valor;
 	}
 	public int getIdMedico() {
-		return idMedico;
+		return idDoctor;
 	}
 	public void setIdMedico(int idMedico) {
-		this.idMedico = idMedico;
+		this.idDoctor = idMedico;
 	}
 	public int getIdPaciente() {
-		return idPaciente;
+		return idPatient;
 	}
 	public void setIdPaciente(int idPaciente) {
-		this.idPaciente = idPaciente;
+		this.idPatient = idPaciente;
 	}
 	public String getNameDoctor() {
 		return nameDoctor;

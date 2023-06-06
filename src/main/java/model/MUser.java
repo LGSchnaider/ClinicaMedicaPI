@@ -3,8 +3,8 @@ package model;
 public class MUser {
 
 	private String login;
-	private String senha;
-	private int pefil;
+	private String password;
+	private int profile;
 	private int id;
 
 	public int getIdusuario() {
@@ -24,19 +24,19 @@ public class MUser {
 	}
 
 	public String getSenha() {
-		return senha;
+		return password;
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.password = senha;
 	}
 
 	public int getPerfil() {
-		return pefil;
+		return profile;
 	}
 
 	public void setPefil(int pefil) {
-		this.pefil = pefil;
+		this.profile = pefil;
 	}
 
 }

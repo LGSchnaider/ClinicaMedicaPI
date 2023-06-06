@@ -2,28 +2,28 @@ package model;
 
 public class MSecretary extends MPerson {
 
-	private long telefone;
+	private long telephone;
 	private String email;
-	private MUser usuario;
+	private MUser user;
 	private String login;
-	private String senha;
+	private String password;
 	
 	
 	
 	public String getSenha() {
-		return senha;
+		return password;
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.password = senha;
 	}
 	public MSecretary() {
-		this.usuario = new MUser();
+		this.user = new MUser();
 	}
 	public void setUsuario(MUser usuario) {
-		this.usuario = usuario;
+		this.user = usuario;
 	}
 	public MUser getUsuario() {
-		return usuario;
+		return user;
 	}
 	
 	public String getNome() {
@@ -34,11 +34,11 @@ public class MSecretary extends MPerson {
 	}
 	
 	public long getTelefone() {
-		return telefone;
+		return telephone;
 	}
 
 	public void setTelefone(long telefone) {
-		this.telefone = telefone;
+		this.telephone = telefone;
 	}
 
 	public String getEmail() {

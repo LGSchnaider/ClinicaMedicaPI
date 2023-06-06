@@ -3,7 +3,7 @@ package model;
 public class MPatient extends MPerson {
 
 	private long telefone;
-	private MTyperGender sexo;
+	private MTyperGender sex;
 	private String email;
 	private int idPac;
 
@@ -24,11 +24,11 @@ public class MPatient extends MPerson {
 	}
 
 	public MTyperGender getSexo() {
-		return sexo;
+		return sex;
 	}
 
 	public void setSexo(MTyperGender sexo) {
-		this.sexo = sexo;
+		this.sex = sexo;
 	}
 
 	public String getEmail() {
