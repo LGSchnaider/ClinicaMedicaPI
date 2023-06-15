@@ -59,10 +59,12 @@ public class VListPomptuary extends JFrame {
 		scrollPane.setForeground(new Color(19, 59, 93));
 		scrollPane.getViewport().setOpaque(false);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setOpaque(false);
 		
 		table = new JTable();
 		table.setForeground(new Color(19, 59, 93));
 		table.setBackground(new Color(255, 255, 255));
+		table.setOpaque(false);
 		CPromptuaryDAO prDAO = new CPromptuaryDAO();
 		MTPromptuary model = new MTPromptuary(prDAO.listaPronptuary(idp));
 		table.setModel(model);
