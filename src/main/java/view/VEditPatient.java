@@ -22,6 +22,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -56,7 +58,7 @@ public class VEditPatient extends JFrame {
 	public VEditPatient(MUser usuarioLogado, MPatient d) {
 
 		this.usuarioLogado = usuarioLogado;
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		setTitle("Cadastro de Paciente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 600);

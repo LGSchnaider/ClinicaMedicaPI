@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -55,7 +56,7 @@ public class VEditDoctor extends JFrame {
 	public VEditDoctor(MUser usuarioLogado, VRegister telaCadastro, MDoctor d) {
 
 		this.usuarioLogado = usuarioLogado;
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		BufferedImage bg = null;
 		try {
 			bg = ImageIO.read(new File("src/main/java/imagens/TelacadMédico.png"));

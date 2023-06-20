@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.TextArea;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -52,6 +53,7 @@ public class VConsultation extends JFrame {
 	
 
 	public VConsultation(MUser usuarioLogado, MConsultation c) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 		
