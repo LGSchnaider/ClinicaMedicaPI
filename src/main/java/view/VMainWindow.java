@@ -34,6 +34,7 @@ import java.awt.Cursor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.SoftBevelBorder;
+import java.awt.Toolkit;
 
 public class VMainWindow extends JFrame {
 
@@ -46,6 +47,8 @@ public class VMainWindow extends JFrame {
 	 * Construtor da classe
 	 */
 	public VMainWindow(MUser u) {
+		setTitle("Painel de Controle");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VMainWindow.class.getResource("/imagens/icone.png")));
 		this.usuarioLogado = u;
 		tipoUsuarioLogado = MTypeUser.getTipoUsuarioPorCodigo(usuarioLogado.getPerfil());
 

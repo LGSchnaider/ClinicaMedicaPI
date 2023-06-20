@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.MSecretary;
 import model.MUser;
+import java.awt.Toolkit;
 
 public class VEditSecretary extends JFrame {
 
@@ -23,6 +24,7 @@ public class VEditSecretary extends JFrame {
 	 * @param s 
 	 */
 	public VEditSecretary(MUser usuarioLogado, MSecretary s) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VEditSecretary.class.getResource("/imagens/icone.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

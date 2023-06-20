@@ -19,6 +19,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class VRegister extends JFrame {
 
@@ -49,6 +50,7 @@ public class VRegister extends JFrame {
 	 * Create the frame.
 	 */
 	public VRegister(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VRegister.class.getResource("/imagens/icone.png")));
 		setTitle("Cadastro de Usuário");
 		this.usuarioLogado = usuarioLogado;
 		

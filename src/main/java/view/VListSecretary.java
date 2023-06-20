@@ -30,6 +30,7 @@ import modelTabel.MTMedicoTableModel;
 import modelTabel.MTSecretariaTableModel;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class VListSecretary extends JFrame {
 
@@ -40,6 +41,7 @@ public class VListSecretary extends JFrame {
 	
 
 	public VListSecretary(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListSecretary.class.getResource("/imagens/icone.png")));
 		setTitle("Lista de Secretárias");
 		this.usuarioLogado = usuarioLogado;
 		

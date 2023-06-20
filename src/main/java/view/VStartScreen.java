@@ -39,6 +39,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
 
 public class VStartScreen extends JFrame {
 	private JTextField txtLogin;
@@ -65,6 +66,7 @@ public class VStartScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public VStartScreen() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VStartScreen.class.getResource("/imagens/icone.png")));
 		setTitle("Clínica Médica Início");
 		getContentPane().setBackground(new Color(0, 128, 128));
 		setForeground(new Color(3, 152, 158));

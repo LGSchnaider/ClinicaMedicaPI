@@ -41,6 +41,7 @@ import javax.swing.JFormattedTextField;
 
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
 
 public class VRegisterPatient extends JFrame {
 
@@ -56,6 +57,7 @@ public class VRegisterPatient extends JFrame {
 	 */
 
 	public VRegisterPatient(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VRegisterPatient.class.getResource("/imagens/icone.png")));
 		this.usuarioLogado = usuarioLogado;
 		
 //		TelaRegistrarPaciente frame = new TelaRegistrarPaciente();

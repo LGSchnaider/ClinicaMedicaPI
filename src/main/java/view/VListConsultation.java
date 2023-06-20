@@ -20,6 +20,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import java.awt.Toolkit;
 
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -44,6 +45,7 @@ public class VListConsultation extends JFrame {
 	private JTable table_1;
 
 	public VListConsultation(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		setTitle("Lista de Consultas");
 		this.usuarioLogado = usuarioLogado;
 

@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
 import javax.swing.Action;
@@ -45,6 +46,7 @@ public class VListDoctor extends JFrame {
 
 
 	public VListDoctor(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		setTitle("Lista de Médicos");
 		this.usuarioLogado = usuarioLogado;
 

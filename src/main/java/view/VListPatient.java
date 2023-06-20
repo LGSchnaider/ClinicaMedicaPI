@@ -30,6 +30,7 @@ import modelTabel.MTMedicoTableModel;
 import modelTabel.MTPacienteTableModel;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class VListPatient extends JFrame {
 
@@ -40,6 +41,7 @@ public class VListPatient extends JFrame {
 	
 
 	public VListPatient(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPatient.class.getResource("/imagens/icone.png")));
 		setTitle("Lista de Pacientes");
 		this.usuarioLogado = usuarioLogado;
 		

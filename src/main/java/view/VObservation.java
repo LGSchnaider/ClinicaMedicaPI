@@ -11,12 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class VObservation extends JFrame {
 
 	private JPanel contentPane;
 
 	public VObservation(String obs) {
+		setTitle("Observações");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VObservation.class.getResource("/imagens/icone.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

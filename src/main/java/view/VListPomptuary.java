@@ -27,6 +27,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class VListPomptuary extends JFrame {
 
@@ -35,6 +36,7 @@ public class VListPomptuary extends JFrame {
 	private JTable table;
 
 	public VListPomptuary(MUser usuarioLogado, int idp) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VListPomptuary.class.getResource("/imagens/icone.png")));
 		setTitle("Cadastro de Consulta");
 	 	
 		this.usuarioLogado = usuarioLogado;

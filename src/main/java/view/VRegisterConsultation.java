@@ -45,6 +45,7 @@ import java.awt.TextArea;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Toolkit;
 
 public class VRegisterConsultation extends JFrame {
 
@@ -61,6 +62,7 @@ public class VRegisterConsultation extends JFrame {
 	// LocalDate a = LocalDate.MAX;
 
 	public VRegisterConsultation(MUser usuarioLogado) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VRegisterConsultation.class.getResource("/imagens/icone.png")));
 		setTitle("Cadastro de Consulta");
 		this.usuarioLogado = usuarioLogado;
 
