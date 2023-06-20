@@ -591,12 +591,28 @@ public class VRegisterSecretary extends JPanel {
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
 			int pa = s.getUsuario().getPerfil()-3;
 			
-			if(0 < pa){
-			cbFuncao.setSelectedIndex(pa);
-			}if(0 > pa) {
+			if(1 == pa){
+				pa = pa -1;
+				cbFuncao.setSelectedIndex(pa);
+			}
+			if(pa==0) {
+				pa = pa +1;
+				cbFuncao.setSelectedIndex(pa);
+			}
+			
+			/*if(pa==-3) {
 				pa = pa+3;
 				cbFuncao.setSelectedIndex(pa);
 			}
+			if(pa==-2) {
+				pa = pa+3;
+				cbFuncao.setSelectedIndex(pa);
+			}
+			if(pa==-1) {
+				pa = pa+2;
+				cbFuncao.setSelectedIndex(pa);
+			}*/
+			
 			MaskFormatter formatter = null;
 			try {
 				formatter = new MaskFormatter("(##) #####-####");
