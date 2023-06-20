@@ -163,6 +163,7 @@ public class VListSecretary extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma Secretaria");
 					return;
 				}
+				dispose();
 				MTSecretariaTableModel model  = (MTSecretariaTableModel) table.getModel();
 				MSecretary s = model.getSecretaria(posicao);
 				JFrame janela = new JFrame();

@@ -537,7 +537,7 @@ public class VRegisterSecretary extends JPanel {
 							// acao de alterar no banco registro - UPDATE
 							secretaria.setId(s.getId());
 							secretaria.getUsuario().setIdusuario(s.getUsuario().getIdusuario());
-
+							
 							udao.atualizar(secretaria.getUsuario());
 							sdao.atualizar(secretaria);
 							JOptionPane.showMessageDialog(null, "Secretário(a) editada com sucesso.");
@@ -589,9 +589,14 @@ public class VRegisterSecretary extends JPanel {
 			txtEmail.setText(s.getEmail());
 			pswSenha.setText(s.getUsuario().getSenha());
 			pswConfirmarSenha.setText(s.getUsuario().getSenha());
-
-			cbFuncao.setSelectedIndex((s.getUsuario().getPerfil()) - 3);
-
+			int pa = s.getUsuario().getPerfil()-3;
+			
+			if(0 < pa){
+			cbFuncao.setSelectedIndex(pa);
+			}if(0 > pa) {
+				pa = pa+3;
+				cbFuncao.setSelectedIndex(pa);
+			}
 			MaskFormatter formatter = null;
 			try {
 				formatter = new MaskFormatter("(##) #####-####");

@@ -55,15 +55,15 @@ public class CSecretaryDAO implements ISecretariaDAO {
 
 		try {
 			//String query = "UPDATE secretaria SET nome= ?, cpf = ?, telefone = ?, email = ?  WHERE id = ?";
-			String query = "UPDATE secretaria join usuario on secretaria.usuario_idusuario = usuario.id SET nome= ?, cpf = ?, telefone = ?, email = ?, usuario.login = ?, usuario.senha = ?, usuario.perfil = ? WHERE id = ?";
+			String query = "UPDATE secretaria join usuario on secretaria.usuario_idusuario = usuario.id SET nome= ?, cpf = ?, telefone = ?, email = ?, usuario.login = ?, usuario.senha = ?, usuario.perfil = ? WHERE secretaria.id = ?";
 			PreparedStatement stm = c.prepareStatement(query);
 
 			stm.setString(1, p.getNome());
 			stm.setLong(2, p.getCpf());
 			stm.setLong(3, p.getTelefone());
 			stm.setString(4, p.getEmail());
-			stm.setString(5, p.getLogin());
-			stm.setString(6, p.getSenha());
+			stm.setString(5, p.getUsuario().getLogin());
+			stm.setString(6, p.getUsuario().getSenha());
 			stm.setInt(7, p.getUsuario().getIdusuario());
 			stm.setInt(8, p.getId());
 

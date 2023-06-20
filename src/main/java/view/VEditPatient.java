@@ -236,7 +236,7 @@ public class VEditPatient extends JFrame {
 						String sexo = (String) cbSexo.getSelectedItem();
 						String email = txtEmail.getText();
 
-						MPatient paciente = new MPatient();
+						MPatient paciente = d;
 
 						// 2o passo: validar se texto é vazio ou nao
 						// se nao for vazio
@@ -245,6 +245,7 @@ public class VEditPatient extends JFrame {
 							if (nome != null && !nome.isEmpty()) {
 								paciente.setNome(nome);
 							} else {
+								System.out.println("entrei aqui ó 1");
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo NOME precisa ser preenchido");
 								txtNome.requestFocus();
@@ -252,7 +253,7 @@ public class VEditPatient extends JFrame {
 							}
 
 						} catch (Exception e2) {
-
+							e2.printStackTrace();
 						}
 
 						try {
@@ -264,7 +265,8 @@ public class VEditPatient extends JFrame {
 								telefones = telefones.replace(" ", "");
 								telefones = telefones.strip();
 								// if (telefone.equalsIgnoreCase("( ) - ")) {
-								if (telefones.isEmpty()) {
+								if (telefones.isEmpty()) {	
+									System.out.println("entrei aqui ó 2");
 									JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
 									txtTelefone.requestFocus();
 									return;
@@ -280,6 +282,7 @@ public class VEditPatient extends JFrame {
 								}
 
 							} else {
+								System.out.println("entrei aqui ó 3");
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo TELEFONE precisa ser preenchido");
 								txtTelefone.requestFocus();
@@ -292,11 +295,13 @@ public class VEditPatient extends JFrame {
 
 						try {
 							if (cbSexo.getSelectedIndex() == 0) {
+								System.out.println("entrei aqui ó 4");
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo SEXO precisa ser selecionado");
 								cbSexo.requestFocus();
 								return;
 							} else {
+				
 								validarCampoTexto = true;
 								paciente.setSexo(MTyperGender.obterTipo(sexo));
 
@@ -310,6 +315,7 @@ public class VEditPatient extends JFrame {
 							if (email != null && !email.isEmpty()) {
 								paciente.setEmail(email);
 							} else {
+								System.out.println("entrei aqui ó 5");
 								validarCampoTexto = false;
 								JOptionPane.showMessageDialog(null, "O campo EMAIL precisa ser preenchido");
 								txtEmail.requestFocus();
@@ -325,7 +331,6 @@ public class VEditPatient extends JFrame {
 							// se passar em todas as validacoes
 							if (validarCampoTexto == true) {
 								CPatientDAO pdao = new CPatientDAO();
-
 								boolean validar = pdao.atualizar(paciente);
 								if (validar == true) {
 									// exibir uma mensagem de cadastro com sucesso

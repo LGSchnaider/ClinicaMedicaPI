@@ -50,7 +50,7 @@ public class CPatientDAO implements MIPatientDAO {
 		return false;
 	}
 
-	public boolean atualizar(int id, MPatient p) {
+	public boolean atualizar(MPatient p) {
 		// Instacia classe Conexao
 		CConnection con = CConnection.getInstancia();
 		Connection c = con.conectar();
@@ -63,7 +63,8 @@ public class CPatientDAO implements MIPatientDAO {
 			stm.setLong(2, p.getTelefone());
 			stm.setString(3, p.getSexo().getCodigo());
 			stm.setString(4, p.getEmail());
-			stm.setInt(5, p.getId());
+
+			stm.setInt(5, p.getIdPac());
 
 			stm.executeUpdate();
 			return true;
@@ -139,10 +140,7 @@ public class CPatientDAO implements MIPatientDAO {
 		return Pacientes;
 	}
 
-	@Override
-	public boolean atualizar(MPatient p) {
-		return false;
-	}
+
 
 	@Override
 	public boolean deletar(MPatient p) {
