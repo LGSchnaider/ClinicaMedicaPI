@@ -149,7 +149,7 @@ public class VRegisterPatient extends JFrame {
 		
 				JLabel lblNewLabel_2 = new JLabel("Telefone:");
 				lblNewLabel_2.setForeground(new Color(19, 59, 93));
-				lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 23));
+				lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 25));
 				panel.add(lblNewLabel_2, "cell 0 2,alignx center,aligny center");
 
 		JPanel panel_2 = new JPanel();
